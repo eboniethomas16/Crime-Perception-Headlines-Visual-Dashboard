@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Chart-specific styles -->
+    <link rel="stylesheet" href="../css/style_dashboard_headline_perception_crime.css">
+
+<!--    <link rel="stylesheet" href="../css/style_dash_bivariate_map.css">-->
+<!--    <link rel="stylesheet" href="../css/style_dash_perception_linechart.css">-->
+<!--    <link rel="stylesheet" href="../css/style_dash_crime_linechart.css">-->
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+<!--    <script src="https://unpkg.com/topojson-client@3"></script>-->
+</head>
+<body>
+<div id="dashboard-container">
+
+    <!-- ========================= -->
+    <!-- ROW 1 — CONTROLS            -->
+    <!-- ========================= -->
+    <!-- Dropdowns span columns 1–2 -->
+    <div id="row1">
+        <!--            <select id="perception-metric-select"></select>-->
+        <div id="crime-type-container" class="glass-dropdown">
+            <button class="glass-dropdown-trigger" id="crime-type-trigger">
+                <span id="crime-type-label">Select Crime Offence Categories</span>
+                <span class="glass-dropdown-trigger-arrow">▾</span>
+            </button>
+
+            <div class="glass-dropdown-menu" id="crime-type-menu">
+                <!-- items will be injected by D3 -->
+            </div>
+        </div>
+        <select id="crime-type-select"></select> <!-- optional -->
+    </div>
+    <!-- ⭐ NEW ROW: SUMMARY STATS -->
+    <div id="row2" >
+        <div id="summary-stats-wrapper">
+            <!-- MAIN CRIME PILL -->
+            <div class="summary-pill" id="headline-summary-pill" >
+                <div class="summary-title">Total Headline Count</div>
+                <div class="summary-value" id="headline-summary-value">3,697,703</div>
+            </div>
+
+            <!-- MAIN PERCEPTION PILL -->
+            <div class="summary-pill" id="crime-summary-pill">
+                <div class="summary-title">Total Crime Offence Count</div>
+                <div class="summary-value" id="crime-summary-value">62%</div>
+            </div>
+
+            <!-- CRIME CHANGE PILL -->
+            <div class="summary-pill change-pill" id="crime-change-pill">
+                <div class="change-title">12‑month change (Headline)</div>
+                <div class="change-value" id="crime-change-value">▼ 2.5%</div>
+            </div>
+
+            <!-- PERCEPTION CHANGE PILL -->
+            <div class="summary-pill change-pill" id="perc-change-pill">
+                <div class="change-title">12‑month change (Crime)</div>
+                <div class="change-value" id="perc-change-value">▲ 1.8%</div>
+            </div>
+        </div>
+    </div>
+    <!-- ========================= -->
+    <!-- ROW 3 — Chord Chart AND HEATMAP-->
+    <!-- ========================= -->
+    <!-- MAP spans columns 1–2 -->
+    <div id="row3">
+        <div id="chordChart" class="glass-panel">
+            <div id="chordChart-title" style="
+            text-align:center;">
+                <p>Select <u><b>several crime types</b></u> to see <br> how do crime offence
+                    categories coincide with each other in the headlines?</p>
+            </div>
+            <div id="chordChart-empty-message" style="
+        text-align:center;
+        padding-top:40px;
+        opacity:1;
+    ">
+                Select one or more crime types in the checklist above to see how Crime headlines relate to crime and
+                perception in London.
+            </div>
+            <div id="chordChart-content">
+                <!-- Choromap SVG gets appended here -->
+            </div>
+        </div>
+
+        <!-- HEATMAP spans columns 2–3 -->
+
+        <div id="heatmap" class="glass-panel">
+            <div id="heatMap-title" style="
+            text-align:center;">
+                <p>What Crime Categories Do Online News Media Outlets Overreport?</p>
+            </div>
+
+            <img id="heatmap-legend" src="../pngs/heatmap-legend-headlines.png" alt="Heatmap Legend">
+            <div id="heatmap-scroll-wrapper"></div>
+        </div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- ROW 3 — BOTTOM            -->
+    <!-- ========================= -->
+    <!-- Crime + Perception charts span columns 1–2 -->
+    <div id="row4">
+        <div id="line-charts" class="glass-panel">
+
+            <!-- Overall container title -->
+            <div id="line-charts-title" class="chart-main-title">
+                How Do London Crime Headlines Change With Crime and Perception Change Over Time?
+                <div class="chart-subtitle">
+                    (Click and drag to zoom into dates)
+                </div>
+                <button id="toggleTrendBtn" class="chart-glass-btn">
+                    Show Residual Chart
+                </button>
+            </div>
+
+            <div id="headlines-title" class="chart-title">
+                London Crime Headlines Over Time
+            </div>
+            <div id="headlines-controls" class="chart-controls">
+                <label class="checkbox-inline" for="headline-toggle-duplicates">
+                    <input id="headline-toggle-duplicates" type="checkbox" />
+                    Show only duplicated headline counts
+                </label>
+
+                <button id="resetZoomBtn" class="chart-glass-btn">Reset Zoom</button>
+            </div>
+            <div id="chart-headlines"></div>
+            <div id="chart-headlines-tooltip" class="shared-chart-tooltip" aria-hidden="true"></div>
+            <!-- Residual chart title -->
+            <div id="residual-title" class="chart-title">
+                Residual Distortion Over Time (Actual – Predicted Number of Headlines)
+            </div>
+
+            <!-- Residual chart -->
+            <div id="chart-residual"></div>
+            <div id="chart-residual-tooltip" class="shared-chart-tooltip" aria-hidden="true"></div>
+
+            <!-- Crime chart title -->
+            <div id="crime-title" class="chart-title">
+                Crime Offences Over Time
+            </div>
+
+            <!-- Crime chart -->
+            <div id="chart-crime"></div>
+            <div id="chart-crime-tooltip" class="shared-chart-tooltip" aria-hidden="true"></div>
+
+            <!-- Perception chart title -->
+            <div id="perception-title" class="chart-title">
+                Public Perception of Policing Over Time (%)
+            </div>
+            <!-- Perception metric selector (glass style) -->
+            <div id="perception-metric-container" class="glass-dropdown">
+                <button class="glass-dropdown-trigger" id="perception-metric-trigger">
+                    <span id="perception-metric-label">Select perception metric</span>
+                    <span class="glass-dropdown-trigger-arrow">▾</span>
+                </button>
+
+                <div class="glass-dropdown-menu" id="perception-metric-menu">
+                    <!-- items will be injected by D3 -->
+                </div>
+            </div>
+
+
+            <!-- Perception chart -->
+            <div id="chart-perception"></div>
+            <div id="chart-perception-tooltip" class="shared-chart-tooltip" aria-hidden="true"></div>
+
+        </div>
+
+        <div id="hoverList" class="glass-panel">
+            <div id="hover-list-title" class="hover-list-title"></div>
+
+            <!-- Header row for hover list -->
+            <div id="hover-list-header" role="row" aria-hidden="false" class="hover-list-header">
+                <div class="header-left">Crime Category</div>
+                <div class="header-values">
+                    <div class="header-cell">Headlines</div>
+                    <div class="header-cell">Crime Offence Count</div>
+                    <div class="header-cell">Perception %</div>
+                    <div class="header-cell">Residual</div>
+                </div>
+            </div>
+
+            <!-- Rows container (renderHoverList will populate this) -->
+            <ul id="hover-list-rows" role="list" style="margin:0; padding:0;"></ul>
+        </div>
+
+
+    </div>
+
+
+</div>
+<script type="module" src="../js/dashboard_headline_perception_crime.js"></script>
+<script type="module">
+    import drawDashboard from "../js/dashboard_headline_perception_crime.js";
+    drawDashboard();
+</script>
+
+</body>
+</html>
