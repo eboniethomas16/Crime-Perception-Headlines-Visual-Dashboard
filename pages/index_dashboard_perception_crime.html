@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Chart-specific styles -->
+    <link rel="stylesheet" href="../css/style_dashboard_perception_crime.css">
+
+    <link rel="stylesheet" href="../css/style_dash_bivariate_map.css">
+    <link rel="stylesheet" href="../css/style_dash_perception_linechart.css">
+    <link rel="stylesheet" href="../css/style_dash_crime_linechart.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+</head>
+<body>
+<div id="dashboard-container">
+
+    <!-- ========================= -->
+    <!-- ROW 1 — CONTROLS            -->
+    <!-- ========================= -->
+    <!-- Dropdowns span columns 1–2 -->
+    <div id="row1">
+<!--            <select id="perception-metric-select"></select>-->
+            <div id="perception-metric-container" class="glass-dropdown">
+                <button class="glass-dropdown-trigger" id="perception-metric-trigger">
+                    <span id="perception-metric-label">Select perception metric</span>
+                    <span class="glass-dropdown-trigger-arrow">▾</span>
+                </button>
+
+                <div class="glass-dropdown-menu" id="perception-metric-menu">
+                    <!-- items will be injected by D3 -->
+                </div>
+            </div>
+            <select id="borough-select"></select> <!-- optional -->
+
+    </div>
+    <!-- ⭐ NEW ROW: SUMMARY STATS -->
+    <div id="row2" >
+        <div id="summary-stats-wrapper">
+            <!-- MAIN CRIME PILL -->
+            <div class="summary-pill" id="crime-summary-pill">
+                <div class="summary-title">Total Crime Offence Count</div>
+                <div class="summary-value" id="crime-summary-value">3,697,703</div>
+            </div>
+
+            <!-- MAIN PERCEPTION PILL -->
+            <div class="summary-pill" id="perception-summary-pill">
+                <div class="summary-title">Avg. Perception of Policing %</div>
+                <div class="summary-value" id="perc-summary-value">62%</div>
+            </div>
+
+            <!-- CRIME CHANGE PILL -->
+            <div class="summary-pill change-pill" id="crime-change-pill">
+                <div class="change-title">12‑month change (Crime)</div>
+                <div class="change-value" id="crime-change-value">▼ 2.5%</div>
+            </div>
+
+            <!-- PERCEPTION CHANGE PILL -->
+            <div class="summary-pill change-pill" id="perc-change-pill">
+                <div class="change-title">12‑month change (Perception)</div>
+                <div class="change-value" id="perc-change-value">▲ 1.8%</div>
+            </div>
+        </div>
+    </div>
+    <!-- ========================= -->
+    <!-- ROW 2 — CHORO-MAO AND HEATMAP-->
+    <!-- ========================= -->
+    <!-- MAP spans columns 1–2 -->
+    <div id="row3">
+        <div id="choro-map" class="glass-panel">
+            <div id="choro-map-title"></div>
+
+            <div id="choro-map-content">
+                <img id="choro-map-legend" src="../pngs/choro-map-legend.png">
+                <!-- Choromap SVG gets appended here -->
+            </div>
+        </div>
+
+        <!--        <div id="choro-map" class="glass-panel">-->
+<!--            <div id="choro-map-title"></div>-->
+<!--            <img id="choro-map-legend" src="../pngs/choro-map-legend.png" alt="Choropleth Legend">-->
+<!--        </div>-->
+        <!-- HEATMAP spans columns 2–3 -->
+        <div id="heatmap" class="glass-panel" >
+            <div id="heatMap-title" style="
+            text-align:center;">
+                <p>What Boroughs Does Perception of Policing Overestimate Actual Crime ?</p>
+            </div>
+            <img id="heatmap-legend" src="../pngs/heatmap-legend.png" alt="Heatmap Legend">
+            <div id="heatmap-scroll-wrapper"></div>
+        </div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- ROW 4 — BOTTOM            -->
+    <!-- ========================= -->
+    <!-- Crime + Perception charts span columns 1–2 -->
+    <div id="row4">
+        <div id="line-charts" class="glass-panel">
+            <!-- Overall container title -->
+            <div id="line-charts-title" class="chart-title">
+                How Crime and Perception Change Over Time
+                <div class="chart-subtitle">
+                    (Click and drag to zoom into dates)
+                </div>
+                <button id="toggleTrendBtn" class="chart-glass-btn">
+                    Hide Crime and Perception Trend Lines
+                </button>
+            </div>
+            <!-- Residual chart title -->
+            <div id="residual-title" class="chart-title">
+                Residual Distortion Over Time (Actual – Predicted Perception)
+            </div>
+
+            <button id="resetZoomBtn" class="chart-glass-btn">
+                Reset Zoom
+            </button>
+            <!-- Residual chart -->
+            <div id="chart-residual"></div>
+
+            <!-- Crime chart title -->
+            <div id="crime-title" class="chart-title">
+                Crime Offences Over Time
+            </div>
+
+            <!-- Crime chart -->
+            <div id="chart-crime"></div>
+
+            <!-- Perception chart title -->
+            <div id="perception-title" class="chart-title">
+                Public Perception of Policing Over Time (%)
+            </div>
+
+            <!-- Perception chart -->
+            <div id="chart-perception"></div>
+        </div>
+
+        <div id="hoverList" class="glass-panel">
+            <div id="hover-list-title" class="hover-list-title"></div>
+
+            <!-- Header row for hover list -->
+            <div id="hover-list-header" role="row" aria-hidden="false" class="hover-list-header">
+                <div class="header-left">Crime Category</div>
+                <div class="header-values">
+                    <div class="header-cell">Crime Offence Count</div>
+                    <div class="header-cell">Perception %</div>
+                    <div class="header-cell">Residual</div>
+                </div>
+            </div>
+
+            <!-- Rows container (renderHoverList will populate this) -->
+            <ul id="hover-list-rows" role="list" style="margin:0; padding:0;"></ul>
+        </div>
+
+    </div>
+
+
+</div>
+<script type="module" src="../js/dashboard_perception_crime.js"></script>
+<script type="module">
+    import { drawDashboard } from "../js/dashboard_perception_crime.js";
+    drawDashboard();
+</script>
+
+</body>
+</html>
