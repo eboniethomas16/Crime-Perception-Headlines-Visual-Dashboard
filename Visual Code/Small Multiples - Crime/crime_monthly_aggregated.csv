@@ -1,0 +1,4289 @@
+date,borough,crime_count
+2015-01-01,Barking and Dagenham,440.0
+2015-01-01,Barnet,449.0
+2015-01-01,Bexley,232.0
+2015-01-01,Brent,544.0
+2015-01-01,Bromley,394.0
+2015-01-01,Camden,641.0
+2015-01-01,Croydon,629.0
+2015-01-01,Ealing,497.0
+2015-01-01,Enfield,449.0
+2015-01-01,Greenwich,520.0
+2015-01-01,Hackney,670.0
+2015-01-01,Hammersmith and Fulham,386.0
+2015-01-01,Haringey,563.0
+2015-01-01,Harrow,249.0
+2015-01-01,Havering,346.0
+2015-01-01,Hillingdon,469.0
+2015-01-01,Hounslow,459.0
+2015-01-01,Islington,747.0
+2015-01-01,Kensington and Chelsea,359.0
+2015-01-01,Kingston upon Thames,154.0
+2015-01-01,Lambeth,674.0
+2015-01-01,Lewisham,540.0
+2015-01-01,Merton,276.0
+2015-01-01,Newham,670.0
+2015-01-01,Redbridge,364.0
+2015-01-01,Richmond upon Thames,192.0
+2015-01-01,Southwark,664.0
+2015-01-01,Sutton,245.0
+2015-01-01,Tower Hamlets,642.0
+2015-01-01,Waltham Forest,449.0
+2015-01-01,Wandsworth,382.0
+2015-01-01,Westminster,749.0
+2015-02-01,Barking and Dagenham,384.0
+2015-02-01,Barnet,479.0
+2015-02-01,Bexley,218.0
+2015-02-01,Brent,476.0
+2015-02-01,Bromley,387.0
+2015-02-01,Camden,542.0
+2015-02-01,Croydon,619.0
+2015-02-01,Ealing,402.0
+2015-02-01,Enfield,418.0
+2015-02-01,Greenwich,450.0
+2015-02-01,Hackney,702.0
+2015-02-01,Hammersmith and Fulham,304.0
+2015-02-01,Haringey,522.0
+2015-02-01,Harrow,237.0
+2015-02-01,Havering,241.0
+2015-02-01,Hillingdon,449.0
+2015-02-01,Hounslow,379.0
+2015-02-01,Islington,738.0
+2015-02-01,Kensington and Chelsea,286.0
+2015-02-01,Kingston upon Thames,166.0
+2015-02-01,Lambeth,609.0
+2015-02-01,Lewisham,528.0
+2015-02-01,Merton,218.0
+2015-02-01,Newham,654.0
+2015-02-01,Redbridge,320.0
+2015-02-01,Richmond upon Thames,126.0
+2015-02-01,Southwark,599.0
+2015-02-01,Sutton,226.0
+2015-02-01,Tower Hamlets,603.0
+2015-02-01,Waltham Forest,474.0
+2015-02-01,Wandsworth,373.0
+2015-02-01,Westminster,728.0
+2015-03-01,Barking and Dagenham,498.0
+2015-03-01,Barnet,487.0
+2015-03-01,Bexley,278.0
+2015-03-01,Brent,642.0
+2015-03-01,Bromley,397.0
+2015-03-01,Camden,554.0
+2015-03-01,Croydon,722.0
+2015-03-01,Ealing,513.0
+2015-03-01,Enfield,562.0
+2015-03-01,Greenwich,484.0
+2015-03-01,Hackney,760.0
+2015-03-01,Hammersmith and Fulham,398.0
+2015-03-01,Haringey,627.0
+2015-03-01,Harrow,316.0
+2015-03-01,Havering,326.0
+2015-03-01,Hillingdon,432.0
+2015-03-01,Hounslow,395.0
+2015-03-01,Islington,870.0
+2015-03-01,Kensington and Chelsea,313.0
+2015-03-01,Kingston upon Thames,185.0
+2015-03-01,Lambeth,677.0
+2015-03-01,Lewisham,545.0
+2015-03-01,Merton,250.0
+2015-03-01,Newham,703.0
+2015-03-01,Redbridge,431.0
+2015-03-01,Richmond upon Thames,191.0
+2015-03-01,Southwark,683.0
+2015-03-01,Sutton,207.0
+2015-03-01,Tower Hamlets,664.0
+2015-03-01,Waltham Forest,576.0
+2015-03-01,Wandsworth,432.0
+2015-03-01,Westminster,833.0
+2015-04-01,Barking and Dagenham,500.0
+2015-04-01,Barnet,573.0
+2015-04-01,Bexley,261.0
+2015-04-01,Brent,542.0
+2015-04-01,Bromley,429.0
+2015-04-01,Camden,678.0
+2015-04-01,Croydon,667.0
+2015-04-01,Ealing,478.0
+2015-04-01,Enfield,457.0
+2015-04-01,Greenwich,562.0
+2015-04-01,Hackney,749.0
+2015-04-01,Hammersmith and Fulham,371.0
+2015-04-01,Haringey,561.0
+2015-04-01,Harrow,342.0
+2015-04-01,Havering,330.0
+2015-04-01,Hillingdon,446.0
+2015-04-01,Hounslow,463.0
+2015-04-01,Islington,780.0
+2015-04-01,Kensington and Chelsea,316.0
+2015-04-01,Kingston upon Thames,202.0
+2015-04-01,Lambeth,653.0
+2015-04-01,Lewisham,571.0
+2015-04-01,Merton,240.0
+2015-04-01,Newham,650.0
+2015-04-01,Redbridge,401.0
+2015-04-01,Richmond upon Thames,155.0
+2015-04-01,Southwark,577.0
+2015-04-01,Sutton,301.0
+2015-04-01,Tower Hamlets,617.0
+2015-04-01,Waltham Forest,467.0
+2015-04-01,Wandsworth,393.0
+2015-04-01,Westminster,775.0
+2015-05-01,Barking and Dagenham,513.0
+2015-05-01,Barnet,521.0
+2015-05-01,Bexley,270.0
+2015-05-01,Brent,643.0
+2015-05-01,Bromley,478.0
+2015-05-01,Camden,722.0
+2015-05-01,Croydon,713.0
+2015-05-01,Ealing,659.0
+2015-05-01,Enfield,542.0
+2015-05-01,Greenwich,548.0
+2015-05-01,Hackney,819.0
+2015-05-01,Hammersmith and Fulham,390.0
+2015-05-01,Haringey,616.0
+2015-05-01,Harrow,337.0
+2015-05-01,Havering,389.0
+2015-05-01,Hillingdon,502.0
+2015-05-01,Hounslow,464.0
+2015-05-01,Islington,943.0
+2015-05-01,Kensington and Chelsea,334.0
+2015-05-01,Kingston upon Thames,180.0
+2015-05-01,Lambeth,791.0
+2015-05-01,Lewisham,616.0
+2015-05-01,Merton,260.0
+2015-05-01,Newham,678.0
+2015-05-01,Redbridge,382.0
+2015-05-01,Richmond upon Thames,206.0
+2015-05-01,Southwark,784.0
+2015-05-01,Sutton,208.0
+2015-05-01,Tower Hamlets,775.0
+2015-05-01,Waltham Forest,519.0
+2015-05-01,Wandsworth,462.0
+2015-05-01,Westminster,878.0
+2015-06-01,Barking and Dagenham,486.0
+2015-06-01,Barnet,554.0
+2015-06-01,Bexley,261.0
+2015-06-01,Brent,551.0
+2015-06-01,Bromley,438.0
+2015-06-01,Camden,699.0
+2015-06-01,Croydon,677.0
+2015-06-01,Ealing,588.0
+2015-06-01,Enfield,520.0
+2015-06-01,Greenwich,531.0
+2015-06-01,Hackney,783.0
+2015-06-01,Hammersmith and Fulham,339.0
+2015-06-01,Haringey,539.0
+2015-06-01,Harrow,328.0
+2015-06-01,Havering,360.0
+2015-06-01,Hillingdon,525.0
+2015-06-01,Hounslow,490.0
+2015-06-01,Islington,779.0
+2015-06-01,Kensington and Chelsea,301.0
+2015-06-01,Kingston upon Thames,182.0
+2015-06-01,Lambeth,663.0
+2015-06-01,Lewisham,609.0
+2015-06-01,Merton,276.0
+2015-06-01,Newham,708.0
+2015-06-01,Redbridge,529.0
+2015-06-01,Richmond upon Thames,203.0
+2015-06-01,Southwark,686.0
+2015-06-01,Sutton,296.0
+2015-06-01,Tower Hamlets,685.0
+2015-06-01,Waltham Forest,526.0
+2015-06-01,Wandsworth,457.0
+2015-06-01,Westminster,776.0
+2015-07-01,Barking and Dagenham,540.0
+2015-07-01,Barnet,583.0
+2015-07-01,Bexley,287.0
+2015-07-01,Brent,512.0
+2015-07-01,Bromley,441.0
+2015-07-01,Camden,566.0
+2015-07-01,Croydon,635.0
+2015-07-01,Ealing,692.0
+2015-07-01,Enfield,569.0
+2015-07-01,Greenwich,518.0
+2015-07-01,Hackney,801.0
+2015-07-01,Hammersmith and Fulham,348.0
+2015-07-01,Haringey,713.0
+2015-07-01,Harrow,303.0
+2015-07-01,Havering,353.0
+2015-07-01,Hillingdon,481.0
+2015-07-01,Hounslow,537.0
+2015-07-01,Islington,758.0
+2015-07-01,Kensington and Chelsea,347.0
+2015-07-01,Kingston upon Thames,225.0
+2015-07-01,Lambeth,688.0
+2015-07-01,Lewisham,663.0
+2015-07-01,Merton,341.0
+2015-07-01,Newham,819.0
+2015-07-01,Redbridge,424.0
+2015-07-01,Richmond upon Thames,214.0
+2015-07-01,Southwark,647.0
+2015-07-01,Sutton,257.0
+2015-07-01,Tower Hamlets,776.0
+2015-07-01,Waltham Forest,523.0
+2015-07-01,Wandsworth,476.0
+2015-07-01,Westminster,730.0
+2015-08-01,Barking and Dagenham,483.0
+2015-08-01,Barnet,577.0
+2015-08-01,Bexley,238.0
+2015-08-01,Brent,560.0
+2015-08-01,Bromley,462.0
+2015-08-01,Camden,572.0
+2015-08-01,Croydon,689.0
+2015-08-01,Ealing,610.0
+2015-08-01,Enfield,583.0
+2015-08-01,Greenwich,656.0
+2015-08-01,Hackney,769.0
+2015-08-01,Hammersmith and Fulham,351.0
+2015-08-01,Haringey,724.0
+2015-08-01,Harrow,337.0
+2015-08-01,Havering,346.0
+2015-08-01,Hillingdon,486.0
+2015-08-01,Hounslow,510.0
+2015-08-01,Islington,677.0
+2015-08-01,Kensington and Chelsea,405.0
+2015-08-01,Kingston upon Thames,197.0
+2015-08-01,Lambeth,822.0
+2015-08-01,Lewisham,641.0
+2015-08-01,Merton,280.0
+2015-08-01,Newham,704.0
+2015-08-01,Redbridge,415.0
+2015-08-01,Richmond upon Thames,212.0
+2015-08-01,Southwark,690.0
+2015-08-01,Sutton,219.0
+2015-08-01,Tower Hamlets,696.0
+2015-08-01,Waltham Forest,530.0
+2015-08-01,Wandsworth,424.0
+2015-08-01,Westminster,790.0
+2015-09-01,Barking and Dagenham,485.0
+2015-09-01,Barnet,485.0
+2015-09-01,Bexley,240.0
+2015-09-01,Brent,501.0
+2015-09-01,Bromley,410.0
+2015-09-01,Camden,622.0
+2015-09-01,Croydon,601.0
+2015-09-01,Ealing,601.0
+2015-09-01,Enfield,428.0
+2015-09-01,Greenwich,540.0
+2015-09-01,Hackney,645.0
+2015-09-01,Hammersmith and Fulham,320.0
+2015-09-01,Haringey,566.0
+2015-09-01,Harrow,305.0
+2015-09-01,Havering,308.0
+2015-09-01,Hillingdon,486.0
+2015-09-01,Hounslow,515.0
+2015-09-01,Islington,614.0
+2015-09-01,Kensington and Chelsea,405.0
+2015-09-01,Kingston upon Thames,227.0
+2015-09-01,Lambeth,646.0
+2015-09-01,Lewisham,538.0
+2015-09-01,Merton,262.0
+2015-09-01,Newham,729.0
+2015-09-01,Redbridge,456.0
+2015-09-01,Richmond upon Thames,182.0
+2015-09-01,Southwark,623.0
+2015-09-01,Sutton,252.0
+2015-09-01,Tower Hamlets,604.0
+2015-09-01,Waltham Forest,435.0
+2015-09-01,Wandsworth,418.0
+2015-09-01,Westminster,712.0
+2015-10-01,Barking and Dagenham,419.0
+2015-10-01,Barnet,559.0
+2015-10-01,Bexley,275.0
+2015-10-01,Brent,496.0
+2015-10-01,Bromley,414.0
+2015-10-01,Camden,540.0
+2015-10-01,Croydon,666.0
+2015-10-01,Ealing,664.0
+2015-10-01,Enfield,574.0
+2015-10-01,Greenwich,504.0
+2015-10-01,Hackney,768.0
+2015-10-01,Hammersmith and Fulham,439.0
+2015-10-01,Haringey,794.0
+2015-10-01,Harrow,332.0
+2015-10-01,Havering,430.0
+2015-10-01,Hillingdon,420.0
+2015-10-01,Hounslow,545.0
+2015-10-01,Islington,671.0
+2015-10-01,Kensington and Chelsea,300.0
+2015-10-01,Kingston upon Thames,232.0
+2015-10-01,Lambeth,716.0
+2015-10-01,Lewisham,628.0
+2015-10-01,Merton,311.0
+2015-10-01,Newham,766.0
+2015-10-01,Redbridge,409.0
+2015-10-01,Richmond upon Thames,225.0
+2015-10-01,Southwark,709.0
+2015-10-01,Sutton,243.0
+2015-10-01,Tower Hamlets,693.0
+2015-10-01,Waltham Forest,482.0
+2015-10-01,Wandsworth,508.0
+2015-10-01,Westminster,831.0
+2015-11-01,Barking and Dagenham,418.0
+2015-11-01,Barnet,555.0
+2015-11-01,Bexley,298.0
+2015-11-01,Brent,601.0
+2015-11-01,Bromley,420.0
+2015-11-01,Camden,576.0
+2015-11-01,Croydon,713.0
+2015-11-01,Ealing,539.0
+2015-11-01,Enfield,542.0
+2015-11-01,Greenwich,501.0
+2015-11-01,Hackney,694.0
+2015-11-01,Hammersmith and Fulham,401.0
+2015-11-01,Haringey,692.0
+2015-11-01,Harrow,321.0
+2015-11-01,Havering,384.0
+2015-11-01,Hillingdon,509.0
+2015-11-01,Hounslow,589.0
+2015-11-01,Islington,793.0
+2015-11-01,Kensington and Chelsea,404.0
+2015-11-01,Kingston upon Thames,206.0
+2015-11-01,Lambeth,674.0
+2015-11-01,Lewisham,572.0
+2015-11-01,Merton,271.0
+2015-11-01,Newham,803.0
+2015-11-01,Redbridge,506.0
+2015-11-01,Richmond upon Thames,151.0
+2015-11-01,Southwark,707.0
+2015-11-01,Sutton,217.0
+2015-11-01,Tower Hamlets,748.0
+2015-11-01,Waltham Forest,634.0
+2015-11-01,Wandsworth,442.0
+2015-11-01,Westminster,890.0
+2015-12-01,Barking and Dagenham,432.0
+2015-12-01,Barnet,586.0
+2015-12-01,Bexley,300.0
+2015-12-01,Brent,613.0
+2015-12-01,Bromley,429.0
+2015-12-01,Camden,589.0
+2015-12-01,Croydon,753.0
+2015-12-01,Ealing,738.0
+2015-12-01,Enfield,551.0
+2015-12-01,Greenwich,537.0
+2015-12-01,Hackney,695.0
+2015-12-01,Hammersmith and Fulham,406.0
+2015-12-01,Haringey,655.0
+2015-12-01,Harrow,322.0
+2015-12-01,Havering,422.0
+2015-12-01,Hillingdon,479.0
+2015-12-01,Hounslow,581.0
+2015-12-01,Islington,877.0
+2015-12-01,Kensington and Chelsea,310.0
+2015-12-01,Kingston upon Thames,209.0
+2015-12-01,Lambeth,807.0
+2015-12-01,Lewisham,658.0
+2015-12-01,Merton,305.0
+2015-12-01,Newham,782.0
+2015-12-01,Redbridge,467.0
+2015-12-01,Richmond upon Thames,189.0
+2015-12-01,Southwark,692.0
+2015-12-01,Sutton,234.0
+2015-12-01,Tower Hamlets,751.0
+2015-12-01,Waltham Forest,510.0
+2015-12-01,Wandsworth,430.0
+2015-12-01,Westminster,850.0
+2016-01-01,Barking and Dagenham,468.0
+2016-01-01,Barnet,518.0
+2016-01-01,Bexley,325.0
+2016-01-01,Brent,627.0
+2016-01-01,Bromley,385.0
+2016-01-01,Camden,570.0
+2016-01-01,Croydon,585.0
+2016-01-01,Ealing,598.0
+2016-01-01,Enfield,520.0
+2016-01-01,Greenwich,600.0
+2016-01-01,Hackney,661.0
+2016-01-01,Hammersmith and Fulham,355.0
+2016-01-01,Haringey,612.0
+2016-01-01,Harrow,315.0
+2016-01-01,Havering,356.0
+2016-01-01,Hillingdon,432.0
+2016-01-01,Hounslow,566.0
+2016-01-01,Islington,692.0
+2016-01-01,Kensington and Chelsea,244.0
+2016-01-01,Kingston upon Thames,207.0
+2016-01-01,Lambeth,597.0
+2016-01-01,Lewisham,626.0
+2016-01-01,Merton,280.0
+2016-01-01,Newham,696.0
+2016-01-01,Redbridge,398.0
+2016-01-01,Richmond upon Thames,198.0
+2016-01-01,Southwark,671.0
+2016-01-01,Sutton,225.0
+2016-01-01,Tower Hamlets,771.0
+2016-01-01,Waltham Forest,460.0
+2016-01-01,Wandsworth,450.0
+2016-01-01,Westminster,832.0
+2016-02-01,Barking and Dagenham,442.0
+2016-02-01,Barnet,554.0
+2016-02-01,Bexley,249.0
+2016-02-01,Brent,553.0
+2016-02-01,Bromley,350.0
+2016-02-01,Camden,494.0
+2016-02-01,Croydon,587.0
+2016-02-01,Ealing,575.0
+2016-02-01,Enfield,456.0
+2016-02-01,Greenwich,493.0
+2016-02-01,Hackney,564.0
+2016-02-01,Hammersmith and Fulham,335.0
+2016-02-01,Haringey,697.0
+2016-02-01,Harrow,260.0
+2016-02-01,Havering,396.0
+2016-02-01,Hillingdon,466.0
+2016-02-01,Hounslow,435.0
+2016-02-01,Islington,618.0
+2016-02-01,Kensington and Chelsea,279.0
+2016-02-01,Kingston upon Thames,170.0
+2016-02-01,Lambeth,682.0
+2016-02-01,Lewisham,484.0
+2016-02-01,Merton,258.0
+2016-02-01,Newham,700.0
+2016-02-01,Redbridge,443.0
+2016-02-01,Richmond upon Thames,154.0
+2016-02-01,Southwark,692.0
+2016-02-01,Sutton,242.0
+2016-02-01,Tower Hamlets,566.0
+2016-02-01,Waltham Forest,542.0
+2016-02-01,Wandsworth,415.0
+2016-02-01,Westminster,718.0
+2016-03-01,Barking and Dagenham,505.0
+2016-03-01,Barnet,500.0
+2016-03-01,Bexley,318.0
+2016-03-01,Brent,577.0
+2016-03-01,Bromley,406.0
+2016-03-01,Camden,614.0
+2016-03-01,Croydon,636.0
+2016-03-01,Ealing,560.0
+2016-03-01,Enfield,474.0
+2016-03-01,Greenwich,546.0
+2016-03-01,Hackney,650.0
+2016-03-01,Hammersmith and Fulham,364.0
+2016-03-01,Haringey,711.0
+2016-03-01,Harrow,273.0
+2016-03-01,Havering,384.0
+2016-03-01,Hillingdon,400.0
+2016-03-01,Hounslow,527.0
+2016-03-01,Islington,613.0
+2016-03-01,Kensington and Chelsea,310.0
+2016-03-01,Kingston upon Thames,184.0
+2016-03-01,Lambeth,678.0
+2016-03-01,Lewisham,592.0
+2016-03-01,Merton,348.0
+2016-03-01,Newham,714.0
+2016-03-01,Redbridge,478.0
+2016-03-01,Richmond upon Thames,223.0
+2016-03-01,Southwark,690.0
+2016-03-01,Sutton,233.0
+2016-03-01,Tower Hamlets,688.0
+2016-03-01,Waltham Forest,523.0
+2016-03-01,Wandsworth,440.0
+2016-03-01,Westminster,808.0
+2016-04-01,Barking and Dagenham,432.0
+2016-04-01,Barnet,591.0
+2016-04-01,Bexley,261.0
+2016-04-01,Brent,618.0
+2016-04-01,Bromley,386.0
+2016-04-01,Camden,472.0
+2016-04-01,Croydon,680.0
+2016-04-01,Ealing,621.0
+2016-04-01,Enfield,518.0
+2016-04-01,Greenwich,567.0
+2016-04-01,Hackney,754.0
+2016-04-01,Hammersmith and Fulham,399.0
+2016-04-01,Haringey,735.0
+2016-04-01,Harrow,289.0
+2016-04-01,Havering,355.0
+2016-04-01,Hillingdon,441.0
+2016-04-01,Hounslow,520.0
+2016-04-01,Islington,673.0
+2016-04-01,Kensington and Chelsea,276.0
+2016-04-01,Kingston upon Thames,216.0
+2016-04-01,Lambeth,681.0
+2016-04-01,Lewisham,550.0
+2016-04-01,Merton,268.0
+2016-04-01,Newham,671.0
+2016-04-01,Redbridge,427.0
+2016-04-01,Richmond upon Thames,181.0
+2016-04-01,Southwark,704.0
+2016-04-01,Sutton,246.0
+2016-04-01,Tower Hamlets,790.0
+2016-04-01,Waltham Forest,549.0
+2016-04-01,Wandsworth,383.0
+2016-04-01,Westminster,703.0
+2016-05-01,Barking and Dagenham,468.0
+2016-05-01,Barnet,600.0
+2016-05-01,Bexley,333.0
+2016-05-01,Brent,688.0
+2016-05-01,Bromley,477.0
+2016-05-01,Camden,520.0
+2016-05-01,Croydon,734.0
+2016-05-01,Ealing,601.0
+2016-05-01,Enfield,596.0
+2016-05-01,Greenwich,645.0
+2016-05-01,Hackney,789.0
+2016-05-01,Hammersmith and Fulham,420.0
+2016-05-01,Haringey,784.0
+2016-05-01,Harrow,335.0
+2016-05-01,Havering,414.0
+2016-05-01,Hillingdon,536.0
+2016-05-01,Hounslow,488.0
+2016-05-01,Islington,730.0
+2016-05-01,Kensington and Chelsea,289.0
+2016-05-01,Kingston upon Thames,228.0
+2016-05-01,Lambeth,896.0
+2016-05-01,Lewisham,693.0
+2016-05-01,Merton,315.0
+2016-05-01,Newham,715.0
+2016-05-01,Redbridge,427.0
+2016-05-01,Richmond upon Thames,258.0
+2016-05-01,Southwark,807.0
+2016-05-01,Sutton,266.0
+2016-05-01,Tower Hamlets,882.0
+2016-05-01,Waltham Forest,540.0
+2016-05-01,Wandsworth,493.0
+2016-05-01,Westminster,793.0
+2016-06-01,Barking and Dagenham,408.0
+2016-06-01,Barnet,600.0
+2016-06-01,Bexley,315.0
+2016-06-01,Brent,621.0
+2016-06-01,Bromley,453.0
+2016-06-01,Camden,612.0
+2016-06-01,Croydon,742.0
+2016-06-01,Ealing,669.0
+2016-06-01,Enfield,538.0
+2016-06-01,Greenwich,632.0
+2016-06-01,Hackney,985.0
+2016-06-01,Hammersmith and Fulham,395.0
+2016-06-01,Haringey,850.0
+2016-06-01,Harrow,359.0
+2016-06-01,Havering,442.0
+2016-06-01,Hillingdon,508.0
+2016-06-01,Hounslow,558.0
+2016-06-01,Islington,1118.0
+2016-06-01,Kensington and Chelsea,315.0
+2016-06-01,Kingston upon Thames,212.0
+2016-06-01,Lambeth,716.0
+2016-06-01,Lewisham,577.0
+2016-06-01,Merton,276.0
+2016-06-01,Newham,671.0
+2016-06-01,Redbridge,440.0
+2016-06-01,Richmond upon Thames,221.0
+2016-06-01,Southwark,759.0
+2016-06-01,Sutton,261.0
+2016-06-01,Tower Hamlets,868.0
+2016-06-01,Waltham Forest,607.0
+2016-06-01,Wandsworth,484.0
+2016-06-01,Westminster,921.0
+2016-07-01,Barking and Dagenham,509.0
+2016-07-01,Barnet,656.0
+2016-07-01,Bexley,317.0
+2016-07-01,Brent,691.0
+2016-07-01,Bromley,577.0
+2016-07-01,Camden,876.0
+2016-07-01,Croydon,1043.0
+2016-07-01,Ealing,802.0
+2016-07-01,Enfield,604.0
+2016-07-01,Greenwich,653.0
+2016-07-01,Hackney,954.0
+2016-07-01,Hammersmith and Fulham,432.0
+2016-07-01,Haringey,905.0
+2016-07-01,Harrow,415.0
+2016-07-01,Havering,412.0
+2016-07-01,Hillingdon,628.0
+2016-07-01,Hounslow,617.0
+2016-07-01,Islington,1095.0
+2016-07-01,Kensington and Chelsea,378.0
+2016-07-01,Kingston upon Thames,211.0
+2016-07-01,Lambeth,877.0
+2016-07-01,Lewisham,747.0
+2016-07-01,Merton,368.0
+2016-07-01,Newham,928.0
+2016-07-01,Redbridge,551.0
+2016-07-01,Richmond upon Thames,260.0
+2016-07-01,Southwark,979.0
+2016-07-01,Sutton,268.0
+2016-07-01,Tower Hamlets,997.0
+2016-07-01,Waltham Forest,676.0
+2016-07-01,Wandsworth,568.0
+2016-07-01,Westminster,1023.0
+2016-08-01,Barking and Dagenham,494.0
+2016-08-01,Barnet,638.0
+2016-08-01,Bexley,360.0
+2016-08-01,Brent,678.0
+2016-08-01,Bromley,409.0
+2016-08-01,Camden,598.0
+2016-08-01,Croydon,914.0
+2016-08-01,Ealing,742.0
+2016-08-01,Enfield,567.0
+2016-08-01,Greenwich,679.0
+2016-08-01,Hackney,906.0
+2016-08-01,Hammersmith and Fulham,462.0
+2016-08-01,Haringey,801.0
+2016-08-01,Harrow,332.0
+2016-08-01,Havering,458.0
+2016-08-01,Hillingdon,516.0
+2016-08-01,Hounslow,561.0
+2016-08-01,Islington,699.0
+2016-08-01,Kensington and Chelsea,579.0
+2016-08-01,Kingston upon Thames,235.0
+2016-08-01,Lambeth,836.0
+2016-08-01,Lewisham,691.0
+2016-08-01,Merton,282.0
+2016-08-01,Newham,777.0
+2016-08-01,Redbridge,599.0
+2016-08-01,Richmond upon Thames,189.0
+2016-08-01,Southwark,820.0
+2016-08-01,Sutton,229.0
+2016-08-01,Tower Hamlets,854.0
+2016-08-01,Waltham Forest,547.0
+2016-08-01,Wandsworth,507.0
+2016-08-01,Westminster,1019.0
+2016-09-01,Barking and Dagenham,427.0
+2016-09-01,Barnet,589.0
+2016-09-01,Bexley,295.0
+2016-09-01,Brent,574.0
+2016-09-01,Bromley,521.0
+2016-09-01,Camden,648.0
+2016-09-01,Croydon,792.0
+2016-09-01,Ealing,662.0
+2016-09-01,Enfield,592.0
+2016-09-01,Greenwich,663.0
+2016-09-01,Hackney,823.0
+2016-09-01,Hammersmith and Fulham,402.0
+2016-09-01,Haringey,718.0
+2016-09-01,Harrow,315.0
+2016-09-01,Havering,341.0
+2016-09-01,Hillingdon,527.0
+2016-09-01,Hounslow,491.0
+2016-09-01,Islington,656.0
+2016-09-01,Kensington and Chelsea,352.0
+2016-09-01,Kingston upon Thames,241.0
+2016-09-01,Lambeth,829.0
+2016-09-01,Lewisham,596.0
+2016-09-01,Merton,256.0
+2016-09-01,Newham,686.0
+2016-09-01,Redbridge,443.0
+2016-09-01,Richmond upon Thames,225.0
+2016-09-01,Southwark,728.0
+2016-09-01,Sutton,226.0
+2016-09-01,Tower Hamlets,821.0
+2016-09-01,Waltham Forest,491.0
+2016-09-01,Wandsworth,427.0
+2016-09-01,Westminster,994.0
+2016-10-01,Barking and Dagenham,391.0
+2016-10-01,Barnet,611.0
+2016-10-01,Bexley,317.0
+2016-10-01,Brent,622.0
+2016-10-01,Bromley,462.0
+2016-10-01,Camden,613.0
+2016-10-01,Croydon,725.0
+2016-10-01,Ealing,724.0
+2016-10-01,Enfield,561.0
+2016-10-01,Greenwich,540.0
+2016-10-01,Hackney,788.0
+2016-10-01,Hammersmith and Fulham,387.0
+2016-10-01,Haringey,705.0
+2016-10-01,Harrow,344.0
+2016-10-01,Havering,362.0
+2016-10-01,Hillingdon,571.0
+2016-10-01,Hounslow,605.0
+2016-10-01,Islington,737.0
+2016-10-01,Kensington and Chelsea,327.0
+2016-10-01,Kingston upon Thames,171.0
+2016-10-01,Lambeth,784.0
+2016-10-01,Lewisham,646.0
+2016-10-01,Merton,287.0
+2016-10-01,Newham,885.0
+2016-10-01,Redbridge,413.0
+2016-10-01,Richmond upon Thames,199.0
+2016-10-01,Southwark,703.0
+2016-10-01,Sutton,186.0
+2016-10-01,Tower Hamlets,867.0
+2016-10-01,Waltham Forest,518.0
+2016-10-01,Wandsworth,479.0
+2016-10-01,Westminster,798.0
+2016-11-01,Barking and Dagenham,465.0
+2016-11-01,Barnet,552.0
+2016-11-01,Bexley,367.0
+2016-11-01,Brent,664.0
+2016-11-01,Bromley,432.0
+2016-11-01,Camden,653.0
+2016-11-01,Croydon,703.0
+2016-11-01,Ealing,512.0
+2016-11-01,Enfield,488.0
+2016-11-01,Greenwich,564.0
+2016-11-01,Hackney,754.0
+2016-11-01,Hammersmith and Fulham,357.0
+2016-11-01,Haringey,702.0
+2016-11-01,Harrow,260.0
+2016-11-01,Havering,404.0
+2016-11-01,Hillingdon,460.0
+2016-11-01,Hounslow,518.0
+2016-11-01,Islington,820.0
+2016-11-01,Kensington and Chelsea,291.0
+2016-11-01,Kingston upon Thames,179.0
+2016-11-01,Lambeth,729.0
+2016-11-01,Lewisham,646.0
+2016-11-01,Merton,239.0
+2016-11-01,Newham,760.0
+2016-11-01,Redbridge,355.0
+2016-11-01,Richmond upon Thames,201.0
+2016-11-01,Southwark,709.0
+2016-11-01,Sutton,234.0
+2016-11-01,Tower Hamlets,803.0
+2016-11-01,Waltham Forest,522.0
+2016-11-01,Wandsworth,399.0
+2016-11-01,Westminster,846.0
+2016-12-01,Barking and Dagenham,404.0
+2016-12-01,Barnet,507.0
+2016-12-01,Bexley,327.0
+2016-12-01,Brent,625.0
+2016-12-01,Bromley,480.0
+2016-12-01,Camden,764.0
+2016-12-01,Croydon,701.0
+2016-12-01,Ealing,594.0
+2016-12-01,Enfield,544.0
+2016-12-01,Greenwich,625.0
+2016-12-01,Hackney,934.0
+2016-12-01,Hammersmith and Fulham,437.0
+2016-12-01,Haringey,756.0
+2016-12-01,Harrow,285.0
+2016-12-01,Havering,392.0
+2016-12-01,Hillingdon,482.0
+2016-12-01,Hounslow,543.0
+2016-12-01,Islington,926.0
+2016-12-01,Kensington and Chelsea,358.0
+2016-12-01,Kingston upon Thames,225.0
+2016-12-01,Lambeth,718.0
+2016-12-01,Lewisham,652.0
+2016-12-01,Merton,244.0
+2016-12-01,Newham,757.0
+2016-12-01,Redbridge,355.0
+2016-12-01,Richmond upon Thames,197.0
+2016-12-01,Southwark,878.0
+2016-12-01,Sutton,222.0
+2016-12-01,Tower Hamlets,849.0
+2016-12-01,Waltham Forest,552.0
+2016-12-01,Wandsworth,481.0
+2016-12-01,Westminster,1069.0
+2017-01-01,Barking and Dagenham,358.0
+2017-01-01,Barnet,558.0
+2017-01-01,Bexley,315.0
+2017-01-01,Brent,570.0
+2017-01-01,Bromley,445.0
+2017-01-01,Camden,640.0
+2017-01-01,Croydon,732.0
+2017-01-01,Ealing,486.0
+2017-01-01,Enfield,519.0
+2017-01-01,Greenwich,536.0
+2017-01-01,Hackney,825.0
+2017-01-01,Hammersmith and Fulham,304.0
+2017-01-01,Haringey,797.0
+2017-01-01,Harrow,298.0
+2017-01-01,Havering,409.0
+2017-01-01,Hillingdon,395.0
+2017-01-01,Hounslow,567.0
+2017-01-01,Islington,747.0
+2017-01-01,Kensington and Chelsea,316.0
+2017-01-01,Kingston upon Thames,195.0
+2017-01-01,Lambeth,727.0
+2017-01-01,Lewisham,574.0
+2017-01-01,Merton,291.0
+2017-01-01,Newham,734.0
+2017-01-01,Redbridge,456.0
+2017-01-01,Richmond upon Thames,192.0
+2017-01-01,Southwark,854.0
+2017-01-01,Sutton,277.0
+2017-01-01,Tower Hamlets,666.0
+2017-01-01,Waltham Forest,473.0
+2017-01-01,Wandsworth,433.0
+2017-01-01,Westminster,879.0
+2017-02-01,Barking and Dagenham,397.0
+2017-02-01,Barnet,582.0
+2017-02-01,Bexley,260.0
+2017-02-01,Brent,613.0
+2017-02-01,Bromley,445.0
+2017-02-01,Camden,701.0
+2017-02-01,Croydon,756.0
+2017-02-01,Ealing,533.0
+2017-02-01,Enfield,464.0
+2017-02-01,Greenwich,528.0
+2017-02-01,Hackney,934.0
+2017-02-01,Hammersmith and Fulham,380.0
+2017-02-01,Haringey,734.0
+2017-02-01,Harrow,279.0
+2017-02-01,Havering,307.0
+2017-02-01,Hillingdon,395.0
+2017-02-01,Hounslow,491.0
+2017-02-01,Islington,759.0
+2017-02-01,Kensington and Chelsea,258.0
+2017-02-01,Kingston upon Thames,184.0
+2017-02-01,Lambeth,616.0
+2017-02-01,Lewisham,571.0
+2017-02-01,Merton,241.0
+2017-02-01,Newham,704.0
+2017-02-01,Redbridge,434.0
+2017-02-01,Richmond upon Thames,148.0
+2017-02-01,Southwark,707.0
+2017-02-01,Sutton,224.0
+2017-02-01,Tower Hamlets,673.0
+2017-02-01,Waltham Forest,503.0
+2017-02-01,Wandsworth,457.0
+2017-02-01,Westminster,883.0
+2017-03-01,Barking and Dagenham,469.0
+2017-03-01,Barnet,605.0
+2017-03-01,Bexley,296.0
+2017-03-01,Brent,629.0
+2017-03-01,Bromley,502.0
+2017-03-01,Camden,970.0
+2017-03-01,Croydon,846.0
+2017-03-01,Ealing,769.0
+2017-03-01,Enfield,590.0
+2017-03-01,Greenwich,580.0
+2017-03-01,Hackney,1087.0
+2017-03-01,Hammersmith and Fulham,476.0
+2017-03-01,Haringey,776.0
+2017-03-01,Harrow,253.0
+2017-03-01,Havering,373.0
+2017-03-01,Hillingdon,515.0
+2017-03-01,Hounslow,535.0
+2017-03-01,Islington,995.0
+2017-03-01,Kensington and Chelsea,453.0
+2017-03-01,Kingston upon Thames,222.0
+2017-03-01,Lambeth,805.0
+2017-03-01,Lewisham,745.0
+2017-03-01,Merton,250.0
+2017-03-01,Newham,873.0
+2017-03-01,Redbridge,472.0
+2017-03-01,Richmond upon Thames,211.0
+2017-03-01,Southwark,856.0
+2017-03-01,Sutton,318.0
+2017-03-01,Tower Hamlets,813.0
+2017-03-01,Waltham Forest,538.0
+2017-03-01,Wandsworth,511.0
+2017-03-01,Westminster,1181.0
+2017-04-01,Barking and Dagenham,1945.0
+2017-04-01,Barnet,2801.0
+2017-04-01,Bexley,1323.0
+2017-04-01,Brent,3027.0
+2017-04-01,Bromley,2412.0
+2017-04-01,Camden,3768.0
+2017-04-01,Croydon,3081.0
+2017-04-01,Ealing,2856.0
+2017-04-01,Enfield,2663.0
+2017-04-01,Greenwich,2570.0
+2017-04-01,Hackney,3440.0
+2017-04-01,Hammersmith and Fulham,2016.0
+2017-04-01,Haringey,3233.0
+2017-04-01,Harrow,1578.0
+2017-04-01,Havering,1909.0
+2017-04-01,Hillingdon,2376.0
+2017-04-01,Hounslow,2392.0
+2017-04-01,Islington,3254.0
+2017-04-01,Kensington and Chelsea,2049.0
+2017-04-01,Kingston upon Thames,1119.0
+2017-04-01,Lambeth,3542.0
+2017-04-01,Lewisham,2631.0
+2017-04-01,Merton,1357.0
+2017-04-01,Newham,3500.0
+2017-04-01,Redbridge,2194.0
+2017-04-01,Richmond upon Thames,1259.0
+2017-04-01,Southwark,3406.0
+2017-04-01,Sutton,1168.0
+2017-04-01,Tower Hamlets,3490.0
+2017-04-01,Waltham Forest,2268.0
+2017-04-01,Wandsworth,2364.0
+2017-04-01,Westminster,5880.0
+2017-05-01,Barking and Dagenham,2231.0
+2017-05-01,Barnet,2819.0
+2017-05-01,Bexley,1514.0
+2017-05-01,Brent,3202.0
+2017-05-01,Bromley,2331.0
+2017-05-01,Camden,4434.0
+2017-05-01,Croydon,3318.0
+2017-05-01,Ealing,3052.0
+2017-05-01,Enfield,2740.0
+2017-05-01,Greenwich,2794.0
+2017-05-01,Hackney,3585.0
+2017-05-01,Hammersmith and Fulham,2243.0
+2017-05-01,Haringey,3407.0
+2017-05-01,Harrow,1549.0
+2017-05-01,Havering,2054.0
+2017-05-01,Hillingdon,2667.0
+2017-05-01,Hounslow,2705.0
+2017-05-01,Islington,3939.0
+2017-05-01,Kensington and Chelsea,2191.0
+2017-05-01,Kingston upon Thames,1159.0
+2017-05-01,Lambeth,3668.0
+2017-05-01,Lewisham,2861.0
+2017-05-01,Merton,1490.0
+2017-05-01,Newham,3400.0
+2017-05-01,Redbridge,2428.0
+2017-05-01,Richmond upon Thames,1518.0
+2017-05-01,Southwark,3514.0
+2017-05-01,Sutton,1429.0
+2017-05-01,Tower Hamlets,3597.0
+2017-05-01,Waltham Forest,2444.0
+2017-05-01,Wandsworth,2744.0
+2017-05-01,Westminster,5989.0
+2017-06-01,Barking and Dagenham,2058.0
+2017-06-01,Barnet,2903.0
+2017-06-01,Bexley,1650.0
+2017-06-01,Brent,3122.0
+2017-06-01,Bromley,2380.0
+2017-06-01,Camden,4532.0
+2017-06-01,Croydon,3353.0
+2017-06-01,Ealing,3252.0
+2017-06-01,Enfield,2714.0
+2017-06-01,Greenwich,2736.0
+2017-06-01,Hackney,3884.0
+2017-06-01,Hammersmith and Fulham,2292.0
+2017-06-01,Haringey,3268.0
+2017-06-01,Harrow,1555.0
+2017-06-01,Havering,2011.0
+2017-06-01,Hillingdon,2576.0
+2017-06-01,Hounslow,2845.0
+2017-06-01,Islington,4309.0
+2017-06-01,Kensington and Chelsea,2114.0
+2017-06-01,Kingston upon Thames,1067.0
+2017-06-01,Lambeth,3760.0
+2017-06-01,Lewisham,2724.0
+2017-06-01,Merton,1524.0
+2017-06-01,Newham,3556.0
+2017-06-01,Redbridge,2635.0
+2017-06-01,Richmond upon Thames,1444.0
+2017-06-01,Southwark,3790.0
+2017-06-01,Sutton,1462.0
+2017-06-01,Tower Hamlets,3758.0
+2017-06-01,Waltham Forest,2672.0
+2017-06-01,Wandsworth,2691.0
+2017-06-01,Westminster,5733.0
+2017-07-01,Barking and Dagenham,2310.0
+2017-07-01,Barnet,3010.0
+2017-07-01,Bexley,1596.0
+2017-07-01,Brent,3149.0
+2017-07-01,Bromley,2312.0
+2017-07-01,Camden,4790.0
+2017-07-01,Croydon,3506.0
+2017-07-01,Ealing,3217.0
+2017-07-01,Enfield,2791.0
+2017-07-01,Greenwich,2913.0
+2017-07-01,Hackney,4002.0
+2017-07-01,Hammersmith and Fulham,2314.0
+2017-07-01,Haringey,3861.0
+2017-07-01,Harrow,1655.0
+2017-07-01,Havering,1978.0
+2017-07-01,Hillingdon,2617.0
+2017-07-01,Hounslow,2754.0
+2017-07-01,Islington,4178.0
+2017-07-01,Kensington and Chelsea,2335.0
+2017-07-01,Kingston upon Thames,1168.0
+2017-07-01,Lambeth,4072.0
+2017-07-01,Lewisham,2750.0
+2017-07-01,Merton,1485.0
+2017-07-01,Newham,3934.0
+2017-07-01,Redbridge,2567.0
+2017-07-01,Richmond upon Thames,1488.0
+2017-07-01,Southwark,3828.0
+2017-07-01,Sutton,1259.0
+2017-07-01,Tower Hamlets,3969.0
+2017-07-01,Waltham Forest,2591.0
+2017-07-01,Wandsworth,2911.0
+2017-07-01,Westminster,6429.0
+2017-08-01,Barking and Dagenham,2084.0
+2017-08-01,Barnet,2705.0
+2017-08-01,Bexley,1545.0
+2017-08-01,Brent,3178.0
+2017-08-01,Bromley,2271.0
+2017-08-01,Camden,4508.0
+2017-08-01,Croydon,3259.0
+2017-08-01,Ealing,2891.0
+2017-08-01,Enfield,2513.0
+2017-08-01,Greenwich,2702.0
+2017-08-01,Hackney,3324.0
+2017-08-01,Hammersmith and Fulham,2264.0
+2017-08-01,Haringey,3457.0
+2017-08-01,Harrow,1396.0
+2017-08-01,Havering,2020.0
+2017-08-01,Hillingdon,2410.0
+2017-08-01,Hounslow,2680.0
+2017-08-01,Islington,3811.0
+2017-08-01,Kensington and Chelsea,2867.0
+2017-08-01,Kingston upon Thames,1191.0
+2017-08-01,Lambeth,4047.0
+2017-08-01,Lewisham,2874.0
+2017-08-01,Merton,1357.0
+2017-08-01,Newham,3545.0
+2017-08-01,Redbridge,2466.0
+2017-08-01,Richmond upon Thames,1346.0
+2017-08-01,Southwark,3841.0
+2017-08-01,Sutton,1241.0
+2017-08-01,Tower Hamlets,3344.0
+2017-08-01,Waltham Forest,2295.0
+2017-08-01,Wandsworth,2493.0
+2017-08-01,Westminster,6233.0
+2017-09-01,Barking and Dagenham,1991.0
+2017-09-01,Barnet,2720.0
+2017-09-01,Bexley,1545.0
+2017-09-01,Brent,3183.0
+2017-09-01,Bromley,2201.0
+2017-09-01,Camden,4345.0
+2017-09-01,Croydon,3173.0
+2017-09-01,Ealing,2879.0
+2017-09-01,Enfield,2524.0
+2017-09-01,Greenwich,2585.0
+2017-09-01,Hackney,3094.0
+2017-09-01,Hammersmith and Fulham,2018.0
+2017-09-01,Haringey,3329.0
+2017-09-01,Harrow,1434.0
+2017-09-01,Havering,1834.0
+2017-09-01,Hillingdon,2424.0
+2017-09-01,Hounslow,2440.0
+2017-09-01,Islington,3548.0
+2017-09-01,Kensington and Chelsea,2132.0
+2017-09-01,Kingston upon Thames,1098.0
+2017-09-01,Lambeth,3605.0
+2017-09-01,Lewisham,2662.0
+2017-09-01,Merton,1427.0
+2017-09-01,Newham,3598.0
+2017-09-01,Redbridge,2582.0
+2017-09-01,Richmond upon Thames,1380.0
+2017-09-01,Southwark,3658.0
+2017-09-01,Sutton,1291.0
+2017-09-01,Tower Hamlets,3261.0
+2017-09-01,Waltham Forest,2380.0
+2017-09-01,Wandsworth,2461.0
+2017-09-01,Westminster,5873.0
+2017-10-01,Barking and Dagenham,2037.0
+2017-10-01,Barnet,3025.0
+2017-10-01,Bexley,1726.0
+2017-10-01,Brent,3518.0
+2017-10-01,Bromley,2266.0
+2017-10-01,Camden,4871.0
+2017-10-01,Croydon,3180.0
+2017-10-01,Ealing,3335.0
+2017-10-01,Enfield,2854.0
+2017-10-01,Greenwich,2938.0
+2017-10-01,Hackney,3460.0
+2017-10-01,Hammersmith and Fulham,2213.0
+2017-10-01,Haringey,3358.0
+2017-10-01,Harrow,1615.0
+2017-10-01,Havering,2124.0
+2017-10-01,Hillingdon,2804.0
+2017-10-01,Hounslow,2768.0
+2017-10-01,Islington,3716.0
+2017-10-01,Kensington and Chelsea,2110.0
+2017-10-01,Kingston upon Thames,1243.0
+2017-10-01,Lambeth,3676.0
+2017-10-01,Lewisham,2643.0
+2017-10-01,Merton,1349.0
+2017-10-01,Newham,4035.0
+2017-10-01,Redbridge,2663.0
+2017-10-01,Richmond upon Thames,1363.0
+2017-10-01,Southwark,3785.0
+2017-10-01,Sutton,1385.0
+2017-10-01,Tower Hamlets,3710.0
+2017-10-01,Waltham Forest,2579.0
+2017-10-01,Wandsworth,2723.0
+2017-10-01,Westminster,5977.0
+2017-11-01,Barking and Dagenham,1954.0
+2017-11-01,Barnet,2957.0
+2017-11-01,Bexley,1565.0
+2017-11-01,Brent,3372.0
+2017-11-01,Bromley,2424.0
+2017-11-01,Camden,4570.0
+2017-11-01,Croydon,3220.0
+2017-11-01,Ealing,3101.0
+2017-11-01,Enfield,2786.0
+2017-11-01,Greenwich,2532.0
+2017-11-01,Hackney,3291.0
+2017-11-01,Hammersmith and Fulham,2451.0
+2017-11-01,Haringey,3626.0
+2017-11-01,Harrow,1475.0
+2017-11-01,Havering,2003.0
+2017-11-01,Hillingdon,2596.0
+2017-11-01,Hounslow,2725.0
+2017-11-01,Islington,3437.0
+2017-11-01,Kensington and Chelsea,2108.0
+2017-11-01,Kingston upon Thames,1291.0
+2017-11-01,Lambeth,3984.0
+2017-11-01,Lewisham,2569.0
+2017-11-01,Merton,1413.0
+2017-11-01,Newham,3898.0
+2017-11-01,Redbridge,2379.0
+2017-11-01,Richmond upon Thames,1343.0
+2017-11-01,Southwark,4101.0
+2017-11-01,Sutton,1214.0
+2017-11-01,Tower Hamlets,3212.0
+2017-11-01,Waltham Forest,2502.0
+2017-11-01,Wandsworth,2657.0
+2017-11-01,Westminster,5959.0
+2017-12-01,Barking and Dagenham,1908.0
+2017-12-01,Barnet,2608.0
+2017-12-01,Bexley,1475.0
+2017-12-01,Brent,3206.0
+2017-12-01,Bromley,2258.0
+2017-12-01,Camden,3907.0
+2017-12-01,Croydon,3244.0
+2017-12-01,Ealing,2676.0
+2017-12-01,Enfield,2566.0
+2017-12-01,Greenwich,2517.0
+2017-12-01,Hackney,3034.0
+2017-12-01,Hammersmith and Fulham,2244.0
+2017-12-01,Haringey,3038.0
+2017-12-01,Harrow,1301.0
+2017-12-01,Havering,1962.0
+2017-12-01,Hillingdon,2542.0
+2017-12-01,Hounslow,2483.0
+2017-12-01,Islington,3393.0
+2017-12-01,Kensington and Chelsea,2043.0
+2017-12-01,Kingston upon Thames,1085.0
+2017-12-01,Lambeth,3270.0
+2017-12-01,Lewisham,2578.0
+2017-12-01,Merton,1472.0
+2017-12-01,Newham,3540.0
+2017-12-01,Redbridge,2336.0
+2017-12-01,Richmond upon Thames,1162.0
+2017-12-01,Southwark,3407.0
+2017-12-01,Sutton,1154.0
+2017-12-01,Tower Hamlets,3027.0
+2017-12-01,Waltham Forest,2136.0
+2017-12-01,Wandsworth,2689.0
+2017-12-01,Westminster,6297.0
+2018-01-01,Barking and Dagenham,1850.0
+2018-01-01,Barnet,2775.0
+2018-01-01,Bexley,1510.0
+2018-01-01,Brent,3133.0
+2018-01-01,Bromley,2380.0
+2018-01-01,Camden,4070.0
+2018-01-01,Croydon,3211.0
+2018-01-01,Ealing,2871.0
+2018-01-01,Enfield,2711.0
+2018-01-01,Greenwich,2611.0
+2018-01-01,Hackney,3082.0
+2018-01-01,Hammersmith and Fulham,2079.0
+2018-01-01,Haringey,3319.0
+2018-01-01,Harrow,1571.0
+2018-01-01,Havering,1894.0
+2018-01-01,Hillingdon,2492.0
+2018-01-01,Hounslow,2658.0
+2018-01-01,Islington,3511.0
+2018-01-01,Kensington and Chelsea,2034.0
+2018-01-01,Kingston upon Thames,1202.0
+2018-01-01,Lambeth,3510.0
+2018-01-01,Lewisham,2749.0
+2018-01-01,Merton,1404.0
+2018-01-01,Newham,3637.0
+2018-01-01,Redbridge,2570.0
+2018-01-01,Richmond upon Thames,1177.0
+2018-01-01,Southwark,3590.0
+2018-01-01,Sutton,1272.0
+2018-01-01,Tower Hamlets,3358.0
+2018-01-01,Waltham Forest,2366.0
+2018-01-01,Wandsworth,2605.0
+2018-01-01,Westminster,5861.0
+2018-02-01,Barking and Dagenham,1840.0
+2018-02-01,Barnet,2579.0
+2018-02-01,Bexley,1297.0
+2018-02-01,Brent,2915.0
+2018-02-01,Bromley,2044.0
+2018-02-01,Camden,3531.0
+2018-02-01,Croydon,3058.0
+2018-02-01,Ealing,2502.0
+2018-02-01,Enfield,2612.0
+2018-02-01,Greenwich,2214.0
+2018-02-01,Hackney,2681.0
+2018-02-01,Hammersmith and Fulham,2040.0
+2018-02-01,Haringey,2856.0
+2018-02-01,Harrow,1362.0
+2018-02-01,Havering,1721.0
+2018-02-01,Hillingdon,2339.0
+2018-02-01,Hounslow,2336.0
+2018-02-01,Islington,2663.0
+2018-02-01,Kensington and Chelsea,2034.0
+2018-02-01,Kingston upon Thames,1083.0
+2018-02-01,Lambeth,3191.0
+2018-02-01,Lewisham,2318.0
+2018-02-01,Merton,1384.0
+2018-02-01,Newham,3296.0
+2018-02-01,Redbridge,2274.0
+2018-02-01,Richmond upon Thames,1115.0
+2018-02-01,Southwark,3121.0
+2018-02-01,Sutton,1082.0
+2018-02-01,Tower Hamlets,2837.0
+2018-02-01,Waltham Forest,2320.0
+2018-02-01,Wandsworth,2501.0
+2018-02-01,Westminster,5380.0
+2018-03-01,Barking and Dagenham,2023.0
+2018-03-01,Barnet,2878.0
+2018-03-01,Bexley,1474.0
+2018-03-01,Brent,3165.0
+2018-03-01,Bromley,2442.0
+2018-03-01,Camden,3843.0
+2018-03-01,Croydon,3185.0
+2018-03-01,Ealing,2846.0
+2018-03-01,Enfield,2881.0
+2018-03-01,Greenwich,2506.0
+2018-03-01,Hackney,2982.0
+2018-03-01,Hammersmith and Fulham,2126.0
+2018-03-01,Haringey,3007.0
+2018-03-01,Harrow,1455.0
+2018-03-01,Havering,1933.0
+2018-03-01,Hillingdon,2623.0
+2018-03-01,Hounslow,2533.0
+2018-03-01,Islington,2771.0
+2018-03-01,Kensington and Chelsea,1961.0
+2018-03-01,Kingston upon Thames,1214.0
+2018-03-01,Lambeth,3541.0
+2018-03-01,Lewisham,2637.0
+2018-03-01,Merton,1313.0
+2018-03-01,Newham,3769.0
+2018-03-01,Redbridge,2405.0
+2018-03-01,Richmond upon Thames,1194.0
+2018-03-01,Southwark,3471.0
+2018-03-01,Sutton,1186.0
+2018-03-01,Tower Hamlets,3352.0
+2018-03-01,Waltham Forest,2554.0
+2018-03-01,Wandsworth,2568.0
+2018-03-01,Westminster,5878.0
+2018-04-01,Barking and Dagenham,1867.0
+2018-04-01,Barnet,2921.0
+2018-04-01,Bexley,1523.0
+2018-04-01,Brent,3090.0
+2018-04-01,Bromley,2311.0
+2018-04-01,Camden,3594.0
+2018-04-01,Croydon,3199.0
+2018-04-01,Ealing,2885.0
+2018-04-01,Enfield,2904.0
+2018-04-01,Greenwich,2668.0
+2018-04-01,Hackney,3209.0
+2018-04-01,Hammersmith and Fulham,2110.0
+2018-04-01,Haringey,3460.0
+2018-04-01,Harrow,1344.0
+2018-04-01,Havering,1904.0
+2018-04-01,Hillingdon,2465.0
+2018-04-01,Hounslow,2569.0
+2018-04-01,Islington,3059.0
+2018-04-01,Kensington and Chelsea,1950.0
+2018-04-01,Kingston upon Thames,1204.0
+2018-04-01,Lambeth,3561.0
+2018-04-01,Lewisham,2456.0
+2018-04-01,Merton,1292.0
+2018-04-01,Newham,3612.0
+2018-04-01,Redbridge,2459.0
+2018-04-01,Richmond upon Thames,1178.0
+2018-04-01,Southwark,3747.0
+2018-04-01,Sutton,1239.0
+2018-04-01,Tower Hamlets,3622.0
+2018-04-01,Waltham Forest,2390.0
+2018-04-01,Wandsworth,2607.0
+2018-04-01,Westminster,5498.0
+2018-05-01,Barking and Dagenham,1928.0
+2018-05-01,Barnet,3075.0
+2018-05-01,Bexley,1598.0
+2018-05-01,Brent,3453.0
+2018-05-01,Bromley,2419.0
+2018-05-01,Camden,3748.0
+2018-05-01,Croydon,3370.0
+2018-05-01,Ealing,3084.0
+2018-05-01,Enfield,3063.0
+2018-05-01,Greenwich,2872.0
+2018-05-01,Hackney,3455.0
+2018-05-01,Hammersmith and Fulham,2304.0
+2018-05-01,Haringey,3427.0
+2018-05-01,Harrow,1642.0
+2018-05-01,Havering,2124.0
+2018-05-01,Hillingdon,2546.0
+2018-05-01,Hounslow,2841.0
+2018-05-01,Islington,3036.0
+2018-05-01,Kensington and Chelsea,2099.0
+2018-05-01,Kingston upon Thames,1177.0
+2018-05-01,Lambeth,3750.0
+2018-05-01,Lewisham,2918.0
+2018-05-01,Merton,1476.0
+2018-05-01,Newham,3762.0
+2018-05-01,Redbridge,2488.0
+2018-05-01,Richmond upon Thames,1302.0
+2018-05-01,Southwark,3785.0
+2018-05-01,Sutton,1195.0
+2018-05-01,Tower Hamlets,3634.0
+2018-05-01,Waltham Forest,2502.0
+2018-05-01,Wandsworth,2796.0
+2018-05-01,Westminster,6172.0
+2018-06-01,Barking and Dagenham,2048.0
+2018-06-01,Barnet,2983.0
+2018-06-01,Bexley,1729.0
+2018-06-01,Brent,3428.0
+2018-06-01,Bromley,2524.0
+2018-06-01,Camden,3982.0
+2018-06-01,Croydon,3148.0
+2018-06-01,Ealing,2864.0
+2018-06-01,Enfield,3021.0
+2018-06-01,Greenwich,2915.0
+2018-06-01,Hackney,3310.0
+2018-06-01,Hammersmith and Fulham,2261.0
+2018-06-01,Haringey,3599.0
+2018-06-01,Harrow,1648.0
+2018-06-01,Havering,1904.0
+2018-06-01,Hillingdon,2595.0
+2018-06-01,Hounslow,2624.0
+2018-06-01,Islington,3323.0
+2018-06-01,Kensington and Chelsea,2201.0
+2018-06-01,Kingston upon Thames,1173.0
+2018-06-01,Lambeth,3890.0
+2018-06-01,Lewisham,2744.0
+2018-06-01,Merton,1383.0
+2018-06-01,Newham,4072.0
+2018-06-01,Redbridge,2362.0
+2018-06-01,Richmond upon Thames,1271.0
+2018-06-01,Southwark,3750.0
+2018-06-01,Sutton,1387.0
+2018-06-01,Tower Hamlets,3878.0
+2018-06-01,Waltham Forest,2464.0
+2018-06-01,Wandsworth,2785.0
+2018-06-01,Westminster,6244.0
+2018-07-01,Barking and Dagenham,2130.0
+2018-07-01,Barnet,3077.0
+2018-07-01,Bexley,1543.0
+2018-07-01,Brent,3370.0
+2018-07-01,Bromley,2490.0
+2018-07-01,Camden,3954.0
+2018-07-01,Croydon,3442.0
+2018-07-01,Ealing,3267.0
+2018-07-01,Enfield,2930.0
+2018-07-01,Greenwich,3054.0
+2018-07-01,Hackney,3510.0
+2018-07-01,Hammersmith and Fulham,2489.0
+2018-07-01,Haringey,3798.0
+2018-07-01,Harrow,1797.0
+2018-07-01,Havering,2040.0
+2018-07-01,Hillingdon,2707.0
+2018-07-01,Hounslow,2897.0
+2018-07-01,Islington,3533.0
+2018-07-01,Kensington and Chelsea,2271.0
+2018-07-01,Kingston upon Thames,1354.0
+2018-07-01,Lambeth,4216.0
+2018-07-01,Lewisham,3029.0
+2018-07-01,Merton,1530.0
+2018-07-01,Newham,3949.0
+2018-07-01,Redbridge,2632.0
+2018-07-01,Richmond upon Thames,1477.0
+2018-07-01,Southwark,4285.0
+2018-07-01,Sutton,1431.0
+2018-07-01,Tower Hamlets,3997.0
+2018-07-01,Waltham Forest,2666.0
+2018-07-01,Wandsworth,3074.0
+2018-07-01,Westminster,6722.0
+2018-08-01,Barking and Dagenham,1867.0
+2018-08-01,Barnet,2749.0
+2018-08-01,Bexley,1633.0
+2018-08-01,Brent,3135.0
+2018-08-01,Bromley,2255.0
+2018-08-01,Camden,3556.0
+2018-08-01,Croydon,3275.0
+2018-08-01,Ealing,2853.0
+2018-08-01,Enfield,2861.0
+2018-08-01,Greenwich,2704.0
+2018-08-01,Hackney,3311.0
+2018-08-01,Hammersmith and Fulham,2199.0
+2018-08-01,Haringey,3213.0
+2018-08-01,Harrow,1433.0
+2018-08-01,Havering,1932.0
+2018-08-01,Hillingdon,2406.0
+2018-08-01,Hounslow,2421.0
+2018-08-01,Islington,2969.0
+2018-08-01,Kensington and Chelsea,2800.0
+2018-08-01,Kingston upon Thames,1377.0
+2018-08-01,Lambeth,3599.0
+2018-08-01,Lewisham,2808.0
+2018-08-01,Merton,1471.0
+2018-08-01,Newham,3724.0
+2018-08-01,Redbridge,2220.0
+2018-08-01,Richmond upon Thames,1287.0
+2018-08-01,Southwark,3829.0
+2018-08-01,Sutton,1306.0
+2018-08-01,Tower Hamlets,3655.0
+2018-08-01,Waltham Forest,2509.0
+2018-08-01,Wandsworth,2501.0
+2018-08-01,Westminster,6495.0
+2018-09-01,Barking and Dagenham,1860.0
+2018-09-01,Barnet,2823.0
+2018-09-01,Bexley,1554.0
+2018-09-01,Brent,3222.0
+2018-09-01,Bromley,2402.0
+2018-09-01,Camden,3585.0
+2018-09-01,Croydon,3145.0
+2018-09-01,Ealing,3017.0
+2018-09-01,Enfield,2784.0
+2018-09-01,Greenwich,2801.0
+2018-09-01,Hackney,3385.0
+2018-09-01,Hammersmith and Fulham,2330.0
+2018-09-01,Haringey,3299.0
+2018-09-01,Harrow,1513.0
+2018-09-01,Havering,1929.0
+2018-09-01,Hillingdon,2424.0
+2018-09-01,Hounslow,2469.0
+2018-09-01,Islington,3012.0
+2018-09-01,Kensington and Chelsea,2123.0
+2018-09-01,Kingston upon Thames,1319.0
+2018-09-01,Lambeth,3459.0
+2018-09-01,Lewisham,2641.0
+2018-09-01,Merton,1382.0
+2018-09-01,Newham,3599.0
+2018-09-01,Redbridge,2348.0
+2018-09-01,Richmond upon Thames,1207.0
+2018-09-01,Southwark,3732.0
+2018-09-01,Sutton,1197.0
+2018-09-01,Tower Hamlets,3661.0
+2018-09-01,Waltham Forest,2488.0
+2018-09-01,Wandsworth,2490.0
+2018-09-01,Westminster,6093.0
+2018-10-01,Barking and Dagenham,2000.0
+2018-10-01,Barnet,3197.0
+2018-10-01,Bexley,1665.0
+2018-10-01,Brent,3352.0
+2018-10-01,Bromley,2418.0
+2018-10-01,Camden,3688.0
+2018-10-01,Croydon,3476.0
+2018-10-01,Ealing,3080.0
+2018-10-01,Enfield,3024.0
+2018-10-01,Greenwich,2826.0
+2018-10-01,Hackney,3683.0
+2018-10-01,Hammersmith and Fulham,2360.0
+2018-10-01,Haringey,3206.0
+2018-10-01,Harrow,1756.0
+2018-10-01,Havering,2075.0
+2018-10-01,Hillingdon,2685.0
+2018-10-01,Hounslow,2996.0
+2018-10-01,Islington,3372.0
+2018-10-01,Kensington and Chelsea,2171.0
+2018-10-01,Kingston upon Thames,1428.0
+2018-10-01,Lambeth,3600.0
+2018-10-01,Lewisham,2968.0
+2018-10-01,Merton,1546.0
+2018-10-01,Newham,3926.0
+2018-10-01,Redbridge,2575.0
+2018-10-01,Richmond upon Thames,1338.0
+2018-10-01,Southwark,4079.0
+2018-10-01,Sutton,1299.0
+2018-10-01,Tower Hamlets,3656.0
+2018-10-01,Waltham Forest,2669.0
+2018-10-01,Wandsworth,2601.0
+2018-10-01,Westminster,6677.0
+2018-11-01,Barking and Dagenham,1985.0
+2018-11-01,Barnet,3064.0
+2018-11-01,Bexley,1701.0
+2018-11-01,Brent,3367.0
+2018-11-01,Bromley,2392.0
+2018-11-01,Camden,3877.0
+2018-11-01,Croydon,3221.0
+2018-11-01,Ealing,3162.0
+2018-11-01,Enfield,3141.0
+2018-11-01,Greenwich,2808.0
+2018-11-01,Hackney,3570.0
+2018-11-01,Hammersmith and Fulham,2306.0
+2018-11-01,Haringey,3422.0
+2018-11-01,Harrow,1711.0
+2018-11-01,Havering,2026.0
+2018-11-01,Hillingdon,2886.0
+2018-11-01,Hounslow,2792.0
+2018-11-01,Islington,2984.0
+2018-11-01,Kensington and Chelsea,2247.0
+2018-11-01,Kingston upon Thames,1367.0
+2018-11-01,Lambeth,3790.0
+2018-11-01,Lewisham,2830.0
+2018-11-01,Merton,1537.0
+2018-11-01,Newham,3922.0
+2018-11-01,Redbridge,2569.0
+2018-11-01,Richmond upon Thames,1442.0
+2018-11-01,Southwark,3907.0
+2018-11-01,Sutton,1268.0
+2018-11-01,Tower Hamlets,3648.0
+2018-11-01,Waltham Forest,2625.0
+2018-11-01,Wandsworth,2695.0
+2018-11-01,Westminster,7391.0
+2018-12-01,Barking and Dagenham,2002.0
+2018-12-01,Barnet,2979.0
+2018-12-01,Bexley,1792.0
+2018-12-01,Brent,2956.0
+2018-12-01,Bromley,2406.0
+2018-12-01,Camden,3670.0
+2018-12-01,Croydon,3361.0
+2018-12-01,Ealing,2893.0
+2018-12-01,Enfield,2942.0
+2018-12-01,Greenwich,2944.0
+2018-12-01,Hackney,3510.0
+2018-12-01,Hammersmith and Fulham,2324.0
+2018-12-01,Haringey,3221.0
+2018-12-01,Harrow,1645.0
+2018-12-01,Havering,2002.0
+2018-12-01,Hillingdon,2781.0
+2018-12-01,Hounslow,2673.0
+2018-12-01,Islington,3105.0
+2018-12-01,Kensington and Chelsea,2281.0
+2018-12-01,Kingston upon Thames,1276.0
+2018-12-01,Lambeth,3398.0
+2018-12-01,Lewisham,2988.0
+2018-12-01,Merton,1553.0
+2018-12-01,Newham,3821.0
+2018-12-01,Redbridge,2445.0
+2018-12-01,Richmond upon Thames,1220.0
+2018-12-01,Southwark,3722.0
+2018-12-01,Sutton,1461.0
+2018-12-01,Tower Hamlets,3399.0
+2018-12-01,Waltham Forest,2533.0
+2018-12-01,Wandsworth,2346.0
+2018-12-01,Westminster,8349.0
+2019-01-01,Barking and Dagenham,2072.0
+2019-01-01,Barnet,2974.0
+2019-01-01,Bexley,1905.0
+2019-01-01,Brent,3133.0
+2019-01-01,Bromley,2406.0
+2019-01-01,Camden,3697.0
+2019-01-01,Croydon,3351.0
+2019-01-01,Ealing,3146.0
+2019-01-01,Enfield,3136.0
+2019-01-01,Greenwich,2684.0
+2019-01-01,Hackney,3490.0
+2019-01-01,Hammersmith and Fulham,2158.0
+2019-01-01,Haringey,3291.0
+2019-01-01,Harrow,1771.0
+2019-01-01,Havering,1985.0
+2019-01-01,Hillingdon,2712.0
+2019-01-01,Hounslow,2607.0
+2019-01-01,Islington,3127.0
+2019-01-01,Kensington and Chelsea,2146.0
+2019-01-01,Kingston upon Thames,1320.0
+2019-01-01,Lambeth,3427.0
+2019-01-01,Lewisham,2936.0
+2019-01-01,Merton,1509.0
+2019-01-01,Newham,3520.0
+2019-01-01,Redbridge,2436.0
+2019-01-01,Richmond upon Thames,1260.0
+2019-01-01,Southwark,3875.0
+2019-01-01,Sutton,1415.0
+2019-01-01,Tower Hamlets,3369.0
+2019-01-01,Waltham Forest,2551.0
+2019-01-01,Wandsworth,2586.0
+2019-01-01,Westminster,7683.0
+2019-02-01,Barking and Dagenham,2025.0
+2019-02-01,Barnet,3198.0
+2019-02-01,Bexley,1635.0
+2019-02-01,Brent,2963.0
+2019-02-01,Bromley,2409.0
+2019-02-01,Camden,3927.0
+2019-02-01,Croydon,3159.0
+2019-02-01,Ealing,2961.0
+2019-02-01,Enfield,2958.0
+2019-02-01,Greenwich,2485.0
+2019-02-01,Hackney,3248.0
+2019-02-01,Hammersmith and Fulham,2216.0
+2019-02-01,Haringey,3251.0
+2019-02-01,Harrow,1695.0
+2019-02-01,Havering,1868.0
+2019-02-01,Hillingdon,2616.0
+2019-02-01,Hounslow,2746.0
+2019-02-01,Islington,2800.0
+2019-02-01,Kensington and Chelsea,2106.0
+2019-02-01,Kingston upon Thames,1260.0
+2019-02-01,Lambeth,3481.0
+2019-02-01,Lewisham,2685.0
+2019-02-01,Merton,1319.0
+2019-02-01,Newham,3614.0
+2019-02-01,Redbridge,2383.0
+2019-02-01,Richmond upon Thames,1146.0
+2019-02-01,Southwark,3855.0
+2019-02-01,Sutton,1399.0
+2019-02-01,Tower Hamlets,3329.0
+2019-02-01,Waltham Forest,2325.0
+2019-02-01,Wandsworth,2591.0
+2019-02-01,Westminster,8065.0
+2019-03-01,Barking and Dagenham,2205.0
+2019-03-01,Barnet,3649.0
+2019-03-01,Bexley,1771.0
+2019-03-01,Brent,3326.0
+2019-03-01,Bromley,2508.0
+2019-03-01,Camden,4352.0
+2019-03-01,Croydon,3466.0
+2019-03-01,Ealing,3525.0
+2019-03-01,Enfield,3153.0
+2019-03-01,Greenwich,3019.0
+2019-03-01,Hackney,3738.0
+2019-03-01,Hammersmith and Fulham,2394.0
+2019-03-01,Haringey,3538.0
+2019-03-01,Harrow,1795.0
+2019-03-01,Havering,2037.0
+2019-03-01,Hillingdon,2831.0
+2019-03-01,Hounslow,2886.0
+2019-03-01,Islington,3234.0
+2019-03-01,Kensington and Chelsea,2346.0
+2019-03-01,Kingston upon Thames,1443.0
+2019-03-01,Lambeth,3894.0
+2019-03-01,Lewisham,3089.0
+2019-03-01,Merton,1597.0
+2019-03-01,Newham,3820.0
+2019-03-01,Redbridge,2445.0
+2019-03-01,Richmond upon Thames,1340.0
+2019-03-01,Southwark,4395.0
+2019-03-01,Sutton,1411.0
+2019-03-01,Tower Hamlets,4146.0
+2019-03-01,Waltham Forest,2535.0
+2019-03-01,Wandsworth,2606.0
+2019-03-01,Westminster,9088.0
+2019-04-01,Barking and Dagenham,2191.0
+2019-04-01,Barnet,3083.0
+2019-04-01,Bexley,1833.0
+2019-04-01,Brent,3034.0
+2019-04-01,Bromley,2436.0
+2019-04-01,Camden,4185.0
+2019-04-01,Croydon,3367.0
+2019-04-01,Ealing,3099.0
+2019-04-01,Enfield,2970.0
+2019-04-01,Greenwich,2972.0
+2019-04-01,Hackney,3731.0
+2019-04-01,Hammersmith and Fulham,2462.0
+2019-04-01,Haringey,3377.0
+2019-04-01,Harrow,1729.0
+2019-04-01,Havering,2005.0
+2019-04-01,Hillingdon,2676.0
+2019-04-01,Hounslow,2816.0
+2019-04-01,Islington,3241.0
+2019-04-01,Kensington and Chelsea,2154.0
+2019-04-01,Kingston upon Thames,1355.0
+2019-04-01,Lambeth,3743.0
+2019-04-01,Lewisham,2935.0
+2019-04-01,Merton,1494.0
+2019-04-01,Newham,3689.0
+2019-04-01,Redbridge,2501.0
+2019-04-01,Richmond upon Thames,1348.0
+2019-04-01,Southwark,4167.0
+2019-04-01,Sutton,1495.0
+2019-04-01,Tower Hamlets,3612.0
+2019-04-01,Waltham Forest,2449.0
+2019-04-01,Wandsworth,2547.0
+2019-04-01,Westminster,8950.0
+2019-05-01,Barking and Dagenham,2380.0
+2019-05-01,Barnet,3203.0
+2019-05-01,Bexley,2036.0
+2019-05-01,Brent,3206.0
+2019-05-01,Bromley,2581.0
+2019-05-01,Camden,4113.0
+2019-05-01,Croydon,3532.0
+2019-05-01,Ealing,3164.0
+2019-05-01,Enfield,3094.0
+2019-05-01,Greenwich,3008.0
+2019-05-01,Hackney,3768.0
+2019-05-01,Hammersmith and Fulham,2491.0
+2019-05-01,Haringey,3524.0
+2019-05-01,Harrow,1812.0
+2019-05-01,Havering,2150.0
+2019-05-01,Hillingdon,2674.0
+2019-05-01,Hounslow,2716.0
+2019-05-01,Islington,3206.0
+2019-05-01,Kensington and Chelsea,2269.0
+2019-05-01,Kingston upon Thames,1387.0
+2019-05-01,Lambeth,3822.0
+2019-05-01,Lewisham,3347.0
+2019-05-01,Merton,1408.0
+2019-05-01,Newham,3900.0
+2019-05-01,Redbridge,2556.0
+2019-05-01,Richmond upon Thames,1326.0
+2019-05-01,Southwark,4374.0
+2019-05-01,Sutton,1547.0
+2019-05-01,Tower Hamlets,3776.0
+2019-05-01,Waltham Forest,2617.0
+2019-05-01,Wandsworth,2652.0
+2019-05-01,Westminster,8350.0
+2019-06-01,Barking and Dagenham,2183.0
+2019-06-01,Barnet,3456.0
+2019-06-01,Bexley,1850.0
+2019-06-01,Brent,3231.0
+2019-06-01,Bromley,2477.0
+2019-06-01,Camden,3899.0
+2019-06-01,Croydon,3342.0
+2019-06-01,Ealing,3253.0
+2019-06-01,Enfield,3257.0
+2019-06-01,Greenwich,3066.0
+2019-06-01,Hackney,3629.0
+2019-06-01,Hammersmith and Fulham,2434.0
+2019-06-01,Haringey,3527.0
+2019-06-01,Harrow,1822.0
+2019-06-01,Havering,1989.0
+2019-06-01,Hillingdon,2853.0
+2019-06-01,Hounslow,2929.0
+2019-06-01,Islington,2974.0
+2019-06-01,Kensington and Chelsea,2532.0
+2019-06-01,Kingston upon Thames,1352.0
+2019-06-01,Lambeth,3875.0
+2019-06-01,Lewisham,3105.0
+2019-06-01,Merton,1428.0
+2019-06-01,Newham,3926.0
+2019-06-01,Redbridge,2469.0
+2019-06-01,Richmond upon Thames,1349.0
+2019-06-01,Southwark,4295.0
+2019-06-01,Sutton,1505.0
+2019-06-01,Tower Hamlets,3930.0
+2019-06-01,Waltham Forest,2572.0
+2019-06-01,Wandsworth,2739.0
+2019-06-01,Westminster,8489.0
+2019-07-01,Barking and Dagenham,2410.0
+2019-07-01,Barnet,3626.0
+2019-07-01,Bexley,1938.0
+2019-07-01,Brent,3374.0
+2019-07-01,Bromley,2742.0
+2019-07-01,Camden,4320.0
+2019-07-01,Croydon,3998.0
+2019-07-01,Ealing,3504.0
+2019-07-01,Enfield,3456.0
+2019-07-01,Greenwich,3211.0
+2019-07-01,Hackney,4314.0
+2019-07-01,Hammersmith and Fulham,2688.0
+2019-07-01,Haringey,3839.0
+2019-07-01,Harrow,1957.0
+2019-07-01,Havering,2067.0
+2019-07-01,Hillingdon,2888.0
+2019-07-01,Hounslow,3061.0
+2019-07-01,Islington,3688.0
+2019-07-01,Kensington and Chelsea,2645.0
+2019-07-01,Kingston upon Thames,1437.0
+2019-07-01,Lambeth,4145.0
+2019-07-01,Lewisham,3384.0
+2019-07-01,Merton,1725.0
+2019-07-01,Newham,4091.0
+2019-07-01,Redbridge,2530.0
+2019-07-01,Richmond upon Thames,1294.0
+2019-07-01,Southwark,4519.0
+2019-07-01,Sutton,1449.0
+2019-07-01,Tower Hamlets,3865.0
+2019-07-01,Waltham Forest,2582.0
+2019-07-01,Wandsworth,2797.0
+2019-07-01,Westminster,8530.0
+2019-08-01,Barking and Dagenham,2055.0
+2019-08-01,Barnet,3052.0
+2019-08-01,Bexley,1926.0
+2019-08-01,Brent,3048.0
+2019-08-01,Bromley,2588.0
+2019-08-01,Camden,4081.0
+2019-08-01,Croydon,3656.0
+2019-08-01,Ealing,3306.0
+2019-08-01,Enfield,2994.0
+2019-08-01,Greenwich,3302.0
+2019-08-01,Hackney,3982.0
+2019-08-01,Hammersmith and Fulham,2478.0
+2019-08-01,Haringey,3315.0
+2019-08-01,Harrow,1725.0
+2019-08-01,Havering,1974.0
+2019-08-01,Hillingdon,2725.0
+2019-08-01,Hounslow,2572.0
+2019-08-01,Islington,3296.0
+2019-08-01,Kensington and Chelsea,3314.0
+2019-08-01,Kingston upon Thames,1307.0
+2019-08-01,Lambeth,3979.0
+2019-08-01,Lewisham,3242.0
+2019-08-01,Merton,1632.0
+2019-08-01,Newham,3783.0
+2019-08-01,Redbridge,2424.0
+2019-08-01,Richmond upon Thames,1249.0
+2019-08-01,Southwark,4348.0
+2019-08-01,Sutton,1528.0
+2019-08-01,Tower Hamlets,3592.0
+2019-08-01,Waltham Forest,2449.0
+2019-08-01,Wandsworth,2619.0
+2019-08-01,Westminster,8519.0
+2019-09-01,Barking and Dagenham,2141.0
+2019-09-01,Barnet,3236.0
+2019-09-01,Bexley,1864.0
+2019-09-01,Brent,3168.0
+2019-09-01,Bromley,2570.0
+2019-09-01,Camden,4087.0
+2019-09-01,Croydon,3591.0
+2019-09-01,Ealing,3221.0
+2019-09-01,Enfield,3215.0
+2019-09-01,Greenwich,3254.0
+2019-09-01,Hackney,3799.0
+2019-09-01,Hammersmith and Fulham,2494.0
+2019-09-01,Haringey,3495.0
+2019-09-01,Harrow,1762.0
+2019-09-01,Havering,1883.0
+2019-09-01,Hillingdon,2796.0
+2019-09-01,Hounslow,2755.0
+2019-09-01,Islington,3249.0
+2019-09-01,Kensington and Chelsea,2433.0
+2019-09-01,Kingston upon Thames,1357.0
+2019-09-01,Lambeth,3820.0
+2019-09-01,Lewisham,3342.0
+2019-09-01,Merton,1541.0
+2019-09-01,Newham,3465.0
+2019-09-01,Redbridge,2419.0
+2019-09-01,Richmond upon Thames,1264.0
+2019-09-01,Southwark,4466.0
+2019-09-01,Sutton,1383.0
+2019-09-01,Tower Hamlets,3411.0
+2019-09-01,Waltham Forest,2506.0
+2019-09-01,Wandsworth,2681.0
+2019-09-01,Westminster,7756.0
+2019-10-01,Barking and Dagenham,2316.0
+2019-10-01,Barnet,3279.0
+2019-10-01,Bexley,2101.0
+2019-10-01,Brent,3342.0
+2019-10-01,Bromley,2746.0
+2019-10-01,Camden,4826.0
+2019-10-01,Croydon,3828.0
+2019-10-01,Ealing,3335.0
+2019-10-01,Enfield,3375.0
+2019-10-01,Greenwich,3168.0
+2019-10-01,Hackney,3886.0
+2019-10-01,Hammersmith and Fulham,2531.0
+2019-10-01,Haringey,3706.0
+2019-10-01,Harrow,1916.0
+2019-10-01,Havering,2210.0
+2019-10-01,Hillingdon,3005.0
+2019-10-01,Hounslow,2855.0
+2019-10-01,Islington,3756.0
+2019-10-01,Kensington and Chelsea,2569.0
+2019-10-01,Kingston upon Thames,1382.0
+2019-10-01,Lambeth,3881.0
+2019-10-01,Lewisham,3298.0
+2019-10-01,Merton,1512.0
+2019-10-01,Newham,4209.0
+2019-10-01,Redbridge,2772.0
+2019-10-01,Richmond upon Thames,1307.0
+2019-10-01,Southwark,4814.0
+2019-10-01,Sutton,1477.0
+2019-10-01,Tower Hamlets,3939.0
+2019-10-01,Waltham Forest,2501.0
+2019-10-01,Wandsworth,3008.0
+2019-10-01,Westminster,8667.0
+2019-11-01,Barking and Dagenham,2117.0
+2019-11-01,Barnet,3588.0
+2019-11-01,Bexley,1897.0
+2019-11-01,Brent,3189.0
+2019-11-01,Bromley,2844.0
+2019-11-01,Camden,4360.0
+2019-11-01,Croydon,3806.0
+2019-11-01,Ealing,3486.0
+2019-11-01,Enfield,3465.0
+2019-11-01,Greenwich,3167.0
+2019-11-01,Hackney,3626.0
+2019-11-01,Hammersmith and Fulham,2479.0
+2019-11-01,Haringey,3562.0
+2019-11-01,Harrow,1816.0
+2019-11-01,Havering,1993.0
+2019-11-01,Hillingdon,2954.0
+2019-11-01,Hounslow,2922.0
+2019-11-01,Islington,3415.0
+2019-11-01,Kensington and Chelsea,2674.0
+2019-11-01,Kingston upon Thames,1408.0
+2019-11-01,Lambeth,3836.0
+2019-11-01,Lewisham,3218.0
+2019-11-01,Merton,1647.0
+2019-11-01,Newham,3942.0
+2019-11-01,Redbridge,2540.0
+2019-11-01,Richmond upon Thames,1431.0
+2019-11-01,Southwark,4394.0
+2019-11-01,Sutton,1484.0
+2019-11-01,Tower Hamlets,3861.0
+2019-11-01,Waltham Forest,2545.0
+2019-11-01,Wandsworth,2666.0
+2019-11-01,Westminster,8312.0
+2019-12-01,Barking and Dagenham,2207.0
+2019-12-01,Barnet,3285.0
+2019-12-01,Bexley,1812.0
+2019-12-01,Brent,3075.0
+2019-12-01,Bromley,2620.0
+2019-12-01,Camden,3997.0
+2019-12-01,Croydon,3555.0
+2019-12-01,Ealing,3185.0
+2019-12-01,Enfield,3194.0
+2019-12-01,Greenwich,2869.0
+2019-12-01,Hackney,3628.0
+2019-12-01,Hammersmith and Fulham,2361.0
+2019-12-01,Haringey,3267.0
+2019-12-01,Harrow,1816.0
+2019-12-01,Havering,1919.0
+2019-12-01,Hillingdon,2735.0
+2019-12-01,Hounslow,2820.0
+2019-12-01,Islington,3133.0
+2019-12-01,Kensington and Chelsea,2605.0
+2019-12-01,Kingston upon Thames,1259.0
+2019-12-01,Lambeth,3640.0
+2019-12-01,Lewisham,2930.0
+2019-12-01,Merton,1359.0
+2019-12-01,Newham,3616.0
+2019-12-01,Redbridge,2429.0
+2019-12-01,Richmond upon Thames,1338.0
+2019-12-01,Southwark,4124.0
+2019-12-01,Sutton,1431.0
+2019-12-01,Tower Hamlets,3651.0
+2019-12-01,Waltham Forest,2415.0
+2019-12-01,Wandsworth,2537.0
+2019-12-01,Westminster,9219.0
+2020-01-01,Barking and Dagenham,2158.0
+2020-01-01,Barnet,3355.0
+2020-01-01,Bexley,1999.0
+2020-01-01,Brent,3134.0
+2020-01-01,Bromley,2581.0
+2020-01-01,Camden,4059.0
+2020-01-01,Croydon,3805.0
+2020-01-01,Ealing,3271.0
+2020-01-01,Enfield,3231.0
+2020-01-01,Greenwich,2967.0
+2020-01-01,Hackney,3690.0
+2020-01-01,Hammersmith and Fulham,2244.0
+2020-01-01,Haringey,3182.0
+2020-01-01,Harrow,1826.0
+2020-01-01,Havering,2107.0
+2020-01-01,Hillingdon,2805.0
+2020-01-01,Hounslow,2753.0
+2020-01-01,Islington,3348.0
+2020-01-01,Kensington and Chelsea,2337.0
+2020-01-01,Kingston upon Thames,1350.0
+2020-01-01,Lambeth,3689.0
+2020-01-01,Lewisham,3064.0
+2020-01-01,Merton,1582.0
+2020-01-01,Newham,3932.0
+2020-01-01,Redbridge,2563.0
+2020-01-01,Richmond upon Thames,1342.0
+2020-01-01,Southwark,3846.0
+2020-01-01,Sutton,1667.0
+2020-01-01,Tower Hamlets,3483.0
+2020-01-01,Waltham Forest,2566.0
+2020-01-01,Wandsworth,2802.0
+2020-01-01,Westminster,7878.0
+2020-02-01,Barking and Dagenham,2059.0
+2020-02-01,Barnet,3212.0
+2020-02-01,Bexley,1828.0
+2020-02-01,Brent,3018.0
+2020-02-01,Bromley,2517.0
+2020-02-01,Camden,4497.0
+2020-02-01,Croydon,3606.0
+2020-02-01,Ealing,2979.0
+2020-02-01,Enfield,3023.0
+2020-02-01,Greenwich,2905.0
+2020-02-01,Hackney,3467.0
+2020-02-01,Hammersmith and Fulham,2228.0
+2020-02-01,Haringey,3124.0
+2020-02-01,Harrow,1798.0
+2020-02-01,Havering,1962.0
+2020-02-01,Hillingdon,2570.0
+2020-02-01,Hounslow,2562.0
+2020-02-01,Islington,3295.0
+2020-02-01,Kensington and Chelsea,2152.0
+2020-02-01,Kingston upon Thames,1349.0
+2020-02-01,Lambeth,3413.0
+2020-02-01,Lewisham,2812.0
+2020-02-01,Merton,1417.0
+2020-02-01,Newham,3740.0
+2020-02-01,Redbridge,2585.0
+2020-02-01,Richmond upon Thames,1262.0
+2020-02-01,Southwark,3977.0
+2020-02-01,Sutton,1495.0
+2020-02-01,Tower Hamlets,3403.0
+2020-02-01,Waltham Forest,2578.0
+2020-02-01,Wandsworth,2520.0
+2020-02-01,Westminster,8494.0
+2020-03-01,Barking and Dagenham,2406.0
+2020-03-01,Barnet,2960.0
+2020-03-01,Bexley,1661.0
+2020-03-01,Brent,2839.0
+2020-03-01,Bromley,2200.0
+2020-03-01,Camden,3526.0
+2020-03-01,Croydon,3737.0
+2020-03-01,Ealing,3081.0
+2020-03-01,Enfield,3025.0
+2020-03-01,Greenwich,2664.0
+2020-03-01,Hackney,3256.0
+2020-03-01,Hammersmith and Fulham,2005.0
+2020-03-01,Haringey,3029.0
+2020-03-01,Harrow,1714.0
+2020-03-01,Havering,1804.0
+2020-03-01,Hillingdon,2716.0
+2020-03-01,Hounslow,2623.0
+2020-03-01,Islington,2652.0
+2020-03-01,Kensington and Chelsea,1801.0
+2020-03-01,Kingston upon Thames,1181.0
+2020-03-01,Lambeth,3218.0
+2020-03-01,Lewisham,2729.0
+2020-03-01,Merton,1435.0
+2020-03-01,Newham,3391.0
+2020-03-01,Redbridge,2345.0
+2020-03-01,Richmond upon Thames,1117.0
+2020-03-01,Southwark,3163.0
+2020-03-01,Sutton,1462.0
+2020-03-01,Tower Hamlets,3289.0
+2020-03-01,Waltham Forest,2370.0
+2020-03-01,Wandsworth,2292.0
+2020-03-01,Westminster,6097.0
+2020-04-01,Barking and Dagenham,1676.0
+2020-04-01,Barnet,2183.0
+2020-04-01,Bexley,1214.0
+2020-04-01,Brent,2650.0
+2020-04-01,Bromley,1845.0
+2020-04-01,Camden,2043.0
+2020-04-01,Croydon,2895.0
+2020-04-01,Ealing,2522.0
+2020-04-01,Enfield,2389.0
+2020-04-01,Greenwich,2193.0
+2020-04-01,Hackney,2202.0
+2020-04-01,Hammersmith and Fulham,1625.0
+2020-04-01,Haringey,2618.0
+2020-04-01,Harrow,1366.0
+2020-04-01,Havering,1285.0
+2020-04-01,Hillingdon,2106.0
+2020-04-01,Hounslow,2297.0
+2020-04-01,Islington,1973.0
+2020-04-01,Kensington and Chelsea,1148.0
+2020-04-01,Kingston upon Thames,884.0
+2020-04-01,Lambeth,2483.0
+2020-04-01,Lewisham,2605.0
+2020-04-01,Merton,1180.0
+2020-04-01,Newham,2625.0
+2020-04-01,Redbridge,1874.0
+2020-04-01,Richmond upon Thames,950.0
+2020-04-01,Southwark,2432.0
+2020-04-01,Sutton,1109.0
+2020-04-01,Tower Hamlets,2486.0
+2020-04-01,Waltham Forest,2059.0
+2020-04-01,Wandsworth,1801.0
+2020-04-01,Westminster,2181.0
+2020-05-01,Barking and Dagenham,1997.0
+2020-05-01,Barnet,2584.0
+2020-05-01,Bexley,1579.0
+2020-05-01,Brent,2963.0
+2020-05-01,Bromley,2152.0
+2020-05-01,Camden,2400.0
+2020-05-01,Croydon,3342.0
+2020-05-01,Ealing,3012.0
+2020-05-01,Enfield,2870.0
+2020-05-01,Greenwich,2715.0
+2020-05-01,Hackney,2910.0
+2020-05-01,Hammersmith and Fulham,1687.0
+2020-05-01,Haringey,2655.0
+2020-05-01,Harrow,1592.0
+2020-05-01,Havering,1487.0
+2020-05-01,Hillingdon,2495.0
+2020-05-01,Hounslow,2534.0
+2020-05-01,Islington,2264.0
+2020-05-01,Kensington and Chelsea,1415.0
+2020-05-01,Kingston upon Thames,1027.0
+2020-05-01,Lambeth,2909.0
+2020-05-01,Lewisham,2976.0
+2020-05-01,Merton,1322.0
+2020-05-01,Newham,3022.0
+2020-05-01,Redbridge,2152.0
+2020-05-01,Richmond upon Thames,1234.0
+2020-05-01,Southwark,2935.0
+2020-05-01,Sutton,1341.0
+2020-05-01,Tower Hamlets,2978.0
+2020-05-01,Waltham Forest,2477.0
+2020-05-01,Wandsworth,2263.0
+2020-05-01,Westminster,2895.0
+2020-06-01,Barking and Dagenham,2214.0
+2020-06-01,Barnet,2739.0
+2020-06-01,Bexley,1649.0
+2020-06-01,Brent,3094.0
+2020-06-01,Bromley,2217.0
+2020-06-01,Camden,2838.0
+2020-06-01,Croydon,3690.0
+2020-06-01,Ealing,3006.0
+2020-06-01,Enfield,3205.0
+2020-06-01,Greenwich,2978.0
+2020-06-01,Hackney,3215.0
+2020-06-01,Hammersmith and Fulham,1781.0
+2020-06-01,Haringey,3041.0
+2020-06-01,Harrow,1432.0
+2020-06-01,Havering,1650.0
+2020-06-01,Hillingdon,2772.0
+2020-06-01,Hounslow,2532.0
+2020-06-01,Islington,2565.0
+2020-06-01,Kensington and Chelsea,1656.0
+2020-06-01,Kingston upon Thames,1235.0
+2020-06-01,Lambeth,3370.0
+2020-06-01,Lewisham,3044.0
+2020-06-01,Merton,1468.0
+2020-06-01,Newham,3568.0
+2020-06-01,Redbridge,2469.0
+2020-06-01,Richmond upon Thames,1279.0
+2020-06-01,Southwark,3329.0
+2020-06-01,Sutton,1456.0
+2020-06-01,Tower Hamlets,3369.0
+2020-06-01,Waltham Forest,2615.0
+2020-06-01,Wandsworth,2657.0
+2020-06-01,Westminster,3925.0
+2020-07-01,Barking and Dagenham,2288.0
+2020-07-01,Barnet,3102.0
+2020-07-01,Bexley,1800.0
+2020-07-01,Brent,3280.0
+2020-07-01,Bromley,2492.0
+2020-07-01,Camden,3208.0
+2020-07-01,Croydon,4070.0
+2020-07-01,Ealing,3299.0
+2020-07-01,Enfield,3262.0
+2020-07-01,Greenwich,3062.0
+2020-07-01,Hackney,3764.0
+2020-07-01,Hammersmith and Fulham,2122.0
+2020-07-01,Haringey,3382.0
+2020-07-01,Harrow,1804.0
+2020-07-01,Havering,1924.0
+2020-07-01,Hillingdon,2830.0
+2020-07-01,Hounslow,2823.0
+2020-07-01,Islington,2930.0
+2020-07-01,Kensington and Chelsea,2097.0
+2020-07-01,Kingston upon Thames,1397.0
+2020-07-01,Lambeth,3941.0
+2020-07-01,Lewisham,3265.0
+2020-07-01,Merton,1634.0
+2020-07-01,Newham,3924.0
+2020-07-01,Redbridge,2594.0
+2020-07-01,Richmond upon Thames,1484.0
+2020-07-01,Southwark,3959.0
+2020-07-01,Sutton,1369.0
+2020-07-01,Tower Hamlets,3820.0
+2020-07-01,Waltham Forest,2635.0
+2020-07-01,Wandsworth,2919.0
+2020-07-01,Westminster,5264.0
+2020-08-01,Barking and Dagenham,2216.0
+2020-08-01,Barnet,3097.0
+2020-08-01,Bexley,2020.0
+2020-08-01,Brent,3373.0
+2020-08-01,Bromley,2306.0
+2020-08-01,Camden,3377.0
+2020-08-01,Croydon,3986.0
+2020-08-01,Ealing,3381.0
+2020-08-01,Enfield,3184.0
+2020-08-01,Greenwich,2992.0
+2020-08-01,Hackney,4008.0
+2020-08-01,Hammersmith and Fulham,2164.0
+2020-08-01,Haringey,3194.0
+2020-08-01,Harrow,1682.0
+2020-08-01,Havering,2031.0
+2020-08-01,Hillingdon,3029.0
+2020-08-01,Hounslow,2724.0
+2020-08-01,Islington,3277.0
+2020-08-01,Kensington and Chelsea,1945.0
+2020-08-01,Kingston upon Thames,1273.0
+2020-08-01,Lambeth,3917.0
+2020-08-01,Lewisham,3319.0
+2020-08-01,Merton,1607.0
+2020-08-01,Newham,3950.0
+2020-08-01,Redbridge,2555.0
+2020-08-01,Richmond upon Thames,1466.0
+2020-08-01,Southwark,4209.0
+2020-08-01,Sutton,1382.0
+2020-08-01,Tower Hamlets,3646.0
+2020-08-01,Waltham Forest,2756.0
+2020-08-01,Wandsworth,2935.0
+2020-08-01,Westminster,5702.0
+2020-09-01,Barking and Dagenham,2114.0
+2020-09-01,Barnet,2910.0
+2020-09-01,Bexley,1756.0
+2020-09-01,Brent,3257.0
+2020-09-01,Bromley,2474.0
+2020-09-01,Camden,3285.0
+2020-09-01,Croydon,3636.0
+2020-09-01,Ealing,3326.0
+2020-09-01,Enfield,3343.0
+2020-09-01,Greenwich,2884.0
+2020-09-01,Hackney,4192.0
+2020-09-01,Hammersmith and Fulham,2194.0
+2020-09-01,Haringey,3450.0
+2020-09-01,Harrow,1720.0
+2020-09-01,Havering,1838.0
+2020-09-01,Hillingdon,2868.0
+2020-09-01,Hounslow,2849.0
+2020-09-01,Islington,3150.0
+2020-09-01,Kensington and Chelsea,2014.0
+2020-09-01,Kingston upon Thames,1281.0
+2020-09-01,Lambeth,3693.0
+2020-09-01,Lewisham,3240.0
+2020-09-01,Merton,1592.0
+2020-09-01,Newham,3700.0
+2020-09-01,Redbridge,2541.0
+2020-09-01,Richmond upon Thames,1330.0
+2020-09-01,Southwark,3888.0
+2020-09-01,Sutton,1317.0
+2020-09-01,Tower Hamlets,3824.0
+2020-09-01,Waltham Forest,2667.0
+2020-09-01,Wandsworth,3155.0
+2020-09-01,Westminster,5559.0
+2020-10-01,Barking and Dagenham,2158.0
+2020-10-01,Barnet,3027.0
+2020-10-01,Bexley,1622.0
+2020-10-01,Brent,3203.0
+2020-10-01,Bromley,2566.0
+2020-10-01,Camden,3632.0
+2020-10-01,Croydon,3653.0
+2020-10-01,Ealing,3352.0
+2020-10-01,Enfield,3308.0
+2020-10-01,Greenwich,2828.0
+2020-10-01,Hackney,3812.0
+2020-10-01,Hammersmith and Fulham,2285.0
+2020-10-01,Haringey,3079.0
+2020-10-01,Harrow,1752.0
+2020-10-01,Havering,2098.0
+2020-10-01,Hillingdon,2778.0
+2020-10-01,Hounslow,2696.0
+2020-10-01,Islington,2876.0
+2020-10-01,Kensington and Chelsea,2076.0
+2020-10-01,Kingston upon Thames,1138.0
+2020-10-01,Lambeth,3460.0
+2020-10-01,Lewisham,3180.0
+2020-10-01,Merton,1611.0
+2020-10-01,Newham,4096.0
+2020-10-01,Redbridge,2643.0
+2020-10-01,Richmond upon Thames,1267.0
+2020-10-01,Southwark,3930.0
+2020-10-01,Sutton,1403.0
+2020-10-01,Tower Hamlets,3865.0
+2020-10-01,Waltham Forest,2506.0
+2020-10-01,Wandsworth,2831.0
+2020-10-01,Westminster,5568.0
+2020-11-01,Barking and Dagenham,2165.0
+2020-11-01,Barnet,3006.0
+2020-11-01,Bexley,1770.0
+2020-11-01,Brent,3003.0
+2020-11-01,Bromley,2442.0
+2020-11-01,Camden,3012.0
+2020-11-01,Croydon,3334.0
+2020-11-01,Ealing,3019.0
+2020-11-01,Enfield,3195.0
+2020-11-01,Greenwich,2732.0
+2020-11-01,Hackney,3452.0
+2020-11-01,Hammersmith and Fulham,1843.0
+2020-11-01,Haringey,3043.0
+2020-11-01,Harrow,1721.0
+2020-11-01,Havering,1697.0
+2020-11-01,Hillingdon,2756.0
+2020-11-01,Hounslow,2518.0
+2020-11-01,Islington,2650.0
+2020-11-01,Kensington and Chelsea,1594.0
+2020-11-01,Kingston upon Thames,1071.0
+2020-11-01,Lambeth,3392.0
+2020-11-01,Lewisham,3017.0
+2020-11-01,Merton,1451.0
+2020-11-01,Newham,3531.0
+2020-11-01,Redbridge,2449.0
+2020-11-01,Richmond upon Thames,1251.0
+2020-11-01,Southwark,3430.0
+2020-11-01,Sutton,1501.0
+2020-11-01,Tower Hamlets,3356.0
+2020-11-01,Waltham Forest,2490.0
+2020-11-01,Wandsworth,2684.0
+2020-11-01,Westminster,3790.0
+2020-12-01,Barking and Dagenham,1963.0
+2020-12-01,Barnet,2811.0
+2020-12-01,Bexley,1618.0
+2020-12-01,Brent,2970.0
+2020-12-01,Bromley,2067.0
+2020-12-01,Camden,2659.0
+2020-12-01,Croydon,3230.0
+2020-12-01,Ealing,2832.0
+2020-12-01,Enfield,2970.0
+2020-12-01,Greenwich,2393.0
+2020-12-01,Hackney,3264.0
+2020-12-01,Hammersmith and Fulham,1731.0
+2020-12-01,Haringey,3111.0
+2020-12-01,Harrow,1591.0
+2020-12-01,Havering,1647.0
+2020-12-01,Hillingdon,2333.0
+2020-12-01,Hounslow,2277.0
+2020-12-01,Islington,2573.0
+2020-12-01,Kensington and Chelsea,1827.0
+2020-12-01,Kingston upon Thames,1034.0
+2020-12-01,Lambeth,2940.0
+2020-12-01,Lewisham,2729.0
+2020-12-01,Merton,1289.0
+2020-12-01,Newham,3684.0
+2020-12-01,Redbridge,2333.0
+2020-12-01,Richmond upon Thames,1112.0
+2020-12-01,Southwark,3168.0
+2020-12-01,Sutton,1174.0
+2020-12-01,Tower Hamlets,3258.0
+2020-12-01,Waltham Forest,2308.0
+2020-12-01,Wandsworth,2395.0
+2020-12-01,Westminster,4528.0
+2021-01-01,Barking and Dagenham,1825.0
+2021-01-01,Barnet,2367.0
+2021-01-01,Bexley,1414.0
+2021-01-01,Brent,2451.0
+2021-01-01,Bromley,1861.0
+2021-01-01,Camden,2120.0
+2021-01-01,Croydon,3089.0
+2021-01-01,Ealing,2675.0
+2021-01-01,Enfield,2660.0
+2021-01-01,Greenwich,2273.0
+2021-01-01,Hackney,3049.0
+2021-01-01,Hammersmith and Fulham,1608.0
+2021-01-01,Haringey,2594.0
+2021-01-01,Harrow,1367.0
+2021-01-01,Havering,1414.0
+2021-01-01,Hillingdon,2184.0
+2021-01-01,Hounslow,2108.0
+2021-01-01,Islington,2068.0
+2021-01-01,Kensington and Chelsea,1293.0
+2021-01-01,Kingston upon Thames,885.0
+2021-01-01,Lambeth,2647.0
+2021-01-01,Lewisham,2657.0
+2021-01-01,Merton,1234.0
+2021-01-01,Newham,3069.0
+2021-01-01,Redbridge,2223.0
+2021-01-01,Richmond upon Thames,985.0
+2021-01-01,Southwark,2676.0
+2021-01-01,Sutton,1052.0
+2021-01-01,Tower Hamlets,3216.0
+2021-01-01,Waltham Forest,2242.0
+2021-01-01,Wandsworth,2194.0
+2021-01-01,Westminster,2563.0
+2021-02-01,Barking and Dagenham,1833.0
+2021-02-01,Barnet,2407.0
+2021-02-01,Bexley,1305.0
+2021-02-01,Brent,2634.0
+2021-02-01,Bromley,1950.0
+2021-02-01,Camden,2191.0
+2021-02-01,Croydon,3036.0
+2021-02-01,Ealing,2479.0
+2021-02-01,Enfield,2463.0
+2021-02-01,Greenwich,2385.0
+2021-02-01,Hackney,2698.0
+2021-02-01,Hammersmith and Fulham,1674.0
+2021-02-01,Haringey,2532.0
+2021-02-01,Harrow,1352.0
+2021-02-01,Havering,1540.0
+2021-02-01,Hillingdon,2230.0
+2021-02-01,Hounslow,2051.0
+2021-02-01,Islington,2098.0
+2021-02-01,Kensington and Chelsea,1451.0
+2021-02-01,Kingston upon Thames,778.0
+2021-02-01,Lambeth,2552.0
+2021-02-01,Lewisham,2452.0
+2021-02-01,Merton,1143.0
+2021-02-01,Newham,2986.0
+2021-02-01,Redbridge,2098.0
+2021-02-01,Richmond upon Thames,951.0
+2021-02-01,Southwark,3030.0
+2021-02-01,Sutton,1097.0
+2021-02-01,Tower Hamlets,2736.0
+2021-02-01,Waltham Forest,2066.0
+2021-02-01,Wandsworth,2448.0
+2021-02-01,Westminster,2515.0
+2021-03-01,Barking and Dagenham,2079.0
+2021-03-01,Barnet,3179.0
+2021-03-01,Bexley,1599.0
+2021-03-01,Brent,2894.0
+2021-03-01,Bromley,2210.0
+2021-03-01,Camden,2689.0
+2021-03-01,Croydon,3407.0
+2021-03-01,Ealing,2974.0
+2021-03-01,Enfield,3205.0
+2021-03-01,Greenwich,2860.0
+2021-03-01,Hackney,3062.0
+2021-03-01,Hammersmith and Fulham,1941.0
+2021-03-01,Haringey,2970.0
+2021-03-01,Harrow,1518.0
+2021-03-01,Havering,1740.0
+2021-03-01,Hillingdon,2605.0
+2021-03-01,Hounslow,2593.0
+2021-03-01,Islington,2563.0
+2021-03-01,Kensington and Chelsea,1596.0
+2021-03-01,Kingston upon Thames,996.0
+2021-03-01,Lambeth,3220.0
+2021-03-01,Lewisham,2835.0
+2021-03-01,Merton,1435.0
+2021-03-01,Newham,3418.0
+2021-03-01,Redbridge,2575.0
+2021-03-01,Richmond upon Thames,1092.0
+2021-03-01,Southwark,3382.0
+2021-03-01,Sutton,1300.0
+2021-03-01,Tower Hamlets,3617.0
+2021-03-01,Waltham Forest,2494.0
+2021-03-01,Wandsworth,2630.0
+2021-03-01,Westminster,3245.0
+2021-04-01,Barking and Dagenham,2020.0
+2021-04-01,Barnet,2820.0
+2021-04-01,Bexley,1576.0
+2021-04-01,Brent,2693.0
+2021-04-01,Bromley,2319.0
+2021-04-01,Camden,2763.0
+2021-04-01,Croydon,3286.0
+2021-04-01,Ealing,3017.0
+2021-04-01,Enfield,3067.0
+2021-04-01,Greenwich,2685.0
+2021-04-01,Hackney,3197.0
+2021-04-01,Hammersmith and Fulham,1914.0
+2021-04-01,Haringey,3023.0
+2021-04-01,Harrow,1531.0
+2021-04-01,Havering,1785.0
+2021-04-01,Hillingdon,2355.0
+2021-04-01,Hounslow,2465.0
+2021-04-01,Islington,2676.0
+2021-04-01,Kensington and Chelsea,1700.0
+2021-04-01,Kingston upon Thames,1141.0
+2021-04-01,Lambeth,3300.0
+2021-04-01,Lewisham,2836.0
+2021-04-01,Merton,1347.0
+2021-04-01,Newham,3359.0
+2021-04-01,Redbridge,2498.0
+2021-04-01,Richmond upon Thames,1105.0
+2021-04-01,Southwark,3444.0
+2021-04-01,Sutton,1285.0
+2021-04-01,Tower Hamlets,3499.0
+2021-04-01,Waltham Forest,2295.0
+2021-04-01,Wandsworth,2562.0
+2021-04-01,Westminster,4198.0
+2021-05-01,Barking and Dagenham,2131.0
+2021-05-01,Barnet,3258.0
+2021-05-01,Bexley,1599.0
+2021-05-01,Brent,3143.0
+2021-05-01,Bromley,2378.0
+2021-05-01,Camden,3247.0
+2021-05-01,Croydon,3666.0
+2021-05-01,Ealing,3163.0
+2021-05-01,Enfield,3299.0
+2021-05-01,Greenwich,3074.0
+2021-05-01,Hackney,3723.0
+2021-05-01,Hammersmith and Fulham,2223.0
+2021-05-01,Haringey,3315.0
+2021-05-01,Harrow,1569.0
+2021-05-01,Havering,1901.0
+2021-05-01,Hillingdon,2760.0
+2021-05-01,Hounslow,2685.0
+2021-05-01,Islington,2835.0
+2021-05-01,Kensington and Chelsea,2001.0
+2021-05-01,Kingston upon Thames,1152.0
+2021-05-01,Lambeth,3483.0
+2021-05-01,Lewisham,2983.0
+2021-05-01,Merton,1410.0
+2021-05-01,Newham,3678.0
+2021-05-01,Redbridge,2821.0
+2021-05-01,Richmond upon Thames,1240.0
+2021-05-01,Southwark,3565.0
+2021-05-01,Sutton,1460.0
+2021-05-01,Tower Hamlets,3869.0
+2021-05-01,Waltham Forest,2741.0
+2021-05-01,Wandsworth,2730.0
+2021-05-01,Westminster,5362.0
+2021-06-01,Barking and Dagenham,2300.0
+2021-06-01,Barnet,3257.0
+2021-06-01,Bexley,1674.0
+2021-06-01,Brent,3012.0
+2021-06-01,Bromley,2339.0
+2021-06-01,Camden,3343.0
+2021-06-01,Croydon,3822.0
+2021-06-01,Ealing,3368.0
+2021-06-01,Enfield,3354.0
+2021-06-01,Greenwich,2993.0
+2021-06-01,Hackney,3459.0
+2021-06-01,Hammersmith and Fulham,2266.0
+2021-06-01,Haringey,3436.0
+2021-06-01,Harrow,1680.0
+2021-06-01,Havering,1808.0
+2021-06-01,Hillingdon,2819.0
+2021-06-01,Hounslow,2913.0
+2021-06-01,Islington,2802.0
+2021-06-01,Kensington and Chelsea,1972.0
+2021-06-01,Kingston upon Thames,1364.0
+2021-06-01,Lambeth,3870.0
+2021-06-01,Lewisham,3095.0
+2021-06-01,Merton,1503.0
+2021-06-01,Newham,3661.0
+2021-06-01,Redbridge,2751.0
+2021-06-01,Richmond upon Thames,1242.0
+2021-06-01,Southwark,3551.0
+2021-06-01,Sutton,1631.0
+2021-06-01,Tower Hamlets,3807.0
+2021-06-01,Waltham Forest,2602.0
+2021-06-01,Wandsworth,2739.0
+2021-06-01,Westminster,5490.0
+2021-07-01,Barking and Dagenham,2308.0
+2021-07-01,Barnet,2940.0
+2021-07-01,Bexley,1735.0
+2021-07-01,Brent,3468.0
+2021-07-01,Bromley,2555.0
+2021-07-01,Camden,3574.0
+2021-07-01,Croydon,3750.0
+2021-07-01,Ealing,3295.0
+2021-07-01,Enfield,3124.0
+2021-07-01,Greenwich,2977.0
+2021-07-01,Hackney,3653.0
+2021-07-01,Hammersmith and Fulham,2198.0
+2021-07-01,Haringey,3416.0
+2021-07-01,Harrow,1818.0
+2021-07-01,Havering,2141.0
+2021-07-01,Hillingdon,2831.0
+2021-07-01,Hounslow,2789.0
+2021-07-01,Islington,2972.0
+2021-07-01,Kensington and Chelsea,2042.0
+2021-07-01,Kingston upon Thames,1358.0
+2021-07-01,Lambeth,3964.0
+2021-07-01,Lewisham,3075.0
+2021-07-01,Merton,1512.0
+2021-07-01,Newham,3761.0
+2021-07-01,Redbridge,2858.0
+2021-07-01,Richmond upon Thames,1149.0
+2021-07-01,Southwark,3830.0
+2021-07-01,Sutton,1518.0
+2021-07-01,Tower Hamlets,3994.0
+2021-07-01,Waltham Forest,2588.0
+2021-07-01,Wandsworth,2865.0
+2021-07-01,Westminster,6570.0
+2021-08-01,Barking and Dagenham,2076.0
+2021-08-01,Barnet,2790.0
+2021-08-01,Bexley,1689.0
+2021-08-01,Brent,3136.0
+2021-08-01,Bromley,2252.0
+2021-08-01,Camden,3468.0
+2021-08-01,Croydon,3623.0
+2021-08-01,Ealing,2953.0
+2021-08-01,Enfield,3067.0
+2021-08-01,Greenwich,2842.0
+2021-08-01,Hackney,3535.0
+2021-08-01,Hammersmith and Fulham,2022.0
+2021-08-01,Haringey,3210.0
+2021-08-01,Harrow,1552.0
+2021-08-01,Havering,1903.0
+2021-08-01,Hillingdon,2344.0
+2021-08-01,Hounslow,2529.0
+2021-08-01,Islington,3038.0
+2021-08-01,Kensington and Chelsea,1956.0
+2021-08-01,Kingston upon Thames,1152.0
+2021-08-01,Lambeth,3849.0
+2021-08-01,Lewisham,2732.0
+2021-08-01,Merton,1448.0
+2021-08-01,Newham,3550.0
+2021-08-01,Redbridge,2520.0
+2021-08-01,Richmond upon Thames,1094.0
+2021-08-01,Southwark,3412.0
+2021-08-01,Sutton,1395.0
+2021-08-01,Tower Hamlets,3577.0
+2021-08-01,Waltham Forest,2388.0
+2021-08-01,Wandsworth,2620.0
+2021-08-01,Westminster,5817.0
+2021-09-01,Barking and Dagenham,2133.0
+2021-09-01,Barnet,3038.0
+2021-09-01,Bexley,1692.0
+2021-09-01,Brent,2964.0
+2021-09-01,Bromley,2565.0
+2021-09-01,Camden,3132.0
+2021-09-01,Croydon,3450.0
+2021-09-01,Ealing,3233.0
+2021-09-01,Enfield,3106.0
+2021-09-01,Greenwich,2782.0
+2021-09-01,Hackney,3837.0
+2021-09-01,Hammersmith and Fulham,2221.0
+2021-09-01,Haringey,3229.0
+2021-09-01,Harrow,1612.0
+2021-09-01,Havering,1865.0
+2021-09-01,Hillingdon,2522.0
+2021-09-01,Hounslow,2535.0
+2021-09-01,Islington,2988.0
+2021-09-01,Kensington and Chelsea,2152.0
+2021-09-01,Kingston upon Thames,1280.0
+2021-09-01,Lambeth,4099.0
+2021-09-01,Lewisham,2926.0
+2021-09-01,Merton,1491.0
+2021-09-01,Newham,3704.0
+2021-09-01,Redbridge,2476.0
+2021-09-01,Richmond upon Thames,1204.0
+2021-09-01,Southwark,3748.0
+2021-09-01,Sutton,1461.0
+2021-09-01,Tower Hamlets,3674.0
+2021-09-01,Waltham Forest,2324.0
+2021-09-01,Wandsworth,2891.0
+2021-09-01,Westminster,5920.0
+2021-10-01,Barking and Dagenham,2266.0
+2021-10-01,Barnet,3039.0
+2021-10-01,Bexley,1752.0
+2021-10-01,Brent,3379.0
+2021-10-01,Bromley,2700.0
+2021-10-01,Camden,3697.0
+2021-10-01,Croydon,3992.0
+2021-10-01,Ealing,3172.0
+2021-10-01,Enfield,3248.0
+2021-10-01,Greenwich,3008.0
+2021-10-01,Hackney,4262.0
+2021-10-01,Hammersmith and Fulham,2284.0
+2021-10-01,Haringey,3135.0
+2021-10-01,Harrow,1781.0
+2021-10-01,Havering,2033.0
+2021-10-01,Hillingdon,3000.0
+2021-10-01,Hounslow,2646.0
+2021-10-01,Islington,3158.0
+2021-10-01,Kensington and Chelsea,2278.0
+2021-10-01,Kingston upon Thames,1254.0
+2021-10-01,Lambeth,3998.0
+2021-10-01,Lewisham,3242.0
+2021-10-01,Merton,1540.0
+2021-10-01,Newham,4230.0
+2021-10-01,Redbridge,2856.0
+2021-10-01,Richmond upon Thames,1191.0
+2021-10-01,Southwark,3726.0
+2021-10-01,Sutton,1470.0
+2021-10-01,Tower Hamlets,3941.0
+2021-10-01,Waltham Forest,2386.0
+2021-10-01,Wandsworth,3053.0
+2021-10-01,Westminster,7871.0
+2021-11-01,Barking and Dagenham,2155.0
+2021-11-01,Barnet,2868.0
+2021-11-01,Bexley,1836.0
+2021-11-01,Brent,3113.0
+2021-11-01,Bromley,2670.0
+2021-11-01,Camden,3576.0
+2021-11-01,Croydon,3787.0
+2021-11-01,Ealing,3377.0
+2021-11-01,Enfield,3311.0
+2021-11-01,Greenwich,2953.0
+2021-11-01,Hackney,3897.0
+2021-11-01,Hammersmith and Fulham,2211.0
+2021-11-01,Haringey,3069.0
+2021-11-01,Harrow,1676.0
+2021-11-01,Havering,2000.0
+2021-11-01,Hillingdon,2936.0
+2021-11-01,Hounslow,2750.0
+2021-11-01,Islington,3213.0
+2021-11-01,Kensington and Chelsea,2278.0
+2021-11-01,Kingston upon Thames,1255.0
+2021-11-01,Lambeth,3722.0
+2021-11-01,Lewisham,3036.0
+2021-11-01,Merton,1313.0
+2021-11-01,Newham,3841.0
+2021-11-01,Redbridge,2806.0
+2021-11-01,Richmond upon Thames,1218.0
+2021-11-01,Southwark,3501.0
+2021-11-01,Sutton,1646.0
+2021-11-01,Tower Hamlets,3794.0
+2021-11-01,Waltham Forest,2578.0
+2021-11-01,Wandsworth,2810.0
+2021-11-01,Westminster,7552.0
+2021-12-01,Barking and Dagenham,2007.0
+2021-12-01,Barnet,2789.0
+2021-12-01,Bexley,1756.0
+2021-12-01,Brent,2690.0
+2021-12-01,Bromley,2408.0
+2021-12-01,Camden,3293.0
+2021-12-01,Croydon,3530.0
+2021-12-01,Ealing,2889.0
+2021-12-01,Enfield,3117.0
+2021-12-01,Greenwich,2622.0
+2021-12-01,Hackney,3314.0
+2021-12-01,Hammersmith and Fulham,1967.0
+2021-12-01,Haringey,3312.0
+2021-12-01,Harrow,1632.0
+2021-12-01,Havering,1803.0
+2021-12-01,Hillingdon,2663.0
+2021-12-01,Hounslow,2468.0
+2021-12-01,Islington,2883.0
+2021-12-01,Kensington and Chelsea,2048.0
+2021-12-01,Kingston upon Thames,1346.0
+2021-12-01,Lambeth,3137.0
+2021-12-01,Lewisham,2885.0
+2021-12-01,Merton,1297.0
+2021-12-01,Newham,3694.0
+2021-12-01,Redbridge,2458.0
+2021-12-01,Richmond upon Thames,1076.0
+2021-12-01,Southwark,3198.0
+2021-12-01,Sutton,1496.0
+2021-12-01,Tower Hamlets,3162.0
+2021-12-01,Waltham Forest,2218.0
+2021-12-01,Wandsworth,2544.0
+2021-12-01,Westminster,7845.0
+2022-01-01,Barking and Dagenham,2081.0
+2022-01-01,Barnet,2908.0
+2022-01-01,Bexley,1669.0
+2022-01-01,Brent,2914.0
+2022-01-01,Bromley,2467.0
+2022-01-01,Camden,3142.0
+2022-01-01,Croydon,3598.0
+2022-01-01,Ealing,2859.0
+2022-01-01,Enfield,3277.0
+2022-01-01,Greenwich,2749.0
+2022-01-01,Hackney,3509.0
+2022-01-01,Hammersmith and Fulham,1902.0
+2022-01-01,Haringey,3062.0
+2022-01-01,Harrow,1611.0
+2022-01-01,Havering,1910.0
+2022-01-01,Hillingdon,2711.0
+2022-01-01,Hounslow,2512.0
+2022-01-01,Islington,2901.0
+2022-01-01,Kensington and Chelsea,2114.0
+2022-01-01,Kingston upon Thames,1255.0
+2022-01-01,Lambeth,3466.0
+2022-01-01,Lewisham,2905.0
+2022-01-01,Merton,1416.0
+2022-01-01,Newham,3812.0
+2022-01-01,Redbridge,2525.0
+2022-01-01,Richmond upon Thames,1239.0
+2022-01-01,Southwark,3247.0
+2022-01-01,Sutton,1423.0
+2022-01-01,Tower Hamlets,3433.0
+2022-01-01,Waltham Forest,2503.0
+2022-01-01,Wandsworth,2458.0
+2022-01-01,Westminster,6754.0
+2022-02-01,Barking and Dagenham,2021.0
+2022-02-01,Barnet,2707.0
+2022-02-01,Bexley,1687.0
+2022-02-01,Brent,2943.0
+2022-02-01,Bromley,2281.0
+2022-02-01,Camden,3419.0
+2022-02-01,Croydon,3313.0
+2022-02-01,Ealing,2892.0
+2022-02-01,Enfield,2913.0
+2022-02-01,Greenwich,2734.0
+2022-02-01,Hackney,3060.0
+2022-02-01,Hammersmith and Fulham,1942.0
+2022-02-01,Haringey,2909.0
+2022-02-01,Harrow,1478.0
+2022-02-01,Havering,1915.0
+2022-02-01,Hillingdon,2485.0
+2022-02-01,Hounslow,2370.0
+2022-02-01,Islington,2851.0
+2022-02-01,Kensington and Chelsea,1888.0
+2022-02-01,Kingston upon Thames,1115.0
+2022-02-01,Lambeth,3186.0
+2022-02-01,Lewisham,2769.0
+2022-02-01,Merton,1321.0
+2022-02-01,Newham,3734.0
+2022-02-01,Redbridge,2445.0
+2022-02-01,Richmond upon Thames,1041.0
+2022-02-01,Southwark,3145.0
+2022-02-01,Sutton,1350.0
+2022-02-01,Tower Hamlets,3132.0
+2022-02-01,Waltham Forest,2270.0
+2022-02-01,Wandsworth,2534.0
+2022-02-01,Westminster,6873.0
+2022-03-01,Barking and Dagenham,2263.0
+2022-03-01,Barnet,3015.0
+2022-03-01,Bexley,1838.0
+2022-03-01,Brent,3362.0
+2022-03-01,Bromley,2427.0
+2022-03-01,Camden,3891.0
+2022-03-01,Croydon,3639.0
+2022-03-01,Ealing,3164.0
+2022-03-01,Enfield,3415.0
+2022-03-01,Greenwich,3004.0
+2022-03-01,Hackney,3519.0
+2022-03-01,Hammersmith and Fulham,2030.0
+2022-03-01,Haringey,3061.0
+2022-03-01,Harrow,1655.0
+2022-03-01,Havering,2072.0
+2022-03-01,Hillingdon,2857.0
+2022-03-01,Hounslow,2729.0
+2022-03-01,Islington,3189.0
+2022-03-01,Kensington and Chelsea,2135.0
+2022-03-01,Kingston upon Thames,1281.0
+2022-03-01,Lambeth,3666.0
+2022-03-01,Lewisham,3129.0
+2022-03-01,Merton,1550.0
+2022-03-01,Newham,4119.0
+2022-03-01,Redbridge,2710.0
+2022-03-01,Richmond upon Thames,1189.0
+2022-03-01,Southwark,3747.0
+2022-03-01,Sutton,1484.0
+2022-03-01,Tower Hamlets,3694.0
+2022-03-01,Waltham Forest,2397.0
+2022-03-01,Wandsworth,2660.0
+2022-03-01,Westminster,7778.0
+2022-04-01,Barking and Dagenham,2143.0
+2022-04-01,Barnet,2739.0
+2022-04-01,Bexley,1639.0
+2022-04-01,Brent,3115.0
+2022-04-01,Bromley,2354.0
+2022-04-01,Camden,3702.0
+2022-04-01,Croydon,3573.0
+2022-04-01,Ealing,2861.0
+2022-04-01,Enfield,3068.0
+2022-04-01,Greenwich,2680.0
+2022-04-01,Hackney,3455.0
+2022-04-01,Hammersmith and Fulham,2145.0
+2022-04-01,Haringey,2990.0
+2022-04-01,Harrow,1452.0
+2022-04-01,Havering,1996.0
+2022-04-01,Hillingdon,2598.0
+2022-04-01,Hounslow,2529.0
+2022-04-01,Islington,2826.0
+2022-04-01,Kensington and Chelsea,2067.0
+2022-04-01,Kingston upon Thames,1152.0
+2022-04-01,Lambeth,3409.0
+2022-04-01,Lewisham,2938.0
+2022-04-01,Merton,1422.0
+2022-04-01,Newham,3586.0
+2022-04-01,Redbridge,2382.0
+2022-04-01,Richmond upon Thames,1166.0
+2022-04-01,Southwark,3735.0
+2022-04-01,Sutton,1260.0
+2022-04-01,Tower Hamlets,3777.0
+2022-04-01,Waltham Forest,2168.0
+2022-04-01,Wandsworth,2400.0
+2022-04-01,Westminster,7315.0
+2022-05-01,Barking and Dagenham,2164.0
+2022-05-01,Barnet,3177.0
+2022-05-01,Bexley,1763.0
+2022-05-01,Brent,3244.0
+2022-05-01,Bromley,2496.0
+2022-05-01,Camden,4051.0
+2022-05-01,Croydon,3820.0
+2022-05-01,Ealing,3404.0
+2022-05-01,Enfield,3377.0
+2022-05-01,Greenwich,3059.0
+2022-05-01,Hackney,4038.0
+2022-05-01,Hammersmith and Fulham,2083.0
+2022-05-01,Haringey,3306.0
+2022-05-01,Harrow,1604.0
+2022-05-01,Havering,2239.0
+2022-05-01,Hillingdon,2878.0
+2022-05-01,Hounslow,2952.0
+2022-05-01,Islington,3222.0
+2022-05-01,Kensington and Chelsea,2076.0
+2022-05-01,Kingston upon Thames,1272.0
+2022-05-01,Lambeth,3660.0
+2022-05-01,Lewisham,3085.0
+2022-05-01,Merton,1543.0
+2022-05-01,Newham,3816.0
+2022-05-01,Redbridge,2860.0
+2022-05-01,Richmond upon Thames,1341.0
+2022-05-01,Southwark,4112.0
+2022-05-01,Sutton,1524.0
+2022-05-01,Tower Hamlets,3842.0
+2022-05-01,Waltham Forest,2467.0
+2022-05-01,Wandsworth,2762.0
+2022-05-01,Westminster,7727.0
+2022-06-01,Barking and Dagenham,2254.0
+2022-06-01,Barnet,2817.0
+2022-06-01,Bexley,1806.0
+2022-06-01,Brent,3235.0
+2022-06-01,Bromley,2430.0
+2022-06-01,Camden,3810.0
+2022-06-01,Croydon,3796.0
+2022-06-01,Ealing,3178.0
+2022-06-01,Enfield,3454.0
+2022-06-01,Greenwich,3110.0
+2022-06-01,Hackney,3575.0
+2022-06-01,Hammersmith and Fulham,2053.0
+2022-06-01,Haringey,3128.0
+2022-06-01,Harrow,1669.0
+2022-06-01,Havering,2235.0
+2022-06-01,Hillingdon,2877.0
+2022-06-01,Hounslow,2710.0
+2022-06-01,Islington,2901.0
+2022-06-01,Kensington and Chelsea,2166.0
+2022-06-01,Kingston upon Thames,1263.0
+2022-06-01,Lambeth,3790.0
+2022-06-01,Lewisham,3075.0
+2022-06-01,Merton,1607.0
+2022-06-01,Newham,3597.0
+2022-06-01,Redbridge,2696.0
+2022-06-01,Richmond upon Thames,1172.0
+2022-06-01,Southwark,3997.0
+2022-06-01,Sutton,1476.0
+2022-06-01,Tower Hamlets,3446.0
+2022-06-01,Waltham Forest,2508.0
+2022-06-01,Wandsworth,2655.0
+2022-06-01,Westminster,7591.0
+2022-07-01,Barking and Dagenham,2104.0
+2022-07-01,Barnet,2974.0
+2022-07-01,Bexley,1693.0
+2022-07-01,Brent,3250.0
+2022-07-01,Bromley,2609.0
+2022-07-01,Camden,3958.0
+2022-07-01,Croydon,3939.0
+2022-07-01,Ealing,3276.0
+2022-07-01,Enfield,3349.0
+2022-07-01,Greenwich,3046.0
+2022-07-01,Hackney,3697.0
+2022-07-01,Hammersmith and Fulham,2176.0
+2022-07-01,Haringey,3271.0
+2022-07-01,Harrow,1718.0
+2022-07-01,Havering,2170.0
+2022-07-01,Hillingdon,2754.0
+2022-07-01,Hounslow,2711.0
+2022-07-01,Islington,3124.0
+2022-07-01,Kensington and Chelsea,2182.0
+2022-07-01,Kingston upon Thames,1138.0
+2022-07-01,Lambeth,4120.0
+2022-07-01,Lewisham,3162.0
+2022-07-01,Merton,1693.0
+2022-07-01,Newham,3752.0
+2022-07-01,Redbridge,2627.0
+2022-07-01,Richmond upon Thames,1202.0
+2022-07-01,Southwark,4267.0
+2022-07-01,Sutton,1556.0
+2022-07-01,Tower Hamlets,3641.0
+2022-07-01,Waltham Forest,2619.0
+2022-07-01,Wandsworth,2654.0
+2022-07-01,Westminster,8855.0
+2022-08-01,Barking and Dagenham,2230.0
+2022-08-01,Barnet,2893.0
+2022-08-01,Bexley,1771.0
+2022-08-01,Brent,3344.0
+2022-08-01,Bromley,2415.0
+2022-08-01,Camden,3775.0
+2022-08-01,Croydon,3693.0
+2022-08-01,Ealing,3281.0
+2022-08-01,Enfield,3275.0
+2022-08-01,Greenwich,2799.0
+2022-08-01,Hackney,3515.0
+2022-08-01,Hammersmith and Fulham,2256.0
+2022-08-01,Haringey,3042.0
+2022-08-01,Harrow,1651.0
+2022-08-01,Havering,2296.0
+2022-08-01,Hillingdon,2926.0
+2022-08-01,Hounslow,2636.0
+2022-08-01,Islington,3112.0
+2022-08-01,Kensington and Chelsea,2721.0
+2022-08-01,Kingston upon Thames,1156.0
+2022-08-01,Lambeth,3965.0
+2022-08-01,Lewisham,3133.0
+2022-08-01,Merton,1524.0
+2022-08-01,Newham,3581.0
+2022-08-01,Redbridge,2447.0
+2022-08-01,Richmond upon Thames,1122.0
+2022-08-01,Southwark,3908.0
+2022-08-01,Sutton,1613.0
+2022-08-01,Tower Hamlets,3576.0
+2022-08-01,Waltham Forest,2299.0
+2022-08-01,Wandsworth,2625.0
+2022-08-01,Westminster,7601.0
+2022-09-01,Barking and Dagenham,2087.0
+2022-09-01,Barnet,2926.0
+2022-09-01,Bexley,1805.0
+2022-09-01,Brent,3173.0
+2022-09-01,Bromley,2237.0
+2022-09-01,Camden,3450.0
+2022-09-01,Croydon,3815.0
+2022-09-01,Ealing,2851.0
+2022-09-01,Enfield,3030.0
+2022-09-01,Greenwich,2772.0
+2022-09-01,Hackney,3109.0
+2022-09-01,Hammersmith and Fulham,2095.0
+2022-09-01,Haringey,3143.0
+2022-09-01,Harrow,1596.0
+2022-09-01,Havering,1970.0
+2022-09-01,Hillingdon,2774.0
+2022-09-01,Hounslow,2554.0
+2022-09-01,Islington,2949.0
+2022-09-01,Kensington and Chelsea,1905.0
+2022-09-01,Kingston upon Thames,1167.0
+2022-09-01,Lambeth,3551.0
+2022-09-01,Lewisham,2969.0
+2022-09-01,Merton,1519.0
+2022-09-01,Newham,3584.0
+2022-09-01,Redbridge,2500.0
+2022-09-01,Richmond upon Thames,1117.0
+2022-09-01,Southwark,3310.0
+2022-09-01,Sutton,1444.0
+2022-09-01,Tower Hamlets,3405.0
+2022-09-01,Waltham Forest,2395.0
+2022-09-01,Wandsworth,2398.0
+2022-09-01,Westminster,6645.0
+2022-10-01,Barking and Dagenham,2420.0
+2022-10-01,Barnet,2967.0
+2022-10-01,Bexley,1739.0
+2022-10-01,Brent,3291.0
+2022-10-01,Bromley,2365.0
+2022-10-01,Camden,4241.0
+2022-10-01,Croydon,3911.0
+2022-10-01,Ealing,3331.0
+2022-10-01,Enfield,3141.0
+2022-10-01,Greenwich,3082.0
+2022-10-01,Hackney,3715.0
+2022-10-01,Hammersmith and Fulham,2176.0
+2022-10-01,Haringey,3104.0
+2022-10-01,Harrow,1960.0
+2022-10-01,Havering,2055.0
+2022-10-01,Hillingdon,3126.0
+2022-10-01,Hounslow,2847.0
+2022-10-01,Islington,3427.0
+2022-10-01,Kensington and Chelsea,2252.0
+2022-10-01,Kingston upon Thames,1237.0
+2022-10-01,Lambeth,3876.0
+2022-10-01,Lewisham,3037.0
+2022-10-01,Merton,1629.0
+2022-10-01,Newham,3997.0
+2022-10-01,Redbridge,2776.0
+2022-10-01,Richmond upon Thames,1215.0
+2022-10-01,Southwark,3770.0
+2022-10-01,Sutton,1373.0
+2022-10-01,Tower Hamlets,3728.0
+2022-10-01,Waltham Forest,2539.0
+2022-10-01,Wandsworth,2495.0
+2022-10-01,Westminster,9793.0
+2022-11-01,Barking and Dagenham,2383.0
+2022-11-01,Barnet,3073.0
+2022-11-01,Bexley,1754.0
+2022-11-01,Brent,3259.0
+2022-11-01,Bromley,2420.0
+2022-11-01,Camden,4245.0
+2022-11-01,Croydon,3567.0
+2022-11-01,Ealing,3148.0
+2022-11-01,Enfield,3190.0
+2022-11-01,Greenwich,2937.0
+2022-11-01,Hackney,3471.0
+2022-11-01,Hammersmith and Fulham,1997.0
+2022-11-01,Haringey,3029.0
+2022-11-01,Harrow,1747.0
+2022-11-01,Havering,2131.0
+2022-11-01,Hillingdon,2890.0
+2022-11-01,Hounslow,2713.0
+2022-11-01,Islington,3124.0
+2022-11-01,Kensington and Chelsea,2242.0
+2022-11-01,Kingston upon Thames,1274.0
+2022-11-01,Lambeth,3657.0
+2022-11-01,Lewisham,2773.0
+2022-11-01,Merton,1472.0
+2022-11-01,Newham,3959.0
+2022-11-01,Redbridge,2577.0
+2022-11-01,Richmond upon Thames,1187.0
+2022-11-01,Southwark,3943.0
+2022-11-01,Sutton,1393.0
+2022-11-01,Tower Hamlets,3819.0
+2022-11-01,Waltham Forest,2474.0
+2022-11-01,Wandsworth,2625.0
+2022-11-01,Westminster,10254.0
+2022-12-01,Barking and Dagenham,2255.0
+2022-12-01,Barnet,2681.0
+2022-12-01,Bexley,1538.0
+2022-12-01,Brent,2953.0
+2022-12-01,Bromley,2226.0
+2022-12-01,Camden,3462.0
+2022-12-01,Croydon,3310.0
+2022-12-01,Ealing,2857.0
+2022-12-01,Enfield,2966.0
+2022-12-01,Greenwich,2626.0
+2022-12-01,Hackney,3076.0
+2022-12-01,Hammersmith and Fulham,1906.0
+2022-12-01,Haringey,2857.0
+2022-12-01,Harrow,1408.0
+2022-12-01,Havering,1872.0
+2022-12-01,Hillingdon,2739.0
+2022-12-01,Hounslow,2395.0
+2022-12-01,Islington,2998.0
+2022-12-01,Kensington and Chelsea,2070.0
+2022-12-01,Kingston upon Thames,1135.0
+2022-12-01,Lambeth,3453.0
+2022-12-01,Lewisham,3001.0
+2022-12-01,Merton,1312.0
+2022-12-01,Newham,3442.0
+2022-12-01,Redbridge,2543.0
+2022-12-01,Richmond upon Thames,1068.0
+2022-12-01,Southwark,3577.0
+2022-12-01,Sutton,1314.0
+2022-12-01,Tower Hamlets,3201.0
+2022-12-01,Waltham Forest,2161.0
+2022-12-01,Wandsworth,2293.0
+2022-12-01,Westminster,11406.0
+2023-01-01,Barking and Dagenham,2285.0
+2023-01-01,Barnet,2982.0
+2023-01-01,Bexley,1788.0
+2023-01-01,Brent,3069.0
+2023-01-01,Bromley,2260.0
+2023-01-01,Camden,3985.0
+2023-01-01,Croydon,3318.0
+2023-01-01,Ealing,3121.0
+2023-01-01,Enfield,3373.0
+2023-01-01,Greenwich,2780.0
+2023-01-01,Hackney,3296.0
+2023-01-01,Hammersmith and Fulham,2012.0
+2023-01-01,Haringey,3284.0
+2023-01-01,Harrow,1592.0
+2023-01-01,Havering,2187.0
+2023-01-01,Hillingdon,2898.0
+2023-01-01,Hounslow,2685.0
+2023-01-01,Islington,3139.0
+2023-01-01,Kensington and Chelsea,2104.0
+2023-01-01,Kingston upon Thames,1232.0
+2023-01-01,Lambeth,3714.0
+2023-01-01,Lewisham,3187.0
+2023-01-01,Merton,1466.0
+2023-01-01,Newham,3764.0
+2023-01-01,Redbridge,2571.0
+2023-01-01,Richmond upon Thames,1172.0
+2023-01-01,Southwark,3784.0
+2023-01-01,Sutton,1509.0
+2023-01-01,Tower Hamlets,3762.0
+2023-01-01,Waltham Forest,2291.0
+2023-01-01,Wandsworth,2387.0
+2023-01-01,Westminster,10096.0
+2023-02-01,Barking and Dagenham,2218.0
+2023-02-01,Barnet,2684.0
+2023-02-01,Bexley,1824.0
+2023-02-01,Brent,2895.0
+2023-02-01,Bromley,2308.0
+2023-02-01,Camden,3839.0
+2023-02-01,Croydon,3285.0
+2023-02-01,Ealing,3174.0
+2023-02-01,Enfield,2939.0
+2023-02-01,Greenwich,2725.0
+2023-02-01,Hackney,3147.0
+2023-02-01,Hammersmith and Fulham,2025.0
+2023-02-01,Haringey,3005.0
+2023-02-01,Harrow,1581.0
+2023-02-01,Havering,2096.0
+2023-02-01,Hillingdon,2649.0
+2023-02-01,Hounslow,2559.0
+2023-02-01,Islington,2810.0
+2023-02-01,Kensington and Chelsea,1913.0
+2023-02-01,Kingston upon Thames,1157.0
+2023-02-01,Lambeth,3467.0
+2023-02-01,Lewisham,2942.0
+2023-02-01,Merton,1302.0
+2023-02-01,Newham,3613.0
+2023-02-01,Redbridge,2441.0
+2023-02-01,Richmond upon Thames,1154.0
+2023-02-01,Southwark,3774.0
+2023-02-01,Sutton,1439.0
+2023-02-01,Tower Hamlets,3550.0
+2023-02-01,Waltham Forest,2126.0
+2023-02-01,Wandsworth,2429.0
+2023-02-01,Westminster,9397.0
+2023-03-01,Barking and Dagenham,2305.0
+2023-03-01,Barnet,3163.0
+2023-03-01,Bexley,1729.0
+2023-03-01,Brent,3303.0
+2023-03-01,Bromley,2464.0
+2023-03-01,Camden,4286.0
+2023-03-01,Croydon,3619.0
+2023-03-01,Ealing,3397.0
+2023-03-01,Enfield,3316.0
+2023-03-01,Greenwich,2949.0
+2023-03-01,Hackney,3541.0
+2023-03-01,Hammersmith and Fulham,2285.0
+2023-03-01,Haringey,3383.0
+2023-03-01,Harrow,1680.0
+2023-03-01,Havering,2147.0
+2023-03-01,Hillingdon,2799.0
+2023-03-01,Hounslow,2733.0
+2023-03-01,Islington,3242.0
+2023-03-01,Kensington and Chelsea,2125.0
+2023-03-01,Kingston upon Thames,1320.0
+2023-03-01,Lambeth,3677.0
+2023-03-01,Lewisham,3229.0
+2023-03-01,Merton,1442.0
+2023-03-01,Newham,3797.0
+2023-03-01,Redbridge,2637.0
+2023-03-01,Richmond upon Thames,1255.0
+2023-03-01,Southwark,3851.0
+2023-03-01,Sutton,1312.0
+2023-03-01,Tower Hamlets,4065.0
+2023-03-01,Waltham Forest,2435.0
+2023-03-01,Wandsworth,2633.0
+2023-03-01,Westminster,9118.0
+2023-04-01,Barking and Dagenham,2314.0
+2023-04-01,Barnet,2861.0
+2023-04-01,Bexley,1781.0
+2023-04-01,Brent,3180.0
+2023-04-01,Bromley,2419.0
+2023-04-01,Camden,4447.0
+2023-04-01,Croydon,3285.0
+2023-04-01,Ealing,2955.0
+2023-04-01,Enfield,3008.0
+2023-04-01,Greenwich,2947.0
+2023-04-01,Hackney,3301.0
+2023-04-01,Hammersmith and Fulham,2271.0
+2023-04-01,Haringey,3147.0
+2023-04-01,Harrow,1656.0
+2023-04-01,Havering,2215.0
+2023-04-01,Hillingdon,2464.0
+2023-04-01,Hounslow,2645.0
+2023-04-01,Islington,3256.0
+2023-04-01,Kensington and Chelsea,2196.0
+2023-04-01,Kingston upon Thames,1198.0
+2023-04-01,Lambeth,4014.0
+2023-04-01,Lewisham,3215.0
+2023-04-01,Merton,1375.0
+2023-04-01,Newham,3826.0
+2023-04-01,Redbridge,2655.0
+2023-04-01,Richmond upon Thames,1141.0
+2023-04-01,Southwark,3875.0
+2023-04-01,Sutton,1350.0
+2023-04-01,Tower Hamlets,3759.0
+2023-04-01,Waltham Forest,2303.0
+2023-04-01,Wandsworth,2521.0
+2023-04-01,Westminster,9030.0
+2023-05-01,Barking and Dagenham,2653.0
+2023-05-01,Barnet,3091.0
+2023-05-01,Bexley,1938.0
+2023-05-01,Brent,3664.0
+2023-05-01,Bromley,2606.0
+2023-05-01,Camden,4603.0
+2023-05-01,Croydon,3658.0
+2023-05-01,Ealing,3585.0
+2023-05-01,Enfield,3352.0
+2023-05-01,Greenwich,3302.0
+2023-05-01,Hackney,3716.0
+2023-05-01,Hammersmith and Fulham,2487.0
+2023-05-01,Haringey,3416.0
+2023-05-01,Harrow,1731.0
+2023-05-01,Havering,2271.0
+2023-05-01,Hillingdon,2576.0
+2023-05-01,Hounslow,3059.0
+2023-05-01,Islington,3302.0
+2023-05-01,Kensington and Chelsea,2439.0
+2023-05-01,Kingston upon Thames,1394.0
+2023-05-01,Lambeth,4124.0
+2023-05-01,Lewisham,3418.0
+2023-05-01,Merton,1561.0
+2023-05-01,Newham,4134.0
+2023-05-01,Redbridge,2847.0
+2023-05-01,Richmond upon Thames,1288.0
+2023-05-01,Southwark,4569.0
+2023-05-01,Sutton,1401.0
+2023-05-01,Tower Hamlets,3914.0
+2023-05-01,Waltham Forest,2443.0
+2023-05-01,Wandsworth,3066.0
+2023-05-01,Westminster,9497.0
+2023-06-01,Barking and Dagenham,2640.0
+2023-06-01,Barnet,3137.0
+2023-06-01,Bexley,1775.0
+2023-06-01,Brent,3829.0
+2023-06-01,Bromley,2541.0
+2023-06-01,Camden,4683.0
+2023-06-01,Croydon,3946.0
+2023-06-01,Ealing,3397.0
+2023-06-01,Enfield,3330.0
+2023-06-01,Greenwich,3438.0
+2023-06-01,Hackney,3923.0
+2023-06-01,Hammersmith and Fulham,2405.0
+2023-06-01,Haringey,3478.0
+2023-06-01,Harrow,1788.0
+2023-06-01,Havering,2406.0
+2023-06-01,Hillingdon,2669.0
+2023-06-01,Hounslow,2954.0
+2023-06-01,Islington,3262.0
+2023-06-01,Kensington and Chelsea,2347.0
+2023-06-01,Kingston upon Thames,1394.0
+2023-06-01,Lambeth,4174.0
+2023-06-01,Lewisham,3808.0
+2023-06-01,Merton,1658.0
+2023-06-01,Newham,4434.0
+2023-06-01,Redbridge,2787.0
+2023-06-01,Richmond upon Thames,1235.0
+2023-06-01,Southwark,4795.0
+2023-06-01,Sutton,1524.0
+2023-06-01,Tower Hamlets,3991.0
+2023-06-01,Waltham Forest,2665.0
+2023-06-01,Wandsworth,3080.0
+2023-06-01,Westminster,9708.0
+2023-07-01,Barking and Dagenham,2581.0
+2023-07-01,Barnet,3167.0
+2023-07-01,Bexley,1875.0
+2023-07-01,Brent,3714.0
+2023-07-01,Bromley,2599.0
+2023-07-01,Camden,4470.0
+2023-07-01,Croydon,3997.0
+2023-07-01,Ealing,3688.0
+2023-07-01,Enfield,3180.0
+2023-07-01,Greenwich,3225.0
+2023-07-01,Hackney,3950.0
+2023-07-01,Hammersmith and Fulham,2389.0
+2023-07-01,Haringey,3709.0
+2023-07-01,Harrow,1641.0
+2023-07-01,Havering,2342.0
+2023-07-01,Hillingdon,2637.0
+2023-07-01,Hounslow,3294.0
+2023-07-01,Islington,3379.0
+2023-07-01,Kensington and Chelsea,2326.0
+2023-07-01,Kingston upon Thames,1332.0
+2023-07-01,Lambeth,4110.0
+2023-07-01,Lewisham,3342.0
+2023-07-01,Merton,1731.0
+2023-07-01,Newham,4190.0
+2023-07-01,Redbridge,2741.0
+2023-07-01,Richmond upon Thames,1282.0
+2023-07-01,Southwark,4458.0
+2023-07-01,Sutton,1622.0
+2023-07-01,Tower Hamlets,4273.0
+2023-07-01,Waltham Forest,2623.0
+2023-07-01,Wandsworth,3102.0
+2023-07-01,Westminster,9827.0
+2023-08-01,Barking and Dagenham,2660.0
+2023-08-01,Barnet,2922.0
+2023-08-01,Bexley,1852.0
+2023-08-01,Brent,3519.0
+2023-08-01,Bromley,2615.0
+2023-08-01,Camden,4147.0
+2023-08-01,Croydon,3931.0
+2023-08-01,Ealing,3487.0
+2023-08-01,Enfield,3028.0
+2023-08-01,Greenwich,3056.0
+2023-08-01,Hackney,3728.0
+2023-08-01,Hammersmith and Fulham,2341.0
+2023-08-01,Haringey,3122.0
+2023-08-01,Harrow,1540.0
+2023-08-01,Havering,2421.0
+2023-08-01,Hillingdon,2518.0
+2023-08-01,Hounslow,3186.0
+2023-08-01,Islington,3157.0
+2023-08-01,Kensington and Chelsea,3092.0
+2023-08-01,Kingston upon Thames,1302.0
+2023-08-01,Lambeth,4015.0
+2023-08-01,Lewisham,3573.0
+2023-08-01,Merton,1517.0
+2023-08-01,Newham,4249.0
+2023-08-01,Redbridge,2710.0
+2023-08-01,Richmond upon Thames,1386.0
+2023-08-01,Southwark,4243.0
+2023-08-01,Sutton,1363.0
+2023-08-01,Tower Hamlets,4018.0
+2023-08-01,Waltham Forest,2533.0
+2023-08-01,Wandsworth,2792.0
+2023-08-01,Westminster,8775.0
+2023-09-01,Barking and Dagenham,2561.0
+2023-09-01,Barnet,3033.0
+2023-09-01,Bexley,1899.0
+2023-09-01,Brent,3535.0
+2023-09-01,Bromley,2663.0
+2023-09-01,Camden,4483.0
+2023-09-01,Croydon,3997.0
+2023-09-01,Ealing,3660.0
+2023-09-01,Enfield,3395.0
+2023-09-01,Greenwich,3332.0
+2023-09-01,Hackney,3678.0
+2023-09-01,Hammersmith and Fulham,2429.0
+2023-09-01,Haringey,3391.0
+2023-09-01,Harrow,1760.0
+2023-09-01,Havering,2435.0
+2023-09-01,Hillingdon,2528.0
+2023-09-01,Hounslow,3420.0
+2023-09-01,Islington,3059.0
+2023-09-01,Kensington and Chelsea,2405.0
+2023-09-01,Kingston upon Thames,1305.0
+2023-09-01,Lambeth,4120.0
+2023-09-01,Lewisham,3449.0
+2023-09-01,Merton,1708.0
+2023-09-01,Newham,4270.0
+2023-09-01,Redbridge,2859.0
+2023-09-01,Richmond upon Thames,1350.0
+2023-09-01,Southwark,4389.0
+2023-09-01,Sutton,1444.0
+2023-09-01,Tower Hamlets,4020.0
+2023-09-01,Waltham Forest,2605.0
+2023-09-01,Wandsworth,2859.0
+2023-09-01,Westminster,8667.0
+2023-10-01,Barking and Dagenham,2010.0
+2023-10-01,Barnet,3613.0
+2023-10-01,Bexley,1836.0
+2023-10-01,Brent,3306.0
+2023-10-01,Bromley,2434.0
+2023-10-01,Camden,4691.0
+2023-10-01,Croydon,3733.0
+2023-10-01,Ealing,3451.0
+2023-10-01,Enfield,3248.0
+2023-10-01,Greenwich,2900.0
+2023-10-01,Hackney,3837.0
+2023-10-01,Hammersmith and Fulham,2462.0
+2023-10-01,Haringey,3419.0
+2023-10-01,Harrow,1608.0
+2023-10-01,Havering,2544.0
+2023-10-01,Hillingdon,2537.0
+2023-10-01,Hounslow,2982.0
+2023-10-01,Islington,3120.0
+2023-10-01,Kensington and Chelsea,2625.0
+2023-10-01,Kingston upon Thames,1336.0
+2023-10-01,Lambeth,3921.0
+2023-10-01,Lewisham,2980.0
+2023-10-01,Merton,1626.0
+2023-10-01,Newham,4215.0
+2023-10-01,Redbridge,2691.0
+2023-10-01,Richmond upon Thames,1171.0
+2023-10-01,Southwark,4083.0
+2023-10-01,Sutton,1428.0
+2023-10-01,Tower Hamlets,4275.0
+2023-10-01,Waltham Forest,2429.0
+2023-10-01,Wandsworth,3150.0
+2023-10-01,Westminster,10334.0
+2023-11-01,Barking and Dagenham,2164.0
+2023-11-01,Barnet,3761.0
+2023-11-01,Bexley,1884.0
+2023-11-01,Brent,3618.0
+2023-11-01,Bromley,2714.0
+2023-11-01,Camden,4988.0
+2023-11-01,Croydon,3950.0
+2023-11-01,Ealing,3596.0
+2023-11-01,Enfield,3199.0
+2023-11-01,Greenwich,3128.0
+2023-11-01,Hackney,3880.0
+2023-11-01,Hammersmith and Fulham,2455.0
+2023-11-01,Haringey,3532.0
+2023-11-01,Harrow,1773.0
+2023-11-01,Havering,2424.0
+2023-11-01,Hillingdon,2530.0
+2023-11-01,Hounslow,3114.0
+2023-11-01,Islington,3122.0
+2023-11-01,Kensington and Chelsea,2703.0
+2023-11-01,Kingston upon Thames,1226.0
+2023-11-01,Lambeth,4002.0
+2023-11-01,Lewisham,3233.0
+2023-11-01,Merton,1482.0
+2023-11-01,Newham,4788.0
+2023-11-01,Redbridge,2764.0
+2023-11-01,Richmond upon Thames,1268.0
+2023-11-01,Southwark,4558.0
+2023-11-01,Sutton,1455.0
+2023-11-01,Tower Hamlets,4700.0
+2023-11-01,Waltham Forest,2700.0
+2023-11-01,Wandsworth,2827.0
+2023-11-01,Westminster,13725.0
+2023-12-01,Barking and Dagenham,2409.0
+2023-12-01,Barnet,3288.0
+2023-12-01,Bexley,1982.0
+2023-12-01,Brent,3642.0
+2023-12-01,Bromley,2470.0
+2023-12-01,Camden,4225.0
+2023-12-01,Croydon,3856.0
+2023-12-01,Ealing,3460.0
+2023-12-01,Enfield,3484.0
+2023-12-01,Greenwich,3208.0
+2023-12-01,Hackney,3946.0
+2023-12-01,Hammersmith and Fulham,2405.0
+2023-12-01,Haringey,3286.0
+2023-12-01,Harrow,1765.0
+2023-12-01,Havering,2287.0
+2023-12-01,Hillingdon,2442.0
+2023-12-01,Hounslow,3089.0
+2023-12-01,Islington,3098.0
+2023-12-01,Kensington and Chelsea,2416.0
+2023-12-01,Kingston upon Thames,1266.0
+2023-12-01,Lambeth,3990.0
+2023-12-01,Lewisham,3285.0
+2023-12-01,Merton,1542.0
+2023-12-01,Newham,4804.0
+2023-12-01,Redbridge,2575.0
+2023-12-01,Richmond upon Thames,1170.0
+2023-12-01,Southwark,4219.0
+2023-12-01,Sutton,1493.0
+2023-12-01,Tower Hamlets,4483.0
+2023-12-01,Waltham Forest,2643.0
+2023-12-01,Wandsworth,2961.0
+2023-12-01,Westminster,13651.0
+2024-01-01,Barking and Dagenham,2361.0
+2024-01-01,Barnet,3048.0
+2024-01-01,Bexley,1871.0
+2024-01-01,Brent,3445.0
+2024-01-01,Bromley,2437.0
+2024-01-01,Camden,4252.0
+2024-01-01,Croydon,3896.0
+2024-01-01,Ealing,3183.0
+2024-01-01,Enfield,3295.0
+2024-01-01,Greenwich,3023.0
+2024-01-01,Hackney,4049.0
+2024-01-01,Hammersmith and Fulham,2432.0
+2024-01-01,Haringey,2962.0
+2024-01-01,Harrow,1751.0
+2024-01-01,Havering,2274.0
+2024-01-01,Hillingdon,2678.0
+2024-01-01,Hounslow,2852.0
+2024-01-01,Islington,3152.0
+2024-01-01,Kensington and Chelsea,2299.0
+2024-01-01,Kingston upon Thames,1262.0
+2024-01-01,Lambeth,3909.0
+2024-01-01,Lewisham,3281.0
+2024-01-01,Merton,1553.0
+2024-01-01,Newham,4339.0
+2024-01-01,Redbridge,2814.0
+2024-01-01,Richmond upon Thames,1195.0
+2024-01-01,Southwark,4389.0
+2024-01-01,Sutton,1580.0
+2024-01-01,Tower Hamlets,3800.0
+2024-01-01,Waltham Forest,2540.0
+2024-01-01,Wandsworth,2858.0
+2024-01-01,Westminster,10850.0
+2024-02-01,Barking and Dagenham,2289.0
+2024-02-01,Barnet,2987.0
+2024-02-01,Bexley,1748.0
+2024-02-01,Brent,3390.0
+2024-02-01,Bromley,2468.0
+2024-02-01,Camden,5007.0
+2024-02-01,Croydon,3744.0
+2024-02-01,Ealing,3552.0
+2024-02-01,Enfield,2958.0
+2024-02-01,Greenwich,2778.0
+2024-02-01,Hackney,3671.0
+2024-02-01,Hammersmith and Fulham,2272.0
+2024-02-01,Haringey,3096.0
+2024-02-01,Harrow,1725.0
+2024-02-01,Havering,2396.0
+2024-02-01,Hillingdon,2559.0
+2024-02-01,Hounslow,2890.0
+2024-02-01,Islington,3117.0
+2024-02-01,Kensington and Chelsea,2449.0
+2024-02-01,Kingston upon Thames,1192.0
+2024-02-01,Lambeth,4044.0
+2024-02-01,Lewisham,3126.0
+2024-02-01,Merton,1471.0
+2024-02-01,Newham,4154.0
+2024-02-01,Redbridge,2643.0
+2024-02-01,Richmond upon Thames,1197.0
+2024-02-01,Southwark,4210.0
+2024-02-01,Sutton,1371.0
+2024-02-01,Tower Hamlets,3764.0
+2024-02-01,Waltham Forest,2574.0
+2024-02-01,Wandsworth,2728.0
+2024-02-01,Westminster,11378.0
+2024-03-01,Barking and Dagenham,2445.0
+2024-03-01,Barnet,2895.0
+2024-03-01,Bexley,1922.0
+2024-03-01,Brent,3562.0
+2024-03-01,Bromley,2591.0
+2024-03-01,Camden,4952.0
+2024-03-01,Croydon,4087.0
+2024-03-01,Ealing,3464.0
+2024-03-01,Enfield,3084.0
+2024-03-01,Greenwich,2888.0
+2024-03-01,Hackney,3775.0
+2024-03-01,Hammersmith and Fulham,2353.0
+2024-03-01,Haringey,3043.0
+2024-03-01,Harrow,1822.0
+2024-03-01,Havering,2189.0
+2024-03-01,Hillingdon,2971.0
+2024-03-01,Hounslow,2819.0
+2024-03-01,Islington,2862.0
+2024-03-01,Kensington and Chelsea,2387.0
+2024-03-01,Kingston upon Thames,1125.0
+2024-03-01,Lambeth,4176.0
+2024-03-01,Lewisham,3273.0
+2024-03-01,Merton,1419.0
+2024-03-01,Newham,4475.0
+2024-03-01,Redbridge,2791.0
+2024-03-01,Richmond upon Thames,1210.0
+2024-03-01,Southwark,4257.0
+2024-03-01,Sutton,1445.0
+2024-03-01,Tower Hamlets,3996.0
+2024-03-01,Waltham Forest,2688.0
+2024-03-01,Wandsworth,2736.0
+2024-03-01,Westminster,11147.0
+2024-04-01,Barking and Dagenham,2151.0
+2024-04-01,Barnet,2843.0
+2024-04-01,Bexley,1822.0
+2024-04-01,Brent,3409.0
+2024-04-01,Bromley,2475.0
+2024-04-01,Camden,4672.0
+2024-04-01,Croydon,3609.0
+2024-04-01,Ealing,3167.0
+2024-04-01,Enfield,3187.0
+2024-04-01,Greenwich,2843.0
+2024-04-01,Hackney,3797.0
+2024-04-01,Hammersmith and Fulham,2085.0
+2024-04-01,Haringey,3119.0
+2024-04-01,Harrow,1682.0
+2024-04-01,Havering,2207.0
+2024-04-01,Hillingdon,2913.0
+2024-04-01,Hounslow,2805.0
+2024-04-01,Islington,3359.0
+2024-04-01,Kensington and Chelsea,2429.0
+2024-04-01,Kingston upon Thames,1181.0
+2024-04-01,Lambeth,4147.0
+2024-04-01,Lewisham,3311.0
+2024-04-01,Merton,1417.0
+2024-04-01,Newham,4610.0
+2024-04-01,Redbridge,2509.0
+2024-04-01,Richmond upon Thames,1130.0
+2024-04-01,Southwark,4304.0
+2024-04-01,Sutton,1290.0
+2024-04-01,Tower Hamlets,3935.0
+2024-04-01,Waltham Forest,2631.0
+2024-04-01,Wandsworth,2605.0
+2024-04-01,Westminster,10204.0
+2024-05-01,Barking and Dagenham,2302.0
+2024-05-01,Barnet,3097.0
+2024-05-01,Bexley,1738.0
+2024-05-01,Brent,3741.0
+2024-05-01,Bromley,2555.0
+2024-05-01,Camden,4577.0
+2024-05-01,Croydon,3951.0
+2024-05-01,Ealing,3312.0
+2024-05-01,Enfield,3398.0
+2024-05-01,Greenwich,3270.0
+2024-05-01,Hackney,4358.0
+2024-05-01,Hammersmith and Fulham,2304.0
+2024-05-01,Haringey,3378.0
+2024-05-01,Harrow,1822.0
+2024-05-01,Havering,2290.0
+2024-05-01,Hillingdon,3060.0
+2024-05-01,Hounslow,2709.0
+2024-05-01,Islington,3546.0
+2024-05-01,Kensington and Chelsea,2363.0
+2024-05-01,Kingston upon Thames,1122.0
+2024-05-01,Lambeth,4563.0
+2024-05-01,Lewisham,3558.0
+2024-05-01,Merton,1513.0
+2024-05-01,Newham,4510.0
+2024-05-01,Redbridge,2872.0
+2024-05-01,Richmond upon Thames,1348.0
+2024-05-01,Southwark,4457.0
+2024-05-01,Sutton,1603.0
+2024-05-01,Tower Hamlets,4301.0
+2024-05-01,Waltham Forest,2931.0
+2024-05-01,Wandsworth,2820.0
+2024-05-01,Westminster,9396.0
+2024-06-01,Barking and Dagenham,2205.0
+2024-06-01,Barnet,3094.0
+2024-06-01,Bexley,1918.0
+2024-06-01,Brent,3836.0
+2024-06-01,Bromley,2511.0
+2024-06-01,Camden,5151.0
+2024-06-01,Croydon,3911.0
+2024-06-01,Ealing,3519.0
+2024-06-01,Enfield,3218.0
+2024-06-01,Greenwich,3070.0
+2024-06-01,Hackney,3620.0
+2024-06-01,Hammersmith and Fulham,2177.0
+2024-06-01,Haringey,3225.0
+2024-06-01,Harrow,1580.0
+2024-06-01,Havering,2217.0
+2024-06-01,Hillingdon,3242.0
+2024-06-01,Hounslow,2910.0
+2024-06-01,Islington,3397.0
+2024-06-01,Kensington and Chelsea,2365.0
+2024-06-01,Kingston upon Thames,1228.0
+2024-06-01,Lambeth,4692.0
+2024-06-01,Lewisham,3467.0
+2024-06-01,Merton,1517.0
+2024-06-01,Newham,4430.0
+2024-06-01,Redbridge,2805.0
+2024-06-01,Richmond upon Thames,1379.0
+2024-06-01,Southwark,4477.0
+2024-06-01,Sutton,1406.0
+2024-06-01,Tower Hamlets,3900.0
+2024-06-01,Waltham Forest,2846.0
+2024-06-01,Wandsworth,2857.0
+2024-06-01,Westminster,9904.0
+2024-07-01,Barking and Dagenham,2250.0
+2024-07-01,Barnet,3289.0
+2024-07-01,Bexley,1923.0
+2024-07-01,Brent,3725.0
+2024-07-01,Bromley,2710.0
+2024-07-01,Camden,5240.0
+2024-07-01,Croydon,4080.0
+2024-07-01,Ealing,3619.0
+2024-07-01,Enfield,3264.0
+2024-07-01,Greenwich,3044.0
+2024-07-01,Hackney,3643.0
+2024-07-01,Hammersmith and Fulham,2341.0
+2024-07-01,Haringey,3476.0
+2024-07-01,Harrow,1820.0
+2024-07-01,Havering,2343.0
+2024-07-01,Hillingdon,3497.0
+2024-07-01,Hounslow,3349.0
+2024-07-01,Islington,3493.0
+2024-07-01,Kensington and Chelsea,2259.0
+2024-07-01,Kingston upon Thames,1384.0
+2024-07-01,Lambeth,4505.0
+2024-07-01,Lewisham,3774.0
+2024-07-01,Merton,1685.0
+2024-07-01,Newham,4538.0
+2024-07-01,Redbridge,2819.0
+2024-07-01,Richmond upon Thames,1375.0
+2024-07-01,Southwark,4466.0
+2024-07-01,Sutton,1614.0
+2024-07-01,Tower Hamlets,4369.0
+2024-07-01,Waltham Forest,2837.0
+2024-07-01,Wandsworth,2938.0
+2024-07-01,Westminster,9543.0
+2024-08-01,Barking and Dagenham,2301.0
+2024-08-01,Barnet,3113.0
+2024-08-01,Bexley,1858.0
+2024-08-01,Brent,3521.0
+2024-08-01,Bromley,2810.0
+2024-08-01,Camden,4519.0
+2024-08-01,Croydon,4245.0
+2024-08-01,Ealing,3365.0
+2024-08-01,Enfield,3230.0
+2024-08-01,Greenwich,3214.0
+2024-08-01,Hackney,4086.0
+2024-08-01,Hammersmith and Fulham,2488.0
+2024-08-01,Haringey,3252.0
+2024-08-01,Harrow,1814.0
+2024-08-01,Havering,2357.0
+2024-08-01,Hillingdon,3313.0
+2024-08-01,Hounslow,2970.0
+2024-08-01,Islington,3419.0
+2024-08-01,Kensington and Chelsea,3074.0
+2024-08-01,Kingston upon Thames,1307.0
+2024-08-01,Lambeth,4742.0
+2024-08-01,Lewisham,3509.0
+2024-08-01,Merton,1680.0
+2024-08-01,Newham,4590.0
+2024-08-01,Redbridge,2587.0
+2024-08-01,Richmond upon Thames,1337.0
+2024-08-01,Southwark,4644.0
+2024-08-01,Sutton,1465.0
+2024-08-01,Tower Hamlets,4836.0
+2024-08-01,Waltham Forest,2839.0
+2024-08-01,Wandsworth,2943.0
+2024-08-01,Westminster,8952.0
+2024-09-01,Barking and Dagenham,2394.0
+2024-09-01,Barnet,3088.0
+2024-09-01,Bexley,1626.0
+2024-09-01,Brent,3685.0
+2024-09-01,Bromley,2632.0
+2024-09-01,Camden,4637.0
+2024-09-01,Croydon,3869.0
+2024-09-01,Ealing,3306.0
+2024-09-01,Enfield,3547.0
+2024-09-01,Greenwich,3195.0
+2024-09-01,Hackney,3833.0
+2024-09-01,Hammersmith and Fulham,2250.0
+2024-09-01,Haringey,3211.0
+2024-09-01,Harrow,1965.0
+2024-09-01,Havering,2149.0
+2024-09-01,Hillingdon,2976.0
+2024-09-01,Hounslow,2858.0
+2024-09-01,Islington,3494.0
+2024-09-01,Kensington and Chelsea,2306.0
+2024-09-01,Kingston upon Thames,1136.0
+2024-09-01,Lambeth,4546.0
+2024-09-01,Lewisham,3319.0
+2024-09-01,Merton,1606.0
+2024-09-01,Newham,4416.0
+2024-09-01,Redbridge,2420.0
+2024-09-01,Richmond upon Thames,1233.0
+2024-09-01,Southwark,4670.0
+2024-09-01,Sutton,1450.0
+2024-09-01,Tower Hamlets,4093.0
+2024-09-01,Waltham Forest,2664.0
+2024-09-01,Wandsworth,2766.0
+2024-09-01,Westminster,8742.0
+2024-10-01,Barking and Dagenham,2546.0
+2024-10-01,Barnet,3243.0
+2024-10-01,Bexley,1845.0
+2024-10-01,Brent,3665.0
+2024-10-01,Bromley,2569.0
+2024-10-01,Camden,5153.0
+2024-10-01,Croydon,4071.0
+2024-10-01,Ealing,3537.0
+2024-10-01,Enfield,3590.0
+2024-10-01,Greenwich,3193.0
+2024-10-01,Hackney,4117.0
+2024-10-01,Hammersmith and Fulham,2502.0
+2024-10-01,Haringey,3400.0
+2024-10-01,Harrow,2097.0
+2024-10-01,Havering,2170.0
+2024-10-01,Hillingdon,3294.0
+2024-10-01,Hounslow,3071.0
+2024-10-01,Islington,3556.0
+2024-10-01,Kensington and Chelsea,2535.0
+2024-10-01,Kingston upon Thames,1199.0
+2024-10-01,Lambeth,4648.0
+2024-10-01,Lewisham,3459.0
+2024-10-01,Merton,1490.0
+2024-10-01,Newham,4797.0
+2024-10-01,Redbridge,2768.0
+2024-10-01,Richmond upon Thames,1304.0
+2024-10-01,Southwark,5185.0
+2024-10-01,Sutton,1529.0
+2024-10-01,Tower Hamlets,4216.0
+2024-10-01,Waltham Forest,2935.0
+2024-10-01,Wandsworth,2722.0
+2024-10-01,Westminster,11000.0
+2024-11-01,Barking and Dagenham,2470.0
+2024-11-01,Barnet,3363.0
+2024-11-01,Bexley,1824.0
+2024-11-01,Brent,3518.0
+2024-11-01,Bromley,2644.0
+2024-11-01,Camden,5286.0
+2024-11-01,Croydon,3895.0
+2024-11-01,Ealing,3701.0
+2024-11-01,Enfield,3588.0
+2024-11-01,Greenwich,3213.0
+2024-11-01,Hackney,3975.0
+2024-11-01,Hammersmith and Fulham,2528.0
+2024-11-01,Haringey,3225.0
+2024-11-01,Harrow,1973.0
+2024-11-01,Havering,2277.0
+2024-11-01,Hillingdon,3222.0
+2024-11-01,Hounslow,2960.0
+2024-11-01,Islington,3527.0
+2024-11-01,Kensington and Chelsea,2590.0
+2024-11-01,Kingston upon Thames,1166.0
+2024-11-01,Lambeth,4319.0
+2024-11-01,Lewisham,3391.0
+2024-11-01,Merton,1526.0
+2024-11-01,Newham,4640.0
+2024-11-01,Redbridge,2725.0
+2024-11-01,Richmond upon Thames,1451.0
+2024-11-01,Southwark,4751.0
+2024-11-01,Sutton,1383.0
+2024-11-01,Tower Hamlets,4078.0
+2024-11-01,Waltham Forest,2939.0
+2024-11-01,Wandsworth,2826.0
+2024-11-01,Westminster,12962.0
+2024-12-01,Barking and Dagenham,2227.0
+2024-12-01,Barnet,2785.0
+2024-12-01,Bexley,1584.0
+2024-12-01,Brent,3422.0
+2024-12-01,Bromley,2636.0
+2024-12-01,Camden,5018.0
+2024-12-01,Croydon,3903.0
+2024-12-01,Ealing,3155.0
+2024-12-01,Enfield,3274.0
+2024-12-01,Greenwich,3065.0
+2024-12-01,Hackney,3598.0
+2024-12-01,Hammersmith and Fulham,2258.0
+2024-12-01,Haringey,2998.0
+2024-12-01,Harrow,1999.0
+2024-12-01,Havering,1915.0
+2024-12-01,Hillingdon,3077.0
+2024-12-01,Hounslow,2927.0
+2024-12-01,Islington,3391.0
+2024-12-01,Kensington and Chelsea,2411.0
+2024-12-01,Kingston upon Thames,1155.0
+2024-12-01,Lambeth,4015.0
+2024-12-01,Lewisham,3251.0
+2024-12-01,Merton,1456.0
+2024-12-01,Newham,4415.0
+2024-12-01,Redbridge,2553.0
+2024-12-01,Richmond upon Thames,1176.0
+2024-12-01,Southwark,4481.0
+2024-12-01,Sutton,1424.0
+2024-12-01,Tower Hamlets,3828.0
+2024-12-01,Waltham Forest,2638.0
+2024-12-01,Wandsworth,2792.0
+2024-12-01,Westminster,13446.0
+2025-01-01,Barking and Dagenham,2171.0
+2025-01-01,Barnet,3071.0
+2025-01-01,Bexley,1729.0
+2025-01-01,Brent,3368.0
+2025-01-01,Bromley,2569.0
+2025-01-01,Camden,4508.0
+2025-01-01,Croydon,3778.0
+2025-01-01,Ealing,3528.0
+2025-01-01,Enfield,3384.0
+2025-01-01,Greenwich,2841.0
+2025-01-01,Hackney,3410.0
+2025-01-01,Hammersmith and Fulham,2226.0
+2025-01-01,Haringey,3012.0
+2025-01-01,Harrow,1830.0
+2025-01-01,Havering,2004.0
+2025-01-01,Hillingdon,3172.0
+2025-01-01,Hounslow,2772.0
+2025-01-01,Islington,3493.0
+2025-01-01,Kensington and Chelsea,2262.0
+2025-01-01,Kingston upon Thames,1238.0
+2025-01-01,Lambeth,3897.0
+2025-01-01,Lewisham,2972.0
+2025-01-01,Merton,1428.0
+2025-01-01,Newham,4324.0
+2025-01-01,Redbridge,2674.0
+2025-01-01,Richmond upon Thames,1155.0
+2025-01-01,Southwark,4365.0
+2025-01-01,Sutton,1350.0
+2025-01-01,Tower Hamlets,3674.0
+2025-01-01,Waltham Forest,2404.0
+2025-01-01,Wandsworth,2679.0
+2025-01-01,Westminster,10254.0
+2025-02-01,Barking and Dagenham,1903.0
+2025-02-01,Barnet,2817.0
+2025-02-01,Bexley,1689.0
+2025-02-01,Brent,3243.0
+2025-02-01,Bromley,2399.0
+2025-02-01,Camden,4832.0
+2025-02-01,Croydon,3533.0
+2025-02-01,Ealing,3196.0
+2025-02-01,Enfield,2953.0
+2025-02-01,Greenwich,2773.0
+2025-02-01,Hackney,3176.0
+2025-02-01,Hammersmith and Fulham,2137.0
+2025-02-01,Haringey,2915.0
+2025-02-01,Harrow,1702.0
+2025-02-01,Havering,1812.0
+2025-02-01,Hillingdon,3059.0
+2025-02-01,Hounslow,2520.0
+2025-02-01,Islington,3104.0
+2025-02-01,Kensington and Chelsea,2212.0
+2025-02-01,Kingston upon Thames,1161.0
+2025-02-01,Lambeth,3702.0
+2025-02-01,Lewisham,2953.0
+2025-02-01,Merton,1280.0
+2025-02-01,Newham,4167.0
+2025-02-01,Redbridge,2363.0
+2025-02-01,Richmond upon Thames,1038.0
+2025-02-01,Southwark,4114.0
+2025-02-01,Sutton,1272.0
+2025-02-01,Tower Hamlets,3397.0
+2025-02-01,Waltham Forest,2332.0
+2025-02-01,Wandsworth,2489.0
+2025-02-01,Westminster,10132.0
+2025-03-01,Barking and Dagenham,2466.0
+2025-03-01,Barnet,3274.0
+2025-03-01,Bexley,1796.0
+2025-03-01,Brent,3603.0
+2025-03-01,Bromley,2519.0
+2025-03-01,Camden,4683.0
+2025-03-01,Croydon,3856.0
+2025-03-01,Ealing,3595.0
+2025-03-01,Enfield,3244.0
+2025-03-01,Greenwich,3085.0
+2025-03-01,Hackney,3835.0
+2025-03-01,Hammersmith and Fulham,2259.0
+2025-03-01,Haringey,3243.0
+2025-03-01,Harrow,1737.0
+2025-03-01,Havering,2197.0
+2025-03-01,Hillingdon,3206.0
+2025-03-01,Hounslow,2722.0
+2025-03-01,Islington,3623.0
+2025-03-01,Kensington and Chelsea,2344.0
+2025-03-01,Kingston upon Thames,1260.0
+2025-03-01,Lambeth,3996.0
+2025-03-01,Lewisham,3008.0
+2025-03-01,Merton,1532.0
+2025-03-01,Newham,4576.0
+2025-03-01,Redbridge,2568.0
+2025-03-01,Richmond upon Thames,1252.0
+2025-03-01,Southwark,4672.0
+2025-03-01,Sutton,1478.0
+2025-03-01,Tower Hamlets,4079.0
+2025-03-01,Waltham Forest,2740.0
+2025-03-01,Wandsworth,2743.0
+2025-03-01,Westminster,9943.0
+2025-04-01,Barking and Dagenham,2496.0
+2025-04-01,Barnet,2958.0
+2025-04-01,Bexley,1670.0
+2025-04-01,Brent,3283.0
+2025-04-01,Bromley,2589.0
+2025-04-01,Camden,4462.0
+2025-04-01,Croydon,3741.0
+2025-04-01,Ealing,3446.0
+2025-04-01,Enfield,3076.0
+2025-04-01,Greenwich,3150.0
+2025-04-01,Hackney,3419.0
+2025-04-01,Hammersmith and Fulham,2332.0
+2025-04-01,Haringey,3163.0
+2025-04-01,Harrow,1707.0
+2025-04-01,Havering,2103.0
+2025-04-01,Hillingdon,3110.0
+2025-04-01,Hounslow,2815.0
+2025-04-01,Islington,3651.0
+2025-04-01,Kensington and Chelsea,2270.0
+2025-04-01,Kingston upon Thames,1220.0
+2025-04-01,Lambeth,4346.0
+2025-04-01,Lewisham,3313.0
+2025-04-01,Merton,1524.0
+2025-04-01,Newham,4358.0
+2025-04-01,Redbridge,2751.0
+2025-04-01,Richmond upon Thames,1261.0
+2025-04-01,Southwark,4271.0
+2025-04-01,Sutton,1571.0
+2025-04-01,Tower Hamlets,3950.0
+2025-04-01,Waltham Forest,2662.0
+2025-04-01,Wandsworth,2775.0
+2025-04-01,Westminster,9331.0
+2025-05-01,Barking and Dagenham,2337.0
+2025-05-01,Barnet,3281.0
+2025-05-01,Bexley,1858.0
+2025-05-01,Brent,3753.0
+2025-05-01,Bromley,2601.0
+2025-05-01,Camden,4487.0
+2025-05-01,Croydon,4054.0
+2025-05-01,Ealing,3419.0
+2025-05-01,Enfield,3156.0
+2025-05-01,Greenwich,3323.0
+2025-05-01,Hackney,3993.0
+2025-05-01,Hammersmith and Fulham,2643.0
+2025-05-01,Haringey,3581.0
+2025-05-01,Harrow,1947.0
+2025-05-01,Havering,2207.0
+2025-05-01,Hillingdon,3252.0
+2025-05-01,Hounslow,3038.0
+2025-05-01,Islington,3830.0
+2025-05-01,Kensington and Chelsea,2383.0
+2025-05-01,Kingston upon Thames,1253.0
+2025-05-01,Lambeth,4435.0
+2025-05-01,Lewisham,3521.0
+2025-05-01,Merton,1555.0
+2025-05-01,Newham,4619.0
+2025-05-01,Redbridge,2726.0
+2025-05-01,Richmond upon Thames,1425.0
+2025-05-01,Southwark,4720.0
+2025-05-01,Sutton,1584.0
+2025-05-01,Tower Hamlets,4137.0
+2025-05-01,Waltham Forest,2848.0
+2025-05-01,Wandsworth,2936.0
+2025-05-01,Westminster,8867.0
+2025-06-01,Barking and Dagenham,2495.0
+2025-06-01,Barnet,3129.0
+2025-06-01,Bexley,1796.0
+2025-06-01,Brent,3812.0
+2025-06-01,Bromley,2613.0
+2025-06-01,Camden,4553.0
+2025-06-01,Croydon,3879.0
+2025-06-01,Ealing,3692.0
+2025-06-01,Enfield,3314.0
+2025-06-01,Greenwich,3260.0
+2025-06-01,Hackney,4118.0
+2025-06-01,Hammersmith and Fulham,2351.0
+2025-06-01,Haringey,3548.0
+2025-06-01,Harrow,1929.0
+2025-06-01,Havering,2238.0
+2025-06-01,Hillingdon,3440.0
+2025-06-01,Hounslow,3191.0
+2025-06-01,Islington,3530.0
+2025-06-01,Kensington and Chelsea,2451.0
+2025-06-01,Kingston upon Thames,1225.0
+2025-06-01,Lambeth,4543.0
+2025-06-01,Lewisham,3317.0
+2025-06-01,Merton,1501.0
+2025-06-01,Newham,4404.0
+2025-06-01,Redbridge,2781.0
+2025-06-01,Richmond upon Thames,1367.0
+2025-06-01,Southwark,4859.0
+2025-06-01,Sutton,1502.0
+2025-06-01,Tower Hamlets,4225.0
+2025-06-01,Waltham Forest,2629.0
+2025-06-01,Wandsworth,3253.0
+2025-06-01,Westminster,9278.0
+2025-07-01,Barking and Dagenham,2441.0
+2025-07-01,Barnet,3386.0
+2025-07-01,Bexley,1783.0
+2025-07-01,Brent,4117.0
+2025-07-01,Bromley,2839.0
+2025-07-01,Camden,4888.0
+2025-07-01,Croydon,4220.0
+2025-07-01,Ealing,3816.0
+2025-07-01,Enfield,3508.0
+2025-07-01,Greenwich,3335.0
+2025-07-01,Hackney,4415.0
+2025-07-01,Hammersmith and Fulham,2377.0
+2025-07-01,Haringey,3846.0
+2025-07-01,Harrow,1930.0
+2025-07-01,Havering,2368.0
+2025-07-01,Hillingdon,3594.0
+2025-07-01,Hounslow,3382.0
+2025-07-01,Islington,3581.0
+2025-07-01,Kensington and Chelsea,2444.0
+2025-07-01,Kingston upon Thames,1453.0
+2025-07-01,Lambeth,4703.0
+2025-07-01,Lewisham,3544.0
+2025-07-01,Merton,1719.0
+2025-07-01,Newham,4782.0
+2025-07-01,Redbridge,2837.0
+2025-07-01,Richmond upon Thames,1412.0
+2025-07-01,Southwark,4769.0
+2025-07-01,Sutton,1619.0
+2025-07-01,Tower Hamlets,4629.0
+2025-07-01,Waltham Forest,2739.0
+2025-07-01,Wandsworth,3258.0
+2025-07-01,Westminster,9452.0
+2025-08-01,Barking and Dagenham,2248.0
+2025-08-01,Barnet,2955.0
+2025-08-01,Bexley,1754.0
+2025-08-01,Brent,3911.0
+2025-08-01,Bromley,2690.0
+2025-08-01,Camden,4521.0
+2025-08-01,Croydon,3952.0
+2025-08-01,Ealing,3478.0
+2025-08-01,Enfield,2892.0
+2025-08-01,Greenwich,3305.0
+2025-08-01,Hackney,4004.0
+2025-08-01,Hammersmith and Fulham,2359.0
+2025-08-01,Haringey,3446.0
+2025-08-01,Harrow,1875.0
+2025-08-01,Havering,2257.0
+2025-08-01,Hillingdon,3424.0
+2025-08-01,Hounslow,3073.0
+2025-08-01,Islington,3492.0
+2025-08-01,Kensington and Chelsea,3360.0
+2025-08-01,Kingston upon Thames,1225.0
+2025-08-01,Lambeth,4413.0
+2025-08-01,Lewisham,3271.0
+2025-08-01,Merton,1489.0
+2025-08-01,Newham,4303.0
+2025-08-01,Redbridge,2726.0
+2025-08-01,Richmond upon Thames,1239.0
+2025-08-01,Southwark,4618.0
+2025-08-01,Sutton,1442.0
+2025-08-01,Tower Hamlets,4449.0
+2025-08-01,Waltham Forest,2392.0
+2025-08-01,Wandsworth,3179.0
+2025-08-01,Westminster,8899.0
+2025-09-01,Barking and Dagenham,2307.0
+2025-09-01,Barnet,3185.0
+2025-09-01,Bexley,1677.0
+2025-09-01,Brent,3542.0
+2025-09-01,Bromley,2441.0
+2025-09-01,Camden,4406.0
+2025-09-01,Croydon,3532.0
+2025-09-01,Ealing,3162.0
+2025-09-01,Enfield,3052.0
+2025-09-01,Greenwich,2945.0
+2025-09-01,Hackney,3757.0
+2025-09-01,Hammersmith and Fulham,2105.0
+2025-09-01,Haringey,3023.0
+2025-09-01,Harrow,1845.0
+2025-09-01,Havering,2049.0
+2025-09-01,Hillingdon,3354.0
+2025-09-01,Hounslow,2889.0
+2025-09-01,Islington,3396.0
+2025-09-01,Kensington and Chelsea,2053.0
+2025-09-01,Kingston upon Thames,1160.0
+2025-09-01,Lambeth,4182.0
+2025-09-01,Lewisham,2997.0
+2025-09-01,Merton,1359.0
+2025-09-01,Newham,4200.0
+2025-09-01,Redbridge,2696.0
+2025-09-01,Richmond upon Thames,1084.0
+2025-09-01,Southwark,4341.0
+2025-09-01,Sutton,1508.0
+2025-09-01,Tower Hamlets,4097.0
+2025-09-01,Waltham Forest,2405.0
+2025-09-01,Wandsworth,2728.0
+2025-09-01,Westminster,8223.0
+2025-10-01,Barking and Dagenham,2310.0
+2025-10-01,Barnet,3298.0
+2025-10-01,Bexley,1763.0
+2025-10-01,Brent,3894.0
+2025-10-01,Bromley,2435.0
+2025-10-01,Camden,4384.0
+2025-10-01,Croydon,3449.0
+2025-10-01,Ealing,3579.0
+2025-10-01,Enfield,3321.0
+2025-10-01,Greenwich,3023.0
+2025-10-01,Hackney,3607.0
+2025-10-01,Hammersmith and Fulham,2262.0
+2025-10-01,Haringey,3105.0
+2025-10-01,Harrow,1942.0
+2025-10-01,Havering,2023.0
+2025-10-01,Hillingdon,3294.0
+2025-10-01,Hounslow,2958.0
+2025-10-01,Islington,3350.0
+2025-10-01,Kensington and Chelsea,2384.0
+2025-10-01,Kingston upon Thames,1401.0
+2025-10-01,Lambeth,4078.0
+2025-10-01,Lewisham,3338.0
+2025-10-01,Merton,1369.0
+2025-10-01,Newham,4860.0
+2025-10-01,Redbridge,2875.0
+2025-10-01,Richmond upon Thames,1202.0
+2025-10-01,Southwark,4514.0
+2025-10-01,Sutton,1527.0
+2025-10-01,Tower Hamlets,4249.0
+2025-10-01,Waltham Forest,2442.0
+2025-10-01,Wandsworth,3104.0
+2025-10-01,Westminster,8794.0
+2025-11-01,Barking and Dagenham,2390.0
+2025-11-01,Barnet,3000.0
+2025-11-01,Bexley,1647.0
+2025-11-01,Brent,3436.0
+2025-11-01,Bromley,2558.0
+2025-11-01,Camden,4524.0
+2025-11-01,Croydon,3414.0
+2025-11-01,Ealing,3534.0
+2025-11-01,Enfield,3153.0
+2025-11-01,Greenwich,2881.0
+2025-11-01,Hackney,3491.0
+2025-11-01,Hammersmith and Fulham,2110.0
+2025-11-01,Haringey,3232.0
+2025-11-01,Harrow,1869.0
+2025-11-01,Havering,2060.0
+2025-11-01,Hillingdon,3274.0
+2025-11-01,Hounslow,2914.0
+2025-11-01,Islington,3217.0
+2025-11-01,Kensington and Chelsea,2097.0
+2025-11-01,Kingston upon Thames,1320.0
+2025-11-01,Lambeth,4092.0
+2025-11-01,Lewisham,3278.0
+2025-11-01,Merton,1407.0
+2025-11-01,Newham,4567.0
+2025-11-01,Redbridge,2727.0
+2025-11-01,Richmond upon Thames,1102.0
+2025-11-01,Southwark,4417.0
+2025-11-01,Sutton,1511.0
+2025-11-01,Tower Hamlets,4090.0
+2025-11-01,Waltham Forest,2519.0
+2025-11-01,Wandsworth,2643.0
+2025-11-01,Westminster,10340.0
+2025-12-01,Barking and Dagenham,2192.0
+2025-12-01,Barnet,2983.0
+2025-12-01,Bexley,1725.0
+2025-12-01,Brent,3262.0
+2025-12-01,Bromley,2398.0
+2025-12-01,Camden,4138.0
+2025-12-01,Croydon,3432.0
+2025-12-01,Ealing,3290.0
+2025-12-01,Enfield,2943.0
+2025-12-01,Greenwich,2891.0
+2025-12-01,Hackney,3521.0
+2025-12-01,Hammersmith and Fulham,2075.0
+2025-12-01,Haringey,2870.0
+2025-12-01,Harrow,1659.0
+2025-12-01,Havering,2079.0
+2025-12-01,Hillingdon,3039.0
+2025-12-01,Hounslow,2591.0
+2025-12-01,Islington,3094.0
+2025-12-01,Kensington and Chelsea,2092.0
+2025-12-01,Kingston upon Thames,1195.0
+2025-12-01,Lambeth,4026.0
+2025-12-01,Lewisham,3073.0
+2025-12-01,Merton,1504.0
+2025-12-01,Newham,4468.0
+2025-12-01,Redbridge,2759.0
+2025-12-01,Richmond upon Thames,1086.0
+2025-12-01,Southwark,4374.0
+2025-12-01,Sutton,1311.0
+2025-12-01,Tower Hamlets,3988.0
+2025-12-01,Waltham Forest,2405.0
+2025-12-01,Wandsworth,2573.0
+2025-12-01,Westminster,10366.0
+2026-01-01,Barking and Dagenham,2161.0
+2026-01-01,Barnet,3037.0
+2026-01-01,Bexley,1529.0
+2026-01-01,Brent,3111.0
+2026-01-01,Bromley,2236.0
+2026-01-01,Camden,3797.0
+2026-01-01,Croydon,3739.0
+2026-01-01,Ealing,3048.0
+2026-01-01,Enfield,3056.0
+2026-01-01,Greenwich,2877.0
+2026-01-01,Hackney,3399.0
+2026-01-01,Hammersmith and Fulham,2076.0
+2026-01-01,Haringey,2589.0
+2026-01-01,Harrow,1702.0
+2026-01-01,Havering,1940.0
+2026-01-01,Hillingdon,3168.0
+2026-01-01,Hounslow,2833.0
+2026-01-01,Islington,3114.0
+2026-01-01,Kensington and Chelsea,2030.0
+2026-01-01,Kingston upon Thames,1119.0
+2026-01-01,Lambeth,3841.0
+2026-01-01,Lewisham,3078.0
+2026-01-01,Merton,1329.0
+2026-01-01,Newham,4543.0
+2026-01-01,Redbridge,2540.0
+2026-01-01,Richmond upon Thames,1105.0
+2026-01-01,Southwark,4142.0
+2026-01-01,Sutton,1310.0
+2026-01-01,Tower Hamlets,3470.0
+2026-01-01,Waltham Forest,2499.0
+2026-01-01,Wandsworth,2585.0
+2026-01-01,Westminster,8135.0
+2026-02-01,Barking and Dagenham,1950.0
+2026-02-01,Barnet,3060.0
+2026-02-01,Bexley,1503.0
+2026-02-01,Brent,3205.0
+2026-02-01,Bromley,2320.0
+2026-02-01,Camden,4132.0
+2026-02-01,Croydon,3243.0
+2026-02-01,Ealing,3176.0
+2026-02-01,Enfield,3059.0
+2026-02-01,Greenwich,2841.0
+2026-02-01,Hackney,3126.0
+2026-02-01,Hammersmith and Fulham,1907.0
+2026-02-01,Haringey,2470.0
+2026-02-01,Harrow,1788.0
+2026-02-01,Havering,1891.0
+2026-02-01,Hillingdon,2923.0
+2026-02-01,Hounslow,2540.0
+2026-02-01,Islington,3052.0
+2026-02-01,Kensington and Chelsea,1783.0
+2026-02-01,Kingston upon Thames,1191.0
+2026-02-01,Lambeth,3652.0
+2026-02-01,Lewisham,2946.0
+2026-02-01,Merton,1265.0
+2026-02-01,Newham,4103.0
+2026-02-01,Redbridge,2433.0
+2026-02-01,Richmond upon Thames,1048.0
+2026-02-01,Southwark,4217.0
+2026-02-01,Sutton,1264.0
+2026-02-01,Tower Hamlets,3500.0
+2026-02-01,Waltham Forest,2334.0
+2026-02-01,Wandsworth,2481.0
+2026-02-01,Westminster,7318.0
