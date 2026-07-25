@@ -1,0 +1,4289 @@
+date,borough,crime_count
+1/1/2015,Barking and Dagenham,440
+1/1/2015,Barnet,449
+1/1/2015,Bexley,232
+1/1/2015,Brent,544
+1/1/2015,Bromley,394
+1/1/2015,Camden,641
+1/1/2015,Croydon,629
+1/1/2015,Ealing,497
+1/1/2015,Enfield,449
+1/1/2015,Greenwich,520
+1/1/2015,Hackney,670
+1/1/2015,Hammersmith and Fulham,386
+1/1/2015,Haringey,563
+1/1/2015,Harrow,249
+1/1/2015,Havering,346
+1/1/2015,Hillingdon,469
+1/1/2015,Hounslow,459
+1/1/2015,Islington,747
+1/1/2015,Kensington and Chelsea,359
+1/1/2015,Kingston upon Thames,154
+1/1/2015,Lambeth,674
+1/1/2015,Lewisham,540
+1/1/2015,Merton,276
+1/1/2015,Newham,670
+1/1/2015,Redbridge,364
+1/1/2015,Richmond upon Thames,192
+1/1/2015,Southwark,664
+1/1/2015,Sutton,245
+1/1/2015,Tower Hamlets,642
+1/1/2015,Waltham Forest,449
+1/1/2015,Wandsworth,382
+1/1/2015,Westminster,749
+2/1/2015,Barking and Dagenham,384
+2/1/2015,Barnet,479
+2/1/2015,Bexley,218
+2/1/2015,Brent,476
+2/1/2015,Bromley,387
+2/1/2015,Camden,542
+2/1/2015,Croydon,619
+2/1/2015,Ealing,402
+2/1/2015,Enfield,418
+2/1/2015,Greenwich,450
+2/1/2015,Hackney,702
+2/1/2015,Hammersmith and Fulham,304
+2/1/2015,Haringey,522
+2/1/2015,Harrow,237
+2/1/2015,Havering,241
+2/1/2015,Hillingdon,449
+2/1/2015,Hounslow,379
+2/1/2015,Islington,738
+2/1/2015,Kensington and Chelsea,286
+2/1/2015,Kingston upon Thames,166
+2/1/2015,Lambeth,609
+2/1/2015,Lewisham,528
+2/1/2015,Merton,218
+2/1/2015,Newham,654
+2/1/2015,Redbridge,320
+2/1/2015,Richmond upon Thames,126
+2/1/2015,Southwark,599
+2/1/2015,Sutton,226
+2/1/2015,Tower Hamlets,603
+2/1/2015,Waltham Forest,474
+2/1/2015,Wandsworth,373
+2/1/2015,Westminster,728
+3/1/2015,Barking and Dagenham,498
+3/1/2015,Barnet,487
+3/1/2015,Bexley,278
+3/1/2015,Brent,642
+3/1/2015,Bromley,397
+3/1/2015,Camden,554
+3/1/2015,Croydon,722
+3/1/2015,Ealing,513
+3/1/2015,Enfield,562
+3/1/2015,Greenwich,484
+3/1/2015,Hackney,760
+3/1/2015,Hammersmith and Fulham,398
+3/1/2015,Haringey,627
+3/1/2015,Harrow,316
+3/1/2015,Havering,326
+3/1/2015,Hillingdon,432
+3/1/2015,Hounslow,395
+3/1/2015,Islington,870
+3/1/2015,Kensington and Chelsea,313
+3/1/2015,Kingston upon Thames,185
+3/1/2015,Lambeth,677
+3/1/2015,Lewisham,545
+3/1/2015,Merton,250
+3/1/2015,Newham,703
+3/1/2015,Redbridge,431
+3/1/2015,Richmond upon Thames,191
+3/1/2015,Southwark,683
+3/1/2015,Sutton,207
+3/1/2015,Tower Hamlets,664
+3/1/2015,Waltham Forest,576
+3/1/2015,Wandsworth,432
+3/1/2015,Westminster,833
+4/1/2015,Barking and Dagenham,500
+4/1/2015,Barnet,573
+4/1/2015,Bexley,261
+4/1/2015,Brent,542
+4/1/2015,Bromley,429
+4/1/2015,Camden,678
+4/1/2015,Croydon,667
+4/1/2015,Ealing,478
+4/1/2015,Enfield,457
+4/1/2015,Greenwich,562
+4/1/2015,Hackney,749
+4/1/2015,Hammersmith and Fulham,371
+4/1/2015,Haringey,561
+4/1/2015,Harrow,342
+4/1/2015,Havering,330
+4/1/2015,Hillingdon,446
+4/1/2015,Hounslow,463
+4/1/2015,Islington,780
+4/1/2015,Kensington and Chelsea,316
+4/1/2015,Kingston upon Thames,202
+4/1/2015,Lambeth,653
+4/1/2015,Lewisham,571
+4/1/2015,Merton,240
+4/1/2015,Newham,650
+4/1/2015,Redbridge,401
+4/1/2015,Richmond upon Thames,155
+4/1/2015,Southwark,577
+4/1/2015,Sutton,301
+4/1/2015,Tower Hamlets,617
+4/1/2015,Waltham Forest,467
+4/1/2015,Wandsworth,393
+4/1/2015,Westminster,775
+5/1/2015,Barking and Dagenham,513
+5/1/2015,Barnet,521
+5/1/2015,Bexley,270
+5/1/2015,Brent,643
+5/1/2015,Bromley,478
+5/1/2015,Camden,722
+5/1/2015,Croydon,713
+5/1/2015,Ealing,659
+5/1/2015,Enfield,542
+5/1/2015,Greenwich,548
+5/1/2015,Hackney,819
+5/1/2015,Hammersmith and Fulham,390
+5/1/2015,Haringey,616
+5/1/2015,Harrow,337
+5/1/2015,Havering,389
+5/1/2015,Hillingdon,502
+5/1/2015,Hounslow,464
+5/1/2015,Islington,943
+5/1/2015,Kensington and Chelsea,334
+5/1/2015,Kingston upon Thames,180
+5/1/2015,Lambeth,791
+5/1/2015,Lewisham,616
+5/1/2015,Merton,260
+5/1/2015,Newham,678
+5/1/2015,Redbridge,382
+5/1/2015,Richmond upon Thames,206
+5/1/2015,Southwark,784
+5/1/2015,Sutton,208
+5/1/2015,Tower Hamlets,775
+5/1/2015,Waltham Forest,519
+5/1/2015,Wandsworth,462
+5/1/2015,Westminster,878
+6/1/2015,Barking and Dagenham,486
+6/1/2015,Barnet,554
+6/1/2015,Bexley,261
+6/1/2015,Brent,551
+6/1/2015,Bromley,438
+6/1/2015,Camden,699
+6/1/2015,Croydon,677
+6/1/2015,Ealing,588
+6/1/2015,Enfield,520
+6/1/2015,Greenwich,531
+6/1/2015,Hackney,783
+6/1/2015,Hammersmith and Fulham,339
+6/1/2015,Haringey,539
+6/1/2015,Harrow,328
+6/1/2015,Havering,360
+6/1/2015,Hillingdon,525
+6/1/2015,Hounslow,490
+6/1/2015,Islington,779
+6/1/2015,Kensington and Chelsea,301
+6/1/2015,Kingston upon Thames,182
+6/1/2015,Lambeth,663
+6/1/2015,Lewisham,609
+6/1/2015,Merton,276
+6/1/2015,Newham,708
+6/1/2015,Redbridge,529
+6/1/2015,Richmond upon Thames,203
+6/1/2015,Southwark,686
+6/1/2015,Sutton,296
+6/1/2015,Tower Hamlets,685
+6/1/2015,Waltham Forest,526
+6/1/2015,Wandsworth,457
+6/1/2015,Westminster,776
+7/1/2015,Barking and Dagenham,540
+7/1/2015,Barnet,583
+7/1/2015,Bexley,287
+7/1/2015,Brent,512
+7/1/2015,Bromley,441
+7/1/2015,Camden,566
+7/1/2015,Croydon,635
+7/1/2015,Ealing,692
+7/1/2015,Enfield,569
+7/1/2015,Greenwich,518
+7/1/2015,Hackney,801
+7/1/2015,Hammersmith and Fulham,348
+7/1/2015,Haringey,713
+7/1/2015,Harrow,303
+7/1/2015,Havering,353
+7/1/2015,Hillingdon,481
+7/1/2015,Hounslow,537
+7/1/2015,Islington,758
+7/1/2015,Kensington and Chelsea,347
+7/1/2015,Kingston upon Thames,225
+7/1/2015,Lambeth,688
+7/1/2015,Lewisham,663
+7/1/2015,Merton,341
+7/1/2015,Newham,819
+7/1/2015,Redbridge,424
+7/1/2015,Richmond upon Thames,214
+7/1/2015,Southwark,647
+7/1/2015,Sutton,257
+7/1/2015,Tower Hamlets,776
+7/1/2015,Waltham Forest,523
+7/1/2015,Wandsworth,476
+7/1/2015,Westminster,730
+8/1/2015,Barking and Dagenham,483
+8/1/2015,Barnet,577
+8/1/2015,Bexley,238
+8/1/2015,Brent,560
+8/1/2015,Bromley,462
+8/1/2015,Camden,572
+8/1/2015,Croydon,689
+8/1/2015,Ealing,610
+8/1/2015,Enfield,583
+8/1/2015,Greenwich,656
+8/1/2015,Hackney,769
+8/1/2015,Hammersmith and Fulham,351
+8/1/2015,Haringey,724
+8/1/2015,Harrow,337
+8/1/2015,Havering,346
+8/1/2015,Hillingdon,486
+8/1/2015,Hounslow,510
+8/1/2015,Islington,677
+8/1/2015,Kensington and Chelsea,405
+8/1/2015,Kingston upon Thames,197
+8/1/2015,Lambeth,822
+8/1/2015,Lewisham,641
+8/1/2015,Merton,280
+8/1/2015,Newham,704
+8/1/2015,Redbridge,415
+8/1/2015,Richmond upon Thames,212
+8/1/2015,Southwark,690
+8/1/2015,Sutton,219
+8/1/2015,Tower Hamlets,696
+8/1/2015,Waltham Forest,530
+8/1/2015,Wandsworth,424
+8/1/2015,Westminster,790
+9/1/2015,Barking and Dagenham,485
+9/1/2015,Barnet,485
+9/1/2015,Bexley,240
+9/1/2015,Brent,501
+9/1/2015,Bromley,410
+9/1/2015,Camden,622
+9/1/2015,Croydon,601
+9/1/2015,Ealing,601
+9/1/2015,Enfield,428
+9/1/2015,Greenwich,540
+9/1/2015,Hackney,645
+9/1/2015,Hammersmith and Fulham,320
+9/1/2015,Haringey,566
+9/1/2015,Harrow,305
+9/1/2015,Havering,308
+9/1/2015,Hillingdon,486
+9/1/2015,Hounslow,515
+9/1/2015,Islington,614
+9/1/2015,Kensington and Chelsea,405
+9/1/2015,Kingston upon Thames,227
+9/1/2015,Lambeth,646
+9/1/2015,Lewisham,538
+9/1/2015,Merton,262
+9/1/2015,Newham,729
+9/1/2015,Redbridge,456
+9/1/2015,Richmond upon Thames,182
+9/1/2015,Southwark,623
+9/1/2015,Sutton,252
+9/1/2015,Tower Hamlets,604
+9/1/2015,Waltham Forest,435
+9/1/2015,Wandsworth,418
+9/1/2015,Westminster,712
+10/1/2015,Barking and Dagenham,419
+10/1/2015,Barnet,559
+10/1/2015,Bexley,275
+10/1/2015,Brent,496
+10/1/2015,Bromley,414
+10/1/2015,Camden,540
+10/1/2015,Croydon,666
+10/1/2015,Ealing,664
+10/1/2015,Enfield,574
+10/1/2015,Greenwich,504
+10/1/2015,Hackney,768
+10/1/2015,Hammersmith and Fulham,439
+10/1/2015,Haringey,794
+10/1/2015,Harrow,332
+10/1/2015,Havering,430
+10/1/2015,Hillingdon,420
+10/1/2015,Hounslow,545
+10/1/2015,Islington,671
+10/1/2015,Kensington and Chelsea,300
+10/1/2015,Kingston upon Thames,232
+10/1/2015,Lambeth,716
+10/1/2015,Lewisham,628
+10/1/2015,Merton,311
+10/1/2015,Newham,766
+10/1/2015,Redbridge,409
+10/1/2015,Richmond upon Thames,225
+10/1/2015,Southwark,709
+10/1/2015,Sutton,243
+10/1/2015,Tower Hamlets,693
+10/1/2015,Waltham Forest,482
+10/1/2015,Wandsworth,508
+10/1/2015,Westminster,831
+11/1/2015,Barking and Dagenham,418
+11/1/2015,Barnet,555
+11/1/2015,Bexley,298
+11/1/2015,Brent,601
+11/1/2015,Bromley,420
+11/1/2015,Camden,576
+11/1/2015,Croydon,713
+11/1/2015,Ealing,539
+11/1/2015,Enfield,542
+11/1/2015,Greenwich,501
+11/1/2015,Hackney,694
+11/1/2015,Hammersmith and Fulham,401
+11/1/2015,Haringey,692
+11/1/2015,Harrow,321
+11/1/2015,Havering,384
+11/1/2015,Hillingdon,509
+11/1/2015,Hounslow,589
+11/1/2015,Islington,793
+11/1/2015,Kensington and Chelsea,404
+11/1/2015,Kingston upon Thames,206
+11/1/2015,Lambeth,674
+11/1/2015,Lewisham,572
+11/1/2015,Merton,271
+11/1/2015,Newham,803
+11/1/2015,Redbridge,506
+11/1/2015,Richmond upon Thames,151
+11/1/2015,Southwark,707
+11/1/2015,Sutton,217
+11/1/2015,Tower Hamlets,748
+11/1/2015,Waltham Forest,634
+11/1/2015,Wandsworth,442
+11/1/2015,Westminster,890
+12/1/2015,Barking and Dagenham,432
+12/1/2015,Barnet,586
+12/1/2015,Bexley,300
+12/1/2015,Brent,613
+12/1/2015,Bromley,429
+12/1/2015,Camden,589
+12/1/2015,Croydon,753
+12/1/2015,Ealing,738
+12/1/2015,Enfield,551
+12/1/2015,Greenwich,537
+12/1/2015,Hackney,695
+12/1/2015,Hammersmith and Fulham,406
+12/1/2015,Haringey,655
+12/1/2015,Harrow,322
+12/1/2015,Havering,422
+12/1/2015,Hillingdon,479
+12/1/2015,Hounslow,581
+12/1/2015,Islington,877
+12/1/2015,Kensington and Chelsea,310
+12/1/2015,Kingston upon Thames,209
+12/1/2015,Lambeth,807
+12/1/2015,Lewisham,658
+12/1/2015,Merton,305
+12/1/2015,Newham,782
+12/1/2015,Redbridge,467
+12/1/2015,Richmond upon Thames,189
+12/1/2015,Southwark,692
+12/1/2015,Sutton,234
+12/1/2015,Tower Hamlets,751
+12/1/2015,Waltham Forest,510
+12/1/2015,Wandsworth,430
+12/1/2015,Westminster,850
+1/1/2016,Barking and Dagenham,468
+1/1/2016,Barnet,518
+1/1/2016,Bexley,325
+1/1/2016,Brent,627
+1/1/2016,Bromley,385
+1/1/2016,Camden,570
+1/1/2016,Croydon,585
+1/1/2016,Ealing,598
+1/1/2016,Enfield,520
+1/1/2016,Greenwich,600
+1/1/2016,Hackney,661
+1/1/2016,Hammersmith and Fulham,355
+1/1/2016,Haringey,612
+1/1/2016,Harrow,315
+1/1/2016,Havering,356
+1/1/2016,Hillingdon,432
+1/1/2016,Hounslow,566
+1/1/2016,Islington,692
+1/1/2016,Kensington and Chelsea,244
+1/1/2016,Kingston upon Thames,207
+1/1/2016,Lambeth,597
+1/1/2016,Lewisham,626
+1/1/2016,Merton,280
+1/1/2016,Newham,696
+1/1/2016,Redbridge,398
+1/1/2016,Richmond upon Thames,198
+1/1/2016,Southwark,671
+1/1/2016,Sutton,225
+1/1/2016,Tower Hamlets,771
+1/1/2016,Waltham Forest,460
+1/1/2016,Wandsworth,450
+1/1/2016,Westminster,832
+2/1/2016,Barking and Dagenham,442
+2/1/2016,Barnet,554
+2/1/2016,Bexley,249
+2/1/2016,Brent,553
+2/1/2016,Bromley,350
+2/1/2016,Camden,494
+2/1/2016,Croydon,587
+2/1/2016,Ealing,575
+2/1/2016,Enfield,456
+2/1/2016,Greenwich,493
+2/1/2016,Hackney,564
+2/1/2016,Hammersmith and Fulham,335
+2/1/2016,Haringey,697
+2/1/2016,Harrow,260
+2/1/2016,Havering,396
+2/1/2016,Hillingdon,466
+2/1/2016,Hounslow,435
+2/1/2016,Islington,618
+2/1/2016,Kensington and Chelsea,279
+2/1/2016,Kingston upon Thames,170
+2/1/2016,Lambeth,682
+2/1/2016,Lewisham,484
+2/1/2016,Merton,258
+2/1/2016,Newham,700
+2/1/2016,Redbridge,443
+2/1/2016,Richmond upon Thames,154
+2/1/2016,Southwark,692
+2/1/2016,Sutton,242
+2/1/2016,Tower Hamlets,566
+2/1/2016,Waltham Forest,542
+2/1/2016,Wandsworth,415
+2/1/2016,Westminster,718
+3/1/2016,Barking and Dagenham,505
+3/1/2016,Barnet,500
+3/1/2016,Bexley,318
+3/1/2016,Brent,577
+3/1/2016,Bromley,406
+3/1/2016,Camden,614
+3/1/2016,Croydon,636
+3/1/2016,Ealing,560
+3/1/2016,Enfield,474
+3/1/2016,Greenwich,546
+3/1/2016,Hackney,650
+3/1/2016,Hammersmith and Fulham,364
+3/1/2016,Haringey,711
+3/1/2016,Harrow,273
+3/1/2016,Havering,384
+3/1/2016,Hillingdon,400
+3/1/2016,Hounslow,527
+3/1/2016,Islington,613
+3/1/2016,Kensington and Chelsea,310
+3/1/2016,Kingston upon Thames,184
+3/1/2016,Lambeth,678
+3/1/2016,Lewisham,592
+3/1/2016,Merton,348
+3/1/2016,Newham,714
+3/1/2016,Redbridge,478
+3/1/2016,Richmond upon Thames,223
+3/1/2016,Southwark,690
+3/1/2016,Sutton,233
+3/1/2016,Tower Hamlets,688
+3/1/2016,Waltham Forest,523
+3/1/2016,Wandsworth,440
+3/1/2016,Westminster,808
+4/1/2016,Barking and Dagenham,432
+4/1/2016,Barnet,591
+4/1/2016,Bexley,261
+4/1/2016,Brent,618
+4/1/2016,Bromley,386
+4/1/2016,Camden,472
+4/1/2016,Croydon,680
+4/1/2016,Ealing,621
+4/1/2016,Enfield,518
+4/1/2016,Greenwich,567
+4/1/2016,Hackney,754
+4/1/2016,Hammersmith and Fulham,399
+4/1/2016,Haringey,735
+4/1/2016,Harrow,289
+4/1/2016,Havering,355
+4/1/2016,Hillingdon,441
+4/1/2016,Hounslow,520
+4/1/2016,Islington,673
+4/1/2016,Kensington and Chelsea,276
+4/1/2016,Kingston upon Thames,216
+4/1/2016,Lambeth,681
+4/1/2016,Lewisham,550
+4/1/2016,Merton,268
+4/1/2016,Newham,671
+4/1/2016,Redbridge,427
+4/1/2016,Richmond upon Thames,181
+4/1/2016,Southwark,704
+4/1/2016,Sutton,246
+4/1/2016,Tower Hamlets,790
+4/1/2016,Waltham Forest,549
+4/1/2016,Wandsworth,383
+4/1/2016,Westminster,703
+5/1/2016,Barking and Dagenham,468
+5/1/2016,Barnet,600
+5/1/2016,Bexley,333
+5/1/2016,Brent,688
+5/1/2016,Bromley,477
+5/1/2016,Camden,520
+5/1/2016,Croydon,734
+5/1/2016,Ealing,601
+5/1/2016,Enfield,596
+5/1/2016,Greenwich,645
+5/1/2016,Hackney,789
+5/1/2016,Hammersmith and Fulham,420
+5/1/2016,Haringey,784
+5/1/2016,Harrow,335
+5/1/2016,Havering,414
+5/1/2016,Hillingdon,536
+5/1/2016,Hounslow,488
+5/1/2016,Islington,730
+5/1/2016,Kensington and Chelsea,289
+5/1/2016,Kingston upon Thames,228
+5/1/2016,Lambeth,896
+5/1/2016,Lewisham,693
+5/1/2016,Merton,315
+5/1/2016,Newham,715
+5/1/2016,Redbridge,427
+5/1/2016,Richmond upon Thames,258
+5/1/2016,Southwark,807
+5/1/2016,Sutton,266
+5/1/2016,Tower Hamlets,882
+5/1/2016,Waltham Forest,540
+5/1/2016,Wandsworth,493
+5/1/2016,Westminster,793
+6/1/2016,Barking and Dagenham,408
+6/1/2016,Barnet,600
+6/1/2016,Bexley,315
+6/1/2016,Brent,621
+6/1/2016,Bromley,453
+6/1/2016,Camden,612
+6/1/2016,Croydon,742
+6/1/2016,Ealing,669
+6/1/2016,Enfield,538
+6/1/2016,Greenwich,632
+6/1/2016,Hackney,985
+6/1/2016,Hammersmith and Fulham,395
+6/1/2016,Haringey,850
+6/1/2016,Harrow,359
+6/1/2016,Havering,442
+6/1/2016,Hillingdon,508
+6/1/2016,Hounslow,558
+6/1/2016,Islington,1118
+6/1/2016,Kensington and Chelsea,315
+6/1/2016,Kingston upon Thames,212
+6/1/2016,Lambeth,716
+6/1/2016,Lewisham,577
+6/1/2016,Merton,276
+6/1/2016,Newham,671
+6/1/2016,Redbridge,440
+6/1/2016,Richmond upon Thames,221
+6/1/2016,Southwark,759
+6/1/2016,Sutton,261
+6/1/2016,Tower Hamlets,868
+6/1/2016,Waltham Forest,607
+6/1/2016,Wandsworth,484
+6/1/2016,Westminster,921
+7/1/2016,Barking and Dagenham,509
+7/1/2016,Barnet,656
+7/1/2016,Bexley,317
+7/1/2016,Brent,691
+7/1/2016,Bromley,577
+7/1/2016,Camden,876
+7/1/2016,Croydon,1043
+7/1/2016,Ealing,802
+7/1/2016,Enfield,604
+7/1/2016,Greenwich,653
+7/1/2016,Hackney,954
+7/1/2016,Hammersmith and Fulham,432
+7/1/2016,Haringey,905
+7/1/2016,Harrow,415
+7/1/2016,Havering,412
+7/1/2016,Hillingdon,628
+7/1/2016,Hounslow,617
+7/1/2016,Islington,1095
+7/1/2016,Kensington and Chelsea,378
+7/1/2016,Kingston upon Thames,211
+7/1/2016,Lambeth,877
+7/1/2016,Lewisham,747
+7/1/2016,Merton,368
+7/1/2016,Newham,928
+7/1/2016,Redbridge,551
+7/1/2016,Richmond upon Thames,260
+7/1/2016,Southwark,979
+7/1/2016,Sutton,268
+7/1/2016,Tower Hamlets,997
+7/1/2016,Waltham Forest,676
+7/1/2016,Wandsworth,568
+7/1/2016,Westminster,1023
+8/1/2016,Barking and Dagenham,494
+8/1/2016,Barnet,638
+8/1/2016,Bexley,360
+8/1/2016,Brent,678
+8/1/2016,Bromley,409
+8/1/2016,Camden,598
+8/1/2016,Croydon,914
+8/1/2016,Ealing,742
+8/1/2016,Enfield,567
+8/1/2016,Greenwich,679
+8/1/2016,Hackney,906
+8/1/2016,Hammersmith and Fulham,462
+8/1/2016,Haringey,801
+8/1/2016,Harrow,332
+8/1/2016,Havering,458
+8/1/2016,Hillingdon,516
+8/1/2016,Hounslow,561
+8/1/2016,Islington,699
+8/1/2016,Kensington and Chelsea,579
+8/1/2016,Kingston upon Thames,235
+8/1/2016,Lambeth,836
+8/1/2016,Lewisham,691
+8/1/2016,Merton,282
+8/1/2016,Newham,777
+8/1/2016,Redbridge,599
+8/1/2016,Richmond upon Thames,189
+8/1/2016,Southwark,820
+8/1/2016,Sutton,229
+8/1/2016,Tower Hamlets,854
+8/1/2016,Waltham Forest,547
+8/1/2016,Wandsworth,507
+8/1/2016,Westminster,1019
+9/1/2016,Barking and Dagenham,427
+9/1/2016,Barnet,589
+9/1/2016,Bexley,295
+9/1/2016,Brent,574
+9/1/2016,Bromley,521
+9/1/2016,Camden,648
+9/1/2016,Croydon,792
+9/1/2016,Ealing,662
+9/1/2016,Enfield,592
+9/1/2016,Greenwich,663
+9/1/2016,Hackney,823
+9/1/2016,Hammersmith and Fulham,402
+9/1/2016,Haringey,718
+9/1/2016,Harrow,315
+9/1/2016,Havering,341
+9/1/2016,Hillingdon,527
+9/1/2016,Hounslow,491
+9/1/2016,Islington,656
+9/1/2016,Kensington and Chelsea,352
+9/1/2016,Kingston upon Thames,241
+9/1/2016,Lambeth,829
+9/1/2016,Lewisham,596
+9/1/2016,Merton,256
+9/1/2016,Newham,686
+9/1/2016,Redbridge,443
+9/1/2016,Richmond upon Thames,225
+9/1/2016,Southwark,728
+9/1/2016,Sutton,226
+9/1/2016,Tower Hamlets,821
+9/1/2016,Waltham Forest,491
+9/1/2016,Wandsworth,427
+9/1/2016,Westminster,994
+10/1/2016,Barking and Dagenham,391
+10/1/2016,Barnet,611
+10/1/2016,Bexley,317
+10/1/2016,Brent,622
+10/1/2016,Bromley,462
+10/1/2016,Camden,613
+10/1/2016,Croydon,725
+10/1/2016,Ealing,724
+10/1/2016,Enfield,561
+10/1/2016,Greenwich,540
+10/1/2016,Hackney,788
+10/1/2016,Hammersmith and Fulham,387
+10/1/2016,Haringey,705
+10/1/2016,Harrow,344
+10/1/2016,Havering,362
+10/1/2016,Hillingdon,571
+10/1/2016,Hounslow,605
+10/1/2016,Islington,737
+10/1/2016,Kensington and Chelsea,327
+10/1/2016,Kingston upon Thames,171
+10/1/2016,Lambeth,784
+10/1/2016,Lewisham,646
+10/1/2016,Merton,287
+10/1/2016,Newham,885
+10/1/2016,Redbridge,413
+10/1/2016,Richmond upon Thames,199
+10/1/2016,Southwark,703
+10/1/2016,Sutton,186
+10/1/2016,Tower Hamlets,867
+10/1/2016,Waltham Forest,518
+10/1/2016,Wandsworth,479
+10/1/2016,Westminster,798
+11/1/2016,Barking and Dagenham,465
+11/1/2016,Barnet,552
+11/1/2016,Bexley,367
+11/1/2016,Brent,664
+11/1/2016,Bromley,432
+11/1/2016,Camden,653
+11/1/2016,Croydon,703
+11/1/2016,Ealing,512
+11/1/2016,Enfield,488
+11/1/2016,Greenwich,564
+11/1/2016,Hackney,754
+11/1/2016,Hammersmith and Fulham,357
+11/1/2016,Haringey,702
+11/1/2016,Harrow,260
+11/1/2016,Havering,404
+11/1/2016,Hillingdon,460
+11/1/2016,Hounslow,518
+11/1/2016,Islington,820
+11/1/2016,Kensington and Chelsea,291
+11/1/2016,Kingston upon Thames,179
+11/1/2016,Lambeth,729
+11/1/2016,Lewisham,646
+11/1/2016,Merton,239
+11/1/2016,Newham,760
+11/1/2016,Redbridge,355
+11/1/2016,Richmond upon Thames,201
+11/1/2016,Southwark,709
+11/1/2016,Sutton,234
+11/1/2016,Tower Hamlets,803
+11/1/2016,Waltham Forest,522
+11/1/2016,Wandsworth,399
+11/1/2016,Westminster,846
+12/1/2016,Barking and Dagenham,404
+12/1/2016,Barnet,507
+12/1/2016,Bexley,327
+12/1/2016,Brent,625
+12/1/2016,Bromley,480
+12/1/2016,Camden,764
+12/1/2016,Croydon,701
+12/1/2016,Ealing,594
+12/1/2016,Enfield,544
+12/1/2016,Greenwich,625
+12/1/2016,Hackney,934
+12/1/2016,Hammersmith and Fulham,437
+12/1/2016,Haringey,756
+12/1/2016,Harrow,285
+12/1/2016,Havering,392
+12/1/2016,Hillingdon,482
+12/1/2016,Hounslow,543
+12/1/2016,Islington,926
+12/1/2016,Kensington and Chelsea,358
+12/1/2016,Kingston upon Thames,225
+12/1/2016,Lambeth,718
+12/1/2016,Lewisham,652
+12/1/2016,Merton,244
+12/1/2016,Newham,757
+12/1/2016,Redbridge,355
+12/1/2016,Richmond upon Thames,197
+12/1/2016,Southwark,878
+12/1/2016,Sutton,222
+12/1/2016,Tower Hamlets,849
+12/1/2016,Waltham Forest,552
+12/1/2016,Wandsworth,481
+12/1/2016,Westminster,1069
+1/1/2017,Barking and Dagenham,358
+1/1/2017,Barnet,558
+1/1/2017,Bexley,315
+1/1/2017,Brent,570
+1/1/2017,Bromley,445
+1/1/2017,Camden,640
+1/1/2017,Croydon,732
+1/1/2017,Ealing,486
+1/1/2017,Enfield,519
+1/1/2017,Greenwich,536
+1/1/2017,Hackney,825
+1/1/2017,Hammersmith and Fulham,304
+1/1/2017,Haringey,797
+1/1/2017,Harrow,298
+1/1/2017,Havering,409
+1/1/2017,Hillingdon,395
+1/1/2017,Hounslow,567
+1/1/2017,Islington,747
+1/1/2017,Kensington and Chelsea,316
+1/1/2017,Kingston upon Thames,195
+1/1/2017,Lambeth,727
+1/1/2017,Lewisham,574
+1/1/2017,Merton,291
+1/1/2017,Newham,734
+1/1/2017,Redbridge,456
+1/1/2017,Richmond upon Thames,192
+1/1/2017,Southwark,854
+1/1/2017,Sutton,277
+1/1/2017,Tower Hamlets,666
+1/1/2017,Waltham Forest,473
+1/1/2017,Wandsworth,433
+1/1/2017,Westminster,879
+2/1/2017,Barking and Dagenham,397
+2/1/2017,Barnet,582
+2/1/2017,Bexley,260
+2/1/2017,Brent,613
+2/1/2017,Bromley,445
+2/1/2017,Camden,701
+2/1/2017,Croydon,756
+2/1/2017,Ealing,533
+2/1/2017,Enfield,464
+2/1/2017,Greenwich,528
+2/1/2017,Hackney,934
+2/1/2017,Hammersmith and Fulham,380
+2/1/2017,Haringey,734
+2/1/2017,Harrow,279
+2/1/2017,Havering,307
+2/1/2017,Hillingdon,395
+2/1/2017,Hounslow,491
+2/1/2017,Islington,759
+2/1/2017,Kensington and Chelsea,258
+2/1/2017,Kingston upon Thames,184
+2/1/2017,Lambeth,616
+2/1/2017,Lewisham,571
+2/1/2017,Merton,241
+2/1/2017,Newham,704
+2/1/2017,Redbridge,434
+2/1/2017,Richmond upon Thames,148
+2/1/2017,Southwark,707
+2/1/2017,Sutton,224
+2/1/2017,Tower Hamlets,673
+2/1/2017,Waltham Forest,503
+2/1/2017,Wandsworth,457
+2/1/2017,Westminster,883
+3/1/2017,Barking and Dagenham,469
+3/1/2017,Barnet,605
+3/1/2017,Bexley,296
+3/1/2017,Brent,629
+3/1/2017,Bromley,502
+3/1/2017,Camden,970
+3/1/2017,Croydon,846
+3/1/2017,Ealing,769
+3/1/2017,Enfield,590
+3/1/2017,Greenwich,580
+3/1/2017,Hackney,1087
+3/1/2017,Hammersmith and Fulham,476
+3/1/2017,Haringey,776
+3/1/2017,Harrow,253
+3/1/2017,Havering,373
+3/1/2017,Hillingdon,515
+3/1/2017,Hounslow,535
+3/1/2017,Islington,995
+3/1/2017,Kensington and Chelsea,453
+3/1/2017,Kingston upon Thames,222
+3/1/2017,Lambeth,805
+3/1/2017,Lewisham,745
+3/1/2017,Merton,250
+3/1/2017,Newham,873
+3/1/2017,Redbridge,472
+3/1/2017,Richmond upon Thames,211
+3/1/2017,Southwark,856
+3/1/2017,Sutton,318
+3/1/2017,Tower Hamlets,813
+3/1/2017,Waltham Forest,538
+3/1/2017,Wandsworth,511
+3/1/2017,Westminster,1181
+4/1/2017,Barking and Dagenham,1945
+4/1/2017,Barnet,2801
+4/1/2017,Bexley,1323
+4/1/2017,Brent,3027
+4/1/2017,Bromley,2412
+4/1/2017,Camden,3768
+4/1/2017,Croydon,3081
+4/1/2017,Ealing,2856
+4/1/2017,Enfield,2663
+4/1/2017,Greenwich,2570
+4/1/2017,Hackney,3440
+4/1/2017,Hammersmith and Fulham,2016
+4/1/2017,Haringey,3233
+4/1/2017,Harrow,1578
+4/1/2017,Havering,1909
+4/1/2017,Hillingdon,2376
+4/1/2017,Hounslow,2392
+4/1/2017,Islington,3254
+4/1/2017,Kensington and Chelsea,2049
+4/1/2017,Kingston upon Thames,1119
+4/1/2017,Lambeth,3542
+4/1/2017,Lewisham,2631
+4/1/2017,Merton,1357
+4/1/2017,Newham,3500
+4/1/2017,Redbridge,2194
+4/1/2017,Richmond upon Thames,1259
+4/1/2017,Southwark,3406
+4/1/2017,Sutton,1168
+4/1/2017,Tower Hamlets,3490
+4/1/2017,Waltham Forest,2268
+4/1/2017,Wandsworth,2364
+4/1/2017,Westminster,5880
+5/1/2017,Barking and Dagenham,2231
+5/1/2017,Barnet,2819
+5/1/2017,Bexley,1514
+5/1/2017,Brent,3202
+5/1/2017,Bromley,2331
+5/1/2017,Camden,4434
+5/1/2017,Croydon,3318
+5/1/2017,Ealing,3052
+5/1/2017,Enfield,2740
+5/1/2017,Greenwich,2794
+5/1/2017,Hackney,3585
+5/1/2017,Hammersmith and Fulham,2243
+5/1/2017,Haringey,3407
+5/1/2017,Harrow,1549
+5/1/2017,Havering,2054
+5/1/2017,Hillingdon,2667
+5/1/2017,Hounslow,2705
+5/1/2017,Islington,3939
+5/1/2017,Kensington and Chelsea,2191
+5/1/2017,Kingston upon Thames,1159
+5/1/2017,Lambeth,3668
+5/1/2017,Lewisham,2861
+5/1/2017,Merton,1490
+5/1/2017,Newham,3400
+5/1/2017,Redbridge,2428
+5/1/2017,Richmond upon Thames,1518
+5/1/2017,Southwark,3514
+5/1/2017,Sutton,1429
+5/1/2017,Tower Hamlets,3597
+5/1/2017,Waltham Forest,2444
+5/1/2017,Wandsworth,2744
+5/1/2017,Westminster,5989
+6/1/2017,Barking and Dagenham,2058
+6/1/2017,Barnet,2903
+6/1/2017,Bexley,1650
+6/1/2017,Brent,3122
+6/1/2017,Bromley,2380
+6/1/2017,Camden,4532
+6/1/2017,Croydon,3353
+6/1/2017,Ealing,3252
+6/1/2017,Enfield,2714
+6/1/2017,Greenwich,2736
+6/1/2017,Hackney,3884
+6/1/2017,Hammersmith and Fulham,2292
+6/1/2017,Haringey,3268
+6/1/2017,Harrow,1555
+6/1/2017,Havering,2011
+6/1/2017,Hillingdon,2576
+6/1/2017,Hounslow,2845
+6/1/2017,Islington,4309
+6/1/2017,Kensington and Chelsea,2114
+6/1/2017,Kingston upon Thames,1067
+6/1/2017,Lambeth,3760
+6/1/2017,Lewisham,2724
+6/1/2017,Merton,1524
+6/1/2017,Newham,3556
+6/1/2017,Redbridge,2635
+6/1/2017,Richmond upon Thames,1444
+6/1/2017,Southwark,3790
+6/1/2017,Sutton,1462
+6/1/2017,Tower Hamlets,3758
+6/1/2017,Waltham Forest,2672
+6/1/2017,Wandsworth,2691
+6/1/2017,Westminster,5733
+7/1/2017,Barking and Dagenham,2310
+7/1/2017,Barnet,3010
+7/1/2017,Bexley,1596
+7/1/2017,Brent,3149
+7/1/2017,Bromley,2312
+7/1/2017,Camden,4790
+7/1/2017,Croydon,3506
+7/1/2017,Ealing,3217
+7/1/2017,Enfield,2791
+7/1/2017,Greenwich,2913
+7/1/2017,Hackney,4002
+7/1/2017,Hammersmith and Fulham,2314
+7/1/2017,Haringey,3861
+7/1/2017,Harrow,1655
+7/1/2017,Havering,1978
+7/1/2017,Hillingdon,2617
+7/1/2017,Hounslow,2754
+7/1/2017,Islington,4178
+7/1/2017,Kensington and Chelsea,2335
+7/1/2017,Kingston upon Thames,1168
+7/1/2017,Lambeth,4072
+7/1/2017,Lewisham,2750
+7/1/2017,Merton,1485
+7/1/2017,Newham,3934
+7/1/2017,Redbridge,2567
+7/1/2017,Richmond upon Thames,1488
+7/1/2017,Southwark,3828
+7/1/2017,Sutton,1259
+7/1/2017,Tower Hamlets,3969
+7/1/2017,Waltham Forest,2591
+7/1/2017,Wandsworth,2911
+7/1/2017,Westminster,6429
+8/1/2017,Barking and Dagenham,2084
+8/1/2017,Barnet,2705
+8/1/2017,Bexley,1545
+8/1/2017,Brent,3178
+8/1/2017,Bromley,2271
+8/1/2017,Camden,4508
+8/1/2017,Croydon,3259
+8/1/2017,Ealing,2891
+8/1/2017,Enfield,2513
+8/1/2017,Greenwich,2702
+8/1/2017,Hackney,3324
+8/1/2017,Hammersmith and Fulham,2264
+8/1/2017,Haringey,3457
+8/1/2017,Harrow,1396
+8/1/2017,Havering,2020
+8/1/2017,Hillingdon,2410
+8/1/2017,Hounslow,2680
+8/1/2017,Islington,3811
+8/1/2017,Kensington and Chelsea,2867
+8/1/2017,Kingston upon Thames,1191
+8/1/2017,Lambeth,4047
+8/1/2017,Lewisham,2874
+8/1/2017,Merton,1357
+8/1/2017,Newham,3545
+8/1/2017,Redbridge,2466
+8/1/2017,Richmond upon Thames,1346
+8/1/2017,Southwark,3841
+8/1/2017,Sutton,1241
+8/1/2017,Tower Hamlets,3344
+8/1/2017,Waltham Forest,2295
+8/1/2017,Wandsworth,2493
+8/1/2017,Westminster,6233
+9/1/2017,Barking and Dagenham,1991
+9/1/2017,Barnet,2720
+9/1/2017,Bexley,1545
+9/1/2017,Brent,3183
+9/1/2017,Bromley,2201
+9/1/2017,Camden,4345
+9/1/2017,Croydon,3173
+9/1/2017,Ealing,2879
+9/1/2017,Enfield,2524
+9/1/2017,Greenwich,2585
+9/1/2017,Hackney,3094
+9/1/2017,Hammersmith and Fulham,2018
+9/1/2017,Haringey,3329
+9/1/2017,Harrow,1434
+9/1/2017,Havering,1834
+9/1/2017,Hillingdon,2424
+9/1/2017,Hounslow,2440
+9/1/2017,Islington,3548
+9/1/2017,Kensington and Chelsea,2132
+9/1/2017,Kingston upon Thames,1098
+9/1/2017,Lambeth,3605
+9/1/2017,Lewisham,2662
+9/1/2017,Merton,1427
+9/1/2017,Newham,3598
+9/1/2017,Redbridge,2582
+9/1/2017,Richmond upon Thames,1380
+9/1/2017,Southwark,3658
+9/1/2017,Sutton,1291
+9/1/2017,Tower Hamlets,3261
+9/1/2017,Waltham Forest,2380
+9/1/2017,Wandsworth,2461
+9/1/2017,Westminster,5873
+10/1/2017,Barking and Dagenham,2037
+10/1/2017,Barnet,3025
+10/1/2017,Bexley,1726
+10/1/2017,Brent,3518
+10/1/2017,Bromley,2266
+10/1/2017,Camden,4871
+10/1/2017,Croydon,3180
+10/1/2017,Ealing,3335
+10/1/2017,Enfield,2854
+10/1/2017,Greenwich,2938
+10/1/2017,Hackney,3460
+10/1/2017,Hammersmith and Fulham,2213
+10/1/2017,Haringey,3358
+10/1/2017,Harrow,1615
+10/1/2017,Havering,2124
+10/1/2017,Hillingdon,2804
+10/1/2017,Hounslow,2768
+10/1/2017,Islington,3716
+10/1/2017,Kensington and Chelsea,2110
+10/1/2017,Kingston upon Thames,1243
+10/1/2017,Lambeth,3676
+10/1/2017,Lewisham,2643
+10/1/2017,Merton,1349
+10/1/2017,Newham,4035
+10/1/2017,Redbridge,2663
+10/1/2017,Richmond upon Thames,1363
+10/1/2017,Southwark,3785
+10/1/2017,Sutton,1385
+10/1/2017,Tower Hamlets,3710
+10/1/2017,Waltham Forest,2579
+10/1/2017,Wandsworth,2723
+10/1/2017,Westminster,5977
+11/1/2017,Barking and Dagenham,1954
+11/1/2017,Barnet,2957
+11/1/2017,Bexley,1565
+11/1/2017,Brent,3372
+11/1/2017,Bromley,2424
+11/1/2017,Camden,4570
+11/1/2017,Croydon,3220
+11/1/2017,Ealing,3101
+11/1/2017,Enfield,2786
+11/1/2017,Greenwich,2532
+11/1/2017,Hackney,3291
+11/1/2017,Hammersmith and Fulham,2451
+11/1/2017,Haringey,3626
+11/1/2017,Harrow,1475
+11/1/2017,Havering,2003
+11/1/2017,Hillingdon,2596
+11/1/2017,Hounslow,2725
+11/1/2017,Islington,3437
+11/1/2017,Kensington and Chelsea,2108
+11/1/2017,Kingston upon Thames,1291
+11/1/2017,Lambeth,3984
+11/1/2017,Lewisham,2569
+11/1/2017,Merton,1413
+11/1/2017,Newham,3898
+11/1/2017,Redbridge,2379
+11/1/2017,Richmond upon Thames,1343
+11/1/2017,Southwark,4101
+11/1/2017,Sutton,1214
+11/1/2017,Tower Hamlets,3212
+11/1/2017,Waltham Forest,2502
+11/1/2017,Wandsworth,2657
+11/1/2017,Westminster,5959
+12/1/2017,Barking and Dagenham,1908
+12/1/2017,Barnet,2608
+12/1/2017,Bexley,1475
+12/1/2017,Brent,3206
+12/1/2017,Bromley,2258
+12/1/2017,Camden,3907
+12/1/2017,Croydon,3244
+12/1/2017,Ealing,2676
+12/1/2017,Enfield,2566
+12/1/2017,Greenwich,2517
+12/1/2017,Hackney,3034
+12/1/2017,Hammersmith and Fulham,2244
+12/1/2017,Haringey,3038
+12/1/2017,Harrow,1301
+12/1/2017,Havering,1962
+12/1/2017,Hillingdon,2542
+12/1/2017,Hounslow,2483
+12/1/2017,Islington,3393
+12/1/2017,Kensington and Chelsea,2043
+12/1/2017,Kingston upon Thames,1085
+12/1/2017,Lambeth,3270
+12/1/2017,Lewisham,2578
+12/1/2017,Merton,1472
+12/1/2017,Newham,3540
+12/1/2017,Redbridge,2336
+12/1/2017,Richmond upon Thames,1162
+12/1/2017,Southwark,3407
+12/1/2017,Sutton,1154
+12/1/2017,Tower Hamlets,3027
+12/1/2017,Waltham Forest,2136
+12/1/2017,Wandsworth,2689
+12/1/2017,Westminster,6297
+1/1/2018,Barking and Dagenham,1850
+1/1/2018,Barnet,2775
+1/1/2018,Bexley,1510
+1/1/2018,Brent,3133
+1/1/2018,Bromley,2380
+1/1/2018,Camden,4070
+1/1/2018,Croydon,3211
+1/1/2018,Ealing,2871
+1/1/2018,Enfield,2711
+1/1/2018,Greenwich,2611
+1/1/2018,Hackney,3082
+1/1/2018,Hammersmith and Fulham,2079
+1/1/2018,Haringey,3319
+1/1/2018,Harrow,1571
+1/1/2018,Havering,1894
+1/1/2018,Hillingdon,2492
+1/1/2018,Hounslow,2658
+1/1/2018,Islington,3511
+1/1/2018,Kensington and Chelsea,2034
+1/1/2018,Kingston upon Thames,1202
+1/1/2018,Lambeth,3510
+1/1/2018,Lewisham,2749
+1/1/2018,Merton,1404
+1/1/2018,Newham,3637
+1/1/2018,Redbridge,2570
+1/1/2018,Richmond upon Thames,1177
+1/1/2018,Southwark,3590
+1/1/2018,Sutton,1272
+1/1/2018,Tower Hamlets,3358
+1/1/2018,Waltham Forest,2366
+1/1/2018,Wandsworth,2605
+1/1/2018,Westminster,5861
+2/1/2018,Barking and Dagenham,1840
+2/1/2018,Barnet,2579
+2/1/2018,Bexley,1297
+2/1/2018,Brent,2915
+2/1/2018,Bromley,2044
+2/1/2018,Camden,3531
+2/1/2018,Croydon,3058
+2/1/2018,Ealing,2502
+2/1/2018,Enfield,2612
+2/1/2018,Greenwich,2214
+2/1/2018,Hackney,2681
+2/1/2018,Hammersmith and Fulham,2040
+2/1/2018,Haringey,2856
+2/1/2018,Harrow,1362
+2/1/2018,Havering,1721
+2/1/2018,Hillingdon,2339
+2/1/2018,Hounslow,2336
+2/1/2018,Islington,2663
+2/1/2018,Kensington and Chelsea,2034
+2/1/2018,Kingston upon Thames,1083
+2/1/2018,Lambeth,3191
+2/1/2018,Lewisham,2318
+2/1/2018,Merton,1384
+2/1/2018,Newham,3296
+2/1/2018,Redbridge,2274
+2/1/2018,Richmond upon Thames,1115
+2/1/2018,Southwark,3121
+2/1/2018,Sutton,1082
+2/1/2018,Tower Hamlets,2837
+2/1/2018,Waltham Forest,2320
+2/1/2018,Wandsworth,2501
+2/1/2018,Westminster,5380
+3/1/2018,Barking and Dagenham,2023
+3/1/2018,Barnet,2878
+3/1/2018,Bexley,1474
+3/1/2018,Brent,3165
+3/1/2018,Bromley,2442
+3/1/2018,Camden,3843
+3/1/2018,Croydon,3185
+3/1/2018,Ealing,2846
+3/1/2018,Enfield,2881
+3/1/2018,Greenwich,2506
+3/1/2018,Hackney,2982
+3/1/2018,Hammersmith and Fulham,2126
+3/1/2018,Haringey,3007
+3/1/2018,Harrow,1455
+3/1/2018,Havering,1933
+3/1/2018,Hillingdon,2623
+3/1/2018,Hounslow,2533
+3/1/2018,Islington,2771
+3/1/2018,Kensington and Chelsea,1961
+3/1/2018,Kingston upon Thames,1214
+3/1/2018,Lambeth,3541
+3/1/2018,Lewisham,2637
+3/1/2018,Merton,1313
+3/1/2018,Newham,3769
+3/1/2018,Redbridge,2405
+3/1/2018,Richmond upon Thames,1194
+3/1/2018,Southwark,3471
+3/1/2018,Sutton,1186
+3/1/2018,Tower Hamlets,3352
+3/1/2018,Waltham Forest,2554
+3/1/2018,Wandsworth,2568
+3/1/2018,Westminster,5878
+4/1/2018,Barking and Dagenham,1867
+4/1/2018,Barnet,2921
+4/1/2018,Bexley,1523
+4/1/2018,Brent,3090
+4/1/2018,Bromley,2311
+4/1/2018,Camden,3594
+4/1/2018,Croydon,3199
+4/1/2018,Ealing,2885
+4/1/2018,Enfield,2904
+4/1/2018,Greenwich,2668
+4/1/2018,Hackney,3209
+4/1/2018,Hammersmith and Fulham,2110
+4/1/2018,Haringey,3460
+4/1/2018,Harrow,1344
+4/1/2018,Havering,1904
+4/1/2018,Hillingdon,2465
+4/1/2018,Hounslow,2569
+4/1/2018,Islington,3059
+4/1/2018,Kensington and Chelsea,1950
+4/1/2018,Kingston upon Thames,1204
+4/1/2018,Lambeth,3561
+4/1/2018,Lewisham,2456
+4/1/2018,Merton,1292
+4/1/2018,Newham,3612
+4/1/2018,Redbridge,2459
+4/1/2018,Richmond upon Thames,1178
+4/1/2018,Southwark,3747
+4/1/2018,Sutton,1239
+4/1/2018,Tower Hamlets,3622
+4/1/2018,Waltham Forest,2390
+4/1/2018,Wandsworth,2607
+4/1/2018,Westminster,5498
+5/1/2018,Barking and Dagenham,1928
+5/1/2018,Barnet,3075
+5/1/2018,Bexley,1598
+5/1/2018,Brent,3453
+5/1/2018,Bromley,2419
+5/1/2018,Camden,3748
+5/1/2018,Croydon,3370
+5/1/2018,Ealing,3084
+5/1/2018,Enfield,3063
+5/1/2018,Greenwich,2872
+5/1/2018,Hackney,3455
+5/1/2018,Hammersmith and Fulham,2304
+5/1/2018,Haringey,3427
+5/1/2018,Harrow,1642
+5/1/2018,Havering,2124
+5/1/2018,Hillingdon,2546
+5/1/2018,Hounslow,2841
+5/1/2018,Islington,3036
+5/1/2018,Kensington and Chelsea,2099
+5/1/2018,Kingston upon Thames,1177
+5/1/2018,Lambeth,3750
+5/1/2018,Lewisham,2918
+5/1/2018,Merton,1476
+5/1/2018,Newham,3762
+5/1/2018,Redbridge,2488
+5/1/2018,Richmond upon Thames,1302
+5/1/2018,Southwark,3785
+5/1/2018,Sutton,1195
+5/1/2018,Tower Hamlets,3634
+5/1/2018,Waltham Forest,2502
+5/1/2018,Wandsworth,2796
+5/1/2018,Westminster,6172
+6/1/2018,Barking and Dagenham,2048
+6/1/2018,Barnet,2983
+6/1/2018,Bexley,1729
+6/1/2018,Brent,3428
+6/1/2018,Bromley,2524
+6/1/2018,Camden,3982
+6/1/2018,Croydon,3148
+6/1/2018,Ealing,2864
+6/1/2018,Enfield,3021
+6/1/2018,Greenwich,2915
+6/1/2018,Hackney,3310
+6/1/2018,Hammersmith and Fulham,2261
+6/1/2018,Haringey,3599
+6/1/2018,Harrow,1648
+6/1/2018,Havering,1904
+6/1/2018,Hillingdon,2595
+6/1/2018,Hounslow,2624
+6/1/2018,Islington,3323
+6/1/2018,Kensington and Chelsea,2201
+6/1/2018,Kingston upon Thames,1173
+6/1/2018,Lambeth,3890
+6/1/2018,Lewisham,2744
+6/1/2018,Merton,1383
+6/1/2018,Newham,4072
+6/1/2018,Redbridge,2362
+6/1/2018,Richmond upon Thames,1271
+6/1/2018,Southwark,3750
+6/1/2018,Sutton,1387
+6/1/2018,Tower Hamlets,3878
+6/1/2018,Waltham Forest,2464
+6/1/2018,Wandsworth,2785
+6/1/2018,Westminster,6244
+7/1/2018,Barking and Dagenham,2130
+7/1/2018,Barnet,3077
+7/1/2018,Bexley,1543
+7/1/2018,Brent,3370
+7/1/2018,Bromley,2490
+7/1/2018,Camden,3954
+7/1/2018,Croydon,3442
+7/1/2018,Ealing,3267
+7/1/2018,Enfield,2930
+7/1/2018,Greenwich,3054
+7/1/2018,Hackney,3510
+7/1/2018,Hammersmith and Fulham,2489
+7/1/2018,Haringey,3798
+7/1/2018,Harrow,1797
+7/1/2018,Havering,2040
+7/1/2018,Hillingdon,2707
+7/1/2018,Hounslow,2897
+7/1/2018,Islington,3533
+7/1/2018,Kensington and Chelsea,2271
+7/1/2018,Kingston upon Thames,1354
+7/1/2018,Lambeth,4216
+7/1/2018,Lewisham,3029
+7/1/2018,Merton,1530
+7/1/2018,Newham,3949
+7/1/2018,Redbridge,2632
+7/1/2018,Richmond upon Thames,1477
+7/1/2018,Southwark,4285
+7/1/2018,Sutton,1431
+7/1/2018,Tower Hamlets,3997
+7/1/2018,Waltham Forest,2666
+7/1/2018,Wandsworth,3074
+7/1/2018,Westminster,6722
+8/1/2018,Barking and Dagenham,1867
+8/1/2018,Barnet,2749
+8/1/2018,Bexley,1633
+8/1/2018,Brent,3135
+8/1/2018,Bromley,2255
+8/1/2018,Camden,3556
+8/1/2018,Croydon,3275
+8/1/2018,Ealing,2853
+8/1/2018,Enfield,2861
+8/1/2018,Greenwich,2704
+8/1/2018,Hackney,3311
+8/1/2018,Hammersmith and Fulham,2199
+8/1/2018,Haringey,3213
+8/1/2018,Harrow,1433
+8/1/2018,Havering,1932
+8/1/2018,Hillingdon,2406
+8/1/2018,Hounslow,2421
+8/1/2018,Islington,2969
+8/1/2018,Kensington and Chelsea,2800
+8/1/2018,Kingston upon Thames,1377
+8/1/2018,Lambeth,3599
+8/1/2018,Lewisham,2808
+8/1/2018,Merton,1471
+8/1/2018,Newham,3724
+8/1/2018,Redbridge,2220
+8/1/2018,Richmond upon Thames,1287
+8/1/2018,Southwark,3829
+8/1/2018,Sutton,1306
+8/1/2018,Tower Hamlets,3655
+8/1/2018,Waltham Forest,2509
+8/1/2018,Wandsworth,2501
+8/1/2018,Westminster,6495
+9/1/2018,Barking and Dagenham,1860
+9/1/2018,Barnet,2823
+9/1/2018,Bexley,1554
+9/1/2018,Brent,3222
+9/1/2018,Bromley,2402
+9/1/2018,Camden,3585
+9/1/2018,Croydon,3145
+9/1/2018,Ealing,3017
+9/1/2018,Enfield,2784
+9/1/2018,Greenwich,2801
+9/1/2018,Hackney,3385
+9/1/2018,Hammersmith and Fulham,2330
+9/1/2018,Haringey,3299
+9/1/2018,Harrow,1513
+9/1/2018,Havering,1929
+9/1/2018,Hillingdon,2424
+9/1/2018,Hounslow,2469
+9/1/2018,Islington,3012
+9/1/2018,Kensington and Chelsea,2123
+9/1/2018,Kingston upon Thames,1319
+9/1/2018,Lambeth,3459
+9/1/2018,Lewisham,2641
+9/1/2018,Merton,1382
+9/1/2018,Newham,3599
+9/1/2018,Redbridge,2348
+9/1/2018,Richmond upon Thames,1207
+9/1/2018,Southwark,3732
+9/1/2018,Sutton,1197
+9/1/2018,Tower Hamlets,3661
+9/1/2018,Waltham Forest,2488
+9/1/2018,Wandsworth,2490
+9/1/2018,Westminster,6093
+10/1/2018,Barking and Dagenham,2000
+10/1/2018,Barnet,3197
+10/1/2018,Bexley,1665
+10/1/2018,Brent,3352
+10/1/2018,Bromley,2418
+10/1/2018,Camden,3688
+10/1/2018,Croydon,3476
+10/1/2018,Ealing,3080
+10/1/2018,Enfield,3024
+10/1/2018,Greenwich,2826
+10/1/2018,Hackney,3683
+10/1/2018,Hammersmith and Fulham,2360
+10/1/2018,Haringey,3206
+10/1/2018,Harrow,1756
+10/1/2018,Havering,2075
+10/1/2018,Hillingdon,2685
+10/1/2018,Hounslow,2996
+10/1/2018,Islington,3372
+10/1/2018,Kensington and Chelsea,2171
+10/1/2018,Kingston upon Thames,1428
+10/1/2018,Lambeth,3600
+10/1/2018,Lewisham,2968
+10/1/2018,Merton,1546
+10/1/2018,Newham,3926
+10/1/2018,Redbridge,2575
+10/1/2018,Richmond upon Thames,1338
+10/1/2018,Southwark,4079
+10/1/2018,Sutton,1299
+10/1/2018,Tower Hamlets,3656
+10/1/2018,Waltham Forest,2669
+10/1/2018,Wandsworth,2601
+10/1/2018,Westminster,6677
+11/1/2018,Barking and Dagenham,1985
+11/1/2018,Barnet,3064
+11/1/2018,Bexley,1701
+11/1/2018,Brent,3367
+11/1/2018,Bromley,2392
+11/1/2018,Camden,3877
+11/1/2018,Croydon,3221
+11/1/2018,Ealing,3162
+11/1/2018,Enfield,3141
+11/1/2018,Greenwich,2808
+11/1/2018,Hackney,3570
+11/1/2018,Hammersmith and Fulham,2306
+11/1/2018,Haringey,3422
+11/1/2018,Harrow,1711
+11/1/2018,Havering,2026
+11/1/2018,Hillingdon,2886
+11/1/2018,Hounslow,2792
+11/1/2018,Islington,2984
+11/1/2018,Kensington and Chelsea,2247
+11/1/2018,Kingston upon Thames,1367
+11/1/2018,Lambeth,3790
+11/1/2018,Lewisham,2830
+11/1/2018,Merton,1537
+11/1/2018,Newham,3922
+11/1/2018,Redbridge,2569
+11/1/2018,Richmond upon Thames,1442
+11/1/2018,Southwark,3907
+11/1/2018,Sutton,1268
+11/1/2018,Tower Hamlets,3648
+11/1/2018,Waltham Forest,2625
+11/1/2018,Wandsworth,2695
+11/1/2018,Westminster,7391
+12/1/2018,Barking and Dagenham,2002
+12/1/2018,Barnet,2979
+12/1/2018,Bexley,1792
+12/1/2018,Brent,2956
+12/1/2018,Bromley,2406
+12/1/2018,Camden,3670
+12/1/2018,Croydon,3361
+12/1/2018,Ealing,2893
+12/1/2018,Enfield,2942
+12/1/2018,Greenwich,2944
+12/1/2018,Hackney,3510
+12/1/2018,Hammersmith and Fulham,2324
+12/1/2018,Haringey,3221
+12/1/2018,Harrow,1645
+12/1/2018,Havering,2002
+12/1/2018,Hillingdon,2781
+12/1/2018,Hounslow,2673
+12/1/2018,Islington,3105
+12/1/2018,Kensington and Chelsea,2281
+12/1/2018,Kingston upon Thames,1276
+12/1/2018,Lambeth,3398
+12/1/2018,Lewisham,2988
+12/1/2018,Merton,1553
+12/1/2018,Newham,3821
+12/1/2018,Redbridge,2445
+12/1/2018,Richmond upon Thames,1220
+12/1/2018,Southwark,3722
+12/1/2018,Sutton,1461
+12/1/2018,Tower Hamlets,3399
+12/1/2018,Waltham Forest,2533
+12/1/2018,Wandsworth,2346
+12/1/2018,Westminster,8349
+1/1/2019,Barking and Dagenham,2072
+1/1/2019,Barnet,2974
+1/1/2019,Bexley,1905
+1/1/2019,Brent,3133
+1/1/2019,Bromley,2406
+1/1/2019,Camden,3697
+1/1/2019,Croydon,3351
+1/1/2019,Ealing,3146
+1/1/2019,Enfield,3136
+1/1/2019,Greenwich,2684
+1/1/2019,Hackney,3490
+1/1/2019,Hammersmith and Fulham,2158
+1/1/2019,Haringey,3291
+1/1/2019,Harrow,1771
+1/1/2019,Havering,1985
+1/1/2019,Hillingdon,2712
+1/1/2019,Hounslow,2607
+1/1/2019,Islington,3127
+1/1/2019,Kensington and Chelsea,2146
+1/1/2019,Kingston upon Thames,1320
+1/1/2019,Lambeth,3427
+1/1/2019,Lewisham,2936
+1/1/2019,Merton,1509
+1/1/2019,Newham,3520
+1/1/2019,Redbridge,2436
+1/1/2019,Richmond upon Thames,1260
+1/1/2019,Southwark,3875
+1/1/2019,Sutton,1415
+1/1/2019,Tower Hamlets,3369
+1/1/2019,Waltham Forest,2551
+1/1/2019,Wandsworth,2586
+1/1/2019,Westminster,7683
+2/1/2019,Barking and Dagenham,2025
+2/1/2019,Barnet,3198
+2/1/2019,Bexley,1635
+2/1/2019,Brent,2963
+2/1/2019,Bromley,2409
+2/1/2019,Camden,3927
+2/1/2019,Croydon,3159
+2/1/2019,Ealing,2961
+2/1/2019,Enfield,2958
+2/1/2019,Greenwich,2485
+2/1/2019,Hackney,3248
+2/1/2019,Hammersmith and Fulham,2216
+2/1/2019,Haringey,3251
+2/1/2019,Harrow,1695
+2/1/2019,Havering,1868
+2/1/2019,Hillingdon,2616
+2/1/2019,Hounslow,2746
+2/1/2019,Islington,2800
+2/1/2019,Kensington and Chelsea,2106
+2/1/2019,Kingston upon Thames,1260
+2/1/2019,Lambeth,3481
+2/1/2019,Lewisham,2685
+2/1/2019,Merton,1319
+2/1/2019,Newham,3614
+2/1/2019,Redbridge,2383
+2/1/2019,Richmond upon Thames,1146
+2/1/2019,Southwark,3855
+2/1/2019,Sutton,1399
+2/1/2019,Tower Hamlets,3329
+2/1/2019,Waltham Forest,2325
+2/1/2019,Wandsworth,2591
+2/1/2019,Westminster,8065
+3/1/2019,Barking and Dagenham,2205
+3/1/2019,Barnet,3649
+3/1/2019,Bexley,1771
+3/1/2019,Brent,3326
+3/1/2019,Bromley,2508
+3/1/2019,Camden,4352
+3/1/2019,Croydon,3466
+3/1/2019,Ealing,3525
+3/1/2019,Enfield,3153
+3/1/2019,Greenwich,3019
+3/1/2019,Hackney,3738
+3/1/2019,Hammersmith and Fulham,2394
+3/1/2019,Haringey,3538
+3/1/2019,Harrow,1795
+3/1/2019,Havering,2037
+3/1/2019,Hillingdon,2831
+3/1/2019,Hounslow,2886
+3/1/2019,Islington,3234
+3/1/2019,Kensington and Chelsea,2346
+3/1/2019,Kingston upon Thames,1443
+3/1/2019,Lambeth,3894
+3/1/2019,Lewisham,3089
+3/1/2019,Merton,1597
+3/1/2019,Newham,3820
+3/1/2019,Redbridge,2445
+3/1/2019,Richmond upon Thames,1340
+3/1/2019,Southwark,4395
+3/1/2019,Sutton,1411
+3/1/2019,Tower Hamlets,4146
+3/1/2019,Waltham Forest,2535
+3/1/2019,Wandsworth,2606
+3/1/2019,Westminster,9088
+4/1/2019,Barking and Dagenham,2191
+4/1/2019,Barnet,3083
+4/1/2019,Bexley,1833
+4/1/2019,Brent,3034
+4/1/2019,Bromley,2436
+4/1/2019,Camden,4185
+4/1/2019,Croydon,3367
+4/1/2019,Ealing,3099
+4/1/2019,Enfield,2970
+4/1/2019,Greenwich,2972
+4/1/2019,Hackney,3731
+4/1/2019,Hammersmith and Fulham,2462
+4/1/2019,Haringey,3377
+4/1/2019,Harrow,1729
+4/1/2019,Havering,2005
+4/1/2019,Hillingdon,2676
+4/1/2019,Hounslow,2816
+4/1/2019,Islington,3241
+4/1/2019,Kensington and Chelsea,2154
+4/1/2019,Kingston upon Thames,1355
+4/1/2019,Lambeth,3743
+4/1/2019,Lewisham,2935
+4/1/2019,Merton,1494
+4/1/2019,Newham,3689
+4/1/2019,Redbridge,2501
+4/1/2019,Richmond upon Thames,1348
+4/1/2019,Southwark,4167
+4/1/2019,Sutton,1495
+4/1/2019,Tower Hamlets,3612
+4/1/2019,Waltham Forest,2449
+4/1/2019,Wandsworth,2547
+4/1/2019,Westminster,8950
+5/1/2019,Barking and Dagenham,2380
+5/1/2019,Barnet,3203
+5/1/2019,Bexley,2036
+5/1/2019,Brent,3206
+5/1/2019,Bromley,2581
+5/1/2019,Camden,4113
+5/1/2019,Croydon,3532
+5/1/2019,Ealing,3164
+5/1/2019,Enfield,3094
+5/1/2019,Greenwich,3008
+5/1/2019,Hackney,3768
+5/1/2019,Hammersmith and Fulham,2491
+5/1/2019,Haringey,3524
+5/1/2019,Harrow,1812
+5/1/2019,Havering,2150
+5/1/2019,Hillingdon,2674
+5/1/2019,Hounslow,2716
+5/1/2019,Islington,3206
+5/1/2019,Kensington and Chelsea,2269
+5/1/2019,Kingston upon Thames,1387
+5/1/2019,Lambeth,3822
+5/1/2019,Lewisham,3347
+5/1/2019,Merton,1408
+5/1/2019,Newham,3900
+5/1/2019,Redbridge,2556
+5/1/2019,Richmond upon Thames,1326
+5/1/2019,Southwark,4374
+5/1/2019,Sutton,1547
+5/1/2019,Tower Hamlets,3776
+5/1/2019,Waltham Forest,2617
+5/1/2019,Wandsworth,2652
+5/1/2019,Westminster,8350
+6/1/2019,Barking and Dagenham,2183
+6/1/2019,Barnet,3456
+6/1/2019,Bexley,1850
+6/1/2019,Brent,3231
+6/1/2019,Bromley,2477
+6/1/2019,Camden,3899
+6/1/2019,Croydon,3342
+6/1/2019,Ealing,3253
+6/1/2019,Enfield,3257
+6/1/2019,Greenwich,3066
+6/1/2019,Hackney,3629
+6/1/2019,Hammersmith and Fulham,2434
+6/1/2019,Haringey,3527
+6/1/2019,Harrow,1822
+6/1/2019,Havering,1989
+6/1/2019,Hillingdon,2853
+6/1/2019,Hounslow,2929
+6/1/2019,Islington,2974
+6/1/2019,Kensington and Chelsea,2532
+6/1/2019,Kingston upon Thames,1352
+6/1/2019,Lambeth,3875
+6/1/2019,Lewisham,3105
+6/1/2019,Merton,1428
+6/1/2019,Newham,3926
+6/1/2019,Redbridge,2469
+6/1/2019,Richmond upon Thames,1349
+6/1/2019,Southwark,4295
+6/1/2019,Sutton,1505
+6/1/2019,Tower Hamlets,3930
+6/1/2019,Waltham Forest,2572
+6/1/2019,Wandsworth,2739
+6/1/2019,Westminster,8489
+7/1/2019,Barking and Dagenham,2410
+7/1/2019,Barnet,3626
+7/1/2019,Bexley,1938
+7/1/2019,Brent,3374
+7/1/2019,Bromley,2742
+7/1/2019,Camden,4320
+7/1/2019,Croydon,3998
+7/1/2019,Ealing,3504
+7/1/2019,Enfield,3456
+7/1/2019,Greenwich,3211
+7/1/2019,Hackney,4314
+7/1/2019,Hammersmith and Fulham,2688
+7/1/2019,Haringey,3839
+7/1/2019,Harrow,1957
+7/1/2019,Havering,2067
+7/1/2019,Hillingdon,2888
+7/1/2019,Hounslow,3061
+7/1/2019,Islington,3688
+7/1/2019,Kensington and Chelsea,2645
+7/1/2019,Kingston upon Thames,1437
+7/1/2019,Lambeth,4145
+7/1/2019,Lewisham,3384
+7/1/2019,Merton,1725
+7/1/2019,Newham,4091
+7/1/2019,Redbridge,2530
+7/1/2019,Richmond upon Thames,1294
+7/1/2019,Southwark,4519
+7/1/2019,Sutton,1449
+7/1/2019,Tower Hamlets,3865
+7/1/2019,Waltham Forest,2582
+7/1/2019,Wandsworth,2797
+7/1/2019,Westminster,8530
+8/1/2019,Barking and Dagenham,2055
+8/1/2019,Barnet,3052
+8/1/2019,Bexley,1926
+8/1/2019,Brent,3048
+8/1/2019,Bromley,2588
+8/1/2019,Camden,4081
+8/1/2019,Croydon,3656
+8/1/2019,Ealing,3306
+8/1/2019,Enfield,2994
+8/1/2019,Greenwich,3302
+8/1/2019,Hackney,3982
+8/1/2019,Hammersmith and Fulham,2478
+8/1/2019,Haringey,3315
+8/1/2019,Harrow,1725
+8/1/2019,Havering,1974
+8/1/2019,Hillingdon,2725
+8/1/2019,Hounslow,2572
+8/1/2019,Islington,3296
+8/1/2019,Kensington and Chelsea,3314
+8/1/2019,Kingston upon Thames,1307
+8/1/2019,Lambeth,3979
+8/1/2019,Lewisham,3242
+8/1/2019,Merton,1632
+8/1/2019,Newham,3783
+8/1/2019,Redbridge,2424
+8/1/2019,Richmond upon Thames,1249
+8/1/2019,Southwark,4348
+8/1/2019,Sutton,1528
+8/1/2019,Tower Hamlets,3592
+8/1/2019,Waltham Forest,2449
+8/1/2019,Wandsworth,2619
+8/1/2019,Westminster,8519
+9/1/2019,Barking and Dagenham,2141
+9/1/2019,Barnet,3236
+9/1/2019,Bexley,1864
+9/1/2019,Brent,3168
+9/1/2019,Bromley,2570
+9/1/2019,Camden,4087
+9/1/2019,Croydon,3591
+9/1/2019,Ealing,3221
+9/1/2019,Enfield,3215
+9/1/2019,Greenwich,3254
+9/1/2019,Hackney,3799
+9/1/2019,Hammersmith and Fulham,2494
+9/1/2019,Haringey,3495
+9/1/2019,Harrow,1762
+9/1/2019,Havering,1883
+9/1/2019,Hillingdon,2796
+9/1/2019,Hounslow,2755
+9/1/2019,Islington,3249
+9/1/2019,Kensington and Chelsea,2433
+9/1/2019,Kingston upon Thames,1357
+9/1/2019,Lambeth,3820
+9/1/2019,Lewisham,3342
+9/1/2019,Merton,1541
+9/1/2019,Newham,3465
+9/1/2019,Redbridge,2419
+9/1/2019,Richmond upon Thames,1264
+9/1/2019,Southwark,4466
+9/1/2019,Sutton,1383
+9/1/2019,Tower Hamlets,3411
+9/1/2019,Waltham Forest,2506
+9/1/2019,Wandsworth,2681
+9/1/2019,Westminster,7756
+10/1/2019,Barking and Dagenham,2316
+10/1/2019,Barnet,3279
+10/1/2019,Bexley,2101
+10/1/2019,Brent,3342
+10/1/2019,Bromley,2746
+10/1/2019,Camden,4826
+10/1/2019,Croydon,3828
+10/1/2019,Ealing,3335
+10/1/2019,Enfield,3375
+10/1/2019,Greenwich,3168
+10/1/2019,Hackney,3886
+10/1/2019,Hammersmith and Fulham,2531
+10/1/2019,Haringey,3706
+10/1/2019,Harrow,1916
+10/1/2019,Havering,2210
+10/1/2019,Hillingdon,3005
+10/1/2019,Hounslow,2855
+10/1/2019,Islington,3756
+10/1/2019,Kensington and Chelsea,2569
+10/1/2019,Kingston upon Thames,1382
+10/1/2019,Lambeth,3881
+10/1/2019,Lewisham,3298
+10/1/2019,Merton,1512
+10/1/2019,Newham,4209
+10/1/2019,Redbridge,2772
+10/1/2019,Richmond upon Thames,1307
+10/1/2019,Southwark,4814
+10/1/2019,Sutton,1477
+10/1/2019,Tower Hamlets,3939
+10/1/2019,Waltham Forest,2501
+10/1/2019,Wandsworth,3008
+10/1/2019,Westminster,8667
+11/1/2019,Barking and Dagenham,2117
+11/1/2019,Barnet,3588
+11/1/2019,Bexley,1897
+11/1/2019,Brent,3189
+11/1/2019,Bromley,2844
+11/1/2019,Camden,4360
+11/1/2019,Croydon,3806
+11/1/2019,Ealing,3486
+11/1/2019,Enfield,3465
+11/1/2019,Greenwich,3167
+11/1/2019,Hackney,3626
+11/1/2019,Hammersmith and Fulham,2479
+11/1/2019,Haringey,3562
+11/1/2019,Harrow,1816
+11/1/2019,Havering,1993
+11/1/2019,Hillingdon,2954
+11/1/2019,Hounslow,2922
+11/1/2019,Islington,3415
+11/1/2019,Kensington and Chelsea,2674
+11/1/2019,Kingston upon Thames,1408
+11/1/2019,Lambeth,3836
+11/1/2019,Lewisham,3218
+11/1/2019,Merton,1647
+11/1/2019,Newham,3942
+11/1/2019,Redbridge,2540
+11/1/2019,Richmond upon Thames,1431
+11/1/2019,Southwark,4394
+11/1/2019,Sutton,1484
+11/1/2019,Tower Hamlets,3861
+11/1/2019,Waltham Forest,2545
+11/1/2019,Wandsworth,2666
+11/1/2019,Westminster,8312
+12/1/2019,Barking and Dagenham,2207
+12/1/2019,Barnet,3285
+12/1/2019,Bexley,1812
+12/1/2019,Brent,3075
+12/1/2019,Bromley,2620
+12/1/2019,Camden,3997
+12/1/2019,Croydon,3555
+12/1/2019,Ealing,3185
+12/1/2019,Enfield,3194
+12/1/2019,Greenwich,2869
+12/1/2019,Hackney,3628
+12/1/2019,Hammersmith and Fulham,2361
+12/1/2019,Haringey,3267
+12/1/2019,Harrow,1816
+12/1/2019,Havering,1919
+12/1/2019,Hillingdon,2735
+12/1/2019,Hounslow,2820
+12/1/2019,Islington,3133
+12/1/2019,Kensington and Chelsea,2605
+12/1/2019,Kingston upon Thames,1259
+12/1/2019,Lambeth,3640
+12/1/2019,Lewisham,2930
+12/1/2019,Merton,1359
+12/1/2019,Newham,3616
+12/1/2019,Redbridge,2429
+12/1/2019,Richmond upon Thames,1338
+12/1/2019,Southwark,4124
+12/1/2019,Sutton,1431
+12/1/2019,Tower Hamlets,3651
+12/1/2019,Waltham Forest,2415
+12/1/2019,Wandsworth,2537
+12/1/2019,Westminster,9219
+1/1/2020,Barking and Dagenham,2158
+1/1/2020,Barnet,3355
+1/1/2020,Bexley,1999
+1/1/2020,Brent,3134
+1/1/2020,Bromley,2581
+1/1/2020,Camden,4059
+1/1/2020,Croydon,3805
+1/1/2020,Ealing,3271
+1/1/2020,Enfield,3231
+1/1/2020,Greenwich,2967
+1/1/2020,Hackney,3690
+1/1/2020,Hammersmith and Fulham,2244
+1/1/2020,Haringey,3182
+1/1/2020,Harrow,1826
+1/1/2020,Havering,2107
+1/1/2020,Hillingdon,2805
+1/1/2020,Hounslow,2753
+1/1/2020,Islington,3348
+1/1/2020,Kensington and Chelsea,2337
+1/1/2020,Kingston upon Thames,1350
+1/1/2020,Lambeth,3689
+1/1/2020,Lewisham,3064
+1/1/2020,Merton,1582
+1/1/2020,Newham,3932
+1/1/2020,Redbridge,2563
+1/1/2020,Richmond upon Thames,1342
+1/1/2020,Southwark,3846
+1/1/2020,Sutton,1667
+1/1/2020,Tower Hamlets,3483
+1/1/2020,Waltham Forest,2566
+1/1/2020,Wandsworth,2802
+1/1/2020,Westminster,7878
+2/1/2020,Barking and Dagenham,2059
+2/1/2020,Barnet,3212
+2/1/2020,Bexley,1828
+2/1/2020,Brent,3018
+2/1/2020,Bromley,2517
+2/1/2020,Camden,4497
+2/1/2020,Croydon,3606
+2/1/2020,Ealing,2979
+2/1/2020,Enfield,3023
+2/1/2020,Greenwich,2905
+2/1/2020,Hackney,3467
+2/1/2020,Hammersmith and Fulham,2228
+2/1/2020,Haringey,3124
+2/1/2020,Harrow,1798
+2/1/2020,Havering,1962
+2/1/2020,Hillingdon,2570
+2/1/2020,Hounslow,2562
+2/1/2020,Islington,3295
+2/1/2020,Kensington and Chelsea,2152
+2/1/2020,Kingston upon Thames,1349
+2/1/2020,Lambeth,3413
+2/1/2020,Lewisham,2812
+2/1/2020,Merton,1417
+2/1/2020,Newham,3740
+2/1/2020,Redbridge,2585
+2/1/2020,Richmond upon Thames,1262
+2/1/2020,Southwark,3977
+2/1/2020,Sutton,1495
+2/1/2020,Tower Hamlets,3403
+2/1/2020,Waltham Forest,2578
+2/1/2020,Wandsworth,2520
+2/1/2020,Westminster,8494
+3/1/2020,Barking and Dagenham,2406
+3/1/2020,Barnet,2960
+3/1/2020,Bexley,1661
+3/1/2020,Brent,2839
+3/1/2020,Bromley,2200
+3/1/2020,Camden,3526
+3/1/2020,Croydon,3737
+3/1/2020,Ealing,3081
+3/1/2020,Enfield,3025
+3/1/2020,Greenwich,2664
+3/1/2020,Hackney,3256
+3/1/2020,Hammersmith and Fulham,2005
+3/1/2020,Haringey,3029
+3/1/2020,Harrow,1714
+3/1/2020,Havering,1804
+3/1/2020,Hillingdon,2716
+3/1/2020,Hounslow,2623
+3/1/2020,Islington,2652
+3/1/2020,Kensington and Chelsea,1801
+3/1/2020,Kingston upon Thames,1181
+3/1/2020,Lambeth,3218
+3/1/2020,Lewisham,2729
+3/1/2020,Merton,1435
+3/1/2020,Newham,3391
+3/1/2020,Redbridge,2345
+3/1/2020,Richmond upon Thames,1117
+3/1/2020,Southwark,3163
+3/1/2020,Sutton,1462
+3/1/2020,Tower Hamlets,3289
+3/1/2020,Waltham Forest,2370
+3/1/2020,Wandsworth,2292
+3/1/2020,Westminster,6097
+4/1/2020,Barking and Dagenham,1676
+4/1/2020,Barnet,2183
+4/1/2020,Bexley,1214
+4/1/2020,Brent,2650
+4/1/2020,Bromley,1845
+4/1/2020,Camden,2043
+4/1/2020,Croydon,2895
+4/1/2020,Ealing,2522
+4/1/2020,Enfield,2389
+4/1/2020,Greenwich,2193
+4/1/2020,Hackney,2202
+4/1/2020,Hammersmith and Fulham,1625
+4/1/2020,Haringey,2618
+4/1/2020,Harrow,1366
+4/1/2020,Havering,1285
+4/1/2020,Hillingdon,2106
+4/1/2020,Hounslow,2297
+4/1/2020,Islington,1973
+4/1/2020,Kensington and Chelsea,1148
+4/1/2020,Kingston upon Thames,884
+4/1/2020,Lambeth,2483
+4/1/2020,Lewisham,2605
+4/1/2020,Merton,1180
+4/1/2020,Newham,2625
+4/1/2020,Redbridge,1874
+4/1/2020,Richmond upon Thames,950
+4/1/2020,Southwark,2432
+4/1/2020,Sutton,1109
+4/1/2020,Tower Hamlets,2486
+4/1/2020,Waltham Forest,2059
+4/1/2020,Wandsworth,1801
+4/1/2020,Westminster,2181
+5/1/2020,Barking and Dagenham,1997
+5/1/2020,Barnet,2584
+5/1/2020,Bexley,1579
+5/1/2020,Brent,2963
+5/1/2020,Bromley,2152
+5/1/2020,Camden,2400
+5/1/2020,Croydon,3342
+5/1/2020,Ealing,3012
+5/1/2020,Enfield,2870
+5/1/2020,Greenwich,2715
+5/1/2020,Hackney,2910
+5/1/2020,Hammersmith and Fulham,1687
+5/1/2020,Haringey,2655
+5/1/2020,Harrow,1592
+5/1/2020,Havering,1487
+5/1/2020,Hillingdon,2495
+5/1/2020,Hounslow,2534
+5/1/2020,Islington,2264
+5/1/2020,Kensington and Chelsea,1415
+5/1/2020,Kingston upon Thames,1027
+5/1/2020,Lambeth,2909
+5/1/2020,Lewisham,2976
+5/1/2020,Merton,1322
+5/1/2020,Newham,3022
+5/1/2020,Redbridge,2152
+5/1/2020,Richmond upon Thames,1234
+5/1/2020,Southwark,2935
+5/1/2020,Sutton,1341
+5/1/2020,Tower Hamlets,2978
+5/1/2020,Waltham Forest,2477
+5/1/2020,Wandsworth,2263
+5/1/2020,Westminster,2895
+6/1/2020,Barking and Dagenham,2214
+6/1/2020,Barnet,2739
+6/1/2020,Bexley,1649
+6/1/2020,Brent,3094
+6/1/2020,Bromley,2217
+6/1/2020,Camden,2838
+6/1/2020,Croydon,3690
+6/1/2020,Ealing,3006
+6/1/2020,Enfield,3205
+6/1/2020,Greenwich,2978
+6/1/2020,Hackney,3215
+6/1/2020,Hammersmith and Fulham,1781
+6/1/2020,Haringey,3041
+6/1/2020,Harrow,1432
+6/1/2020,Havering,1650
+6/1/2020,Hillingdon,2772
+6/1/2020,Hounslow,2532
+6/1/2020,Islington,2565
+6/1/2020,Kensington and Chelsea,1656
+6/1/2020,Kingston upon Thames,1235
+6/1/2020,Lambeth,3370
+6/1/2020,Lewisham,3044
+6/1/2020,Merton,1468
+6/1/2020,Newham,3568
+6/1/2020,Redbridge,2469
+6/1/2020,Richmond upon Thames,1279
+6/1/2020,Southwark,3329
+6/1/2020,Sutton,1456
+6/1/2020,Tower Hamlets,3369
+6/1/2020,Waltham Forest,2615
+6/1/2020,Wandsworth,2657
+6/1/2020,Westminster,3925
+7/1/2020,Barking and Dagenham,2288
+7/1/2020,Barnet,3102
+7/1/2020,Bexley,1800
+7/1/2020,Brent,3280
+7/1/2020,Bromley,2492
+7/1/2020,Camden,3208
+7/1/2020,Croydon,4070
+7/1/2020,Ealing,3299
+7/1/2020,Enfield,3262
+7/1/2020,Greenwich,3062
+7/1/2020,Hackney,3764
+7/1/2020,Hammersmith and Fulham,2122
+7/1/2020,Haringey,3382
+7/1/2020,Harrow,1804
+7/1/2020,Havering,1924
+7/1/2020,Hillingdon,2830
+7/1/2020,Hounslow,2823
+7/1/2020,Islington,2930
+7/1/2020,Kensington and Chelsea,2097
+7/1/2020,Kingston upon Thames,1397
+7/1/2020,Lambeth,3941
+7/1/2020,Lewisham,3265
+7/1/2020,Merton,1634
+7/1/2020,Newham,3924
+7/1/2020,Redbridge,2594
+7/1/2020,Richmond upon Thames,1484
+7/1/2020,Southwark,3959
+7/1/2020,Sutton,1369
+7/1/2020,Tower Hamlets,3820
+7/1/2020,Waltham Forest,2635
+7/1/2020,Wandsworth,2919
+7/1/2020,Westminster,5264
+8/1/2020,Barking and Dagenham,2216
+8/1/2020,Barnet,3097
+8/1/2020,Bexley,2020
+8/1/2020,Brent,3373
+8/1/2020,Bromley,2306
+8/1/2020,Camden,3377
+8/1/2020,Croydon,3986
+8/1/2020,Ealing,3381
+8/1/2020,Enfield,3184
+8/1/2020,Greenwich,2992
+8/1/2020,Hackney,4008
+8/1/2020,Hammersmith and Fulham,2164
+8/1/2020,Haringey,3194
+8/1/2020,Harrow,1682
+8/1/2020,Havering,2031
+8/1/2020,Hillingdon,3029
+8/1/2020,Hounslow,2724
+8/1/2020,Islington,3277
+8/1/2020,Kensington and Chelsea,1945
+8/1/2020,Kingston upon Thames,1273
+8/1/2020,Lambeth,3917
+8/1/2020,Lewisham,3319
+8/1/2020,Merton,1607
+8/1/2020,Newham,3950
+8/1/2020,Redbridge,2555
+8/1/2020,Richmond upon Thames,1466
+8/1/2020,Southwark,4209
+8/1/2020,Sutton,1382
+8/1/2020,Tower Hamlets,3646
+8/1/2020,Waltham Forest,2756
+8/1/2020,Wandsworth,2935
+8/1/2020,Westminster,5702
+9/1/2020,Barking and Dagenham,2114
+9/1/2020,Barnet,2910
+9/1/2020,Bexley,1756
+9/1/2020,Brent,3257
+9/1/2020,Bromley,2474
+9/1/2020,Camden,3285
+9/1/2020,Croydon,3636
+9/1/2020,Ealing,3326
+9/1/2020,Enfield,3343
+9/1/2020,Greenwich,2884
+9/1/2020,Hackney,4192
+9/1/2020,Hammersmith and Fulham,2194
+9/1/2020,Haringey,3450
+9/1/2020,Harrow,1720
+9/1/2020,Havering,1838
+9/1/2020,Hillingdon,2868
+9/1/2020,Hounslow,2849
+9/1/2020,Islington,3150
+9/1/2020,Kensington and Chelsea,2014
+9/1/2020,Kingston upon Thames,1281
+9/1/2020,Lambeth,3693
+9/1/2020,Lewisham,3240
+9/1/2020,Merton,1592
+9/1/2020,Newham,3700
+9/1/2020,Redbridge,2541
+9/1/2020,Richmond upon Thames,1330
+9/1/2020,Southwark,3888
+9/1/2020,Sutton,1317
+9/1/2020,Tower Hamlets,3824
+9/1/2020,Waltham Forest,2667
+9/1/2020,Wandsworth,3155
+9/1/2020,Westminster,5559
+10/1/2020,Barking and Dagenham,2158
+10/1/2020,Barnet,3027
+10/1/2020,Bexley,1622
+10/1/2020,Brent,3203
+10/1/2020,Bromley,2566
+10/1/2020,Camden,3632
+10/1/2020,Croydon,3653
+10/1/2020,Ealing,3352
+10/1/2020,Enfield,3308
+10/1/2020,Greenwich,2828
+10/1/2020,Hackney,3812
+10/1/2020,Hammersmith and Fulham,2285
+10/1/2020,Haringey,3079
+10/1/2020,Harrow,1752
+10/1/2020,Havering,2098
+10/1/2020,Hillingdon,2778
+10/1/2020,Hounslow,2696
+10/1/2020,Islington,2876
+10/1/2020,Kensington and Chelsea,2076
+10/1/2020,Kingston upon Thames,1138
+10/1/2020,Lambeth,3460
+10/1/2020,Lewisham,3180
+10/1/2020,Merton,1611
+10/1/2020,Newham,4096
+10/1/2020,Redbridge,2643
+10/1/2020,Richmond upon Thames,1267
+10/1/2020,Southwark,3930
+10/1/2020,Sutton,1403
+10/1/2020,Tower Hamlets,3865
+10/1/2020,Waltham Forest,2506
+10/1/2020,Wandsworth,2831
+10/1/2020,Westminster,5568
+11/1/2020,Barking and Dagenham,2165
+11/1/2020,Barnet,3006
+11/1/2020,Bexley,1770
+11/1/2020,Brent,3003
+11/1/2020,Bromley,2442
+11/1/2020,Camden,3012
+11/1/2020,Croydon,3334
+11/1/2020,Ealing,3019
+11/1/2020,Enfield,3195
+11/1/2020,Greenwich,2732
+11/1/2020,Hackney,3452
+11/1/2020,Hammersmith and Fulham,1843
+11/1/2020,Haringey,3043
+11/1/2020,Harrow,1721
+11/1/2020,Havering,1697
+11/1/2020,Hillingdon,2756
+11/1/2020,Hounslow,2518
+11/1/2020,Islington,2650
+11/1/2020,Kensington and Chelsea,1594
+11/1/2020,Kingston upon Thames,1071
+11/1/2020,Lambeth,3392
+11/1/2020,Lewisham,3017
+11/1/2020,Merton,1451
+11/1/2020,Newham,3531
+11/1/2020,Redbridge,2449
+11/1/2020,Richmond upon Thames,1251
+11/1/2020,Southwark,3430
+11/1/2020,Sutton,1501
+11/1/2020,Tower Hamlets,3356
+11/1/2020,Waltham Forest,2490
+11/1/2020,Wandsworth,2684
+11/1/2020,Westminster,3790
+12/1/2020,Barking and Dagenham,1963
+12/1/2020,Barnet,2811
+12/1/2020,Bexley,1618
+12/1/2020,Brent,2970
+12/1/2020,Bromley,2067
+12/1/2020,Camden,2659
+12/1/2020,Croydon,3230
+12/1/2020,Ealing,2832
+12/1/2020,Enfield,2970
+12/1/2020,Greenwich,2393
+12/1/2020,Hackney,3264
+12/1/2020,Hammersmith and Fulham,1731
+12/1/2020,Haringey,3111
+12/1/2020,Harrow,1591
+12/1/2020,Havering,1647
+12/1/2020,Hillingdon,2333
+12/1/2020,Hounslow,2277
+12/1/2020,Islington,2573
+12/1/2020,Kensington and Chelsea,1827
+12/1/2020,Kingston upon Thames,1034
+12/1/2020,Lambeth,2940
+12/1/2020,Lewisham,2729
+12/1/2020,Merton,1289
+12/1/2020,Newham,3684
+12/1/2020,Redbridge,2333
+12/1/2020,Richmond upon Thames,1112
+12/1/2020,Southwark,3168
+12/1/2020,Sutton,1174
+12/1/2020,Tower Hamlets,3258
+12/1/2020,Waltham Forest,2308
+12/1/2020,Wandsworth,2395
+12/1/2020,Westminster,4528
+1/1/2021,Barking and Dagenham,1825
+1/1/2021,Barnet,2367
+1/1/2021,Bexley,1414
+1/1/2021,Brent,2451
+1/1/2021,Bromley,1861
+1/1/2021,Camden,2120
+1/1/2021,Croydon,3089
+1/1/2021,Ealing,2675
+1/1/2021,Enfield,2660
+1/1/2021,Greenwich,2273
+1/1/2021,Hackney,3049
+1/1/2021,Hammersmith and Fulham,1608
+1/1/2021,Haringey,2594
+1/1/2021,Harrow,1367
+1/1/2021,Havering,1414
+1/1/2021,Hillingdon,2184
+1/1/2021,Hounslow,2108
+1/1/2021,Islington,2068
+1/1/2021,Kensington and Chelsea,1293
+1/1/2021,Kingston upon Thames,885
+1/1/2021,Lambeth,2647
+1/1/2021,Lewisham,2657
+1/1/2021,Merton,1234
+1/1/2021,Newham,3069
+1/1/2021,Redbridge,2223
+1/1/2021,Richmond upon Thames,985
+1/1/2021,Southwark,2676
+1/1/2021,Sutton,1052
+1/1/2021,Tower Hamlets,3216
+1/1/2021,Waltham Forest,2242
+1/1/2021,Wandsworth,2194
+1/1/2021,Westminster,2563
+2/1/2021,Barking and Dagenham,1833
+2/1/2021,Barnet,2407
+2/1/2021,Bexley,1305
+2/1/2021,Brent,2634
+2/1/2021,Bromley,1950
+2/1/2021,Camden,2191
+2/1/2021,Croydon,3036
+2/1/2021,Ealing,2479
+2/1/2021,Enfield,2463
+2/1/2021,Greenwich,2385
+2/1/2021,Hackney,2698
+2/1/2021,Hammersmith and Fulham,1674
+2/1/2021,Haringey,2532
+2/1/2021,Harrow,1352
+2/1/2021,Havering,1540
+2/1/2021,Hillingdon,2230
+2/1/2021,Hounslow,2051
+2/1/2021,Islington,2098
+2/1/2021,Kensington and Chelsea,1451
+2/1/2021,Kingston upon Thames,778
+2/1/2021,Lambeth,2552
+2/1/2021,Lewisham,2452
+2/1/2021,Merton,1143
+2/1/2021,Newham,2986
+2/1/2021,Redbridge,2098
+2/1/2021,Richmond upon Thames,951
+2/1/2021,Southwark,3030
+2/1/2021,Sutton,1097
+2/1/2021,Tower Hamlets,2736
+2/1/2021,Waltham Forest,2066
+2/1/2021,Wandsworth,2448
+2/1/2021,Westminster,2515
+3/1/2021,Barking and Dagenham,2079
+3/1/2021,Barnet,3179
+3/1/2021,Bexley,1599
+3/1/2021,Brent,2894
+3/1/2021,Bromley,2210
+3/1/2021,Camden,2689
+3/1/2021,Croydon,3407
+3/1/2021,Ealing,2974
+3/1/2021,Enfield,3205
+3/1/2021,Greenwich,2860
+3/1/2021,Hackney,3062
+3/1/2021,Hammersmith and Fulham,1941
+3/1/2021,Haringey,2970
+3/1/2021,Harrow,1518
+3/1/2021,Havering,1740
+3/1/2021,Hillingdon,2605
+3/1/2021,Hounslow,2593
+3/1/2021,Islington,2563
+3/1/2021,Kensington and Chelsea,1596
+3/1/2021,Kingston upon Thames,996
+3/1/2021,Lambeth,3220
+3/1/2021,Lewisham,2835
+3/1/2021,Merton,1435
+3/1/2021,Newham,3418
+3/1/2021,Redbridge,2575
+3/1/2021,Richmond upon Thames,1092
+3/1/2021,Southwark,3382
+3/1/2021,Sutton,1300
+3/1/2021,Tower Hamlets,3617
+3/1/2021,Waltham Forest,2494
+3/1/2021,Wandsworth,2630
+3/1/2021,Westminster,3245
+4/1/2021,Barking and Dagenham,2020
+4/1/2021,Barnet,2820
+4/1/2021,Bexley,1576
+4/1/2021,Brent,2693
+4/1/2021,Bromley,2319
+4/1/2021,Camden,2763
+4/1/2021,Croydon,3286
+4/1/2021,Ealing,3017
+4/1/2021,Enfield,3067
+4/1/2021,Greenwich,2685
+4/1/2021,Hackney,3197
+4/1/2021,Hammersmith and Fulham,1914
+4/1/2021,Haringey,3023
+4/1/2021,Harrow,1531
+4/1/2021,Havering,1785
+4/1/2021,Hillingdon,2355
+4/1/2021,Hounslow,2465
+4/1/2021,Islington,2676
+4/1/2021,Kensington and Chelsea,1700
+4/1/2021,Kingston upon Thames,1141
+4/1/2021,Lambeth,3300
+4/1/2021,Lewisham,2836
+4/1/2021,Merton,1347
+4/1/2021,Newham,3359
+4/1/2021,Redbridge,2498
+4/1/2021,Richmond upon Thames,1105
+4/1/2021,Southwark,3444
+4/1/2021,Sutton,1285
+4/1/2021,Tower Hamlets,3499
+4/1/2021,Waltham Forest,2295
+4/1/2021,Wandsworth,2562
+4/1/2021,Westminster,4198
+5/1/2021,Barking and Dagenham,2131
+5/1/2021,Barnet,3258
+5/1/2021,Bexley,1599
+5/1/2021,Brent,3143
+5/1/2021,Bromley,2378
+5/1/2021,Camden,3247
+5/1/2021,Croydon,3666
+5/1/2021,Ealing,3163
+5/1/2021,Enfield,3299
+5/1/2021,Greenwich,3074
+5/1/2021,Hackney,3723
+5/1/2021,Hammersmith and Fulham,2223
+5/1/2021,Haringey,3315
+5/1/2021,Harrow,1569
+5/1/2021,Havering,1901
+5/1/2021,Hillingdon,2760
+5/1/2021,Hounslow,2685
+5/1/2021,Islington,2835
+5/1/2021,Kensington and Chelsea,2001
+5/1/2021,Kingston upon Thames,1152
+5/1/2021,Lambeth,3483
+5/1/2021,Lewisham,2983
+5/1/2021,Merton,1410
+5/1/2021,Newham,3678
+5/1/2021,Redbridge,2821
+5/1/2021,Richmond upon Thames,1240
+5/1/2021,Southwark,3565
+5/1/2021,Sutton,1460
+5/1/2021,Tower Hamlets,3869
+5/1/2021,Waltham Forest,2741
+5/1/2021,Wandsworth,2730
+5/1/2021,Westminster,5362
+6/1/2021,Barking and Dagenham,2300
+6/1/2021,Barnet,3257
+6/1/2021,Bexley,1674
+6/1/2021,Brent,3012
+6/1/2021,Bromley,2339
+6/1/2021,Camden,3343
+6/1/2021,Croydon,3822
+6/1/2021,Ealing,3368
+6/1/2021,Enfield,3354
+6/1/2021,Greenwich,2993
+6/1/2021,Hackney,3459
+6/1/2021,Hammersmith and Fulham,2266
+6/1/2021,Haringey,3436
+6/1/2021,Harrow,1680
+6/1/2021,Havering,1808
+6/1/2021,Hillingdon,2819
+6/1/2021,Hounslow,2913
+6/1/2021,Islington,2802
+6/1/2021,Kensington and Chelsea,1972
+6/1/2021,Kingston upon Thames,1364
+6/1/2021,Lambeth,3870
+6/1/2021,Lewisham,3095
+6/1/2021,Merton,1503
+6/1/2021,Newham,3661
+6/1/2021,Redbridge,2751
+6/1/2021,Richmond upon Thames,1242
+6/1/2021,Southwark,3551
+6/1/2021,Sutton,1631
+6/1/2021,Tower Hamlets,3807
+6/1/2021,Waltham Forest,2602
+6/1/2021,Wandsworth,2739
+6/1/2021,Westminster,5490
+7/1/2021,Barking and Dagenham,2308
+7/1/2021,Barnet,2940
+7/1/2021,Bexley,1735
+7/1/2021,Brent,3468
+7/1/2021,Bromley,2555
+7/1/2021,Camden,3574
+7/1/2021,Croydon,3750
+7/1/2021,Ealing,3295
+7/1/2021,Enfield,3124
+7/1/2021,Greenwich,2977
+7/1/2021,Hackney,3653
+7/1/2021,Hammersmith and Fulham,2198
+7/1/2021,Haringey,3416
+7/1/2021,Harrow,1818
+7/1/2021,Havering,2141
+7/1/2021,Hillingdon,2831
+7/1/2021,Hounslow,2789
+7/1/2021,Islington,2972
+7/1/2021,Kensington and Chelsea,2042
+7/1/2021,Kingston upon Thames,1358
+7/1/2021,Lambeth,3964
+7/1/2021,Lewisham,3075
+7/1/2021,Merton,1512
+7/1/2021,Newham,3761
+7/1/2021,Redbridge,2858
+7/1/2021,Richmond upon Thames,1149
+7/1/2021,Southwark,3830
+7/1/2021,Sutton,1518
+7/1/2021,Tower Hamlets,3994
+7/1/2021,Waltham Forest,2588
+7/1/2021,Wandsworth,2865
+7/1/2021,Westminster,6570
+8/1/2021,Barking and Dagenham,2076
+8/1/2021,Barnet,2790
+8/1/2021,Bexley,1689
+8/1/2021,Brent,3136
+8/1/2021,Bromley,2252
+8/1/2021,Camden,3468
+8/1/2021,Croydon,3623
+8/1/2021,Ealing,2953
+8/1/2021,Enfield,3067
+8/1/2021,Greenwich,2842
+8/1/2021,Hackney,3535
+8/1/2021,Hammersmith and Fulham,2022
+8/1/2021,Haringey,3210
+8/1/2021,Harrow,1552
+8/1/2021,Havering,1903
+8/1/2021,Hillingdon,2344
+8/1/2021,Hounslow,2529
+8/1/2021,Islington,3038
+8/1/2021,Kensington and Chelsea,1956
+8/1/2021,Kingston upon Thames,1152
+8/1/2021,Lambeth,3849
+8/1/2021,Lewisham,2732
+8/1/2021,Merton,1448
+8/1/2021,Newham,3550
+8/1/2021,Redbridge,2520
+8/1/2021,Richmond upon Thames,1094
+8/1/2021,Southwark,3412
+8/1/2021,Sutton,1395
+8/1/2021,Tower Hamlets,3577
+8/1/2021,Waltham Forest,2388
+8/1/2021,Wandsworth,2620
+8/1/2021,Westminster,5817
+9/1/2021,Barking and Dagenham,2133
+9/1/2021,Barnet,3038
+9/1/2021,Bexley,1692
+9/1/2021,Brent,2964
+9/1/2021,Bromley,2565
+9/1/2021,Camden,3132
+9/1/2021,Croydon,3450
+9/1/2021,Ealing,3233
+9/1/2021,Enfield,3106
+9/1/2021,Greenwich,2782
+9/1/2021,Hackney,3837
+9/1/2021,Hammersmith and Fulham,2221
+9/1/2021,Haringey,3229
+9/1/2021,Harrow,1612
+9/1/2021,Havering,1865
+9/1/2021,Hillingdon,2522
+9/1/2021,Hounslow,2535
+9/1/2021,Islington,2988
+9/1/2021,Kensington and Chelsea,2152
+9/1/2021,Kingston upon Thames,1280
+9/1/2021,Lambeth,4099
+9/1/2021,Lewisham,2926
+9/1/2021,Merton,1491
+9/1/2021,Newham,3704
+9/1/2021,Redbridge,2476
+9/1/2021,Richmond upon Thames,1204
+9/1/2021,Southwark,3748
+9/1/2021,Sutton,1461
+9/1/2021,Tower Hamlets,3674
+9/1/2021,Waltham Forest,2324
+9/1/2021,Wandsworth,2891
+9/1/2021,Westminster,5920
+10/1/2021,Barking and Dagenham,2266
+10/1/2021,Barnet,3039
+10/1/2021,Bexley,1752
+10/1/2021,Brent,3379
+10/1/2021,Bromley,2700
+10/1/2021,Camden,3697
+10/1/2021,Croydon,3992
+10/1/2021,Ealing,3172
+10/1/2021,Enfield,3248
+10/1/2021,Greenwich,3008
+10/1/2021,Hackney,4262
+10/1/2021,Hammersmith and Fulham,2284
+10/1/2021,Haringey,3135
+10/1/2021,Harrow,1781
+10/1/2021,Havering,2033
+10/1/2021,Hillingdon,3000
+10/1/2021,Hounslow,2646
+10/1/2021,Islington,3158
+10/1/2021,Kensington and Chelsea,2278
+10/1/2021,Kingston upon Thames,1254
+10/1/2021,Lambeth,3998
+10/1/2021,Lewisham,3242
+10/1/2021,Merton,1540
+10/1/2021,Newham,4230
+10/1/2021,Redbridge,2856
+10/1/2021,Richmond upon Thames,1191
+10/1/2021,Southwark,3726
+10/1/2021,Sutton,1470
+10/1/2021,Tower Hamlets,3941
+10/1/2021,Waltham Forest,2386
+10/1/2021,Wandsworth,3053
+10/1/2021,Westminster,7871
+11/1/2021,Barking and Dagenham,2155
+11/1/2021,Barnet,2868
+11/1/2021,Bexley,1836
+11/1/2021,Brent,3113
+11/1/2021,Bromley,2670
+11/1/2021,Camden,3576
+11/1/2021,Croydon,3787
+11/1/2021,Ealing,3377
+11/1/2021,Enfield,3311
+11/1/2021,Greenwich,2953
+11/1/2021,Hackney,3897
+11/1/2021,Hammersmith and Fulham,2211
+11/1/2021,Haringey,3069
+11/1/2021,Harrow,1676
+11/1/2021,Havering,2000
+11/1/2021,Hillingdon,2936
+11/1/2021,Hounslow,2750
+11/1/2021,Islington,3213
+11/1/2021,Kensington and Chelsea,2278
+11/1/2021,Kingston upon Thames,1255
+11/1/2021,Lambeth,3722
+11/1/2021,Lewisham,3036
+11/1/2021,Merton,1313
+11/1/2021,Newham,3841
+11/1/2021,Redbridge,2806
+11/1/2021,Richmond upon Thames,1218
+11/1/2021,Southwark,3501
+11/1/2021,Sutton,1646
+11/1/2021,Tower Hamlets,3794
+11/1/2021,Waltham Forest,2578
+11/1/2021,Wandsworth,2810
+11/1/2021,Westminster,7552
+12/1/2021,Barking and Dagenham,2007
+12/1/2021,Barnet,2789
+12/1/2021,Bexley,1756
+12/1/2021,Brent,2690
+12/1/2021,Bromley,2408
+12/1/2021,Camden,3293
+12/1/2021,Croydon,3530
+12/1/2021,Ealing,2889
+12/1/2021,Enfield,3117
+12/1/2021,Greenwich,2622
+12/1/2021,Hackney,3314
+12/1/2021,Hammersmith and Fulham,1967
+12/1/2021,Haringey,3312
+12/1/2021,Harrow,1632
+12/1/2021,Havering,1803
+12/1/2021,Hillingdon,2663
+12/1/2021,Hounslow,2468
+12/1/2021,Islington,2883
+12/1/2021,Kensington and Chelsea,2048
+12/1/2021,Kingston upon Thames,1346
+12/1/2021,Lambeth,3137
+12/1/2021,Lewisham,2885
+12/1/2021,Merton,1297
+12/1/2021,Newham,3694
+12/1/2021,Redbridge,2458
+12/1/2021,Richmond upon Thames,1076
+12/1/2021,Southwark,3198
+12/1/2021,Sutton,1496
+12/1/2021,Tower Hamlets,3162
+12/1/2021,Waltham Forest,2218
+12/1/2021,Wandsworth,2544
+12/1/2021,Westminster,7845
+1/1/2022,Barking and Dagenham,2081
+1/1/2022,Barnet,2908
+1/1/2022,Bexley,1669
+1/1/2022,Brent,2914
+1/1/2022,Bromley,2467
+1/1/2022,Camden,3142
+1/1/2022,Croydon,3598
+1/1/2022,Ealing,2859
+1/1/2022,Enfield,3277
+1/1/2022,Greenwich,2749
+1/1/2022,Hackney,3509
+1/1/2022,Hammersmith and Fulham,1902
+1/1/2022,Haringey,3062
+1/1/2022,Harrow,1611
+1/1/2022,Havering,1910
+1/1/2022,Hillingdon,2711
+1/1/2022,Hounslow,2512
+1/1/2022,Islington,2901
+1/1/2022,Kensington and Chelsea,2114
+1/1/2022,Kingston upon Thames,1255
+1/1/2022,Lambeth,3466
+1/1/2022,Lewisham,2905
+1/1/2022,Merton,1416
+1/1/2022,Newham,3812
+1/1/2022,Redbridge,2525
+1/1/2022,Richmond upon Thames,1239
+1/1/2022,Southwark,3247
+1/1/2022,Sutton,1423
+1/1/2022,Tower Hamlets,3433
+1/1/2022,Waltham Forest,2503
+1/1/2022,Wandsworth,2458
+1/1/2022,Westminster,6754
+2/1/2022,Barking and Dagenham,2021
+2/1/2022,Barnet,2707
+2/1/2022,Bexley,1687
+2/1/2022,Brent,2943
+2/1/2022,Bromley,2281
+2/1/2022,Camden,3419
+2/1/2022,Croydon,3313
+2/1/2022,Ealing,2892
+2/1/2022,Enfield,2913
+2/1/2022,Greenwich,2734
+2/1/2022,Hackney,3060
+2/1/2022,Hammersmith and Fulham,1942
+2/1/2022,Haringey,2909
+2/1/2022,Harrow,1478
+2/1/2022,Havering,1915
+2/1/2022,Hillingdon,2485
+2/1/2022,Hounslow,2370
+2/1/2022,Islington,2851
+2/1/2022,Kensington and Chelsea,1888
+2/1/2022,Kingston upon Thames,1115
+2/1/2022,Lambeth,3186
+2/1/2022,Lewisham,2769
+2/1/2022,Merton,1321
+2/1/2022,Newham,3734
+2/1/2022,Redbridge,2445
+2/1/2022,Richmond upon Thames,1041
+2/1/2022,Southwark,3145
+2/1/2022,Sutton,1350
+2/1/2022,Tower Hamlets,3132
+2/1/2022,Waltham Forest,2270
+2/1/2022,Wandsworth,2534
+2/1/2022,Westminster,6873
+3/1/2022,Barking and Dagenham,2263
+3/1/2022,Barnet,3015
+3/1/2022,Bexley,1838
+3/1/2022,Brent,3362
+3/1/2022,Bromley,2427
+3/1/2022,Camden,3891
+3/1/2022,Croydon,3639
+3/1/2022,Ealing,3164
+3/1/2022,Enfield,3415
+3/1/2022,Greenwich,3004
+3/1/2022,Hackney,3519
+3/1/2022,Hammersmith and Fulham,2030
+3/1/2022,Haringey,3061
+3/1/2022,Harrow,1655
+3/1/2022,Havering,2072
+3/1/2022,Hillingdon,2857
+3/1/2022,Hounslow,2729
+3/1/2022,Islington,3189
+3/1/2022,Kensington and Chelsea,2135
+3/1/2022,Kingston upon Thames,1281
+3/1/2022,Lambeth,3666
+3/1/2022,Lewisham,3129
+3/1/2022,Merton,1550
+3/1/2022,Newham,4119
+3/1/2022,Redbridge,2710
+3/1/2022,Richmond upon Thames,1189
+3/1/2022,Southwark,3747
+3/1/2022,Sutton,1484
+3/1/2022,Tower Hamlets,3694
+3/1/2022,Waltham Forest,2397
+3/1/2022,Wandsworth,2660
+3/1/2022,Westminster,7778
+4/1/2022,Barking and Dagenham,2143
+4/1/2022,Barnet,2739
+4/1/2022,Bexley,1639
+4/1/2022,Brent,3115
+4/1/2022,Bromley,2354
+4/1/2022,Camden,3702
+4/1/2022,Croydon,3573
+4/1/2022,Ealing,2861
+4/1/2022,Enfield,3068
+4/1/2022,Greenwich,2680
+4/1/2022,Hackney,3455
+4/1/2022,Hammersmith and Fulham,2145
+4/1/2022,Haringey,2990
+4/1/2022,Harrow,1452
+4/1/2022,Havering,1996
+4/1/2022,Hillingdon,2598
+4/1/2022,Hounslow,2529
+4/1/2022,Islington,2826
+4/1/2022,Kensington and Chelsea,2067
+4/1/2022,Kingston upon Thames,1152
+4/1/2022,Lambeth,3409
+4/1/2022,Lewisham,2938
+4/1/2022,Merton,1422
+4/1/2022,Newham,3586
+4/1/2022,Redbridge,2382
+4/1/2022,Richmond upon Thames,1166
+4/1/2022,Southwark,3735
+4/1/2022,Sutton,1260
+4/1/2022,Tower Hamlets,3777
+4/1/2022,Waltham Forest,2168
+4/1/2022,Wandsworth,2400
+4/1/2022,Westminster,7315
+5/1/2022,Barking and Dagenham,2164
+5/1/2022,Barnet,3177
+5/1/2022,Bexley,1763
+5/1/2022,Brent,3244
+5/1/2022,Bromley,2496
+5/1/2022,Camden,4051
+5/1/2022,Croydon,3820
+5/1/2022,Ealing,3404
+5/1/2022,Enfield,3377
+5/1/2022,Greenwich,3059
+5/1/2022,Hackney,4038
+5/1/2022,Hammersmith and Fulham,2083
+5/1/2022,Haringey,3306
+5/1/2022,Harrow,1604
+5/1/2022,Havering,2239
+5/1/2022,Hillingdon,2878
+5/1/2022,Hounslow,2952
+5/1/2022,Islington,3222
+5/1/2022,Kensington and Chelsea,2076
+5/1/2022,Kingston upon Thames,1272
+5/1/2022,Lambeth,3660
+5/1/2022,Lewisham,3085
+5/1/2022,Merton,1543
+5/1/2022,Newham,3816
+5/1/2022,Redbridge,2860
+5/1/2022,Richmond upon Thames,1341
+5/1/2022,Southwark,4112
+5/1/2022,Sutton,1524
+5/1/2022,Tower Hamlets,3842
+5/1/2022,Waltham Forest,2467
+5/1/2022,Wandsworth,2762
+5/1/2022,Westminster,7727
+6/1/2022,Barking and Dagenham,2254
+6/1/2022,Barnet,2817
+6/1/2022,Bexley,1806
+6/1/2022,Brent,3235
+6/1/2022,Bromley,2430
+6/1/2022,Camden,3810
+6/1/2022,Croydon,3796
+6/1/2022,Ealing,3178
+6/1/2022,Enfield,3454
+6/1/2022,Greenwich,3110
+6/1/2022,Hackney,3575
+6/1/2022,Hammersmith and Fulham,2053
+6/1/2022,Haringey,3128
+6/1/2022,Harrow,1669
+6/1/2022,Havering,2235
+6/1/2022,Hillingdon,2877
+6/1/2022,Hounslow,2710
+6/1/2022,Islington,2901
+6/1/2022,Kensington and Chelsea,2166
+6/1/2022,Kingston upon Thames,1263
+6/1/2022,Lambeth,3790
+6/1/2022,Lewisham,3075
+6/1/2022,Merton,1607
+6/1/2022,Newham,3597
+6/1/2022,Redbridge,2696
+6/1/2022,Richmond upon Thames,1172
+6/1/2022,Southwark,3997
+6/1/2022,Sutton,1476
+6/1/2022,Tower Hamlets,3446
+6/1/2022,Waltham Forest,2508
+6/1/2022,Wandsworth,2655
+6/1/2022,Westminster,7591
+7/1/2022,Barking and Dagenham,2104
+7/1/2022,Barnet,2974
+7/1/2022,Bexley,1693
+7/1/2022,Brent,3250
+7/1/2022,Bromley,2609
+7/1/2022,Camden,3958
+7/1/2022,Croydon,3939
+7/1/2022,Ealing,3276
+7/1/2022,Enfield,3349
+7/1/2022,Greenwich,3046
+7/1/2022,Hackney,3697
+7/1/2022,Hammersmith and Fulham,2176
+7/1/2022,Haringey,3271
+7/1/2022,Harrow,1718
+7/1/2022,Havering,2170
+7/1/2022,Hillingdon,2754
+7/1/2022,Hounslow,2711
+7/1/2022,Islington,3124
+7/1/2022,Kensington and Chelsea,2182
+7/1/2022,Kingston upon Thames,1138
+7/1/2022,Lambeth,4120
+7/1/2022,Lewisham,3162
+7/1/2022,Merton,1693
+7/1/2022,Newham,3752
+7/1/2022,Redbridge,2627
+7/1/2022,Richmond upon Thames,1202
+7/1/2022,Southwark,4267
+7/1/2022,Sutton,1556
+7/1/2022,Tower Hamlets,3641
+7/1/2022,Waltham Forest,2619
+7/1/2022,Wandsworth,2654
+7/1/2022,Westminster,8855
+8/1/2022,Barking and Dagenham,2230
+8/1/2022,Barnet,2893
+8/1/2022,Bexley,1771
+8/1/2022,Brent,3344
+8/1/2022,Bromley,2415
+8/1/2022,Camden,3775
+8/1/2022,Croydon,3693
+8/1/2022,Ealing,3281
+8/1/2022,Enfield,3275
+8/1/2022,Greenwich,2799
+8/1/2022,Hackney,3515
+8/1/2022,Hammersmith and Fulham,2256
+8/1/2022,Haringey,3042
+8/1/2022,Harrow,1651
+8/1/2022,Havering,2296
+8/1/2022,Hillingdon,2926
+8/1/2022,Hounslow,2636
+8/1/2022,Islington,3112
+8/1/2022,Kensington and Chelsea,2721
+8/1/2022,Kingston upon Thames,1156
+8/1/2022,Lambeth,3965
+8/1/2022,Lewisham,3133
+8/1/2022,Merton,1524
+8/1/2022,Newham,3581
+8/1/2022,Redbridge,2447
+8/1/2022,Richmond upon Thames,1122
+8/1/2022,Southwark,3908
+8/1/2022,Sutton,1613
+8/1/2022,Tower Hamlets,3576
+8/1/2022,Waltham Forest,2299
+8/1/2022,Wandsworth,2625
+8/1/2022,Westminster,7601
+9/1/2022,Barking and Dagenham,2087
+9/1/2022,Barnet,2926
+9/1/2022,Bexley,1805
+9/1/2022,Brent,3173
+9/1/2022,Bromley,2237
+9/1/2022,Camden,3450
+9/1/2022,Croydon,3815
+9/1/2022,Ealing,2851
+9/1/2022,Enfield,3030
+9/1/2022,Greenwich,2772
+9/1/2022,Hackney,3109
+9/1/2022,Hammersmith and Fulham,2095
+9/1/2022,Haringey,3143
+9/1/2022,Harrow,1596
+9/1/2022,Havering,1970
+9/1/2022,Hillingdon,2774
+9/1/2022,Hounslow,2554
+9/1/2022,Islington,2949
+9/1/2022,Kensington and Chelsea,1905
+9/1/2022,Kingston upon Thames,1167
+9/1/2022,Lambeth,3551
+9/1/2022,Lewisham,2969
+9/1/2022,Merton,1519
+9/1/2022,Newham,3584
+9/1/2022,Redbridge,2500
+9/1/2022,Richmond upon Thames,1117
+9/1/2022,Southwark,3310
+9/1/2022,Sutton,1444
+9/1/2022,Tower Hamlets,3405
+9/1/2022,Waltham Forest,2395
+9/1/2022,Wandsworth,2398
+9/1/2022,Westminster,6645
+10/1/2022,Barking and Dagenham,2420
+10/1/2022,Barnet,2967
+10/1/2022,Bexley,1739
+10/1/2022,Brent,3291
+10/1/2022,Bromley,2365
+10/1/2022,Camden,4241
+10/1/2022,Croydon,3911
+10/1/2022,Ealing,3331
+10/1/2022,Enfield,3141
+10/1/2022,Greenwich,3082
+10/1/2022,Hackney,3715
+10/1/2022,Hammersmith and Fulham,2176
+10/1/2022,Haringey,3104
+10/1/2022,Harrow,1960
+10/1/2022,Havering,2055
+10/1/2022,Hillingdon,3126
+10/1/2022,Hounslow,2847
+10/1/2022,Islington,3427
+10/1/2022,Kensington and Chelsea,2252
+10/1/2022,Kingston upon Thames,1237
+10/1/2022,Lambeth,3876
+10/1/2022,Lewisham,3037
+10/1/2022,Merton,1629
+10/1/2022,Newham,3997
+10/1/2022,Redbridge,2776
+10/1/2022,Richmond upon Thames,1215
+10/1/2022,Southwark,3770
+10/1/2022,Sutton,1373
+10/1/2022,Tower Hamlets,3728
+10/1/2022,Waltham Forest,2539
+10/1/2022,Wandsworth,2495
+10/1/2022,Westminster,9793
+11/1/2022,Barking and Dagenham,2383
+11/1/2022,Barnet,3073
+11/1/2022,Bexley,1754
+11/1/2022,Brent,3259
+11/1/2022,Bromley,2420
+11/1/2022,Camden,4245
+11/1/2022,Croydon,3567
+11/1/2022,Ealing,3148
+11/1/2022,Enfield,3190
+11/1/2022,Greenwich,2937
+11/1/2022,Hackney,3471
+11/1/2022,Hammersmith and Fulham,1997
+11/1/2022,Haringey,3029
+11/1/2022,Harrow,1747
+11/1/2022,Havering,2131
+11/1/2022,Hillingdon,2890
+11/1/2022,Hounslow,2713
+11/1/2022,Islington,3124
+11/1/2022,Kensington and Chelsea,2242
+11/1/2022,Kingston upon Thames,1274
+11/1/2022,Lambeth,3657
+11/1/2022,Lewisham,2773
+11/1/2022,Merton,1472
+11/1/2022,Newham,3959
+11/1/2022,Redbridge,2577
+11/1/2022,Richmond upon Thames,1187
+11/1/2022,Southwark,3943
+11/1/2022,Sutton,1393
+11/1/2022,Tower Hamlets,3819
+11/1/2022,Waltham Forest,2474
+11/1/2022,Wandsworth,2625
+11/1/2022,Westminster,10254
+12/1/2022,Barking and Dagenham,2255
+12/1/2022,Barnet,2681
+12/1/2022,Bexley,1538
+12/1/2022,Brent,2953
+12/1/2022,Bromley,2226
+12/1/2022,Camden,3462
+12/1/2022,Croydon,3310
+12/1/2022,Ealing,2857
+12/1/2022,Enfield,2966
+12/1/2022,Greenwich,2626
+12/1/2022,Hackney,3076
+12/1/2022,Hammersmith and Fulham,1906
+12/1/2022,Haringey,2857
+12/1/2022,Harrow,1408
+12/1/2022,Havering,1872
+12/1/2022,Hillingdon,2739
+12/1/2022,Hounslow,2395
+12/1/2022,Islington,2998
+12/1/2022,Kensington and Chelsea,2070
+12/1/2022,Kingston upon Thames,1135
+12/1/2022,Lambeth,3453
+12/1/2022,Lewisham,3001
+12/1/2022,Merton,1312
+12/1/2022,Newham,3442
+12/1/2022,Redbridge,2543
+12/1/2022,Richmond upon Thames,1068
+12/1/2022,Southwark,3577
+12/1/2022,Sutton,1314
+12/1/2022,Tower Hamlets,3201
+12/1/2022,Waltham Forest,2161
+12/1/2022,Wandsworth,2293
+12/1/2022,Westminster,11406
+1/1/2023,Barking and Dagenham,2285
+1/1/2023,Barnet,2982
+1/1/2023,Bexley,1788
+1/1/2023,Brent,3069
+1/1/2023,Bromley,2260
+1/1/2023,Camden,3985
+1/1/2023,Croydon,3318
+1/1/2023,Ealing,3121
+1/1/2023,Enfield,3373
+1/1/2023,Greenwich,2780
+1/1/2023,Hackney,3296
+1/1/2023,Hammersmith and Fulham,2012
+1/1/2023,Haringey,3284
+1/1/2023,Harrow,1592
+1/1/2023,Havering,2187
+1/1/2023,Hillingdon,2898
+1/1/2023,Hounslow,2685
+1/1/2023,Islington,3139
+1/1/2023,Kensington and Chelsea,2104
+1/1/2023,Kingston upon Thames,1232
+1/1/2023,Lambeth,3714
+1/1/2023,Lewisham,3187
+1/1/2023,Merton,1466
+1/1/2023,Newham,3764
+1/1/2023,Redbridge,2571
+1/1/2023,Richmond upon Thames,1172
+1/1/2023,Southwark,3784
+1/1/2023,Sutton,1509
+1/1/2023,Tower Hamlets,3762
+1/1/2023,Waltham Forest,2291
+1/1/2023,Wandsworth,2387
+1/1/2023,Westminster,10096
+2/1/2023,Barking and Dagenham,2218
+2/1/2023,Barnet,2684
+2/1/2023,Bexley,1824
+2/1/2023,Brent,2895
+2/1/2023,Bromley,2308
+2/1/2023,Camden,3839
+2/1/2023,Croydon,3285
+2/1/2023,Ealing,3174
+2/1/2023,Enfield,2939
+2/1/2023,Greenwich,2725
+2/1/2023,Hackney,3147
+2/1/2023,Hammersmith and Fulham,2025
+2/1/2023,Haringey,3005
+2/1/2023,Harrow,1581
+2/1/2023,Havering,2096
+2/1/2023,Hillingdon,2649
+2/1/2023,Hounslow,2559
+2/1/2023,Islington,2810
+2/1/2023,Kensington and Chelsea,1913
+2/1/2023,Kingston upon Thames,1157
+2/1/2023,Lambeth,3467
+2/1/2023,Lewisham,2942
+2/1/2023,Merton,1302
+2/1/2023,Newham,3613
+2/1/2023,Redbridge,2441
+2/1/2023,Richmond upon Thames,1154
+2/1/2023,Southwark,3774
+2/1/2023,Sutton,1439
+2/1/2023,Tower Hamlets,3550
+2/1/2023,Waltham Forest,2126
+2/1/2023,Wandsworth,2429
+2/1/2023,Westminster,9397
+3/1/2023,Barking and Dagenham,2305
+3/1/2023,Barnet,3163
+3/1/2023,Bexley,1729
+3/1/2023,Brent,3303
+3/1/2023,Bromley,2464
+3/1/2023,Camden,4286
+3/1/2023,Croydon,3619
+3/1/2023,Ealing,3397
+3/1/2023,Enfield,3316
+3/1/2023,Greenwich,2949
+3/1/2023,Hackney,3541
+3/1/2023,Hammersmith and Fulham,2285
+3/1/2023,Haringey,3383
+3/1/2023,Harrow,1680
+3/1/2023,Havering,2147
+3/1/2023,Hillingdon,2799
+3/1/2023,Hounslow,2733
+3/1/2023,Islington,3242
+3/1/2023,Kensington and Chelsea,2125
+3/1/2023,Kingston upon Thames,1320
+3/1/2023,Lambeth,3677
+3/1/2023,Lewisham,3229
+3/1/2023,Merton,1442
+3/1/2023,Newham,3797
+3/1/2023,Redbridge,2637
+3/1/2023,Richmond upon Thames,1255
+3/1/2023,Southwark,3851
+3/1/2023,Sutton,1312
+3/1/2023,Tower Hamlets,4065
+3/1/2023,Waltham Forest,2435
+3/1/2023,Wandsworth,2633
+3/1/2023,Westminster,9118
+4/1/2023,Barking and Dagenham,2314
+4/1/2023,Barnet,2861
+4/1/2023,Bexley,1781
+4/1/2023,Brent,3180
+4/1/2023,Bromley,2419
+4/1/2023,Camden,4447
+4/1/2023,Croydon,3285
+4/1/2023,Ealing,2955
+4/1/2023,Enfield,3008
+4/1/2023,Greenwich,2947
+4/1/2023,Hackney,3301
+4/1/2023,Hammersmith and Fulham,2271
+4/1/2023,Haringey,3147
+4/1/2023,Harrow,1656
+4/1/2023,Havering,2215
+4/1/2023,Hillingdon,2464
+4/1/2023,Hounslow,2645
+4/1/2023,Islington,3256
+4/1/2023,Kensington and Chelsea,2196
+4/1/2023,Kingston upon Thames,1198
+4/1/2023,Lambeth,4014
+4/1/2023,Lewisham,3215
+4/1/2023,Merton,1375
+4/1/2023,Newham,3826
+4/1/2023,Redbridge,2655
+4/1/2023,Richmond upon Thames,1141
+4/1/2023,Southwark,3875
+4/1/2023,Sutton,1350
+4/1/2023,Tower Hamlets,3759
+4/1/2023,Waltham Forest,2303
+4/1/2023,Wandsworth,2521
+4/1/2023,Westminster,9030
+5/1/2023,Barking and Dagenham,2653
+5/1/2023,Barnet,3091
+5/1/2023,Bexley,1938
+5/1/2023,Brent,3664
+5/1/2023,Bromley,2606
+5/1/2023,Camden,4603
+5/1/2023,Croydon,3658
+5/1/2023,Ealing,3585
+5/1/2023,Enfield,3352
+5/1/2023,Greenwich,3302
+5/1/2023,Hackney,3716
+5/1/2023,Hammersmith and Fulham,2487
+5/1/2023,Haringey,3416
+5/1/2023,Harrow,1731
+5/1/2023,Havering,2271
+5/1/2023,Hillingdon,2576
+5/1/2023,Hounslow,3059
+5/1/2023,Islington,3302
+5/1/2023,Kensington and Chelsea,2439
+5/1/2023,Kingston upon Thames,1394
+5/1/2023,Lambeth,4124
+5/1/2023,Lewisham,3418
+5/1/2023,Merton,1561
+5/1/2023,Newham,4134
+5/1/2023,Redbridge,2847
+5/1/2023,Richmond upon Thames,1288
+5/1/2023,Southwark,4569
+5/1/2023,Sutton,1401
+5/1/2023,Tower Hamlets,3914
+5/1/2023,Waltham Forest,2443
+5/1/2023,Wandsworth,3066
+5/1/2023,Westminster,9497
+6/1/2023,Barking and Dagenham,2640
+6/1/2023,Barnet,3137
+6/1/2023,Bexley,1775
+6/1/2023,Brent,3829
+6/1/2023,Bromley,2541
+6/1/2023,Camden,4683
+6/1/2023,Croydon,3946
+6/1/2023,Ealing,3397
+6/1/2023,Enfield,3330
+6/1/2023,Greenwich,3438
+6/1/2023,Hackney,3923
+6/1/2023,Hammersmith and Fulham,2405
+6/1/2023,Haringey,3478
+6/1/2023,Harrow,1788
+6/1/2023,Havering,2406
+6/1/2023,Hillingdon,2669
+6/1/2023,Hounslow,2954
+6/1/2023,Islington,3262
+6/1/2023,Kensington and Chelsea,2347
+6/1/2023,Kingston upon Thames,1394
+6/1/2023,Lambeth,4174
+6/1/2023,Lewisham,3808
+6/1/2023,Merton,1658
+6/1/2023,Newham,4434
+6/1/2023,Redbridge,2787
+6/1/2023,Richmond upon Thames,1235
+6/1/2023,Southwark,4795
+6/1/2023,Sutton,1524
+6/1/2023,Tower Hamlets,3991
+6/1/2023,Waltham Forest,2665
+6/1/2023,Wandsworth,3080
+6/1/2023,Westminster,9708
+7/1/2023,Barking and Dagenham,2581
+7/1/2023,Barnet,3167
+7/1/2023,Bexley,1875
+7/1/2023,Brent,3714
+7/1/2023,Bromley,2599
+7/1/2023,Camden,4470
+7/1/2023,Croydon,3997
+7/1/2023,Ealing,3688
+7/1/2023,Enfield,3180
+7/1/2023,Greenwich,3225
+7/1/2023,Hackney,3950
+7/1/2023,Hammersmith and Fulham,2389
+7/1/2023,Haringey,3709
+7/1/2023,Harrow,1641
+7/1/2023,Havering,2342
+7/1/2023,Hillingdon,2637
+7/1/2023,Hounslow,3294
+7/1/2023,Islington,3379
+7/1/2023,Kensington and Chelsea,2326
+7/1/2023,Kingston upon Thames,1332
+7/1/2023,Lambeth,4110
+7/1/2023,Lewisham,3342
+7/1/2023,Merton,1731
+7/1/2023,Newham,4190
+7/1/2023,Redbridge,2741
+7/1/2023,Richmond upon Thames,1282
+7/1/2023,Southwark,4458
+7/1/2023,Sutton,1622
+7/1/2023,Tower Hamlets,4273
+7/1/2023,Waltham Forest,2623
+7/1/2023,Wandsworth,3102
+7/1/2023,Westminster,9827
+8/1/2023,Barking and Dagenham,2660
+8/1/2023,Barnet,2922
+8/1/2023,Bexley,1852
+8/1/2023,Brent,3519
+8/1/2023,Bromley,2615
+8/1/2023,Camden,4147
+8/1/2023,Croydon,3931
+8/1/2023,Ealing,3487
+8/1/2023,Enfield,3028
+8/1/2023,Greenwich,3056
+8/1/2023,Hackney,3728
+8/1/2023,Hammersmith and Fulham,2341
+8/1/2023,Haringey,3122
+8/1/2023,Harrow,1540
+8/1/2023,Havering,2421
+8/1/2023,Hillingdon,2518
+8/1/2023,Hounslow,3186
+8/1/2023,Islington,3157
+8/1/2023,Kensington and Chelsea,3092
+8/1/2023,Kingston upon Thames,1302
+8/1/2023,Lambeth,4015
+8/1/2023,Lewisham,3573
+8/1/2023,Merton,1517
+8/1/2023,Newham,4249
+8/1/2023,Redbridge,2710
+8/1/2023,Richmond upon Thames,1386
+8/1/2023,Southwark,4243
+8/1/2023,Sutton,1363
+8/1/2023,Tower Hamlets,4018
+8/1/2023,Waltham Forest,2533
+8/1/2023,Wandsworth,2792
+8/1/2023,Westminster,8775
+9/1/2023,Barking and Dagenham,2561
+9/1/2023,Barnet,3033
+9/1/2023,Bexley,1899
+9/1/2023,Brent,3535
+9/1/2023,Bromley,2663
+9/1/2023,Camden,4483
+9/1/2023,Croydon,3997
+9/1/2023,Ealing,3660
+9/1/2023,Enfield,3395
+9/1/2023,Greenwich,3332
+9/1/2023,Hackney,3678
+9/1/2023,Hammersmith and Fulham,2429
+9/1/2023,Haringey,3391
+9/1/2023,Harrow,1760
+9/1/2023,Havering,2435
+9/1/2023,Hillingdon,2528
+9/1/2023,Hounslow,3420
+9/1/2023,Islington,3059
+9/1/2023,Kensington and Chelsea,2405
+9/1/2023,Kingston upon Thames,1305
+9/1/2023,Lambeth,4120
+9/1/2023,Lewisham,3449
+9/1/2023,Merton,1708
+9/1/2023,Newham,4270
+9/1/2023,Redbridge,2859
+9/1/2023,Richmond upon Thames,1350
+9/1/2023,Southwark,4389
+9/1/2023,Sutton,1444
+9/1/2023,Tower Hamlets,4020
+9/1/2023,Waltham Forest,2605
+9/1/2023,Wandsworth,2859
+9/1/2023,Westminster,8667
+10/1/2023,Barking and Dagenham,2010
+10/1/2023,Barnet,3613
+10/1/2023,Bexley,1836
+10/1/2023,Brent,3306
+10/1/2023,Bromley,2434
+10/1/2023,Camden,4691
+10/1/2023,Croydon,3733
+10/1/2023,Ealing,3451
+10/1/2023,Enfield,3248
+10/1/2023,Greenwich,2900
+10/1/2023,Hackney,3837
+10/1/2023,Hammersmith and Fulham,2462
+10/1/2023,Haringey,3419
+10/1/2023,Harrow,1608
+10/1/2023,Havering,2544
+10/1/2023,Hillingdon,2537
+10/1/2023,Hounslow,2982
+10/1/2023,Islington,3120
+10/1/2023,Kensington and Chelsea,2625
+10/1/2023,Kingston upon Thames,1336
+10/1/2023,Lambeth,3921
+10/1/2023,Lewisham,2980
+10/1/2023,Merton,1626
+10/1/2023,Newham,4215
+10/1/2023,Redbridge,2691
+10/1/2023,Richmond upon Thames,1171
+10/1/2023,Southwark,4083
+10/1/2023,Sutton,1428
+10/1/2023,Tower Hamlets,4275
+10/1/2023,Waltham Forest,2429
+10/1/2023,Wandsworth,3150
+10/1/2023,Westminster,10334
+11/1/2023,Barking and Dagenham,2164
+11/1/2023,Barnet,3761
+11/1/2023,Bexley,1884
+11/1/2023,Brent,3618
+11/1/2023,Bromley,2714
+11/1/2023,Camden,4988
+11/1/2023,Croydon,3950
+11/1/2023,Ealing,3596
+11/1/2023,Enfield,3199
+11/1/2023,Greenwich,3128
+11/1/2023,Hackney,3880
+11/1/2023,Hammersmith and Fulham,2455
+11/1/2023,Haringey,3532
+11/1/2023,Harrow,1773
+11/1/2023,Havering,2424
+11/1/2023,Hillingdon,2530
+11/1/2023,Hounslow,3114
+11/1/2023,Islington,3122
+11/1/2023,Kensington and Chelsea,2703
+11/1/2023,Kingston upon Thames,1226
+11/1/2023,Lambeth,4002
+11/1/2023,Lewisham,3233
+11/1/2023,Merton,1482
+11/1/2023,Newham,4788
+11/1/2023,Redbridge,2764
+11/1/2023,Richmond upon Thames,1268
+11/1/2023,Southwark,4558
+11/1/2023,Sutton,1455
+11/1/2023,Tower Hamlets,4700
+11/1/2023,Waltham Forest,2700
+11/1/2023,Wandsworth,2827
+11/1/2023,Westminster,13725
+12/1/2023,Barking and Dagenham,2409
+12/1/2023,Barnet,3288
+12/1/2023,Bexley,1982
+12/1/2023,Brent,3642
+12/1/2023,Bromley,2470
+12/1/2023,Camden,4225
+12/1/2023,Croydon,3856
+12/1/2023,Ealing,3460
+12/1/2023,Enfield,3484
+12/1/2023,Greenwich,3208
+12/1/2023,Hackney,3946
+12/1/2023,Hammersmith and Fulham,2405
+12/1/2023,Haringey,3286
+12/1/2023,Harrow,1765
+12/1/2023,Havering,2287
+12/1/2023,Hillingdon,2442
+12/1/2023,Hounslow,3089
+12/1/2023,Islington,3098
+12/1/2023,Kensington and Chelsea,2416
+12/1/2023,Kingston upon Thames,1266
+12/1/2023,Lambeth,3990
+12/1/2023,Lewisham,3285
+12/1/2023,Merton,1542
+12/1/2023,Newham,4804
+12/1/2023,Redbridge,2575
+12/1/2023,Richmond upon Thames,1170
+12/1/2023,Southwark,4219
+12/1/2023,Sutton,1493
+12/1/2023,Tower Hamlets,4483
+12/1/2023,Waltham Forest,2643
+12/1/2023,Wandsworth,2961
+12/1/2023,Westminster,13651
+1/1/2024,Barking and Dagenham,2361
+1/1/2024,Barnet,3048
+1/1/2024,Bexley,1871
+1/1/2024,Brent,3445
+1/1/2024,Bromley,2437
+1/1/2024,Camden,4252
+1/1/2024,Croydon,3896
+1/1/2024,Ealing,3183
+1/1/2024,Enfield,3295
+1/1/2024,Greenwich,3023
+1/1/2024,Hackney,4049
+1/1/2024,Hammersmith and Fulham,2432
+1/1/2024,Haringey,2962
+1/1/2024,Harrow,1751
+1/1/2024,Havering,2274
+1/1/2024,Hillingdon,2678
+1/1/2024,Hounslow,2852
+1/1/2024,Islington,3152
+1/1/2024,Kensington and Chelsea,2299
+1/1/2024,Kingston upon Thames,1262
+1/1/2024,Lambeth,3909
+1/1/2024,Lewisham,3281
+1/1/2024,Merton,1553
+1/1/2024,Newham,4339
+1/1/2024,Redbridge,2814
+1/1/2024,Richmond upon Thames,1195
+1/1/2024,Southwark,4389
+1/1/2024,Sutton,1580
+1/1/2024,Tower Hamlets,3800
+1/1/2024,Waltham Forest,2540
+1/1/2024,Wandsworth,2858
+1/1/2024,Westminster,10850
+2/1/2024,Barking and Dagenham,2289
+2/1/2024,Barnet,2987
+2/1/2024,Bexley,1748
+2/1/2024,Brent,3390
+2/1/2024,Bromley,2468
+2/1/2024,Camden,5007
+2/1/2024,Croydon,3744
+2/1/2024,Ealing,3552
+2/1/2024,Enfield,2958
+2/1/2024,Greenwich,2778
+2/1/2024,Hackney,3671
+2/1/2024,Hammersmith and Fulham,2272
+2/1/2024,Haringey,3096
+2/1/2024,Harrow,1725
+2/1/2024,Havering,2396
+2/1/2024,Hillingdon,2559
+2/1/2024,Hounslow,2890
+2/1/2024,Islington,3117
+2/1/2024,Kensington and Chelsea,2449
+2/1/2024,Kingston upon Thames,1192
+2/1/2024,Lambeth,4044
+2/1/2024,Lewisham,3126
+2/1/2024,Merton,1471
+2/1/2024,Newham,4154
+2/1/2024,Redbridge,2643
+2/1/2024,Richmond upon Thames,1197
+2/1/2024,Southwark,4210
+2/1/2024,Sutton,1371
+2/1/2024,Tower Hamlets,3764
+2/1/2024,Waltham Forest,2574
+2/1/2024,Wandsworth,2728
+2/1/2024,Westminster,11378
+3/1/2024,Barking and Dagenham,2445
+3/1/2024,Barnet,2895
+3/1/2024,Bexley,1922
+3/1/2024,Brent,3562
+3/1/2024,Bromley,2591
+3/1/2024,Camden,4952
+3/1/2024,Croydon,4087
+3/1/2024,Ealing,3464
+3/1/2024,Enfield,3084
+3/1/2024,Greenwich,2888
+3/1/2024,Hackney,3775
+3/1/2024,Hammersmith and Fulham,2353
+3/1/2024,Haringey,3043
+3/1/2024,Harrow,1822
+3/1/2024,Havering,2189
+3/1/2024,Hillingdon,2971
+3/1/2024,Hounslow,2819
+3/1/2024,Islington,2862
+3/1/2024,Kensington and Chelsea,2387
+3/1/2024,Kingston upon Thames,1125
+3/1/2024,Lambeth,4176
+3/1/2024,Lewisham,3273
+3/1/2024,Merton,1419
+3/1/2024,Newham,4475
+3/1/2024,Redbridge,2791
+3/1/2024,Richmond upon Thames,1210
+3/1/2024,Southwark,4257
+3/1/2024,Sutton,1445
+3/1/2024,Tower Hamlets,3996
+3/1/2024,Waltham Forest,2688
+3/1/2024,Wandsworth,2736
+3/1/2024,Westminster,11147
+4/1/2024,Barking and Dagenham,2151
+4/1/2024,Barnet,2843
+4/1/2024,Bexley,1822
+4/1/2024,Brent,3409
+4/1/2024,Bromley,2475
+4/1/2024,Camden,4672
+4/1/2024,Croydon,3609
+4/1/2024,Ealing,3167
+4/1/2024,Enfield,3187
+4/1/2024,Greenwich,2843
+4/1/2024,Hackney,3797
+4/1/2024,Hammersmith and Fulham,2085
+4/1/2024,Haringey,3119
+4/1/2024,Harrow,1682
+4/1/2024,Havering,2207
+4/1/2024,Hillingdon,2913
+4/1/2024,Hounslow,2805
+4/1/2024,Islington,3359
+4/1/2024,Kensington and Chelsea,2429
+4/1/2024,Kingston upon Thames,1181
+4/1/2024,Lambeth,4147
+4/1/2024,Lewisham,3311
+4/1/2024,Merton,1417
+4/1/2024,Newham,4610
+4/1/2024,Redbridge,2509
+4/1/2024,Richmond upon Thames,1130
+4/1/2024,Southwark,4304
+4/1/2024,Sutton,1290
+4/1/2024,Tower Hamlets,3935
+4/1/2024,Waltham Forest,2631
+4/1/2024,Wandsworth,2605
+4/1/2024,Westminster,10204
+5/1/2024,Barking and Dagenham,2302
+5/1/2024,Barnet,3097
+5/1/2024,Bexley,1738
+5/1/2024,Brent,3741
+5/1/2024,Bromley,2555
+5/1/2024,Camden,4577
+5/1/2024,Croydon,3951
+5/1/2024,Ealing,3312
+5/1/2024,Enfield,3398
+5/1/2024,Greenwich,3270
+5/1/2024,Hackney,4358
+5/1/2024,Hammersmith and Fulham,2304
+5/1/2024,Haringey,3378
+5/1/2024,Harrow,1822
+5/1/2024,Havering,2290
+5/1/2024,Hillingdon,3060
+5/1/2024,Hounslow,2709
+5/1/2024,Islington,3546
+5/1/2024,Kensington and Chelsea,2363
+5/1/2024,Kingston upon Thames,1122
+5/1/2024,Lambeth,4563
+5/1/2024,Lewisham,3558
+5/1/2024,Merton,1513
+5/1/2024,Newham,4510
+5/1/2024,Redbridge,2872
+5/1/2024,Richmond upon Thames,1348
+5/1/2024,Southwark,4457
+5/1/2024,Sutton,1603
+5/1/2024,Tower Hamlets,4301
+5/1/2024,Waltham Forest,2931
+5/1/2024,Wandsworth,2820
+5/1/2024,Westminster,9396
+6/1/2024,Barking and Dagenham,2205
+6/1/2024,Barnet,3094
+6/1/2024,Bexley,1918
+6/1/2024,Brent,3836
+6/1/2024,Bromley,2511
+6/1/2024,Camden,5151
+6/1/2024,Croydon,3911
+6/1/2024,Ealing,3519
+6/1/2024,Enfield,3218
+6/1/2024,Greenwich,3070
+6/1/2024,Hackney,3620
+6/1/2024,Hammersmith and Fulham,2177
+6/1/2024,Haringey,3225
+6/1/2024,Harrow,1580
+6/1/2024,Havering,2217
+6/1/2024,Hillingdon,3242
+6/1/2024,Hounslow,2910
+6/1/2024,Islington,3397
+6/1/2024,Kensington and Chelsea,2365
+6/1/2024,Kingston upon Thames,1228
+6/1/2024,Lambeth,4692
+6/1/2024,Lewisham,3467
+6/1/2024,Merton,1517
+6/1/2024,Newham,4430
+6/1/2024,Redbridge,2805
+6/1/2024,Richmond upon Thames,1379
+6/1/2024,Southwark,4477
+6/1/2024,Sutton,1406
+6/1/2024,Tower Hamlets,3900
+6/1/2024,Waltham Forest,2846
+6/1/2024,Wandsworth,2857
+6/1/2024,Westminster,9904
+7/1/2024,Barking and Dagenham,2250
+7/1/2024,Barnet,3289
+7/1/2024,Bexley,1923
+7/1/2024,Brent,3725
+7/1/2024,Bromley,2710
+7/1/2024,Camden,5240
+7/1/2024,Croydon,4080
+7/1/2024,Ealing,3619
+7/1/2024,Enfield,3264
+7/1/2024,Greenwich,3044
+7/1/2024,Hackney,3643
+7/1/2024,Hammersmith and Fulham,2341
+7/1/2024,Haringey,3476
+7/1/2024,Harrow,1820
+7/1/2024,Havering,2343
+7/1/2024,Hillingdon,3497
+7/1/2024,Hounslow,3349
+7/1/2024,Islington,3493
+7/1/2024,Kensington and Chelsea,2259
+7/1/2024,Kingston upon Thames,1384
+7/1/2024,Lambeth,4505
+7/1/2024,Lewisham,3774
+7/1/2024,Merton,1685
+7/1/2024,Newham,4538
+7/1/2024,Redbridge,2819
+7/1/2024,Richmond upon Thames,1375
+7/1/2024,Southwark,4466
+7/1/2024,Sutton,1614
+7/1/2024,Tower Hamlets,4369
+7/1/2024,Waltham Forest,2837
+7/1/2024,Wandsworth,2938
+7/1/2024,Westminster,9543
+8/1/2024,Barking and Dagenham,2301
+8/1/2024,Barnet,3113
+8/1/2024,Bexley,1858
+8/1/2024,Brent,3521
+8/1/2024,Bromley,2810
+8/1/2024,Camden,4519
+8/1/2024,Croydon,4245
+8/1/2024,Ealing,3365
+8/1/2024,Enfield,3230
+8/1/2024,Greenwich,3214
+8/1/2024,Hackney,4086
+8/1/2024,Hammersmith and Fulham,2488
+8/1/2024,Haringey,3252
+8/1/2024,Harrow,1814
+8/1/2024,Havering,2357
+8/1/2024,Hillingdon,3313
+8/1/2024,Hounslow,2970
+8/1/2024,Islington,3419
+8/1/2024,Kensington and Chelsea,3074
+8/1/2024,Kingston upon Thames,1307
+8/1/2024,Lambeth,4742
+8/1/2024,Lewisham,3509
+8/1/2024,Merton,1680
+8/1/2024,Newham,4590
+8/1/2024,Redbridge,2587
+8/1/2024,Richmond upon Thames,1337
+8/1/2024,Southwark,4644
+8/1/2024,Sutton,1465
+8/1/2024,Tower Hamlets,4836
+8/1/2024,Waltham Forest,2839
+8/1/2024,Wandsworth,2943
+8/1/2024,Westminster,8952
+9/1/2024,Barking and Dagenham,2394
+9/1/2024,Barnet,3088
+9/1/2024,Bexley,1626
+9/1/2024,Brent,3685
+9/1/2024,Bromley,2632
+9/1/2024,Camden,4637
+9/1/2024,Croydon,3869
+9/1/2024,Ealing,3306
+9/1/2024,Enfield,3547
+9/1/2024,Greenwich,3195
+9/1/2024,Hackney,3833
+9/1/2024,Hammersmith and Fulham,2250
+9/1/2024,Haringey,3211
+9/1/2024,Harrow,1965
+9/1/2024,Havering,2149
+9/1/2024,Hillingdon,2976
+9/1/2024,Hounslow,2858
+9/1/2024,Islington,3494
+9/1/2024,Kensington and Chelsea,2306
+9/1/2024,Kingston upon Thames,1136
+9/1/2024,Lambeth,4546
+9/1/2024,Lewisham,3319
+9/1/2024,Merton,1606
+9/1/2024,Newham,4416
+9/1/2024,Redbridge,2420
+9/1/2024,Richmond upon Thames,1233
+9/1/2024,Southwark,4670
+9/1/2024,Sutton,1450
+9/1/2024,Tower Hamlets,4093
+9/1/2024,Waltham Forest,2664
+9/1/2024,Wandsworth,2766
+9/1/2024,Westminster,8742
+10/1/2024,Barking and Dagenham,2546
+10/1/2024,Barnet,3243
+10/1/2024,Bexley,1845
+10/1/2024,Brent,3665
+10/1/2024,Bromley,2569
+10/1/2024,Camden,5153
+10/1/2024,Croydon,4071
+10/1/2024,Ealing,3537
+10/1/2024,Enfield,3590
+10/1/2024,Greenwich,3193
+10/1/2024,Hackney,4117
+10/1/2024,Hammersmith and Fulham,2502
+10/1/2024,Haringey,3400
+10/1/2024,Harrow,2097
+10/1/2024,Havering,2170
+10/1/2024,Hillingdon,3294
+10/1/2024,Hounslow,3071
+10/1/2024,Islington,3556
+10/1/2024,Kensington and Chelsea,2535
+10/1/2024,Kingston upon Thames,1199
+10/1/2024,Lambeth,4648
+10/1/2024,Lewisham,3459
+10/1/2024,Merton,1490
+10/1/2024,Newham,4797
+10/1/2024,Redbridge,2768
+10/1/2024,Richmond upon Thames,1304
+10/1/2024,Southwark,5185
+10/1/2024,Sutton,1529
+10/1/2024,Tower Hamlets,4216
+10/1/2024,Waltham Forest,2935
+10/1/2024,Wandsworth,2722
+10/1/2024,Westminster,11000
+11/1/2024,Barking and Dagenham,2470
+11/1/2024,Barnet,3363
+11/1/2024,Bexley,1824
+11/1/2024,Brent,3518
+11/1/2024,Bromley,2644
+11/1/2024,Camden,5286
+11/1/2024,Croydon,3895
+11/1/2024,Ealing,3701
+11/1/2024,Enfield,3588
+11/1/2024,Greenwich,3213
+11/1/2024,Hackney,3975
+11/1/2024,Hammersmith and Fulham,2528
+11/1/2024,Haringey,3225
+11/1/2024,Harrow,1973
+11/1/2024,Havering,2277
+11/1/2024,Hillingdon,3222
+11/1/2024,Hounslow,2960
+11/1/2024,Islington,3527
+11/1/2024,Kensington and Chelsea,2590
+11/1/2024,Kingston upon Thames,1166
+11/1/2024,Lambeth,4319
+11/1/2024,Lewisham,3391
+11/1/2024,Merton,1526
+11/1/2024,Newham,4640
+11/1/2024,Redbridge,2725
+11/1/2024,Richmond upon Thames,1451
+11/1/2024,Southwark,4751
+11/1/2024,Sutton,1383
+11/1/2024,Tower Hamlets,4078
+11/1/2024,Waltham Forest,2939
+11/1/2024,Wandsworth,2826
+11/1/2024,Westminster,12962
+12/1/2024,Barking and Dagenham,2227
+12/1/2024,Barnet,2785
+12/1/2024,Bexley,1584
+12/1/2024,Brent,3422
+12/1/2024,Bromley,2636
+12/1/2024,Camden,5018
+12/1/2024,Croydon,3903
+12/1/2024,Ealing,3155
+12/1/2024,Enfield,3274
+12/1/2024,Greenwich,3065
+12/1/2024,Hackney,3598
+12/1/2024,Hammersmith and Fulham,2258
+12/1/2024,Haringey,2998
+12/1/2024,Harrow,1999
+12/1/2024,Havering,1915
+12/1/2024,Hillingdon,3077
+12/1/2024,Hounslow,2927
+12/1/2024,Islington,3391
+12/1/2024,Kensington and Chelsea,2411
+12/1/2024,Kingston upon Thames,1155
+12/1/2024,Lambeth,4015
+12/1/2024,Lewisham,3251
+12/1/2024,Merton,1456
+12/1/2024,Newham,4415
+12/1/2024,Redbridge,2553
+12/1/2024,Richmond upon Thames,1176
+12/1/2024,Southwark,4481
+12/1/2024,Sutton,1424
+12/1/2024,Tower Hamlets,3828
+12/1/2024,Waltham Forest,2638
+12/1/2024,Wandsworth,2792
+12/1/2024,Westminster,13446
+1/1/2025,Barking and Dagenham,2171
+1/1/2025,Barnet,3071
+1/1/2025,Bexley,1729
+1/1/2025,Brent,3368
+1/1/2025,Bromley,2569
+1/1/2025,Camden,4508
+1/1/2025,Croydon,3778
+1/1/2025,Ealing,3528
+1/1/2025,Enfield,3384
+1/1/2025,Greenwich,2841
+1/1/2025,Hackney,3410
+1/1/2025,Hammersmith and Fulham,2226
+1/1/2025,Haringey,3012
+1/1/2025,Harrow,1830
+1/1/2025,Havering,2004
+1/1/2025,Hillingdon,3172
+1/1/2025,Hounslow,2772
+1/1/2025,Islington,3493
+1/1/2025,Kensington and Chelsea,2262
+1/1/2025,Kingston upon Thames,1238
+1/1/2025,Lambeth,3897
+1/1/2025,Lewisham,2972
+1/1/2025,Merton,1428
+1/1/2025,Newham,4324
+1/1/2025,Redbridge,2674
+1/1/2025,Richmond upon Thames,1155
+1/1/2025,Southwark,4365
+1/1/2025,Sutton,1350
+1/1/2025,Tower Hamlets,3674
+1/1/2025,Waltham Forest,2404
+1/1/2025,Wandsworth,2679
+1/1/2025,Westminster,10254
+2/1/2025,Barking and Dagenham,1903
+2/1/2025,Barnet,2817
+2/1/2025,Bexley,1689
+2/1/2025,Brent,3243
+2/1/2025,Bromley,2399
+2/1/2025,Camden,4832
+2/1/2025,Croydon,3533
+2/1/2025,Ealing,3196
+2/1/2025,Enfield,2953
+2/1/2025,Greenwich,2773
+2/1/2025,Hackney,3176
+2/1/2025,Hammersmith and Fulham,2137
+2/1/2025,Haringey,2915
+2/1/2025,Harrow,1702
+2/1/2025,Havering,1812
+2/1/2025,Hillingdon,3059
+2/1/2025,Hounslow,2520
+2/1/2025,Islington,3104
+2/1/2025,Kensington and Chelsea,2212
+2/1/2025,Kingston upon Thames,1161
+2/1/2025,Lambeth,3702
+2/1/2025,Lewisham,2953
+2/1/2025,Merton,1280
+2/1/2025,Newham,4167
+2/1/2025,Redbridge,2363
+2/1/2025,Richmond upon Thames,1038
+2/1/2025,Southwark,4114
+2/1/2025,Sutton,1272
+2/1/2025,Tower Hamlets,3397
+2/1/2025,Waltham Forest,2332
+2/1/2025,Wandsworth,2489
+2/1/2025,Westminster,10132
+3/1/2025,Barking and Dagenham,2466
+3/1/2025,Barnet,3274
+3/1/2025,Bexley,1796
+3/1/2025,Brent,3603
+3/1/2025,Bromley,2519
+3/1/2025,Camden,4683
+3/1/2025,Croydon,3856
+3/1/2025,Ealing,3595
+3/1/2025,Enfield,3244
+3/1/2025,Greenwich,3085
+3/1/2025,Hackney,3835
+3/1/2025,Hammersmith and Fulham,2259
+3/1/2025,Haringey,3243
+3/1/2025,Harrow,1737
+3/1/2025,Havering,2197
+3/1/2025,Hillingdon,3206
+3/1/2025,Hounslow,2722
+3/1/2025,Islington,3623
+3/1/2025,Kensington and Chelsea,2344
+3/1/2025,Kingston upon Thames,1260
+3/1/2025,Lambeth,3996
+3/1/2025,Lewisham,3008
+3/1/2025,Merton,1532
+3/1/2025,Newham,4576
+3/1/2025,Redbridge,2568
+3/1/2025,Richmond upon Thames,1252
+3/1/2025,Southwark,4672
+3/1/2025,Sutton,1478
+3/1/2025,Tower Hamlets,4079
+3/1/2025,Waltham Forest,2740
+3/1/2025,Wandsworth,2743
+3/1/2025,Westminster,9943
+4/1/2025,Barking and Dagenham,2496
+4/1/2025,Barnet,2958
+4/1/2025,Bexley,1670
+4/1/2025,Brent,3283
+4/1/2025,Bromley,2589
+4/1/2025,Camden,4462
+4/1/2025,Croydon,3741
+4/1/2025,Ealing,3446
+4/1/2025,Enfield,3076
+4/1/2025,Greenwich,3150
+4/1/2025,Hackney,3419
+4/1/2025,Hammersmith and Fulham,2332
+4/1/2025,Haringey,3163
+4/1/2025,Harrow,1707
+4/1/2025,Havering,2103
+4/1/2025,Hillingdon,3110
+4/1/2025,Hounslow,2815
+4/1/2025,Islington,3651
+4/1/2025,Kensington and Chelsea,2270
+4/1/2025,Kingston upon Thames,1220
+4/1/2025,Lambeth,4346
+4/1/2025,Lewisham,3313
+4/1/2025,Merton,1524
+4/1/2025,Newham,4358
+4/1/2025,Redbridge,2751
+4/1/2025,Richmond upon Thames,1261
+4/1/2025,Southwark,4271
+4/1/2025,Sutton,1571
+4/1/2025,Tower Hamlets,3950
+4/1/2025,Waltham Forest,2662
+4/1/2025,Wandsworth,2775
+4/1/2025,Westminster,9331
+5/1/2025,Barking and Dagenham,2337
+5/1/2025,Barnet,3281
+5/1/2025,Bexley,1858
+5/1/2025,Brent,3753
+5/1/2025,Bromley,2601
+5/1/2025,Camden,4487
+5/1/2025,Croydon,4054
+5/1/2025,Ealing,3419
+5/1/2025,Enfield,3156
+5/1/2025,Greenwich,3323
+5/1/2025,Hackney,3993
+5/1/2025,Hammersmith and Fulham,2643
+5/1/2025,Haringey,3581
+5/1/2025,Harrow,1947
+5/1/2025,Havering,2207
+5/1/2025,Hillingdon,3252
+5/1/2025,Hounslow,3038
+5/1/2025,Islington,3830
+5/1/2025,Kensington and Chelsea,2383
+5/1/2025,Kingston upon Thames,1253
+5/1/2025,Lambeth,4435
+5/1/2025,Lewisham,3521
+5/1/2025,Merton,1555
+5/1/2025,Newham,4619
+5/1/2025,Redbridge,2726
+5/1/2025,Richmond upon Thames,1425
+5/1/2025,Southwark,4720
+5/1/2025,Sutton,1584
+5/1/2025,Tower Hamlets,4137
+5/1/2025,Waltham Forest,2848
+5/1/2025,Wandsworth,2936
+5/1/2025,Westminster,8867
+6/1/2025,Barking and Dagenham,2495
+6/1/2025,Barnet,3129
+6/1/2025,Bexley,1796
+6/1/2025,Brent,3812
+6/1/2025,Bromley,2613
+6/1/2025,Camden,4553
+6/1/2025,Croydon,3879
+6/1/2025,Ealing,3692
+6/1/2025,Enfield,3314
+6/1/2025,Greenwich,3260
+6/1/2025,Hackney,4118
+6/1/2025,Hammersmith and Fulham,2351
+6/1/2025,Haringey,3548
+6/1/2025,Harrow,1929
+6/1/2025,Havering,2238
+6/1/2025,Hillingdon,3440
+6/1/2025,Hounslow,3191
+6/1/2025,Islington,3530
+6/1/2025,Kensington and Chelsea,2451
+6/1/2025,Kingston upon Thames,1225
+6/1/2025,Lambeth,4543
+6/1/2025,Lewisham,3317
+6/1/2025,Merton,1501
+6/1/2025,Newham,4404
+6/1/2025,Redbridge,2781
+6/1/2025,Richmond upon Thames,1367
+6/1/2025,Southwark,4859
+6/1/2025,Sutton,1502
+6/1/2025,Tower Hamlets,4225
+6/1/2025,Waltham Forest,2629
+6/1/2025,Wandsworth,3253
+6/1/2025,Westminster,9278
+7/1/2025,Barking and Dagenham,2441
+7/1/2025,Barnet,3386
+7/1/2025,Bexley,1783
+7/1/2025,Brent,4117
+7/1/2025,Bromley,2839
+7/1/2025,Camden,4888
+7/1/2025,Croydon,4220
+7/1/2025,Ealing,3816
+7/1/2025,Enfield,3508
+7/1/2025,Greenwich,3335
+7/1/2025,Hackney,4415
+7/1/2025,Hammersmith and Fulham,2377
+7/1/2025,Haringey,3846
+7/1/2025,Harrow,1930
+7/1/2025,Havering,2368
+7/1/2025,Hillingdon,3594
+7/1/2025,Hounslow,3382
+7/1/2025,Islington,3581
+7/1/2025,Kensington and Chelsea,2444
+7/1/2025,Kingston upon Thames,1453
+7/1/2025,Lambeth,4703
+7/1/2025,Lewisham,3544
+7/1/2025,Merton,1719
+7/1/2025,Newham,4782
+7/1/2025,Redbridge,2837
+7/1/2025,Richmond upon Thames,1412
+7/1/2025,Southwark,4769
+7/1/2025,Sutton,1619
+7/1/2025,Tower Hamlets,4629
+7/1/2025,Waltham Forest,2739
+7/1/2025,Wandsworth,3258
+7/1/2025,Westminster,9452
+8/1/2025,Barking and Dagenham,2248
+8/1/2025,Barnet,2955
+8/1/2025,Bexley,1754
+8/1/2025,Brent,3911
+8/1/2025,Bromley,2690
+8/1/2025,Camden,4521
+8/1/2025,Croydon,3952
+8/1/2025,Ealing,3478
+8/1/2025,Enfield,2892
+8/1/2025,Greenwich,3305
+8/1/2025,Hackney,4004
+8/1/2025,Hammersmith and Fulham,2359
+8/1/2025,Haringey,3446
+8/1/2025,Harrow,1875
+8/1/2025,Havering,2257
+8/1/2025,Hillingdon,3424
+8/1/2025,Hounslow,3073
+8/1/2025,Islington,3492
+8/1/2025,Kensington and Chelsea,3360
+8/1/2025,Kingston upon Thames,1225
+8/1/2025,Lambeth,4413
+8/1/2025,Lewisham,3271
+8/1/2025,Merton,1489
+8/1/2025,Newham,4303
+8/1/2025,Redbridge,2726
+8/1/2025,Richmond upon Thames,1239
+8/1/2025,Southwark,4618
+8/1/2025,Sutton,1442
+8/1/2025,Tower Hamlets,4449
+8/1/2025,Waltham Forest,2392
+8/1/2025,Wandsworth,3179
+8/1/2025,Westminster,8899
+9/1/2025,Barking and Dagenham,2307
+9/1/2025,Barnet,3185
+9/1/2025,Bexley,1677
+9/1/2025,Brent,3542
+9/1/2025,Bromley,2441
+9/1/2025,Camden,4406
+9/1/2025,Croydon,3532
+9/1/2025,Ealing,3162
+9/1/2025,Enfield,3052
+9/1/2025,Greenwich,2945
+9/1/2025,Hackney,3757
+9/1/2025,Hammersmith and Fulham,2105
+9/1/2025,Haringey,3023
+9/1/2025,Harrow,1845
+9/1/2025,Havering,2049
+9/1/2025,Hillingdon,3354
+9/1/2025,Hounslow,2889
+9/1/2025,Islington,3396
+9/1/2025,Kensington and Chelsea,2053
+9/1/2025,Kingston upon Thames,1160
+9/1/2025,Lambeth,4182
+9/1/2025,Lewisham,2997
+9/1/2025,Merton,1359
+9/1/2025,Newham,4200
+9/1/2025,Redbridge,2696
+9/1/2025,Richmond upon Thames,1084
+9/1/2025,Southwark,4341
+9/1/2025,Sutton,1508
+9/1/2025,Tower Hamlets,4097
+9/1/2025,Waltham Forest,2405
+9/1/2025,Wandsworth,2728
+9/1/2025,Westminster,8223
+10/1/2025,Barking and Dagenham,2310
+10/1/2025,Barnet,3298
+10/1/2025,Bexley,1763
+10/1/2025,Brent,3894
+10/1/2025,Bromley,2435
+10/1/2025,Camden,4384
+10/1/2025,Croydon,3449
+10/1/2025,Ealing,3579
+10/1/2025,Enfield,3321
+10/1/2025,Greenwich,3023
+10/1/2025,Hackney,3607
+10/1/2025,Hammersmith and Fulham,2262
+10/1/2025,Haringey,3105
+10/1/2025,Harrow,1942
+10/1/2025,Havering,2023
+10/1/2025,Hillingdon,3294
+10/1/2025,Hounslow,2958
+10/1/2025,Islington,3350
+10/1/2025,Kensington and Chelsea,2384
+10/1/2025,Kingston upon Thames,1401
+10/1/2025,Lambeth,4078
+10/1/2025,Lewisham,3338
+10/1/2025,Merton,1369
+10/1/2025,Newham,4860
+10/1/2025,Redbridge,2875
+10/1/2025,Richmond upon Thames,1202
+10/1/2025,Southwark,4514
+10/1/2025,Sutton,1527
+10/1/2025,Tower Hamlets,4249
+10/1/2025,Waltham Forest,2442
+10/1/2025,Wandsworth,3104
+10/1/2025,Westminster,8794
+11/1/2025,Barking and Dagenham,2390
+11/1/2025,Barnet,3000
+11/1/2025,Bexley,1647
+11/1/2025,Brent,3436
+11/1/2025,Bromley,2558
+11/1/2025,Camden,4524
+11/1/2025,Croydon,3414
+11/1/2025,Ealing,3534
+11/1/2025,Enfield,3153
+11/1/2025,Greenwich,2881
+11/1/2025,Hackney,3491
+11/1/2025,Hammersmith and Fulham,2110
+11/1/2025,Haringey,3232
+11/1/2025,Harrow,1869
+11/1/2025,Havering,2060
+11/1/2025,Hillingdon,3274
+11/1/2025,Hounslow,2914
+11/1/2025,Islington,3217
+11/1/2025,Kensington and Chelsea,2097
+11/1/2025,Kingston upon Thames,1320
+11/1/2025,Lambeth,4092
+11/1/2025,Lewisham,3278
+11/1/2025,Merton,1407
+11/1/2025,Newham,4567
+11/1/2025,Redbridge,2727
+11/1/2025,Richmond upon Thames,1102
+11/1/2025,Southwark,4417
+11/1/2025,Sutton,1511
+11/1/2025,Tower Hamlets,4090
+11/1/2025,Waltham Forest,2519
+11/1/2025,Wandsworth,2643
+11/1/2025,Westminster,10340
+12/1/2025,Barking and Dagenham,2192
+12/1/2025,Barnet,2983
+12/1/2025,Bexley,1725
+12/1/2025,Brent,3262
+12/1/2025,Bromley,2398
+12/1/2025,Camden,4138
+12/1/2025,Croydon,3432
+12/1/2025,Ealing,3290
+12/1/2025,Enfield,2943
+12/1/2025,Greenwich,2891
+12/1/2025,Hackney,3521
+12/1/2025,Hammersmith and Fulham,2075
+12/1/2025,Haringey,2870
+12/1/2025,Harrow,1659
+12/1/2025,Havering,2079
+12/1/2025,Hillingdon,3039
+12/1/2025,Hounslow,2591
+12/1/2025,Islington,3094
+12/1/2025,Kensington and Chelsea,2092
+12/1/2025,Kingston upon Thames,1195
+12/1/2025,Lambeth,4026
+12/1/2025,Lewisham,3073
+12/1/2025,Merton,1504
+12/1/2025,Newham,4468
+12/1/2025,Redbridge,2759
+12/1/2025,Richmond upon Thames,1086
+12/1/2025,Southwark,4374
+12/1/2025,Sutton,1311
+12/1/2025,Tower Hamlets,3988
+12/1/2025,Waltham Forest,2405
+12/1/2025,Wandsworth,2573
+12/1/2025,Westminster,10366
+1/1/2026,Barking and Dagenham,2161
+1/1/2026,Barnet,3037
+1/1/2026,Bexley,1529
+1/1/2026,Brent,3111
+1/1/2026,Bromley,2236
+1/1/2026,Camden,3797
+1/1/2026,Croydon,3739
+1/1/2026,Ealing,3048
+1/1/2026,Enfield,3056
+1/1/2026,Greenwich,2877
+1/1/2026,Hackney,3399
+1/1/2026,Hammersmith and Fulham,2076
+1/1/2026,Haringey,2589
+1/1/2026,Harrow,1702
+1/1/2026,Havering,1940
+1/1/2026,Hillingdon,3168
+1/1/2026,Hounslow,2833
+1/1/2026,Islington,3114
+1/1/2026,Kensington and Chelsea,2030
+1/1/2026,Kingston upon Thames,1119
+1/1/2026,Lambeth,3841
+1/1/2026,Lewisham,3078
+1/1/2026,Merton,1329
+1/1/2026,Newham,4543
+1/1/2026,Redbridge,2540
+1/1/2026,Richmond upon Thames,1105
+1/1/2026,Southwark,4142
+1/1/2026,Sutton,1310
+1/1/2026,Tower Hamlets,3470
+1/1/2026,Waltham Forest,2499
+1/1/2026,Wandsworth,2585
+1/1/2026,Westminster,8135
+2/1/2026,Barking and Dagenham,1950
+2/1/2026,Barnet,3060
+2/1/2026,Bexley,1503
+2/1/2026,Brent,3205
+2/1/2026,Bromley,2320
+2/1/2026,Camden,4132
+2/1/2026,Croydon,3243
+2/1/2026,Ealing,3176
+2/1/2026,Enfield,3059
+2/1/2026,Greenwich,2841
+2/1/2026,Hackney,3126
+2/1/2026,Hammersmith and Fulham,1907
+2/1/2026,Haringey,2470
+2/1/2026,Harrow,1788
+2/1/2026,Havering,1891
+2/1/2026,Hillingdon,2923
+2/1/2026,Hounslow,2540
+2/1/2026,Islington,3052
+2/1/2026,Kensington and Chelsea,1783
+2/1/2026,Kingston upon Thames,1191
+2/1/2026,Lambeth,3652
+2/1/2026,Lewisham,2946
+2/1/2026,Merton,1265
+2/1/2026,Newham,4103
+2/1/2026,Redbridge,2433
+2/1/2026,Richmond upon Thames,1048
+2/1/2026,Southwark,4217
+2/1/2026,Sutton,1264
+2/1/2026,Tower Hamlets,3500
+2/1/2026,Waltham Forest,2334
+2/1/2026,Wandsworth,2481
+2/1/2026,Westminster,7318
