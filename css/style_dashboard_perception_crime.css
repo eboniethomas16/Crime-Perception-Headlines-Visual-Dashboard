@@ -1,0 +1,881 @@
+/* ========================================= */
+/* GLASS PANEL STYLE                           */
+/* ========================================= */
+/* Dark Steel window background */
+/* Soft Steel window background */
+/* Warm Steel window background */
+html, body {
+    height: 100%;
+    margin: 0;
+    color: #2b2b2b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image:
+            linear-gradient(180deg, #f7f3ef, #e7dfd6);
+}
+
+
+/* ========================================= */
+/* GLASS PANEL STYLE
+   FOR CONTAINERS AND SUMMARY PILLS*/
+/* ========================================= */
+/*glass panel class applied to all containers*/
+.glass-panel {
+    background: rgba(11, 110, 79, 0.06);
+    border: 3px solid rgba(11, 110, 79, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    color: #0b2f24;            /* dark teal / near-black for good contrast */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    font-family: 'Poppins', sans-serif;
+
+    /*padding: 16px 20px;*/
+}
+
+.summary-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 14px;        /* compact */
+    border-radius: 16px;      /* slightly smaller */
+    min-width: 200px;         /* smaller */
+    min-height: 10px;         /* smaller */
+
+    background: rgba(11, 110, 79, 0.06);
+    border: 1px solid rgba(11, 110, 79, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* ========================================= */
+/* CHORO MAP HIGHLIGHTING                    */
+/* ========================================= */
+.borough.active-highlight {
+    stroke: #000;
+    stroke-width: 2px;
+    opacity: 1;
+}
+.borough-label.active-highlight {
+    opacity: 1;
+    font-weight: 500;
+}
+
+
+.borough.dimmed {
+    opacity: 0.2;
+}
+
+.borough-label.dimmed {
+    opacity: 0.2;
+}
+
+
+.borough.hover-highlight {
+    stroke: #fff;
+    stroke-width: 3px;
+    filter: drop-shadow(0px 0px 4px rgba(255,255,255,0.6));
+    opacity: 1;
+}
+
+
+/* ========================================= */
+/* LINE HIGHLIGHTING                         */
+/* ========================================= */
+/* DEFAULT LINE STYLE*/
+.residual-line,
+.crime-line,
+.perception-line {
+    stroke-width: 2px;
+    opacity: 0.9;
+    transition: stroke-width 0.2s ease, opacity 0.2s ease;
+}
+
+.residual-line.hover-highlight,
+.crime-line.hover-highlight,
+.perception-line.hover-highlight {
+    stroke-width: 4px;
+    opacity: 1;
+    filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.45)) brightness(1.5);
+}
+
+.residual-line.dimmed,
+.crime-line.dimmed,
+.perception-line.dimmed {
+    stroke-width: 1px;
+    opacity: 0.3;
+}
+
+.residual-line.active-highlight,
+.crime-line.active-highlight,
+.perception-line.active-highlight {
+    stroke-width: 4px;
+    opacity: 1;
+}
+
+/* Default aggregated residual line */
+.aggregated-residual-line {
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Dimmed aggregated residual line */
+.aggregated-residual-line.dimmed-aggregated {
+    stroke: #999;          /* lighter grey */
+    stroke-width: 2;
+    opacity: 0.4;          /* faded but visible */
+}
+
+/* Zero baseline for residual chart */
+.zero-baseline {
+    stroke: #888;
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+/* ========================================= */
+/* GRID LAYOUT                               */
+/* ========================================= */
+#dashboard-container {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr 1fr;*/
+    /*vh == % of the specified row*/
+    /*fr == fraction == fraction of the specified row*/
+    grid-template-rows: 3vh 6vh minmax(1vh,50vh) 5fr;
+    gap: 10px;
+    width: 100vw;
+    height: 150vh;
+    overflow-y: auto;
+    overflow-x: hidden; /* keep horizontal locked */
+}
+
+/* ========================= */
+/* ROW 1 — CONTROLS          */
+/* ========================= */
+#row1 {
+    /*grid-row: 1;*/
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* perception metric select gets 1/2, borough-select gets other half */
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    gap: 20px;
+}
+
+/* Perception metric dropdown container */
+#crime-type-container {
+    grid-column: 1;
+    /* Make the container a flexbox */
+    display: flex;
+    justify-content: center;   /* ⭐ centers the dropdown horizontally */
+    align-items: center;        /* optional: vertical centering */
+
+    /* Sizing */
+    min-width: 500px;      /* good default */
+    max-width: 600px;      /* optional */
+    height: auto;
+
+    /* Spacing inside row1 */
+    margin-right: 12px;    /* space before borough-select */
+    margin-left: 4px;      /* optional fine tuning */
+
+    /* Make sure the dropdown menu can overflow */
+    overflow: visible;
+}
+
+#crime-type-label {
+    width: 100%;          /* ⭐ full width */
+    text-align: center;   /* ⭐ center text */
+    pointer-events: none; /* prevents accidental clicks */
+}
+
+#crime-type-select {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* your imported styles already handle most of it */
+.glass-dropdown {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    align-items: center;
+
+}
+
+/* The button that shows the current selection */
+.glass-dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(213, 24, 24, 0.35);
+    background: rgba(138, 70, 70, 0.08);
+    color: #ef0606;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Little arrow icon */
+.glass-dropdown-trigger-arrow {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    transition: transform 150ms ease;
+}
+.glass-dropdown.is-open .glass-dropdown-trigger-arrow {
+    transform: rotate(180deg);
+}
+
+/* The dropdown menu panel */
+.glass-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 200px;
+    border-radius: 12px;
+    padding: 4px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+    transition: opacity 150ms ease, transform 150ms ease;
+    z-index: 20;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Open state */
+.glass-dropdown.is-open .glass-dropdown-menu {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Individual items */
+.glass-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 120ms ease;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+}
+.glass-dropdown-item:hover {
+    background: rgba(255,255,255,0.12);
+}
+.glass-dropdown-item.is-active {
+    background: rgba(94, 231, 223, 0.18);
+    color: #5ee7df;
+}
+
+
+/* Empty right cell */
+#controls-right {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ========================= */
+/* ROW 2 — SUMMARY CONTAINERS           */
+/* ========================= */
+#row2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+#summary-stats-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+
+
+
+.summary-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+
+
+.change-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.change-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/*arrow color classes*/
+.arrow-up-green {
+    color: #2ecc71; /* green */
+}
+
+.arrow-down-green {
+    color: #2ecc71; /* green */
+}
+
+.arrow-up-red {
+    color: #e74c3c; /* red */
+}
+
+.arrow-down-red {
+    color: #e74c3c; /* red */
+}
+
+
+/* ========================= */
+/* ROW 3 — MAPS             */
+/* ========================= */
+/* MAP spans columns 1–2 */
+
+#row3 {
+    /*grid-row: 2;*/
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* map gets 2/3 width, heatmap gets 1/3 */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    gap: 20px;
+}
+
+#choro-map-content {
+    display: flex;
+    flex-direction: row;       /* ⭐ legend + SVG side-by-side */
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#choro-map.glass-panel {
+    /*grid-column: 1;*/
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    overflow: hidden; /* prevent SVG overflow */
+    display: flex;
+    flex-direction: column;   /* ⭐ stack title above content */
+    align-items: center;       /* center horizontally */
+    justify-content: flex-start;
+    /*flex-direction: row;*/
+    /*align-items: center;        !* ⭐ vertical centering *!*/
+    /*justify-content: center;  !* ⭐ push SVG to the right *!*/
+    background: rgba(255, 68, 0, 0.43);
+}
+#choro-map-legend {
+    /*flex: 0 0 auto;             !* fixed width *!*/
+    width: 150px;
+    height: auto;
+    margin-right: 20px;         /* spacing between choromap*/
+    padding-left: 50px;         /* spacing between choromap*/
+    pointer-events: none;
+}
+
+.map-wrapper {
+    flex: 1 1 auto;          /* ⭐ take remaining width */
+    height: 100%;
+    transform: scale(1.2);   /* if you want enlargement */
+    transform-origin: 600px 50px;
+    align-items: center;
+}
+
+
+.borough {
+    stroke: #000;
+    stroke-width: 0.5px;
+}
+
+.borough-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+#heatMap-title {
+    grid-row: 1;
+    grid-column: 1;
+
+    text-align: center;
+    /*padding: 10px 0;*/
+    margin: 0;
+    z-index: 5;
+
+}
+/* HEATMAP spans columns 2–3 */
+#heatmap.glass-panel {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-rows: auto 1fr;   /* row 1 = title, row 2 = content */
+    grid-template-columns: 1fr;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba(234, 175, 51, 0.6);
+    overflow: hidden;
+    /*display: block;*/
+}
+
+/* single source of truth for left column width and legend width */
+:root {
+    --heatmap-left-width: 350px;    /* must match margin.left in JS */
+    /*--heatmap-legend-width: 120px;  !* legend width (left of y-axis) *!*/
+    /*--heatmap-legend-gap: 8px;      !* small gap between legend and y-axis labels *!*/
+    --heatmap-top-offset: 10px;
+}
+/* Legend stays fixed on the left */
+/* keep legend fixed to the left inside the container with a small right padding */
+
+
+#heatmap-legend {
+
+    position: absolute;
+    margin-right: 200px;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    padding-right: 8px;
+    width: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 20;
+}
+
+#heatmap-scroll-wrapper {
+    grid-row: 2;
+    grid-column: 1;
+    position: absolute;
+    left: 0;                 /* we will shift left column via margin-left in JS */
+    top: 0;
+    right: 50px;
+    bottom: 0;
+    display: flex;           /* left column + scrollable right column */
+    align-items: stretch;
+    overflow: hidden;        /* scroll only inside the right column */
+}
+
+/* --- Ensure left column width is authoritative and remove padding that creates a gap --- */
+#heatmap-left-column {
+    flex: 0 0 var(--heatmap-left-width);
+    width: var(--heatmap-left-width);
+    box-sizing: border-box;
+    padding: 0;                 /* remove breathing room that creates a visible gap */
+    margin: 0;
+    /*overflow: visible;*/
+    /*position: relative;         !* needed so we can absolutely position the axis inside it *!*/
+    z-index: 10;
+}
+
+/* --- Make SVGs block-level so they don't introduce inline whitespace --- */
+#heatmap-left-column svg,
+#heatmap-scroll-wrapper svg {
+    display: block;
+    box-sizing: border-box;
+}
+
+/* --- Pin the y-axis group to the right edge of the left column so ticks are flush --- */
+#heatmap-left-column .y-axis-left {
+    position: absolute;
+    right: 0;                   /* flush to the right edge of the left column */
+    top: var(--heatmap-top-offset, 20px); /* use CSS var or default to margin.top */
+    transform: none !important; /* remove any inline translate that pushes it away */
+    pointer-events: none;       /* axis labels still respond to hover via title attribute */
+}
+
+/* Ensure axis text is visible and doesn't wrap */
+#heatmap-left-column .y-axis-left text {
+    white-space: nowrap;
+    overflow: visible;
+}
+
+/* --- Make the scroll wrapper align top so x-axis is inside visible area --- */
+#heatmap-scroll-wrapper {
+    align-items: flex-start;    /* ensures right column top aligns with left column top */
+}
+
+/* --- Right scroll area: remove extra left padding/margin that could create a gap --- */
+#heatmap-scroll-right {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* --- Optional: reduce stroke bleed that can create a 1–2px visual gap --- */
+.heatmap-g rect {
+    shape-rendering: crispEdges;
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+}
+
+/* --- Helpful debug utility (remove when happy) --- */
+/* #heatmap-left-column { outline: 1px dashed rgba(0,0,0,0.08); } */
+
+/* keep legend visually above everything if needed */
+#heatmap-legend { z-index: 30; }
+
+
+
+/* ========================================= */
+/* HEATMAP HIGHLIGHTING                      */
+/* ========================================= */
+
+/* Base row */
+.heatmap-row {
+    opacity: 1;
+    transition: opacity 0.15s ease, font-weight 0.15s ease;
+}
+
+/* Persistent active selection */
+.heatmap-row.active-row {
+    font-weight: 600;
+    opacity: 1;
+}
+
+/* Persistent dimming for non-active rows */
+.heatmap-row.dimmed-row {
+    opacity: 0.35;
+}
+
+/* Hover highlight (strongest, overrides everything) */
+.heatmap-row.hover-highlight {
+    outline: 2px solid #000;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+    filter: brightness(2);
+    box-shadow: 0 0 4px rgba(9, 7, 7, 0.4);
+}
+
+/* Hovered cell (inside a row) */
+.hover-cell {
+    stroke: black;
+    stroke-width: 2px;
+    filter: brightness(3);
+}
+
+/* Hovered column highlight */
+.hover-column {
+    opacity: 1;
+    filter: brightness(2);
+    box-shadow: 0 0 4px rgba(9, 7, 7, 0.4);
+}
+
+/* ========================= */
+/* ROW 4 — BOTTOM            */
+/* ========================= */
+
+/* Charts span columns 1–2 */
+
+#row4 {
+    /*grid-row: 3;*/
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* charts 2/3, hoverlist 1/3 */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    gap: 20px;
+}
+
+.chart-title {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px 0 5px 0;
+    text-align: center;
+    color: #333;
+}
+
+
+#line-charts {
+    position: relative;
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto 1fr auto 1fr;
+    /*chart-title,crime title,crime chart, perc title, perc chart, resid title, resid chart*/
+    height: 100%;
+    width: 100%;
+    /* CRITICAL: allow children to stretch */
+    align-items: stretch;
+    align-content: stretch;
+
+    /* CRITICAL: allow SVG to overflow naturally */
+    overflow: visible;
+
+    /* CRITICAL: allow grid children to shrink/stretch */
+    min-height: 0;
+    background: rgba(255,0,0,0.2);
+}
+
+/* Base glass button */
+/* Shared glass style for chart buttons */
+.chart-glass-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+    border-radius: 10px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    letter-spacing: 0.02em;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.chart-glass-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+.chart-glass-btn:active {
+    transform: scale(0.96);
+}
+
+/* Positioning for each button */
+#toggleTrendBtn {
+    position: absolute;
+    /*top: 10px;          !* below line-chart title *!*/
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+#resetZoomBtn {
+    position: absolute;
+    top: 40px;          /* top-right of residual chart */
+    right: 50px;
+    z-index: 20;
+    display: none;
+}
+
+#line-charts-title {
+    grid-row: 1;
+    padding-bottom: 20px;
+}
+
+#crime-title {
+    grid-row: 2;
+}
+
+#chart-crime {
+    grid-row: 3;
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+}
+
+#perception-title {
+    grid-row: 4;
+}
+
+#chart-perception {
+    grid-row: 5;
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+}
+#residual-title {
+    grid-row: 6;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#chart-residual {
+    grid-row: 7;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+    /*padding-top: */
+}
+ /*Hiding vs visible Crime and Perception Charts*/
+.hidden-chart {
+    height: 0 !important;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.visible-chart {
+    height: 100% !important;
+    opacity: 1;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+/* Hoverlist in column 3 */
+#hoverList.glass-panel {
+    /*grid-column: 2;*/
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+    background: rgba(0, 182, 251, 0.38);
+}
+
+.hover-line {
+    stroke: #9e9e9e;
+    stroke-width: 2px;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Row layout and spacing */
+.hover-row {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* left area */
+.row-left { display:flex; align-items:center; gap:8px; min-width:180px; }
+.swatch { width:12px; height:12px; border-radius:2px; display:inline-block; flex:0 0 12px; }
+.crime-name { font-weight:600; font-size:13px; color:#111; }
+
+/* metrics area */
+.row-values { display:grid; grid-template-columns: repeat(4, minmax(64px, 1fr)); gap:8px; align-items:center; width:100%; max-width:560px; }
+.metric { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+.metric svg { width:80px; height:12px; display:block; }
+.metric .num { font-variant-numeric: tabular-nums; font-size:13px; color:#222; }
+
+/* residual centered bar specifics */
+.residual .bar-negative { fill: #e76f51; }
+.residual .bar-positive { fill: #2a9d8f; }
+
+/* hover interactions */
+.hover-row div {
+    transition: transform 0.15s ease;
+}
+.hover-row:hover {
+    background: rgba(255,255,255,0.15);
+    cursor: pointer;
+}
+
+/* selected row */
+.hover-row.selected-hover-row {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 4px 6px;
+    font-weight: 600;
+    box-shadow: 0 0 4px rgba(255,255,255,0.4);
+}
+.hover-row.selected-hover-row div {
+    transform: scale(1.2);
+    transition: transform 0.15s ease;
+}
+
+/* subtle highlight state */
+.hover-highlight-row {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* HOVER LIST TITLE */
+.hover-list-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: var(20px, 18px);
+    line-height: 1.3;
+    padding: 4px 0;
+}
+
+/* Header row */
+.hover-list-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    font-weight:700;
+    font-size:13px;
+    color: #222;
+}
+
+/* left label area (swatch + name column) */
+.hover-list-header .header-left {
+    min-width:180px;
+    padding-left:2px;
+}
+
+/* values area: same grid as rows .row-values */
+.hover-list-header .header-values {
+    display:grid;
+    grid-template-columns: repeat(4, minmax(64px, 1fr));
+    gap:8px;
+    width:100%;
+    max-width:560px;
+}
+
+/* header cells */
+.hover-list-header .header-cell {
+    text-align:center;
+    font-weight:600;
+    font-size:12px;
+    color: #333;
+}
+
+/* responsive: stack header on narrow screens */
+@media (max-width:640px) {
+    .hover-row { flex-direction:column; align-items:flex-start; gap:6px; }
+    .row-left { min-width:0; }
+    .row-values { grid-template-columns: repeat(2, 1fr); width:100%; }
+
+    .hover-list-header { flex-direction:column; align-items:flex-start; gap:6px; }
+    .hover-list-header .header-left { min-width:0; }
+    .hover-list-header .header-values { grid-template-columns: repeat(2, 1fr); width:100%; }
+}
