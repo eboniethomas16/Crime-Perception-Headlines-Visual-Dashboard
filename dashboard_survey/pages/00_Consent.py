@@ -1,15 +1,45 @@
 # pages/00_Consent.py
 import streamlit as st
-from navigation import safe_navigate
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Consent", layout="wide")
 st.title("Consent for Research")
 
-# Ensure navigation flag exists
-if "_navigate_to" not in st.session_state:
-    st.session_state["_navigate_to"] = None
+PLACEHOLDER = "Select an option"
 
-# If a navigation request exists, show a button to complete it (top of page)
+def safe_navigate(target_page: str):
+    # 1) Try JS navigation (small non-zero height)
+    try:
+        js = f"""
+        <script>
+        try {{
+            const url = new URL(window.location);
+            url.searchParams.set('page', '{target_page}');
+            window.history.replaceState(null, '', url);
+            setTimeout(() => window.location.reload(), 60);
+        }} catch (e) {{
+            // ignore
+        }}
+        </script>
+        """
+        components.html(js, height=1)
+        return
+    except Exception:
+        pass
+
+    # 2) Try Streamlit API navigation
+    try:
+        st.experimental_set_query_params(page=target_page)
+        st.experimental_rerun()
+        return
+    except Exception:
+        pass
+
+    # 3) Final fallback: set session flag so a visible Go button appears
+    st.session_state["_navigate_to"] = target_page
+    st.warning("Automatic navigation failed. A 'Go to next page' button is now available on this page.")
+
+# --- Visible fallback button (top of page) ---
 if st.session_state.get("_navigate_to"):
     target = st.session_state["_navigate_to"]
     st.info(f"Ready to navigate to: {target}")
@@ -20,31 +50,23 @@ if st.session_state.get("_navigate_to"):
         except Exception:
             st.warning("Automatic navigation unavailable — please use the Pages menu (top-left).")
 
-st.markdown(
-    "Please read the consent statement below and select your choice. "
-    "You must consent to continue with the survey."
-)
-
-consent_prompt = "I consent to my anonymised responses being used for this research."
-
-# Use a selectbox with a placeholder so nothing is selected by default
+# --- Consent UI ---
 consent_choice = st.selectbox(
-    consent_prompt,
-    ["Select an option", "Yes, I consent", "No, I do not consent"],
+    "I consent to my anonymised responses being used for this research.",
+    [PLACEHOLDER, "Yes, I consent", "No, I do not consent"],
     key="pre_consent_select"
 )
 
-col1, col2 = st.columns([1, 1])
-
+col1, col2 = st.columns([1,1])
 with col1:
     if st.button("Continue", key="consent_continue"):
-        if consent_choice == "Select an option":
+        if consent_choice == PLACEHOLDER:
             st.warning("Please choose whether you consent before continuing.")
         elif consent_choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Thank you — your consent has been recorded.")
             safe_navigate("0_Preliminary_Questions")
-        else:  # No, I do not consent
+        else:
             st.session_state["pre_consent"] = False
             st.error("You have chosen not to consent. The survey will now end.")
             safe_navigate("4_Thank_You")
@@ -54,8 +76,7 @@ with col2:
         st.info("You have exited the survey.")
         safe_navigate("4_Thank_You")
 
-# Show status if consent already recorded
-if st.session_state.get("pre_consent") is True:
-    st.info("Consent already given. You can continue to the survey pages.")
-elif st.session_state.get("pre_consent") is False:
-    st.info("You previously declined consent. The survey is closed for you.")
+# --- Debug output (remove when working) ---
+st.markdown("---")
+st.write("**Debug: session_state keys (remove in production)**")
+st.write({k: st.session_state.get(k) for k in sorted(st.session_state.keys())})
