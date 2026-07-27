@@ -65,7 +65,7 @@ with col1:
         elif consent_choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Thank you — your consent has been recorded.")
-            safe_navigate("0_Preliminary_Questions")
+            safe_navigate("0_Preliminary_Questions.py")
         else:
             st.session_state["pre_consent"] = False
             st.error("You have chosen not to consent. The survey will now end.")
