@@ -1,6 +1,6 @@
 # pages/00_Consent.py
 import streamlit as st
-from utils.navigation import safe_navigate
+from navigation import safe_navigate
 
 st.set_page_config(page_title="Consent", layout="wide")
 st.title("Consent for Research")
