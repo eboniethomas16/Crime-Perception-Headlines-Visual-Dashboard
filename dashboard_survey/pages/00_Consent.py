@@ -4,6 +4,21 @@ import streamlit as st
 st.set_page_config(page_title="Consent", layout="wide")
 st.title("Consent for Research")
 
+# Ensure navigation flag exists
+if "_navigate_to" not in st.session_state:
+    st.session_state["_navigate_to"] = None
+
+# If a navigation request exists, show a button to complete it (top of page)
+if st.session_state.get("_navigate_to"):
+    target = st.session_state["_navigate_to"]
+    st.info(f"Ready to navigate to: {target}")
+    if st.button(f"Go to {target} now", key="go_now_button"):
+        try:
+            st.experimental_set_query_params(page=target)
+            st.experimental_rerun()
+        except Exception:
+            st.warning("Automatic navigation unavailable — please use the Pages menu (top-left).")
+
 st.markdown(
     "Please read the consent statement below and select your choice. "
     "You must consent to continue with the survey."
@@ -20,39 +35,27 @@ consent_choice = st.selectbox(
 
 col1, col2 = st.columns([1, 1])
 
-def safe_navigate(target_page: str):
-    """
-    Try to set query params to navigate. If the environment doesn't support
-    experimental_set_query_params, show a friendly message instead.
-    """
-    try:
-        st.experimental_set_query_params(page=target_page)
-        st.experimental_rerun()
-    except Exception:
-        st.warning(
-            "Automatic navigation is unavailable in this environment. "
-            "Please use the Pages menu (top-left) to go to the next page."
-        )
+def request_navigation(target_page: str):
+    st.session_state["_navigate_to"] = target_page
+    st.success(f"Ready to navigate to {target_page}. Click the 'Go to {target_page} now' button at the top of the page to continue.")
 
 with col1:
-    if st.button("Continue"):
+    if st.button("Continue", key="consent_continue"):
         if consent_choice == "Select an option":
             st.warning("Please choose whether you consent before continuing.")
         elif consent_choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Thank you — your consent has been recorded.")
-            # Navigate to preliminary questions page
-            safe_navigate("0_Preliminary_Questions")
+            request_navigation("0_Preliminary_Questions")
         else:  # No, I do not consent
             st.session_state["pre_consent"] = False
             st.error("You have chosen not to consent. The survey will now end.")
-            # Navigate to Thank You page
-            safe_navigate("4_Thank_You")
+            request_navigation("4_Thank_You")
 
 with col2:
-    if st.button("Exit survey"):
+    if st.button("Exit survey", key="consent_exit"):
         st.info("You have exited the survey.")
-        safe_navigate("4_Thank_You")
+        request_navigation("4_Thank_You")
 
 # Show status if consent already recorded
 if st.session_state.get("pre_consent") is True:
