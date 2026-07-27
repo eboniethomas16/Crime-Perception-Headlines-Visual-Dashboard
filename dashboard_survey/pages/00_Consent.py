@@ -1,4 +1,4 @@
-# pages/Consent.py
+# pages/00_Consent.py
 import streamlit as st
 
 st.set_page_config(page_title="Consent", layout="wide")
@@ -20,6 +20,20 @@ consent_choice = st.selectbox(
 
 col1, col2 = st.columns([1, 1])
 
+def safe_navigate(target_page: str):
+    """
+    Try to set query params to navigate. If the environment doesn't support
+    experimental_set_query_params, show a friendly message instead.
+    """
+    try:
+        st.experimental_set_query_params(page=target_page)
+        st.experimental_rerun()
+    except Exception:
+        st.warning(
+            "Automatic navigation is unavailable in this environment. "
+            "Please use the Pages menu (top-left) to go to the next page."
+        )
+
 with col1:
     if st.button("Continue"):
         if consent_choice == "Select an option":
@@ -27,22 +41,21 @@ with col1:
         elif consent_choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Thank you — your consent has been recorded.")
-            # Navigate to Pre-questions page
-            st.experimental_set_query_params(page="0_Preliminary_Questions")
-            st.experimental_rerun()
+            # Navigate to preliminary questions page
+            safe_navigate("0_Preliminary_Questions")
         else:  # No, I do not consent
             st.session_state["pre_consent"] = False
             st.error("You have chosen not to consent. The survey will now end.")
             # Navigate to Thank You page
-            st.experimental_set_query_params(page="4_Thank_You")
-            st.experimental_rerun()
+            safe_navigate("4_Thank_You")
 
 with col2:
     if st.button("Exit survey"):
         st.info("You have exited the survey.")
-        st.experimental_set_query_params(page="4_Thank_You")
-        st.experimental_rerun()
+        safe_navigate("4_Thank_You")
 
-# If user navigates back to this page after consenting, show status
+# Show status if consent already recorded
 if st.session_state.get("pre_consent") is True:
     st.info("Consent already given. You can continue to the survey pages.")
+elif st.session_state.get("pre_consent") is False:
+    st.info("You previously declined consent. The survey is closed for you.")
