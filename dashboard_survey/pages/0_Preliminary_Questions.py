@@ -157,15 +157,13 @@ pre_media_most = st.multiselect(
 )
 
 # Validate multiselect counts
-def validate_three(name, selection):
-    if selection is None:
-        return False
-    return len(selection) == 3
+def is_exactly_three(selection):
+    return isinstance(selection, list) and len(selection) == 3
 
-valid_most = validate_three("most", pre_crime_most)
-valid_least = validate_three("least", pre_crime_least)
-valid_media_least = validate_three("media_least", pre_media_least)
-valid_media_most = validate_three("media_most", pre_media_most)
+valid_most = is_exactly_three(pre_crime_most)
+valid_least = is_exactly_three(pre_crime_least)
+valid_media_least = is_exactly_three(pre_media_least)
+valid_media_most = is_exactly_three(pre_media_most)
 
 if not valid_most:
     st.warning("Please select exactly 3 categories for 'MOST offences in your Borough'.")
@@ -212,4 +210,7 @@ if st.button("Continue to Dashboard 2"):
     elif not (valid_most and valid_least and valid_media_least and valid_media_most and len(pre_lowest_boroughs) == 3 and len(pre_highest_boroughs) == 3):
         st.error("Please ensure all 'select three' questions have exactly three selections.")
     else:
-        st.success("Pre‑survey complete. You may now proceed to Dashboard 2.")
+        st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
+        # Navigate to Dashboard 2 page
+        st.experimental_set_query_params(page="1_Dashboard_1_Perception_vs_Crime")
+        st.experimental_rerun()
