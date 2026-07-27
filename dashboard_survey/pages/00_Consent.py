@@ -1,5 +1,6 @@
 # pages/00_Consent.py
 import streamlit as st
+from utils.navigation import safe_navigate
 
 st.set_page_config(page_title="Consent", layout="wide")
 st.title("Consent for Research")
@@ -35,10 +36,6 @@ consent_choice = st.selectbox(
 
 col1, col2 = st.columns([1, 1])
 
-def request_navigation(target_page: str):
-    st.session_state["_navigate_to"] = target_page
-    st.success(f"Ready to navigate to {target_page}. Click the 'Go to {target_page} now' button at the top of the page to continue.")
-
 with col1:
     if st.button("Continue", key="consent_continue"):
         if consent_choice == "Select an option":
@@ -46,16 +43,16 @@ with col1:
         elif consent_choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Thank you — your consent has been recorded.")
-            request_navigation("0_Preliminary_Questions")
+            safe_navigate("0_Preliminary_Questions")
         else:  # No, I do not consent
             st.session_state["pre_consent"] = False
             st.error("You have chosen not to consent. The survey will now end.")
-            request_navigation("4_Thank_You")
+            safe_navigate("4_Thank_You")
 
 with col2:
     if st.button("Exit survey", key="consent_exit"):
         st.info("You have exited the survey.")
-        request_navigation("4_Thank_You")
+        safe_navigate("4_Thank_You")
 
 # Show status if consent already recorded
 if st.session_state.get("pre_consent") is True:
