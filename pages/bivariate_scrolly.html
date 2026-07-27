@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="../css/style_bivariate_scrolly.css">
+
+<section id="INTRODUCTION">
+    <h1 class="intro__hed">Perception vs Crime in London</h1>
+    <p class="intro__dek">
+        Use the dropdown to select a FY quarter<br>
+        and explore how perception and crime diverge<br>
+        <br>
+        Start scrolling to see how the perception of policing and the reality of crime diverge
+        based on different perception metrics on policing.
+    </p>
+</section>
+
+<section id="scrolly">
+    <article>
+        <div class="step" data-step="intro">
+
+            <p>
+                This is the intro.<br>
+                dont worry 'bout it
+            </p>
+        </div>
+        <div class="step" id="trigger-legend-intro" data-step="legend-intro" data-aos-anchor-placement="top-center">
+            <p>
+                This legend helps you interpret the bivariate map.<br>
+                It shows how crime levels and perception levels combine.
+            </p>
+        </div>
+        <div class="step" id="trigger-legend-instruction" data-step="legend-instruction" data-aos-anchor-placement="top-center">
+
+            <p>The top right square indicates that a borough has:</p>
+            <ol>
+                <li>A HIGH perception of policing.</li>
+                <li>A HIGH crime rate.</li>
+            </ol>
+
+            <p>
+                This means residents believe the police are doing a good job
+                despite the borough experiencing a high crime rate.
+            </p>
+
+            <p>The bottom left square indicates that a borough has:</p>
+            <ol>
+                <li>A LOW perception of policing.</li>
+                <li>A LOW crime rate.</li>
+            </ol>
+
+        </div>
+
+        <div class="step" id="trigger-map-intro" data-step="map-intro" data-aos-anchor-placement="top-center">
+
+        <p>
+                This will be an intro section that introduces the bivariate map.
+                <br>
+                there will be an animation that shows the different boroughs coming together
+                to form the map
+            </p>
+
+        </div>
+        <div class="step" data-metric="Good job">
+            <p>
+                This map compares crime rates with the perception metric: for the metric <br>
+                % of people who believe that <strong><em>Police do a good job in the local area</em></strong>
+            </p>
+
+        </div>
+
+        <div class="step" data-metric="Fair treatment">
+            <p>This map compares crime rates with the perception metric: for the metric <br>
+                % of people who agree that <strong><em>the police treat everyone fairly regardless
+                    of who they are</em></strong></p>
+        </div>
+
+        <div class="step" data-metric="Trust MPS">
+            <p>This map compares crime rates with the perception metric: for the metric <br>
+                % of people who agree that <strong><em>The MPS is an organisation that I can trust</em></strong></p>
+        </div>
+    </article>
+
+<!--    Right side of the scrolly page-->
+    <figure>
+        <div id="controls">
+            <div id = "quarter-scroller-label" class="quarter-scroller-label">
+                Use Scroller to Select Date
+            </div>
+            <div id="quarterScroller"></div>
+        </div>
+
+
+        <div id="map-wrapper">
+            <svg id="map"></svg>
+            <svg id="legend"></svg>
+            <div class="arrow-wrapper left-arrow-wrapper">
+                <img src="../pngs/left-arrow.png" alt="idk" class="left-legend-arrow"/>
+                <div class="arrow-text left-arrow-text">
+                    High perception of policing + High crime rate
+                </div>
+            </div>
+            <div class="arrow-wrapper right-arrow-wrapper">
+                <img src="../pngs/right-arrow.png" alt ="idk" class="right-legend-arrow" />
+                <div class="arrow-text right-arrow-text">
+                    Low perception of policing + Low crime rate
+                </div>
+            </div>
+        </div>
+    </figure>
+    <div id="tooltip" class="tooltip"></div>
+
+</section>
+<section id="outro"></section>
+
+<!-- Load D3, Scrollama, + your scripts -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script src="https://unpkg.com/scrollama"></script>
+<script src="https://unpkg.com/topojson-client@3"></script>
+<!-- Map code FIRST (defines updateMap, loads CSV, sets globals) -->
+
+<script type="module" src="../js/bivariate_choropleth_map.js"></script>
+<!-- Scrollama logic SECOND (calls updateMap) -->
+<script type="module" src="../js/bivariate_scrolly.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: false,     // allow animations to re-trigger
+        mirror: true,   // avoid reverse animations on scroll up
+        animatedClassName: 'aos-animate', // class applied on animation
+    });
+</script>
+

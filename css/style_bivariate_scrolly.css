@@ -1,0 +1,308 @@
+/* ============================
+   SCROLLY LAYOUT (GitHub style)
+   ============================ */
+#scrolly {
+    position: relative;
+    display: flex;
+    background-color: #f3f3f3;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+#scrolly > * {
+    flex: 1;
+}
+
+/* ============================
+   ARTICLE (scrolling text)
+   ============================ */
+#scrolly article {
+    position: relative;
+    padding: 0 1rem;
+    max-width: 22rem;
+}
+/* ============================
+   STEPS
+   ============================ */
+.step {
+    margin: 0 auto 3rem auto;
+    background-color: #3b3b3b;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step.is-active {
+    background-color: goldenrod;
+    color: #3b3b3b;
+}
+
+.step p {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#INTRODUCTION {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.intro__hed {
+    font-size: 2.8rem;      /* increase title size */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.intro__dek {
+    font-size: 1.4rem;      /* increase paragraph size */
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0 auto;
+}
+/* ============================
+   FIGURE (sticky graphic)
+   ============================ */
+#scrolly figure {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    /*overflow: hidden;*/
+}
+
+/* ============================
+   MAP WRAPPER
+   ============================ */
+/* Map + Legend side-by-side */
+
+#map-wrapper {
+    /*display: grid;*/
+    position: relative;
+    /*grid-template-columns: 3fr 1fr; !* map | legend *!*/
+    width: 100%;
+    height: 100%;
+}
+
+#map-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+/* ============================
+   MAP (left column)
+   ============================ */
+#map {
+    grid-column: 1;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.95);
+}
+#map.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ============================
+   LEGEND (right column)
+   ============================ */
+
+
+
+/* ============================
+   Arrow by the legend
+   ============================ */
+/*CONTROLS ALL ARROW WRAPPERS*/
+.arrow-wrapper {
+    position: fixed; /* wrapper is positioned by JS */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/*CONTROLS ALL ARROW IMAGES*/
+.arrow-wrapper img {
+    display: block;
+    width: 60px;
+    margin: 0 auto; /* center horizontally */
+}
+
+/*CONTROLS ALL ARROW TEXT BOXES*/
+.arrow-wrapper .arrow-text {
+    margin-top: 8px; /* space under arrow */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    max-width: 160px;
+    text-align: center;
+}
+
+
+ /*LEFT ARROW STYLING*/
+
+.left-arrow-wrapper {
+    transform: translate(-50%, -50%);
+}
+.left-arrow-wrapper .arrow-text {
+    opacity:1;
+    transform: translateX(60px) translateY(-90px);
+}
+
+.left-arrow-wrapper .left-legend-arrow {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+}
+
+ /*RIGHT ARROW STYLING*/ -->
+
+.right-arrow-wrapper {
+    transform: translate(-50%, -50%);
+}
+
+.right-arrow-wrapper .arrow-text {
+    margin-top: 8px; /* sits under arrow */
+    transform: translateX(-40px);
+}
+
+.right-arrow-wrapper .right-legend-arrow {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+}
+
+
+/* ============================
+   DROPDOWN CONTROLS
+   ============================ */
+#controls {
+    display: flex;
+    flex-direction: column;   /* stack slider + labels vertically */
+    width: 100%;              /* full width */
+    padding: 0.5rem 0;
+    gap: 12px;
+    z-index: 2000;            /* stays above map */
+}
+#controls.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Slider container */
+#quarterScroller {
+    width: 100%;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 40px; /* space for ticks + labels */
+    transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+.quarter-scroller-label {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-align: center;
+    color: #333;
+    transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+/* The slider track */
+#quarterScroller input[type="range"] {
+    width: 99%;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Track styling */
+#quarterScroller input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+}
+#quarterScroller input[type="range"]::-moz-range-track {
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+}
+
+/* Slider thumb */
+#quarterScroller input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background: #4b2e83;
+    border-radius: 50%;
+    margin-top: -7px;
+}
+#quarterScroller input[type="range"]::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    background: #4b2e83;
+    border-radius: 50%;
+}
+/*control the sizing of each individual tick*/
+#quarterScroller .tick {
+    width: 2px;
+    height: 10px;
+    background: #999;
+}
+
+/*spacing of the entire tickmark container*/
+#quarterScroller .ticks {
+    position: absolute;
+    /*tick distance from the scroll bar*/
+    top: 22px;
+    /*left: 0px;*/
+    width: 100%;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+}
+
+/* Tick labels */
+#quarterScroller .tick-labels {
+    position: absolute;
+    top: 38px;
+    /*left: 0;*/
+    width: 100%;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    font-size: 10px;
+    color: #555;
+    pointer-events: none; /* labels don't block slider */
+}
+
+
+/* ============================
+   TOOLTIP FORMATTING
+   ============================ */
+#tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    z-index: 999999;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+
+
+
+
+

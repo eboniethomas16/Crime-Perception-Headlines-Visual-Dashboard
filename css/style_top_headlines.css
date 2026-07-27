@@ -1,0 +1,78 @@
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    opacity: 0;
+    z-index: 9999;
+}
+
+#headline-chart {
+    display: inline-block;   /* shrink-wrap to SVG */
+    margin: 1rem 0;          /* remove auto-centering */
+    padding: 0;              /* optional */
+    /*background: rgba(0, 51, 255, 0.2);*/
+}
+
+#headline-chart svg {
+    font-family: inherit;
+}
+#chart-wrapper {
+    position: relative;
+    display: inline-block;
+}
+#resetZoomBtn {
+    display: none;
+    position: absolute;
+    top: 50px;        /* adjust as needed */
+    left: 75px;       /* adjust as needed */
+    z-index: 10;
+}
+
+
+.hover-line {
+    stroke: #9e9e9e;
+    stroke-width: 2px;
+    pointer-events: none;
+}
+
+#headlines-hoverlist {
+    opacity: 0;          /* hidden immediately */
+    display: none;       /* prevents layout flash */
+    transition: opacity 0.2s ease;
+}
+
+.hover-list {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 16px 20px;
+
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    color: #504848; /* #dddddd */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+/* Axis styling */
+.axis path,
+.axis line {
+    stroke: #999;
+}
+
+.axis text {
+    font-size: 12px;
+    fill: #333;
+}
+
+.stream-layer {
+    pointer-events: all;
+}
+
+
+
+

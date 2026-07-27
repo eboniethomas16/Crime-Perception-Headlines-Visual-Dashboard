@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--Standalone test page-->
+<!--→ used ONLY for building + debugging the chart-->
+<!--This page should:-->
+<!--load D3-->
+<!--load your CSS-->
+<!--load your JS-->
+<!--call your chart function-->
+<!--contain a simple <div id="chart">-->
+<!--builds the chart without Scrollama interfering.-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borough Perception Line Chart</title>
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="../css/style_base.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <!-- Chart-specific styles -->
+    <link rel="stylesheet" href="../css/style_perception_borough_linechart.css">
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="top-nav">
+    <a class="nav-title" href="../main_index.html">Crime Perception Explorer</a>
+
+    <div class="nav-links">
+        <a href="bivariate_scrolly.html">Bivariate Choropleth</a>
+        <a href="heatmap_scrolly.html">Borough Crime Trends</a>
+        <a href="page3.html">Crime Type Trends</a>
+    </div>
+
+</nav>
+
+<!-- PAGE CONTENT -->
+<main>
+    <h1>Borough perception Trends Over Time</h1>
+    <p>This standalone page is used to build and test the multi‑series borough perception line chart.</p>
+</main>
+
+<select id="perception-metric-select">
+    <option value="Good job">Good job</option>
+    <option value="Trust MPS">Trust MPS</option>
+    <option value="Fair treatment">Fair treatment</option>
+</select>
+
+<div id="tooltip" class="tooltip"></div>
+<!-- Chart container -->
+<div id="chart-wrapper">
+    <div id="perception-borough-chart"></div>
+    <button id="resetZoomBtn">Reset Zoom</button>
+</div>
+<!-- Legend container -->
+<div id="perception-borough-legend" class="legend-scroll"></div>
+<!-- hoverList of Boroughs container -->
+<div id="perception-borough-hoverlist"></div>
+
+<!-- Chart logic -->
+<script type="module">
+    import { drawPerceptionBoroughChart } from "../js/perception_borough_linechart.js";
+    // Render the chart into the container
+    drawPerceptionBoroughChart("#perception-borough-chart","#perception-borough-legend","#perception-borough-hoverlist");
+</script>
+
+
+</body>
+</html>

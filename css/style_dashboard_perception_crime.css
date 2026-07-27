@@ -10,9 +10,56 @@ html, body {
     color: #2b2b2b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: visible;
     background-image:
             linear-gradient(180deg, #f7f3ef, #e7dfd6);
 }
+
+
+/* App shell provides the outer padding (the "margin" around the dashboard) */
+.app-shell {
+    box-sizing: border-box;       /* include padding in size calculations */
+    min-height: 100vh;            /* ensure it fills the viewport */
+    padding: 5px;                /* small margin around all corners — tweak as needed */
+    /*background: var(--dashboard-bg, #f6f7f9); !* optional subtle background *!*/
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;       /* center dashboard horizontally */
+    align-items: flex-start;
+    background: transparent;       /* keep background gradient from body visible */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Keep the dashboard container full-size inside the padded shell */
+#dashboard-container {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr 1fr;*/
+    /*vh == % of the specified row*/
+    /*fr == fraction == fraction of the specified row*/
+    grid-template-rows: 6vh minmax(1vh,50vh) 5fr;
+    gap: 10px;
+    width: calc(100% - 2.5px);
+    height: 150vh;
+    box-sizing: border-box;
+    /* optional: add a subtle inner background or border to show the padded area */
+    /* background: white; */
+     border-radius: 6px;
+     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    /*overflow-y: visible;*/
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    background: rgba(255,255,255,0.02); /* subtle inner background (optional) */
+    overflow: visible;
+}
+
+/* Helpful: ensure SVGs behave like blocks (prevents baseline gaps) */
+svg { display: block; }
+
 
 
 /* ========================================= */
@@ -29,6 +76,7 @@ html, body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     color: #0b2f24;            /* dark teal / near-black for good contrast */
     text-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    font-weight: 300;
     font-family: 'Poppins', sans-serif;
 
     /*padding: 16px 20px;*/
@@ -69,7 +117,7 @@ html, body {
 
 
 .borough.dimmed {
-    opacity: 0.2;
+    opacity: 0.1;
 }
 
 .borough-label.dimmed {
@@ -93,7 +141,7 @@ html, body {
 .crime-line,
 .perception-line {
     stroke-width: 2px;
-    opacity: 0.9;
+    opacity: 0.01;
     transition: stroke-width 0.2s ease, opacity 0.2s ease;
 }
 
@@ -109,7 +157,7 @@ html, body {
 .crime-line.dimmed,
 .perception-line.dimmed {
     stroke-width: 1px;
-    opacity: 0.3;
+    opacity: 0.01;
 }
 
 .residual-line.active-highlight,
@@ -130,7 +178,7 @@ html, body {
 .aggregated-residual-line.dimmed-aggregated {
     stroke: #999;          /* lighter grey */
     stroke-width: 2;
-    opacity: 0.4;          /* faded but visible */
+    opacity: 0.1;          /* faded but visible */
 }
 
 /* Zero baseline for residual chart */
@@ -140,166 +188,225 @@ html, body {
     stroke-dasharray: 4 4;
 }
 
-/* ========================================= */
-/* GRID LAYOUT                               */
-/* ========================================= */
-#dashboard-container {
-    display: grid;
-    /*grid-template-columns: 1fr 1fr 1fr;*/
-    /*vh == % of the specified row*/
-    /*fr == fraction == fraction of the specified row*/
-    grid-template-rows: 3vh 6vh minmax(1vh,50vh) 5fr;
-    gap: 10px;
-    width: 100vw;
-    height: 150vh;
-    overflow-y: auto;
-    overflow-x: hidden; /* keep horizontal locked */
-}
 
 /* ========================= */
-/* ROW 1 — CONTROLS          */
+/* ROW 0 (pinned) — CONTROLS          */
 /* ========================= */
+:root {
+    --dashboard-max-width: 1800px;   /* match #dashboard-container max-width */
+    --app-shell-padding-top: 5px;        /* match .app-shell padding */
+    --row1-height: 64px;             /* adjust to actual header height */
+}
+
+/* Keep the original grid rule for normal flow (row1 remains in DOM) */
 #row1 {
-    /*grid-row: 1;*/
     display: grid;
-    grid-template-columns: 2fr 1fr; /* perception metric select gets 1/2, borough-select gets other half */
+    grid-template-columns: 2fr 1fr;
     width: 100%;
     height: 100%;
     justify-items: center;
     gap: 20px;
+    /* no position here; pinned state handled below */
 }
 
-/* Perception metric dropdown container */
-#crime-type-container {
-    grid-column: 1;
-    /* Make the container a flexbox */
+/* Spacer that preserves the grid flow when row1 is fixed */
+#row1-spacer {
+    height: var(--row1-height);
+    width: 100%;
+    max-width: var(--dashboard-max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Fixed pinned header that visually matches dashboard width and centering */
+#row1.pinned-row {
+    position: fixed;
+    top: calc(var(--app-shell-padding-top));   /* align with app-shell padding */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
     display: flex;
-    justify-content: center;   /* ⭐ centers the dropdown horizontally */
-    align-items: center;        /* optional: vertical centering */
+    align-items: center;
+    padding: 10px 14px;
+    box-sizing: border-box;
 
-    /* Sizing */
-    min-width: 500px;      /* good default */
-    max-width: 600px;      /* optional */
+    width: calc(100% - (var(--app-shell-padding-top) * 2)); /* full viewport minus shell padding */
+    max-width: var(--dashboard-max-width);               /* match dashboard max width */
+    height: var(--row1-height);
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 14px;
+    border: 1px solid rgba(11,110,79,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Keep children responsive inside the fixed header */
+#row1.pinned-row .glass-dropdown,
+#row1.pinned-row select {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    :root { --row1-height: 56px; }
+    #row1.pinned-row { padding: 8px 10px; }
+    #row1-spacer { height: var(--row1-height); }
+}
+
+#borough-list-container,
+#perception-metric-container {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    max-width: calc(100vw - 32px);
     height: auto;
-
-    /* Spacing inside row1 */
-    margin-right: 12px;    /* space before borough-select */
-    margin-left: 4px;      /* optional fine tuning */
-
-    /* Make sure the dropdown menu can overflow */
     overflow: visible;
 }
 
-#crime-type-label {
+#borough-list-label {
     width: 100%;          /* ⭐ full width */
     text-align: center;   /* ⭐ center text */
     pointer-events: none; /* prevents accidental clicks */
 }
 
-#crime-type-select {
+#borough-list-select {
     grid-column: 2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.borough-list-checkbox {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.borough-list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+}
 /* your imported styles already handle most of it */
-.glass-dropdown {
+#borough-list-container.glass-dropdown,
+#perception-metric-container.glass-dropdown {
     width: 100%;
     position: relative;
-    display: inline-block;
-    align-items: center;
+    font-size: 1.2rem;
+    /*display: inline-block;*/
+    /*align-items: center;*/
 
 }
 
 /* The button that shows the current selection */
+#perception-metric-container.glass-dropdown-trigger,
 .glass-dropdown-trigger {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     gap: 6px;
     padding: 6px 10px;
     border-radius: 8px;
-    border: 1px solid rgba(213, 24, 24, 0.35);
-    background: rgba(138, 70, 70, 0.08);
-    color: #ef0606;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    background: rgba(11, 110, 79, 0.06);   /* subtle tinted glass */
+    border: 1px solid rgba(11, 110, 79, 0.14);
+    /*font-family: 'Poppins', sans-serif;*/
+    font-size: 1.2rem;
+    color: #052a24;
     cursor: pointer;
 }
+/* Perception metric dropdown container */
 
-/* Little arrow icon */
-.glass-dropdown-trigger-arrow {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    transition: transform 150ms ease;
-}
-.glass-dropdown.is-open .glass-dropdown-trigger-arrow {
-    transform: rotate(180deg);
+/* Arrow pinned to the right */
+#borough-list-container .glass-dropdown-trigger-arrow,
+#perception-metric-container .glass-dropdown-trigger-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) ;
+    /*transform: rotate(180deg);*/
+    pointer-events: none;
+    opacity: 0.85;
 }
 
-/* The dropdown menu panel */
-.glass-dropdown-menu {
+#borough-list-container .glass-dropdown-menu,
+#perception-metric-container .glass-dropdown-menu {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    min-width: 200px;
+    width: 100%;
+    min-width: 0;
     border-radius: 12px;
     padding: 4px;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.71);
     border: 1px solid rgba(255,255,255,0.25);
-    backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     pointer-events: none;
     opacity: 0;
     transform: translateY(-8px) scale(0.97);
-    transition: opacity 150ms ease, transform 150ms ease;
     z-index: 20;
     overflow: hidden;
-    width: 100%;
+    max-height: 30vh;
+    overflow-y: scroll;
+    transition: background 140ms ease-in-out, transform 140ms ease-in-out, box-shadow 140ms ease-in-out;
+}
+
+#borough-list-trigger,
+#perception-metric-trigger{
+    position: relative;
+    align-items: center;
+    justify-items: center;
+}
+
+.glass-dropdown.is-open .glass-dropdown-trigger-arrow {
+
 }
 
 /* Open state */
-.glass-dropdown.is-open .glass-dropdown-menu {
+#borough-list-container.glass-dropdown.is-open .glass-dropdown-menu,
+#perception-metric-container.glass-dropdown.is-open .glass-dropdown-menu {
     opacity: 1;
     transform: translateY(0) scale(1);
-    pointer-events: all;
+    pointer-events: auto;
+    box-shadow: 0 14px 48px rgba(0,0,0,0.30);
 }
 
 /* Individual items */
-.glass-dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: background 120ms ease;
-    color: #000000;
-    font-family: 'Poppins', sans-serif;
-    border: none;
-    background: transparent;
+#borough-metric-container .glass-dropdown-item.borough-list-item,
+#perception-metric-container .glass-dropdown-item {
     width: 100%;
-    text-align: left;
-}
-.glass-dropdown-item:hover {
-    background: rgba(255,255,255,0.12);
-}
-.glass-dropdown-item.is-active {
-    background: rgba(94, 231, 223, 0.18);
-    color: #5ee7df;
-}
-
-
-/* Empty right cell */
-#controls-right {
-    grid-column: 2;
-    grid-row: 1;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    color: #052a24;
     display: flex;
-    gap: 10px;
+    justify-content: center;
     align-items: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: transparent;
+    transition: background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
 }
+
+/* Hover: stronger blur + highlighted background and slight lift */
+#perception-metric-container .glass-dropdown-item:hover,
+#perception-metric-container .glass-dropdown-item:focus {
+    background: rgba(255,255,255,0.28);       /* stronger highlight on top of frosted panel */
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* selected state */
+#borough-list-container .glass-dropdown-item.is-active
+#perception-metric-container .glass-dropdown-item.is-active {
+    background: rgba(94,231,223,0.20);
+    color: #05332b;
+    box-shadow: 0 6px 18px rgba(9,46,40,0.10);
+}
+
 
 /* ========================= */
 /* ROW 2 — SUMMARY CONTAINERS           */
@@ -398,7 +505,7 @@ html, body {
     /*flex-direction: row;*/
     /*align-items: center;        !* ⭐ vertical centering *!*/
     /*justify-content: center;  !* ⭐ push SVG to the right *!*/
-    background: rgba(255, 68, 0, 0.43);
+
 }
 #choro-map-legend {
     /*flex: 0 0 auto;             !* fixed width *!*/
@@ -448,7 +555,6 @@ html, body {
     position: relative;
     width: 100%;
     height: 100%;
-    background: rgba(234, 175, 51, 0.6);
     overflow: hidden;
     /*display: block;*/
 }
@@ -473,7 +579,7 @@ html, body {
     transform: translateY(-50%);
     box-sizing: border-box;
     padding-right: 8px;
-    width: 100px;
+    width: 110px;
     height: auto;
     display: flex;
     align-items: center;
@@ -483,16 +589,21 @@ html, body {
 }
 
 #heatmap-scroll-wrapper {
+    align-items: flex-start;
     grid-row: 2;
     grid-column: 1;
     position: absolute;
     left: 0;                 /* we will shift left column via margin-left in JS */
-    top: 0;
+    top: -15px;
     right: 50px;
     bottom: 0;
     display: flex;           /* left column + scrollable right column */
-    align-items: stretch;
     overflow: hidden;        /* scroll only inside the right column */
+}
+/* --- Right scroll area: remove extra left padding/margin that could create a gap --- */
+#heatmap-scroll-right {
+    padding-left: 0;
+    margin-left: 0;
 }
 
 /* --- Ensure left column width is authoritative and remove padding that creates a gap --- */
@@ -511,7 +622,8 @@ html, body {
 #heatmap-left-column svg,
 #heatmap-scroll-wrapper svg {
     display: block;
-    box-sizing: border-box;
+    box-sizing: content-box;
+    height: 50%;
 }
 
 /* --- Pin the y-axis group to the right edge of the left column so ticks are flush --- */
@@ -529,16 +641,8 @@ html, body {
     overflow: visible;
 }
 
-/* --- Make the scroll wrapper align top so x-axis is inside visible area --- */
-#heatmap-scroll-wrapper {
-    align-items: flex-start;    /* ensures right column top aligns with left column top */
-}
 
-/* --- Right scroll area: remove extra left padding/margin that could create a gap --- */
-#heatmap-scroll-right {
-    padding-left: 0;
-    margin-left: 0;
-}
+
 
 /* --- Optional: reduce stroke bleed that can create a 1–2px visual gap --- */
 .heatmap-g rect {
@@ -573,29 +677,30 @@ html, body {
 
 /* Persistent dimming for non-active rows */
 .heatmap-row.dimmed-row {
-    opacity: 0.35;
+    opacity: 0.2;
 }
 
 /* Hover highlight (strongest, overrides everything) */
 .heatmap-row.hover-highlight {
-    outline: 2px solid #000;
+
     opacity: 1 !important;
     font-weight: 700 !important;
-    filter: brightness(2);
+    filter: brightness(1.5);
     box-shadow: 0 0 4px rgba(9, 7, 7, 0.4);
 }
 
 /* Hovered cell (inside a row) */
 .hover-cell {
+    outline: 1px solid #000;
     stroke: black;
     stroke-width: 2px;
-    filter: brightness(3);
+    filter: brightness(1);
 }
 
 /* Hovered column highlight */
 .hover-column {
     opacity: 1;
-    filter: brightness(2);
+    filter: brightness(1.5);
     box-shadow: 0 0 4px rgba(9, 7, 7, 0.4);
 }
 
@@ -641,7 +746,7 @@ html, body {
 
     /* CRITICAL: allow grid children to shrink/stretch */
     min-height: 0;
-    background: rgba(255,0,0,0.2);
+
 }
 
 /* Base glass button */
@@ -664,7 +769,6 @@ html, body {
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 
     color: #333;
     transition: all 0.2s ease;
@@ -682,7 +786,6 @@ html, body {
 /* Positioning for each button */
 #toggleTrendBtn {
     position: absolute;
-    /*top: 10px;          !* below line-chart title *!*/
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -754,13 +857,12 @@ html, body {
 
 
 /* Hoverlist in column 3 */
-#hoverList.glass-panel {
+#hoverList {
     /*grid-column: 2;*/
     display: flex;
     flex-direction: column;
     min-height: 0;
     width: 100%;
-    background: rgba(0, 182, 251, 0.38);
 }
 
 .hover-line {
@@ -783,17 +885,41 @@ html, body {
 /* left area */
 .row-left { display:flex; align-items:center; gap:8px; min-width:180px; }
 .swatch { width:12px; height:12px; border-radius:2px; display:inline-block; flex:0 0 12px; }
-.crime-name { font-weight:600; font-size:13px; color:#111; }
+.borough-name { font-weight:600; font-size:13px; color:#111; }
 
 /* metrics area */
-.row-values { display:grid; grid-template-columns: repeat(4, minmax(64px, 1fr)); gap:8px; align-items:center; width:100%; max-width:560px; }
-.metric { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
-.metric svg { width:80px; height:12px; display:block; }
-.metric .num { font-variant-numeric: tabular-nums; font-size:13px; color:#222; }
+.row-values { display:grid;
+    grid-template-columns: repeat(3, minmax(64px, 1fr));
+    gap:8px;
+    align-items:center;
+    text-align: center;
+    width:100%;
+    max-width:560px;
+    font-size: 10px
+}
+.metric { display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-sizing: border-box;
+    gap:4px;
+}
+.metric svg {
+    width:80px;
+    height:12px;
+    display:block; }
+.metric .num {
+    font-variant-numeric: tabular-nums;
+    font-size:15px;
+    color:#222;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
 
 /* residual centered bar specifics */
-.residual .bar-negative { fill: #e76f51; }
-.residual .bar-positive { fill: #2a9d8f; }
+/*.residual .bar-negative { fill: #931010; }*/
+/*.residual .bar-positive { fill: #165007; }*/
 
 /* hover interactions */
 .hover-row div {
@@ -842,7 +968,7 @@ html, body {
     border-bottom: 1px solid rgba(255,255,255,0.06);
     background: rgba(255,255,255,0.02);
     font-weight:700;
-    font-size:13px;
+    font-size:18px;
     color: #222;
 }
 
@@ -855,17 +981,20 @@ html, body {
 /* values area: same grid as rows .row-values */
 .hover-list-header .header-values {
     display:grid;
-    grid-template-columns: repeat(4, minmax(64px, 1fr));
+    grid-template-columns: repeat(3, minmax(64px, 1fr));
     gap:8px;
     width:100%;
     max-width:560px;
+    align-items:center;
+    text-align: center;
+    font-size:11px;
 }
 
 /* header cells */
 .hover-list-header .header-cell {
     text-align:center;
     font-weight:600;
-    font-size:12px;
+    font-size:15px;
     color: #333;
 }
 
@@ -879,3 +1008,4 @@ html, body {
     .hover-list-header .header-left { min-width:0; }
     .hover-list-header .header-values { grid-template-columns: repeat(2, 1fr); width:100%; }
 }
+

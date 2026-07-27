@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--Standalone test page-->
+<!--→ used ONLY for building + debugging the chart-->
+<!--This page should:-->
+<!--load D3-->
+<!--load your CSS-->
+<!--load your JS-->
+<!--call your chart function-->
+<!--contain a simple <div id="chart">-->
+<!--builds the chart without Scrollama interfering.-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borough Perception Line Chart</title>
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="../css/style_base.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <!-- Chart-specific styles -->
+    <link rel="stylesheet" href="../css/style_top_headlines.css">
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="top-nav">
+    <a class="nav-title" href="../main_index.html">Crime Perception Explorer</a>
+
+    <div class="nav-links">
+        <a href="bivariate_scrolly.html">Bivariate Choropleth</a>
+        <a href="heatmap_scrolly.html">Borough Crime Trends</a>
+        <a href="page3.html">Crime Type Trends</a>
+    </div>
+
+</nav>
+
+<!-- PAGE CONTENT -->
+<main>
+    <h1>TOP LONDON CRIME HEADLINES</h1>
+    <p>This standalone page is used to build and test The top headline chart page.</p>
+</main>
+
+
+<div id="tooltip" class="tooltip"></div>
+<!-- Chart container -->
+<div id="chart-wrapper">
+    <div id="headline-chart"></div>
+    <button id="resetZoomBtn">Reset Zoom</button>
+</div>
+
+<!-- optional hoverlist container on the side that
+    shows "on click" more info on the headline you want to investigate-->
+<div id="headlines-hoverlist"></div>
+
+<!-- Chart logic -->
+<script type="module">
+    import { drawTopHeadlinesChart } from "../js/top_headlines.js";
+    // Render the chart into the container
+    drawTopHeadlinesChart("#headline-chart","#headlines-hoverlist");
+</script>
+
+
+</body>
+</html>

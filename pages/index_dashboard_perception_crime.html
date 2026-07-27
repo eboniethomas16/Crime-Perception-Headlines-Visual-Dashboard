@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Comparing Crime with Perception</title>
 
     <!-- Chart-specific styles -->
     <link rel="stylesheet" href="../css/style_dashboard_perception_crime.css">
@@ -15,13 +15,14 @@
     <script src="https://unpkg.com/topojson-client@3"></script>
 </head>
 <body>
+<div class="app-shell">
 <div id="dashboard-container">
 
     <!-- ========================= -->
     <!-- ROW 1 — CONTROLS            -->
     <!-- ========================= -->
     <!-- Dropdowns span columns 1–2 -->
-    <div id="row1">
+    <div id="row1" class="pinned-row glass-panel">
 <!--            <select id="perception-metric-select"></select>-->
             <div id="perception-metric-container" class="glass-dropdown">
                 <button class="glass-dropdown-trigger" id="perception-metric-trigger">
@@ -33,9 +34,18 @@
                     <!-- items will be injected by D3 -->
                 </div>
             </div>
-            <select id="borough-select"></select> <!-- optional -->
 
+        <div id="borough-list-container" class="glass-dropdown">
+            <button class="glass-dropdown-trigger" id="borough-list-trigger">
+                <span id="borough-list-label">Select Crime Offence Categories</span>
+                <span class="glass-dropdown-trigger-arrow">▾</span>
+            </button>
+            <div class="glass-dropdown-menu" id="borough-list-menu">
+                <!-- items will be injected by D3 -->
+            </div>
+        </div>
     </div>
+
     <!-- ⭐ NEW ROW: SUMMARY STATS -->
     <div id="row2" >
         <div id="summary-stats-wrapper">
@@ -154,8 +164,8 @@
             <ul id="hover-list-rows" role="list" style="margin:0; padding:0;"></ul>
         </div>
 
-    </div>
-
+    </div> <!-- /#dashboard-container -->
+</div> <!-- /.app-shell -->
 
 </div>
 <script type="module" src="../js/dashboard_perception_crime.js"></script>

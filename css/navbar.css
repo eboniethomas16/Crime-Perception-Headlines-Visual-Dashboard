@@ -1,0 +1,49 @@
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: baseline;        /* Scrollama uses baseline alignment */
+    justify-content: flex-start;  /* prevents cutoff */
+
+    background: #f3f3f3;          /* Scrollama background */
+    border-bottom: 1px solid #ddd;
+
+    padding: 1rem;
+    padding-right: 5rem;          /* Scrollama spacing */
+    z-index: 9999;
+}
+
+/* TITLE */
+.nav-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #3b3b3b;
+    border-bottom: none;          /* remove teal underline */
+}
+
+/* RIGHT LINKS */
+.nav-links {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;              /* prevents cutoff */
+    gap: 3rem;
+    margin-left: auto;            /* pushes links right */
+}
+
+.nav-links a {
+    font-size: 18px;
+    border-bottom: 2px solid teal; /* Scrollama link style */
+}
+
+.nav-links a:hover {
+    color: #0077cc;
+}
+
+body {
+    margin: 0; /* prevent body from sliding under navbar */
+    padding-top: 60px; /* space so content doesn't hide under navbar */
+}

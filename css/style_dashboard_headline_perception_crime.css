@@ -10,8 +10,25 @@ html, body {
     color: #2b2b2b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: visible;
     background-image:
             linear-gradient(180deg, #f7f3ef, #e7dfd6);
+}
+
+
+/* App shell provides the outer padding (the "margin" around the dashboard) */
+.app-shell {
+    box-sizing: border-box;       /* include padding in size calculations */
+    min-height: 100vh;            /* ensure it fills the viewport */
+    padding: 5px;                /* small margin around all corners — tweak as needed */
+    /*background: var(--dashboard-bg, #f6f7f9); !* optional subtle background *!*/
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;       /* center dashboard horizontally */
+    align-items: flex-start;
+    background: transparent;       /* keep background gradient from body visible */
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -144,45 +161,100 @@ html, body {
     /*grid-template-columns: 1fr 1fr 1fr;*/
     /*vh == % of the specified row*/
     /*fr == fraction == fraction of the specified row*/
-    grid-template-rows: 3vh 6vh minmax(1vh,50vh) 5fr;
+    grid-template-rows: 6vh minmax(1vh,50vh) 5fr;
     gap: 10px;
-    width: 100vw;
-    height: 180vh;
-    overflow-y: auto;
-    overflow-x: hidden; /* keep horizontal locked */
+    width: calc(100% - 2.5px);
+    height: 150vh;
+    box-sizing: border-box;
+    /* optional: add a subtle inner background or border to show the padded area */
+    /* background: white; */
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    /*overflow-y: visible;*/
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    background: rgba(255,255,255,0.02); /* subtle inner background (optional) */
+    overflow: visible;
 }
 
 /* ========================= */
 /* ROW 1 — CONTROLS          */
 /* ========================= */
+:root {
+    --dashboard-max-width: 1800px;   /* match #dashboard-container max-width */
+    --app-shell-padding-top: 5px;        /* match .app-shell padding */
+    --row1-height: 64px;             /* adjust to actual header height */
+}
+
+/* Keep the original grid rule for normal flow (row1 remains in DOM) */
 #row1 {
-    /*grid-row: 1;*/
     display: grid;
-    grid-template-columns: 2fr 1fr; /* perception metric select gets 1/2, borough-select gets other half */
+    grid-template-columns: 2fr 1fr;
     width: 100%;
     height: 100%;
     justify-items: center;
     gap: 20px;
+    /* no position here; pinned state handled below */
 }
 
-/* Perception metric dropdown container */
-#crime-type-container {
-    grid-column: 1;
-    /* Make the container a flexbox */
+/* Spacer that preserves the grid flow when row1 is fixed */
+/*#row1-spacer {*/
+/*    height: var(--row1-height);*/
+/*    width: 100%;*/
+/*    max-width: var(--dashboard-max-width);*/
+/*    margin: 0 auto;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/* Fixed pinned header that visually matches dashboard width and centering */
+#row1.pinned-row {
+    position: fixed;
+    top: calc(var(--app-shell-padding-top));   /* align with app-shell padding */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
     display: flex;
-    justify-content: center;   /* ⭐ centers the dropdown horizontally */
-    align-items: center;        /* optional: vertical centering */
+    align-items: center;
+    padding: 10px 14px;
+    box-sizing: border-box;
 
-    /* Sizing */
-    min-width: 500px;      /* good default */
-    max-width: 600px;      /* optional */
+    width: calc(100% - (var(--app-shell-padding-top) * 2)); /* full viewport minus shell padding */
+    max-width: var(--dashboard-max-width);               /* match dashboard max width */
+    height: var(--row1-height);
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 14px;
+    border: 1px solid rgba(11,110,79,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Keep children responsive inside the fixed header */
+#row1.pinned-row .glass-dropdown,
+#row1.pinned-row select {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    :root { --row1-height: 56px; }
+    #row1.pinned-row { padding: 8px 10px; }
+    #row1-spacer { height: var(--row1-height); }
+}
+
+/* crime dropdown container */
+#crime-type-container {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    max-width: calc(100vw - 32px);
     height: auto;
-
-    /* Spacing inside row1 */
-    margin-right: 12px;    /* space before borough-select */
-    margin-left: 4px;      /* optional fine tuning */
-
-    /* Make sure the dropdown menu can overflow */
     overflow: visible;
 }
 
@@ -233,13 +305,13 @@ html, body {
     border: 1px solid rgba(11, 110, 79, 0.14);
     color: #0b2f24;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
 /* Little arrow icon */
 .glass-dropdown-trigger-arrow {
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     opacity: 0.6;
     transition: transform 150ms ease;
 }
@@ -255,8 +327,8 @@ html, body {
     min-width: 200px;
     border-radius: 12px;
     padding: 4px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.89);
+    border: 1px solid rgba(255, 255, 255, 0.91);
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.25);
@@ -267,6 +339,8 @@ html, body {
     z-index: 20;
     overflow: hidden;
     width: 100%;
+    max-height: 30vh;
+    overflow-y: scroll;
 }
 
 /* Open state */
@@ -274,6 +348,8 @@ html, body {
     opacity: 1;
     transform: translateY(0) scale(1);
     pointer-events: all;
+    max-height: 30vh;
+    overflow-y: scroll;
 }
 
 /* Individual items */
@@ -283,7 +359,7 @@ html, body {
     gap: 6px;
     padding: 6px 10px;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background 120ms ease;
     color: #000000;
@@ -291,10 +367,10 @@ html, body {
     border: none;
     background: transparent;
     width: 100%;
-    text-align: left;
+    text-align: center;
 }
 .glass-dropdown-item:hover {
-    background: rgba(255,255,255,0.12);
+    background: rgba(46, 228, 219, 0.63);
 }
 .glass-dropdown-item.is-active {
     background: rgba(94, 231, 223, 0.18);
@@ -412,12 +488,12 @@ html, body {
     position: relative;
     overflow: hidden; /* prevent SVG overflow */
     display: flex;
-    flex-direction: column;   /* ⭐ stack title above content */
+    flex-direction: column;   /* stack title above content */
     align-items: center;       /* center horizontally */
     justify-content: flex-start;
     /*flex-direction: row;*/
-    /*align-items: center;        !* ⭐ vertical centering *!*/
-    /*justify-content: center;  !* ⭐ push SVG to the right *!*/
+    /*align-items: center;        !* vertical centering *!*/
+    /*justify-content: center;  !* push SVG to the right *!*/
     /*background: rgba(255, 68, 0, 0.43);*/
 }
 
@@ -528,12 +604,12 @@ html, body {
 #heatmap-legend {
     position: absolute;
     margin-right: 5px;
-    left: 15px;
+    left: 30px;
     top: 50%;
     transform: translateY(-50%);
     box-sizing: border-box;
     padding-right: 0px;
-    width: 100px;
+    width: 160px;
     height: auto;
     display: flex;
     align-items: center;
@@ -609,39 +685,11 @@ html, body {
     stroke-width: 1px;
     vector-effect: non-scaling-stroke;
 }
-/* Ensure y labels don't wrap and are visible */
 
-
-/* Crisp rects and no stroke seams */
-/*.heatmap-g rect {*/
-/*    shape-rendering: crispEdges;*/
-/*    stroke: none;*/
-/*}*/
-
-/* Optional debug outlines (remove when done) */
-/* #heatmap-left-column { outline: 1px dashed rgba(0,0,0,0.08); } */
-/* .heatmap-scroll-right { outline: 1px dashed rgba(0,0,0,0.08); } */
-
-
-/* small niceties */
-svg { display: block; }
 
 
 /* Wrapper scrolls horizontally */
 
-/*#heatmap-scroll-wrapper {*/
-/*    position: absolute;*/
-/*    left: 120px;          !* ⭐ same width as legend *!*/
-/*    top: 0;*/
-/*    right: 40px;*/
-/*    bottom: 0;*/
-
-/*    overflow-x: auto;     !* ⭐ scroll only here *!*/
-/*    overflow-y: hidden;*/
-/*    !* Prevent flexbox shrinking *!*/
-/*    display: block;*/
-/*    !*padding-right: 40px;*!*/
-/*}*/
 
 
 
@@ -663,29 +711,29 @@ svg { display: block; }
 
 /* Persistent dimming for non-active rows */
 .heatmap-row.dimmed-row {
-    opacity: 0.35;
+    opacity: 0.2;
 }
 
 /* Hover highlight (strongest, overrides everything) */
 .heatmap-row.hover-highlight {
-    outline: 2px solid #000;
     opacity: 1 !important;
     font-weight: 700 !important;
-    filter: brightness(2);
+    filter: brightness(1.5);
     box-shadow: 0 0 4px rgba(9, 7, 7, 0.4);
 }
 
 /* Hovered cell (inside a row) */
 .hover-cell {
+    outline: 1px solid #000;
     stroke: black;
     stroke-width: 2px;
-    filter: brightness(3);
+    filter: brightness(1);
 }
 
 /* Hovered column highlight */
 .hover-column {
     opacity: 1;
-    filter: brightness(2);
+    filter: brightness(1.5);
     box-shadow: 0 0 4px rgba(9, 7, 7, 0.4);
 }
 
@@ -719,11 +767,6 @@ svg { display: block; }
     white-space: nowrap;
 }
 
-
-
-
-
-
 .chart-main-title {
     font-size: 20px;
     font-weight: 600;
@@ -745,7 +788,7 @@ svg { display: block; }
     position: relative;
     grid-column: 1;
     display: grid;
-    grid-template-rows: auto auto auto 1fr auto 1fr auto auto 1fr auto 1fr;
+    grid-template-rows: auto auto auto 1fr auto 1fr auto 1fr auto 1fr;
     height: auto;
     max-height: 1000px;
     width: 100%;
@@ -827,7 +870,6 @@ svg { display: block; }
 /* Positioning for each button */
 #toggleTrendBtn {
     position: absolute;
-    /*top: 10px;          !* below line-chart title *!*/
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -871,40 +913,76 @@ svg { display: block; }
 
 #perception-title {
     grid-row: 7;
-}
-#perception-metric-container {
-    grid-row: 8;
-    /*display: inline-flex;*/
-    align-items: center;
-    text-align: center;
+    position: relative;            /* establishes containing block for absolute children */
+    display: block;                /* or flex if you prefer */
+    text-align: center;            /* center the title text */
     width: 100%;
-    gap: 6px;
-    padding: 6px 10px;
+    box-sizing: border-box;
+    padding: 8px 0;                /* optional vertical spacing */
+    z-index: 5;                    /* ensure above other content if needed */
+
+}
+
+/* Title text inside the container (keeps it centered) */
+#perception-title > .title-text {
+    display: inline-block;         /* shrinkwrap so text is centered by text-align */
+    margin: 0 auto;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* Metric container sits visually to the left of the centered title */
+#perception-title #perception-metric-container {
+    position: absolute;            /* remove from flow but positioned relative to #perception-title */
+    right: 10%;                    /* align its right edge to the center of the title container */
+    transform: translateX(-8px) translateY(-50%); /* nudge left a little and vertically center */
+    top: 50%;                      /* vertical centering relative to #perception-title */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
+    z-index: 4;                    /* above title if needed */
+    /* sizing constraints so it doesn't overflow */
+    max-width: calc(50% - 24px);   /* prevents metric from overlapping too far into title area */
+    width: auto;
+    padding: 4px 8px;
     border-radius: 8px;
-    background: rgba(11, 110, 79, 0.06);   /* subtle tinted glass */
-    border: 1px solid rgba(11, 110, 79, 0.14);
-    color: #0b2f24;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    cursor: pointer;
+    background: rgba(11,110,79,0.06);
+    border: 1px solid rgba(11,110,79,0.14);
+}
+
+/* If the metric is wide, allow it to shrink on small screens */
+@media (max-width: 720px) {
+    #perception-title #perception-metric-container {
+        right: 50%;
+        transform: translateX(-4px) translateY(-50%);
+        max-width: 40%;
+        padding: 3px 6px;
+        font-size: 0.9rem;
+    }
+    #perception-title > .title-text {
+        font-size: 0.95rem;
+    }
 }
 
 #chart-perception {
-    grid-row: 9;
+    grid-row: 8;
     height: 100%;
     width: 100%;
     min-height: 0;
 }
 
 #residual-title {
-    grid-row: 10;
+    grid-row: 9;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
 }
 
 #chart-residual {
-    grid-row: 11;
+    grid-row: 10;
     position: relative;
     height: 100%;
     width: 100%;
@@ -975,7 +1053,9 @@ svg { display: block; }
     box-sizing: border-box;
     gap:4px;
 }
-.metric svg { width:80px; height:12px; display:block; }
+.metric svg { width:80px;
+    height:12px;
+    display:block; }
 
 /*Number below each bar that represents a value*/
 .metric .num {
@@ -989,8 +1069,8 @@ svg { display: block; }
 }
 
 /* residual centered bar specifics */
-.residual .bar-negative { fill: #e76f51; }
-.residual .bar-positive { fill: #2a9d8f; }
+/*.residual .bar-negative { fill: #e76f51; }*/
+/*.residual .bar-positive { fill: #2a9d8f; }*/
 
 /* compact responsive */
 @media (max-width:640px) {
@@ -1031,7 +1111,7 @@ svg { display: block; }
     text-align: center;          /* center horizontally */
     font-weight: 600;
     margin-bottom: 12px;
-    font-size: var(20px, 18px); /* configurable */
+    font-size: var(50px, 18px); /* configurable */
     line-height: 1.3;
     padding: 4px 0;
 }
@@ -1096,7 +1176,16 @@ svg { display: block; }
 .hover-row.selected-hover-row div {
     transform: scale(1.2);
 }
+/* responsive: stack header on narrow screens */
+@media (max-width:640px) {
+    .hover-row { flex-direction:column; align-items:flex-start; gap:6px; }
+    .row-left { min-width:0; }
+    .row-values { grid-template-columns: repeat(2, 1fr); width:100%; }
 
+    .hover-list-header { flex-direction:column; align-items:flex-start; gap:6px; }
+    .hover-list-header .header-left { min-width:0; }
+    .hover-list-header .header-values { grid-template-columns: repeat(2, 1fr); width:100%; }
+}
 
 
 .headline-line-hit, .crime-line-hit, .residual-line-hit, .perception-line-hit {
@@ -1108,3 +1197,5 @@ svg { display: block; }
 .headline-line, .crime-line, .residual-line, .perception-line { pointer-events: none; }
 /*PLACED AT END FOR PRIORITY*/
 #chart-headlines, #chart-headlines svg { pointer-events: auto; position: relative; z-index: 1; }
+
+svg { display: block; }

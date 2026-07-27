@@ -298,7 +298,7 @@ export function drawHeadlineChart({
             return [k, sorted];
         });
 
-        
+
 
         // ENTER / UPDATE / EXIT
         headlineLines = plotGroup.selectAll(".headline-line")

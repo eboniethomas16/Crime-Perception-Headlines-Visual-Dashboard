@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bivariate Choropleth – Crime vs Perception</title>
+    <link rel="stylesheet" href="../css/style_bivariate_choropleth.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+
+</head>
+<body>
+<h2>London Boroughs – Crime vs Public Perception (Bivariate Choropleth)</h2>
+
+<div id="controls">
+    <label for="quarterSelect">Select FY Quarter:</label>
+    <select id="quarterSelect"></select>
+
+    <label for="metricSelect">Select Perception Metric:</label>
+    <select id="metricSelect"></select>
+</div>
+
+<div id="map-wrapper">
+    <svg id="map"></svg>
+    <svg id="legend"></svg>
+</div>
+
+<!--<div id="map-container">-->
+<!--    <svg id="map" viewBox="0 0 800 600"></svg>-->
+<!--    <svg id="legend" class="legend" viewBox="0 0 160 160"></svg>-->
+<!--</div>-->
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="../js/bivariate_choropleth_map.js"></script>
+
+</body>
+</html>

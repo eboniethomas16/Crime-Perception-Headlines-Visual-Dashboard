@@ -34,6 +34,8 @@ function drawDashboard() {
     // LATEST HOVER DATA
     let latestResidualHoverData = null;
     let residualData = null;
+    let aggregatedResidualData = null;
+    let crimeTypeResidualData = null;
     let latestCrimeHoverData = null;
     let latestHeadlineHoverData = null;
     let latestPerceptionHoverData = null;
@@ -75,6 +77,7 @@ function drawDashboard() {
             if ("residual" in d) {
                 d.residual = +d.residual;
             }
+            if (d.metric) d.metric = d.metric.trim();
         });
     }
 
@@ -253,25 +256,36 @@ function drawDashboard() {
 
 
         // BUILD RESIDUAL SCALES BASED ON AGGREGATE AND CRIME TYPE RESIDUALS!
-        const aggregatedResidualData = aggregatedResiduals
+        aggregatedResidualData = aggregatedResiduals
             .filter(d => d.date >= cutoff)
             .sort((a, b) => a.date - b.date)
             .map(d => ({
                 date: d.date,
-                residual: d.residual
+                residual: d.residual,
+                metric: d.metric,
             }))
             .filter(d => d.residual != null && !isNaN(d.residual));
 
 
-        const crimeTypeResidualData = crimeTypeResiduals
-            .filter(d => d.date >= cutoff)
+        crimeTypeResidualData = crimeTypeResiduals
+            .filter(d => d.date >= cutoff && d.metric === selectedMetric)
             .sort((a, b) => a.date - b.date)
             .map(d => ({
                 crime_type: d.crime_type,
                 date: d.date,
-                residual: d.residual
-            }))
-            .filter(d => d.residual != null && !isNaN(d.residual));
+                residual: d.residual,
+                metric: d.metric,
+            }));
+
+        // const crimeTypeResidualData = crimeTypeResiduals
+        //     .filter(d => d.date >= cutoff)
+        //     .sort((a, b) => a.date - b.date)
+        //     .map(d => ({
+        //         crime_type: d.crime_type,
+        //         date: d.date,
+        //         residual: d.residual
+        //     }))
+        //     .filter(d => d.residual != null && !isNaN(d.residual));
 
 
         // for residual calculations
@@ -367,7 +381,6 @@ function drawDashboard() {
         // 1. Extract all crime types
         const allCrimeTypes = Array.from(new Set(crimeData.map(d => d.crime_type))).sort();
 
-
         // 3. Open/close dropdown
         // stop trigger clicks from bubbling to document
         crimeTypeTrigger.on("click", (event) => {
@@ -407,7 +420,6 @@ function drawDashboard() {
                         toggleActiveCrimeTypes(type); // toggles
                         if (this.checked && !activeCrimeTypes.has(type)) toggleActiveCrimeTypes(type);
                         if (!this.checked && activeCrimeTypes.has(type)) toggleActiveCrimeTypes(type);
-
                     });
 
                 // Label text
@@ -506,34 +518,51 @@ function drawDashboard() {
                     // close dropdown
                     percDropdown.classed("is-open", false);
 
-                    // get aggregated array for the new metric (precomputed)
-                    const newAgg = aggregatedPerception[selectedMetric] || [];
+                    // -----------------------------
+                    // Metric change: rebuild residuals + update visuals
+                    // -----------------------------
+                    const newAggResiduals = (aggregatedResiduals || [])
+                        .filter(d => d.date >= cutoff && (!d.metric || d.metric === selectedMetric))
+                        .sort((a, b) => a.date - b.date)
+                        .map(d => ({ date: d.date, residual: +d.residual, metric: d.metric }));
 
-                    // update nested lookup (no `let` — update outer Map)
-                    percDataByDate.set(selectedMetric, new Map(newAgg.map(r => [r.date.getTime(), r.avg])));
+                    const newCrimeTypeResiduals = (crimeTypeResiduals || [])
+                        .filter(d => d.date >= cutoff && d.metric === selectedMetric)
+                        .sort((a, b) => a.date - b.date)
+                        .map(d => ({ crime_type: d.crime_type, date: d.date, residual: +d.residual, metric: d.metric }));
 
-                    // update perception chart
+                    // assign into your existing top-level variables
+                    aggregatedResidualData = newAggResiduals;
+                    crimeTypeResidualData = newCrimeTypeResiduals;
+
+                    // push metric-filtered arrays into the residual chart module
+                    if (residualChart && typeof residualChart.updateData === "function") {
+                        residualChart.updateData({
+                            aggregated: aggregatedResidualData,
+                            crimeTypes: crimeTypeResidualData
+                        });
+                    } else {
+                        console.warn("residualChart.updateData not available; ensure module accepts metric-filtered arrays.");
+                    }
+
+                    // Update perception chart (existing logic)
                     if (perceptionChart && typeof perceptionChart.updateData === "function") {
-                        perceptionChart.updateData(newAgg);
+                        perceptionChart.updateData(aggregatedPerception[selectedMetric] || []);
                     }
                     if (perceptionChart && typeof perceptionChart.setMetric === "function") {
                         perceptionChart.setMetric(selectedMetric);
-                    } else {
-                        if (perceptionChart && typeof perceptionChart.redrawXAxis === "function") perceptionChart.redrawXAxis();
-                        if (perceptionChart && typeof perceptionChart.redrawLines === "function") perceptionChart.redrawLines();
                     }
 
-                    // update other visuals
+                    // Update other visuals that depend on metric
                     if (typeof crimeChart?.redrawLines === "function") crimeChart.redrawLines();
                     if (typeof updateSummaryPills === "function") updateSummaryPills();
 
-                    // refresh hoverlist for current snappedDate or latestDate
+                    // Refresh hoverlist for current snappedDate or latest values
                     const metricMap = percDataByDate.get(selectedMetric);
                     if (snappedDate) {
                         const snappedQuarterDate = snapToQuarter(snappedDate);
                         const percHoverValue = metricMap ? metricMap.get(snappedQuarterDate.getTime()) ?? null : null;
 
-                        // build hover arrays (your existing logic)
                         const headlineHoverData = Array.from(activeCrimeTypes).map(type => {
                             const arr = headlineDataByType.get(type);
                             const row = arr?.find(r => r.date.getTime() === snappedDate.getTime());
@@ -547,7 +576,7 @@ function drawDashboard() {
                         });
 
                         const residualHoverData = Array.from(activeCrimeTypes).map(type => {
-                            const arr = residualDataByCrimeType.get(type);
+                            const arr = aggregatedResidualData.get(type);
                             const row = arr?.find(r => r.date.getTime() === snappedDate.getTime());
                             return { crime_type: type, residual: row ? row.residual : null };
                         });
@@ -563,6 +592,7 @@ function drawDashboard() {
                     } else {
                         showLatestValues(true);
                     }
+
                 });
         }
 
@@ -701,7 +731,7 @@ function drawDashboard() {
                 });
 
                 const residualHoverData = Array.from(activeCrimeTypes).map(type => {
-                    const arr = residualDataByCrimeType.get(type);
+                    const arr = crimeTypeResidualData.get(type);
                     const row = arr?.find(d => d.date.getTime() === snappedDate.getTime());
                     return { crime_type: type, residual: row ? row.residual : null };
                 });
@@ -1094,13 +1124,6 @@ function drawDashboard() {
                 return { crime_type: type, headline_count: row ? row[headlineField] : null };
             });
 
-            // 5) Build residual hover data (monthly)
-            const residualHoverData = Array.from(activeCrimeTypes).map(type => {
-                const arr = residualDataByCrimeType.get(type);
-                const row = arr?.find(d => d.date.getTime() === snappedCrimeDate.getTime());
-                return { crime_type: type, residual: row ? row.residual : null };
-            });
-
             // 6) Build crime hover data (monthly)
             const crimeHoverData = Array.from(activeCrimeTypes).map(type => {
                 const arr = crimeDataByType.get(type);
@@ -1120,6 +1143,21 @@ function drawDashboard() {
                 const pRow = arr.find(p => p.date && p.date.getTime() === snappedQuarterDate.getTime());
                 percHoverValue = pRow ? pRow.avg : null;
             }
+
+            // Residual values at snappedQuarterDate (quarter lookup)
+            const residualHoverData = Array.from(activeCrimeTypes).map(type => {
+                const arr = (crimeTypeResidualData || []).filter(r => r.crime_type === type);
+                if (!arr || arr.length === 0) return { crime_type: type, residual: null };
+
+                let row = arr.find(r => r.date && r.date.getTime() === snappedQuarterDate.getTime());
+                if (!row) {
+                    row = arr.reduce((best, cur) => {
+                        if (!best) return cur;
+                        return Math.abs(cur.date - snappedQuarterDate.getTime()) < Math.abs(best.date - snappedQuarterDate.getTime()) ? cur : best;
+                    }, null);
+                }
+                return { crime_type: type, residual: row ? row.residual : null };
+            });
 
             // 8) Merge using your existing helper (crimeArr, residualArr, perceptionValue)
             const mergedHoverData = mergeCrimeHeadlineResidual(
@@ -1458,7 +1496,7 @@ function drawDashboard() {
             const crimeTotal = computeCrimeTotal(crimeData, crimeTypes, dateDomain);
             const headlineTotal = computeHeadlineTotal(headlineData, crimeTypes, dateDomain, useDuplicates);
             const crimeChange = computeCrime12MonthChange(crimeData, crimeTypes);
-            const headlineChange = computeHeadline12MonthChange(headlineData, crimeTypes, selectedMetric);
+            const headlineChange = computeHeadline12MonthChange(headlineData, crimeTypes, useDuplicates);
 
             // MAIN VALUES
             d3.select("#crime-summary-value").text(crimeTotal.toLocaleString());
@@ -1480,7 +1518,7 @@ function drawDashboard() {
             // HEADLINE CHANGE ARROW LOGIC (uses headlineChange)
             if (headlineChange != null) {
                 const arrow = headlineChange >= 0 ? "▲" : "▼";
-                const colorClass = headlineChange >= 0 ? "arrow-up-green" : "arrow-down-red";
+                const colorClass = headlineChange >= 0 ? "arrow-up-red" : "arrow-down-green";
                 d3.select("#headline-change-value")
                     .attr("class", `change-value ${colorClass}`)
                     .text(`${arrow} ${Math.abs(headlineChange).toFixed(1)}%`);
@@ -1534,16 +1572,28 @@ function drawDashboard() {
             // ---------------------------------------------
             // 3. Latest RESIDUAL values (monthly)
             // ---------------------------------------------
-            const residualLatest = Array.from(activeCrimeTypes).map(type => {
-                const arr = residualDataByCrimeType.get(type);
-                if (!arr || arr.length === 0) return { crime_type: type, residual: null };
 
+            const residualLatest = Array.from(activeCrimeTypes).map(crimeType => {
+                const arr = (crimeTypeResidualData || []).filter(r => r.crime_type === crimeType);
+                if (!arr || arr.length === 0) return { crime_type: crimeType, residual: null };
+
+                // arr is sorted by date; last element is the most recent quarter for this metric
                 const last = arr[arr.length - 1];
                 return {
-                    crime_type: type,
-                    residual: last.residual
+                    crime_type: crimeType,
+                    residual: last ? last.residual : null
                 };
             });
+            // const residualLatest = Array.from(activeCrimeTypes).map(type => {
+            //     const arr = residualDataByCrimeType.get(type);
+            //     if (!arr || arr.length === 0) return { crime_type: type, residual: null };
+            //
+            //     const last = arr[arr.length - 1];
+            //     return {
+            //         crime_type: type,
+            //         residual: last.residual
+            //     };
+            // });
 
             // ---------------------------------------------
             // 4. Latest aggregated PERCEPTION value (single number)
@@ -1687,13 +1737,6 @@ function drawDashboard() {
                 return { crime_type: type, headline_count: row ? row[headlineField] : null };
             });
 
-            // 3. Build residual hover data (monthly) aligned with activeCrimeTypes
-            const residualHoverData = Array.from(activeCrimeTypes).map(b => {
-                const arr = residualDataByCrimeType.get(b);
-                const row = arr?.find(d => d.date && d.date.getTime() === date.getTime());
-                return { crime_type: b, residual: row ? row.residual : null };
-            });
-
             // 4. Build crime hover data (monthly)
             const crimeHoverData = Array.from(activeCrimeTypes).map(b => {
                 const arr = crimeDataByType.get(b);
@@ -1723,6 +1766,13 @@ function drawDashboard() {
                 const pRow = arr.find(p => p.date && p.date.getTime() === snappedQuarterDate.getTime());
                 percHoverValue = pRow ? pRow.avg : null;
             }
+
+            // 3. Build residual hover data (monthly) aligned with activeCrimeTypes
+            const residualHoverData = Array.from(activeCrimeTypes).map(b => {
+                const arr = residualDataByCrimeType.get(b);
+                const row = arr?.find(d => d.date && d.date.getTime() === snappedQuarterDate.getTime());
+                return { crime_type: b, residual: row ? row.residual : null };
+            });
 
             // 6. Merge using your existing helper (crimeArr, residualArr, perceptionValue)
             const mergedHoverData = mergeCrimeHeadlineResidual(
@@ -1779,10 +1829,12 @@ function drawDashboard() {
             svgC && (svgC.innerHTML = "");
             if (svgC) {
                 if (item.crime == null) {
-                    svgC.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
+                    svgC.insertAdjacentHTML("beforeend",
+                        `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
                 } else {
                     const width = Math.max(1, scales.crime(Math.min(item.crime, scales.crimeCap)));
-                    svgC.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#666'}" rx="2"></rect>`);
+                    svgC.insertAdjacentHTML("beforeend",
+                        `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#666'}" rx="2"></rect>`);
                 }
             }
 
@@ -1800,23 +1852,46 @@ function drawDashboard() {
 
             // RESIDUAL (centered)
             const svgR = rowNode.querySelector(".metric.residual svg");
-            svgR && (svgR.innerHTML = "");
             if (svgR) {
-                const zeroX = scales.residual(0);
-                svgR.insertAdjacentHTML("beforeend", `<line x1="${zeroX}" x2="${zeroX}" y1="1" y2="11" stroke="rgba(0,0,0,0.12)" stroke-width="1"></line>`);
-                if (item.residual == null) {
-                    svgR.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
+                svgR.innerHTML = "";
+
+                // fixed zero position in the center
+                const zeroX = w / 2;
+
+                // center tick
+                svgR.insertAdjacentHTML("beforeend",
+                    `<line x1="${zeroX}" x2="${zeroX}" y1="1" y2="11" stroke="rgba(0,0,0,0.12)" stroke-width="1"></line>`);
+
+                if (item.residual == null || isNaN(item.residual)) {
+                    svgR.insertAdjacentHTML("beforeend",
+                        `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
                 } else {
-                    const valX = scales.residual(item.residual);
-                    if (item.residual < 0) {
-                        const width = Math.abs(zeroX - valX);
-                        svgR.insertAdjacentHTML("beforeend", `<rect x="${valX}" y="2" width="${width}" height="8" fill="#e76f51" rx="2"></rect>`);
+                    // assume residuals are normalized to [-1, 1]; clamp to avoid overflow
+                    const r = Math.max(-1, Math.min(1, +item.residual));
+
+                    // compute pixel position for the value relative to center
+                    const valX = zeroX + r * (w / 2);
+
+                    if (r < 0) {
+                        // negative: draw from valX (left of center) to center, red
+                        const rectX = valX;
+                        const rectW = Math.max(0, zeroX - valX);
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#931010" rx="2"></rect>`);
+                    } else if (r > 0) {
+                        // positive: draw from center to valX, green
+                        const rectX = zeroX;
+                        const rectW = Math.max(0, valX - zeroX);
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#165007" rx="2"></rect>`);
                     } else {
-                        const width = Math.abs(valX - zeroX);
-                        svgR.insertAdjacentHTML("beforeend", `<rect x="${zeroX}" y="2" width="${width}" height="8" fill="#2a9d8f" rx="2"></rect>`);
+                        // exactly zero: optionally draw a tiny marker so users see a value
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${zeroX - 1}" y="2" width="2" height="8" fill="rgba(0,0,0,0.12)" rx="1"></rect>`);
                     }
                 }
             }
+
         }
 
 // ---------- render Hover List (main renderer) ----------

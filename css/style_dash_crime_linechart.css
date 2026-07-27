@@ -1,0 +1,26 @@
+/*#chart-crime {*/
+/*    display: inline-block;   !* shrink-wrap to SVG *!*/
+/*}*/
+
+/* SVG inherits global font */
+#chart-crime svg {
+    font-family: inherit;
+}
+
+/* Crime line styles */
+
+
+
+
+
+
+/* Axis styling */
+.axis path,
+.axis line {
+    stroke: #999;
+}
+
+.axis text {
+    font-size: 12px;
+    fill: #333;
+}

@@ -1,0 +1,81 @@
+body {
+    font-family: system-ui, sans-serif;
+    margin: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#map-wrapper {
+    display: flex;
+    justify-content: center;     /* centers map + legend horizontally */
+    align-items: flex-start;      /* top-aligns the two SVGs */
+    gap: 30px;                    /* spacing between map and legend */
+    width: 100%;
+    margin-top: 10px;
+}
+
+#map {
+    flex-shrink: 0;               /* prevents map from shrinking */
+}
+
+#legend {
+    display: block;
+}
+
+
+/*#legend {*/
+/*    display: flex;*/
+/*    justify-content: center;   !* centers the whole block *!*/
+/*    align-items: flex-start ;   !* top-align map + legend *!*/
+/*    gap: 20px;                 !* spacing between map and legend *!*/
+/*    width: 100%;*/
+/*}*/
+
+
+#controls {
+    display: flex;
+    justify-content: center;   /* centers horizontally */
+    align-items: center;
+    gap: 12px;                 /* spacing between dropdowns */
+    margin-bottom: 15px;       /* space above the map */
+    font-size: 14px;
+}
+
+#controls select {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+
+svg {
+    max-width: 800px;
+    height: auto;
+}
+
+.borough {
+    stroke: #fff;
+    stroke-width: 0.5px;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    opacity: 0;
+}
+
+.legend {
+    font-size: 11px;
+}
+
+.legend rect {
+    stroke: #ccc;
+}

@@ -21,7 +21,7 @@
     <!-- ROW 1 — CONTROLS            -->
     <!-- ========================= -->
     <!-- Dropdowns span columns 1–2 -->
-    <div id="row1">
+    <div id="row1" class = "pinned-row glass panel">
         <!--            <select id="perception-metric-select"></select>-->
         <div id="crime-type-container" class="glass-dropdown">
             <button class="glass-dropdown-trigger" id="crime-type-trigger">
@@ -33,33 +33,33 @@
                 <!-- items will be injected by D3 -->
             </div>
         </div>
-        <select id="crime-type-select"></select> <!-- optional -->
+<!--        <select id="crime-type-select"></select> &lt;!&ndash; optional &ndash;&gt;-->
     </div>
     <!-- ⭐ NEW ROW: SUMMARY STATS -->
     <div id="row2" >
         <div id="summary-stats-wrapper">
-            <!-- MAIN CRIME PILL -->
+            <!-- MAIN HEADLINE PILL -->
             <div class="summary-pill" id="headline-summary-pill" >
                 <div class="summary-title">Total Headline Count</div>
                 <div class="summary-value" id="headline-summary-value">3,697,703</div>
             </div>
 
-            <!-- MAIN PERCEPTION PILL -->
+            <!-- MAIN CRIME PILL -->
             <div class="summary-pill" id="crime-summary-pill">
                 <div class="summary-title">Total Crime Offence Count</div>
                 <div class="summary-value" id="crime-summary-value">62%</div>
             </div>
 
-            <!-- CRIME CHANGE PILL -->
+            <!-- HEADLINE CHANGE PILL -->
             <div class="summary-pill change-pill" id="crime-change-pill">
                 <div class="change-title">12‑month change (Headline)</div>
-                <div class="change-value" id="crime-change-value">▼ 2.5%</div>
+                <div class="change-value" id="headline-change-value">▼ 2.5%</div>
             </div>
 
-            <!-- PERCEPTION CHANGE PILL -->
+            <!-- CRIME CHANGE PILL -->
             <div class="summary-pill change-pill" id="perc-change-pill">
                 <div class="change-title">12‑month change (Crime)</div>
-                <div class="change-value" id="perc-change-value">▲ 1.8%</div>
+                <div class="change-value" id="crime-change-value">▲ 1.8%</div>
             </div>
         </div>
     </div>
@@ -151,19 +151,20 @@
 
             <!-- Perception chart title -->
             <div id="perception-title" class="chart-title">
+                <!-- Perception metric selector (glass style) -->
+                <div id="perception-metric-container" class="glass-dropdown">
+                    <button class="glass-dropdown-trigger" id="perception-metric-trigger">
+                        <span id="perception-metric-label">Select perception metric</span>
+                        <span class="glass-dropdown-trigger-arrow">▾</span>
+                    </button>
+
+                    <div class="glass-dropdown-menu" id="perception-metric-menu">
+                        <!-- items will be injected by D3 -->
+                    </div>
+                </div>
                 Public Perception of Policing Over Time (%)
             </div>
-            <!-- Perception metric selector (glass style) -->
-            <div id="perception-metric-container" class="glass-dropdown">
-                <button class="glass-dropdown-trigger" id="perception-metric-trigger">
-                    <span id="perception-metric-label">Select perception metric</span>
-                    <span class="glass-dropdown-trigger-arrow">▾</span>
-                </button>
 
-                <div class="glass-dropdown-menu" id="perception-metric-menu">
-                    <!-- items will be injected by D3 -->
-                </div>
-            </div>
 
 
             <!-- Perception chart -->

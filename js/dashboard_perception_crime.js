@@ -160,7 +160,7 @@ export function drawDashboard() {
         const innerWidth  = width  - margin.left - margin.right;
         const innerHeight = height - margin.top  - margin.bottom;
 
-        // ⭐ CUT OFF ALL DATA BEFORE APRIL 1st 2017
+        //   CUT OFF ALL DATA BEFORE APRIL 1st 2017
         const cutoff = new Date(2017, 3, 1);
 
         const startDate = cutoff;
@@ -262,41 +262,55 @@ export function drawDashboard() {
         const perceptionColor = d3.scaleOrdinal(palette);
         // const residualColor = d3.scaleOrdinal(d3.schemeTableau10);
 
-        //////////////////////////////
-        // POPULATE METRIC DROPDOWN //
-        //////////////////////////////
+
+        function onDocumentClickCloseDropdown(e) {
+            const boroughDropdownNode = document.querySelector("#borough-list-container");
+            const percDropdownNode = document.querySelector("#perception-metric-container");
+
+            if (!boroughDropdownNode && !percDropdownNode) return;
+            if (boroughDropdownNode.contains(e.target)||percDropdownNode.contains(e.target)) return; // click inside → ignore
+            boroughDropdown.classed("is-open", false);
+            percDropdown.classed("is-open", false);
+        }
+        /////////////////////////////////////////
+        // POPULATE PERCEPTION METRIC DROPDOWN //
+        /////////////////////////////////////////
         const perceptionMetrics = Array.from(
             new Set(perceptionData.map(d => d.metric.trim()))
         );
+        const metricDisplayMap = {
+            "Good job": "The Police do a good job in the local area (%)",
+            "Trust MPS": "The MPS is an organisation that I can trust (%)",
+            "Fair treatment": "The police treat everyone fairly regardless of who they are (%)"
+        };
 
-        const dropdown = d3.select("#perception-metric-container");
-        const trigger  = d3.select("#perception-metric-trigger");
-        const label    = d3.select("#perception-metric-label");
-        const menu     = d3.select("#perception-metric-menu");
+        const percDropdown = d3.select("#perception-metric-container");
+        const percTrigger  = d3.select("#perception-metric-trigger");
+        const percLabel    = d3.select("#perception-metric-label");
+        const percMenu     = d3.select("#perception-metric-menu");
 
+        // build selection metric dropdown listener events
         selectedMetric = perceptionMetrics[0];
-        label.text(selectedMetric);
+        percLabel.text("Perception Metric: " + metricDisplayMap[selectedMetric]);
 
-        // build menu items listener events
-        const items = menu.selectAll(".glass-dropdown-item")
+        const items = percMenu.selectAll(".glass-dropdown-item")
             .data(perceptionMetrics)
             .enter()
             .append("button")
             .attr("class", d =>
                 "glass-dropdown-item" + (d === selectedMetric ? " is-active" : "")
             )
-            .text(d => d)
+            .text(d => metricDisplayMap[d])
             .on("click", (event, d) => {
                 selectedMetric = d;
-                label.text(d);
-
+                percLabel.text("Perception Metric: " + metricDisplayMap[d]);
                 // update active state
                 items.classed("is-active", item => item === d);
 
                 // close dropdown
-                dropdown.classed("is-open", false);
+                 percDropdown.classed("is-open", false);
 
-                // call your existing update function
+                // call existing update function
                 updatePerceptionMetric();
                 // update the summary pills after updating metric
                 // only the perception pill average % should change
@@ -304,25 +318,88 @@ export function drawDashboard() {
             });
 
         // toggle open/close
-        trigger.on("click", () => {
-            const isOpen = dropdown.classed("is-open");
-            dropdown.classed("is-open", !isOpen);
+        percTrigger.on("click", () => {
+            const isOpen =  percDropdown.classed("is-open");
+             percDropdown.classed("is-open", !isOpen);
         });
 
-        // ⭐ Build residualData for selected metric
+        //   Build residualData for selected metric
         let residualData = boroughResiduals.map(d => ({
             borough: d.borough,
             date: d.date,
             residual: d[selectedMetric.replace(" ", "_") + "_residual"]
         }));
 
+        /////////////////////////////////////
+        // POPULATE BOROUGH LIST CHECKLIST //
+        ////////////////////////////////////
+        const boroughDropdown = d3.select("#borough-list-container");
+        const boroughTrigger  = d3.select("#borough-list-trigger");
+        const boroughLabel    = d3.select("#borough-list-label");
+        const boroughMenu     = d3.select("#borough-list-menu");
+
+        //default label: no boroughs active
+        boroughLabel.text("Selected Boroughs: None");
+        // close dropdown when clicking outside
+
+        document.addEventListener("click", onDocumentClickCloseDropdown);
+
+        const boroughItems = boroughMenu.selectAll(".glass-dropdown-item")
+            .data(boroughNames)
+            .enter()
+            .append("label")
+            .attr("class", "glass-dropdown-item borough-list-item")
+            .each(function(borough) {
+                const row = d3.select(this);
+
+                // checkbox
+                row.append("input")
+                    .attr("type", "checkbox")
+                    .attr("class", "borough-list-checkbox")
+                    .attr("value", borough)
+                    .property("checked", activeBoroughs.has(borough))
+                    .on("change", function(event) {
+                        const checked = event.target.checked;
+                        // Force dashboard active state to match checkbox
+                        const isActive = activeBoroughs.has(borough);
+                        if (checked && !isActive) {
+                            toggleActiveBorough(borough);   // activate
+                        }
+                        if (!checked && isActive) {
+                            toggleActiveBorough(borough);   // deactivate
+                        }
+                        // update label text
+                        const count = activeBoroughs.size;
+                        boroughLabel.text(
+                            count === 0
+                                ? "Selected Boroughs: None"
+                                : `Selected Boroughs: ${count} selected`
+                        );
+                        updateSummaryPills();
+                        updateDashboardHoverState();
+                    });
+
+
+                // text label
+                row.append("span")
+                    .attr("class", "borough-list-name")
+                    .text(borough);
+            });
+
+        boroughTrigger.on("click", () => {
+            const isOpen = boroughDropdown.classed("is-open");
+            boroughDropdown.classed("is-open", !isOpen);
+        });
+
+
+
         //set the latest values: (WILL CHANGE LATER WHEN SNAPPING FUNCTIONALITY IS INTRODUCED)
         latestResidualHoverData = null;
         latestCrimeHoverData = null;
         latestPerceptionHoverData = null;
-        // latestCrimeHoverData = crimeData.filter(d => d.date.getTime() === snappedDate?.getTime());
-        // latestPerceptionHoverData = perceptionData.filter(d => d.date.getTime() === snappedDate?.getTime());
         latestMapHoverData = mapData; // map is not time‑dependent
+
+
         // ===============================
         // INITIALIZE MODULES
         // ===============================
@@ -383,9 +460,19 @@ export function drawDashboard() {
             activeBoroughs,
             setHoverBorough,
             setHoverQuarter,
-            onClick: toggleActiveBorough,
             onHeatmapHoverCell,
-            updateDashboardHoverState
+            updateDashboardHoverState,
+            // onClick: toggleActiveBorough,
+            onClick: (borough) => {
+                // toggle via your existing function
+                toggleActiveBorough(borough);
+
+                // sync checklist DOM to reflect the new active set
+                boroughMenu.selectAll(".borough-list-checkbox")
+                    .property("checked", function () {
+                        return activeBoroughs.has(this.value);
+                    });
+            }
             // onHeatmapHover,
         });
 
@@ -452,6 +539,19 @@ export function drawDashboard() {
         showLatestValues(true)
         updateHoverList(null, [], null);
         updateDashboardHoverState();
+
+        // 5. Snap perception date DOWN to nearest quarter
+        // Example quarters: Jan, Apr, Jul, Oct
+        function snapToQuarter(date) {
+            const month = date.getMonth(); // 0–11
+            const quarterStartMonth =
+                month < 3 ? 0 :
+                    month < 6 ? 3 :
+                        month < 9 ? 6 :
+                            9;
+
+            return new Date(date.getFullYear(), quarterStartMonth, 1);
+        }
         // UPDATES THE HOVERLINE LISTENER
         lineChartsNode.addEventListener("mousemove", event => {
             // if no boroughs active, don't do anything
@@ -475,18 +575,7 @@ export function drawDashboard() {
                 snappedCrimeDate = closestCrime.date;
             }
 
-            // 5. Snap perception date DOWN to nearest quarter
-            // Example quarters: Jan, Apr, Jul, Oct
-            function snapToQuarter(date) {
-                const month = date.getMonth(); // 0–11
-                const quarterStartMonth =
-                    month < 3 ? 0 :
-                        month < 6 ? 3 :
-                            month < 9 ? 6 :
-                                9;
 
-                return new Date(date.getFullYear(), quarterStartMonth, 1);
-            }
             // 6. Move hoverlines using snappedCrimeDate (monthly)
             const snappedPercDate = snapToQuarter(snappedCrimeDate);
             setHoverQuarter(snappedPercDate);
@@ -548,15 +637,17 @@ export function drawDashboard() {
             snappedDate = snappedCrimeDate;
 
             // 8. Update hoverList
-            // compute snappedCrimeDate earlier in handler...
-            if (snappedDate && +snappedCrimeDate === +snappedDate) {
-                // nothing changed since last frame — skip expensive work
-                return;
-            }
-            snappedDate = snappedCrimeDate;
+            const dateChanged = !(snappedDate && +snappedCrimeDate === +snappedDate);
 
+// Always update hoverlist (cheap)
             updateHoverList(snappedCrimeDate, mergedHoverData, true);
             updateDashboardHoverState();
+
+// Only update snappedDate when it actually changed (expensive operations depend on this)
+            if (dateChanged) {
+                snappedDate = snappedCrimeDate;
+            }
+
         });
 
         lineChartsNode.addEventListener("mouseleave", () => {
@@ -593,7 +684,7 @@ export function drawDashboard() {
             // 3. Clear hoverlines on ALL charts
             hoverLineCrime.style("opacity", 0);
             hoverLinePerc.style("opacity", 0);
-            hoverLineResidual.style("opacity", 0);   // ⭐ REQUIRED
+            hoverLineResidual.style("opacity", 0);   //   REQUIRED
 
             // 3. Show latest values (if any boroughs selected)
             if (activeBoroughs.size > 0) {
@@ -839,7 +930,7 @@ export function drawDashboard() {
         // function quarterToDate(q) {
         //     if (!q || typeof q !== "string" || !q.includes("-")) {
         //         console.log("date format passed is not right:",q);
-        //         return null;   // ⭐ gracefully handle non-quarter hovers
+        //         return null;   //   gracefully handle non-quarter hovers
         //     }
         //     const [year, qStr] = q.split("-");
         //     const quarter = +qStr.replace("Q", "");
@@ -970,7 +1061,7 @@ export function drawDashboard() {
         // SHOW THE MOST RECENT CRIME AND PERCEPTION VALUES IN THE HOVERLIST
         function showLatestValues(showDate = true) {
             if (activeBoroughs.size === 0) {
-                // ⭐ Compute latestDate from ALL crime data
+                //   Compute latestDate from ALL crime data
                 latestDate = d3.max(crimeData, d => d.date);
                 // Hoverlist should show instructional message
                 updateHoverList(null, [], null);
@@ -1033,11 +1124,19 @@ export function drawDashboard() {
             // 6. Update hoverList
             updateHoverList(latestDate, mergedLatest, true);
 
-            // 7. Update choromap to latest quarter
-            if (latestDate) {
-                choroMap.updateMapForQuarter(latestDate);
+            // 6. Latest perception quarter for selected metric
+            const latestPercDate = getLatestPerceptionDateForMetric(selectedMetric);
+            // 7. Update choromap using perception date (NOT crime date)
+            if (latestPercDate) {
+                choroMap.updateMapForQuarter(latestPercDate);
             }
         }
+
+        function getLatestPerceptionDateForMetric(selectedMetric) {
+            const filtered = perceptionData.filter(d => d.metric === selectedMetric);
+            return d3.max(filtered, d => d.date);
+        }
+
 
         // update the hoverlist
         // Unified hover-list renderer (HEADLINES COLUMN REMOVED).
@@ -1103,6 +1202,7 @@ export function drawDashboard() {
             updateDashboardHoverState();
         }
 
+        // When Hovering over heatmap, hoverline will also move
         function onHeatmapHoverCell(borough, date) {
             // 1. Set hover state FIRST
             hoverBorough = borough;
@@ -1174,23 +1274,20 @@ export function drawDashboard() {
         // drawMicroBarsForRow (headline column removed)
         function drawMicroBarsForRow(rowNode, item, scales, colorScale) {
             // rowNode: DOM element for the row
-            // item: { crime_type | borough, crime, perception, residual }
-            // scales: { crime, crimeCap, perception, residual, width }
             const w = scales.width || 80;
 
             // CRIME microbar
+            // CRIME (mirror headline logic; color by borough)
             const svgC = rowNode.querySelector(".metric.crime svg");
+            svgC && (svgC.innerHTML = "");
             if (svgC) {
-                svgC.innerHTML = "";
                 if (item.crime == null) {
                     svgC.insertAdjacentHTML("beforeend",
                         `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
                 } else {
-                    const cap = scales.crimeCap || item.crime;
-                    const width = Math.max(1, (scales.crime ? scales.crime(Math.min(item.crime, cap)) : Math.min(item.crime, w)));
-                    const fill = (typeof colorScale === "function") ? colorScale(item.crime_type ?? item.borough) : "#666";
+                    const width = Math.max(1, scales.crime(Math.min(item.crime, scales.crimeCap)));
                     svgC.insertAdjacentHTML("beforeend",
-                        `<rect x="0" y="2" width="${width}" height="8" fill="${fill}" rx="2"></rect>`);
+                        `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.borough) : '#666'}" rx="2"></rect>`);
                 }
             }
 
@@ -1204,7 +1301,7 @@ export function drawDashboard() {
                 } else {
                     const val = Math.max(0, Math.min(100, item.perception));
                     const width = scales.perception ? scales.perception(val) : (val / 100) * w;
-                    const fill = (typeof colorScale === "function") ? colorScale(item.crime_type ?? item.borough) : "#4a90e2";
+                    const fill = (typeof colorScale === "function") ? colorScale(item.borough) : "#4a90e2";
                     svgP.insertAdjacentHTML("beforeend",
                         `<rect x="0" y="2" width="${width}" height="8" fill="${fill}" rx="2"></rect>`);
                 }
@@ -1213,29 +1310,56 @@ export function drawDashboard() {
             // RESIDUAL microbar (centered at zero)
             const svgR = rowNode.querySelector(".metric.residual svg");
             if (svgR) {
-                svgR.innerHTML = "";
-                // residual scale maps domain -> [0, w]
-                const residualScale = scales.residual || (v => (v + 1) * (w / 2));
-                const zeroX = residualScale(0);
+                svgR.innerHTML = "|";
+
+                // fixed zero position in the center
+                const zeroX = w / 2;
+
+                // center tick
                 svgR.insertAdjacentHTML("beforeend",
                     `<line x1="${zeroX}" x2="${zeroX}" y1="1" y2="11" stroke="rgba(0,0,0,0.12)" stroke-width="1"></line>`);
 
-                if (item.residual == null) {
+                if (item.residual == null || isNaN(item.residual)) {
                     svgR.insertAdjacentHTML("beforeend",
                         `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
                 } else {
-                    const valX = residualScale(item.residual);
-                    if (item.residual < 0) {
-                        const width = Math.abs(zeroX - valX);
+                    // CONFIG: visual amplification and minimum visible width (pixels)
+                    const amplification = 6;    // multiply small residuals to make them visible; tweak as needed
+                    const minPixelWidth = 3;    // minimum width for any nonzero residual
+                    const maxR = 1;
+                    const minR = -1;
+
+                    // clamp residual to expected normalized domain
+                    const r = Math.max(minR, Math.min(maxR, +item.residual));
+
+                    // apply amplification (visual only) and clamp again to [-1,1]
+                    const rVis = Math.max(minR, Math.min(maxR, r * amplification));
+
+                    // compute pixel position for the value relative to center
+                    const valX = zeroX + rVis * (w / 2);
+
+                    if (r < 0) {
+                        // negative: draw from valX (left of center) to center, red
+                        const rawWidth = Math.max(0, zeroX - valX);
+                        const widthPx = Math.max(minPixelWidth, rawWidth);
+                        // ensure rect stays inside bounds
+                        const rectX = Math.max(0, zeroX - widthPx);
                         svgR.insertAdjacentHTML("beforeend",
-                            `<rect x="${valX}" y="2" width="${width}" height="8" fill="#e76f51" rx="2"></rect>`);
+                            `<rect x="${rectX}" y="2" width="${widthPx}" height="8" fill="#931010" rx="2"></rect>`);
+                    } else if (r > 0) {
+                        // positive: draw from center to valX, green
+                        const rectX = zeroX;
+                        const rectW = Math.max(0, valX - zeroX);
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#165007" rx="2"></rect>`);
                     } else {
-                        const width = Math.abs(valX - zeroX);
+                        // exactly zero: optionally draw a tiny marker so users see a value
                         svgR.insertAdjacentHTML("beforeend",
-                            `<rect x="${zeroX}" y="2" width="${width}" height="8" fill="#2a9d8f" rx="2"></rect>`);
+                            `<rect x="${zeroX - 1}" y="2" width="2" height="8" fill="rgba(0,0,0,0.12)" rx="1"></rect>`);
                     }
                 }
             }
+
         }
 
         // renderHoverList (HEADLINES REMOVED) — DOM-based renderer (no headlines column)
@@ -1283,7 +1407,7 @@ export function drawDashboard() {
                     row.innerHTML = `
         <div class="row-left">
           <span class="swatch" aria-hidden="true"></span>
-          <span class="crime-name"></span>
+          <span class="borough-name"></span>
         </div>
         <div class="row-values" role="group" aria-label="">
           <div class="metric crime"><svg width="${w}" height="12"></svg><div class="num crime-num"></div></div>
@@ -1314,7 +1438,7 @@ export function drawDashboard() {
                 d3.select(row).datum(item);
 
                 // populate left
-                const nameNode = row.querySelector(".crime-name");
+                const nameNode = row.querySelector(".borough-name");
                 if (nameNode) nameNode.textContent = dataKey;
 
                 const sw = row.querySelector(".swatch");
@@ -1540,7 +1664,9 @@ export function drawDashboard() {
             // 7. Choromap recolor
             // --------------------------------------------------
             choroMap.updateMetric(selectedMetric);
-            choroMap.updateMapForQuarter(displayDate);
+            // choroMap.updateMapForQuarter(displayDate);
+            choroMap.updateMapForQuarter(snapToQuarter(displayDate));
+
         }
         updateDashboardHoverState();
 
