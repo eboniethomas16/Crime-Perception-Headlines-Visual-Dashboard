@@ -1,7 +1,8 @@
 # pages/00_Consent.py
 import streamlit as st
 import sys
-from navigation import safe_navigate
+from utils.navigation import safe_navigate
+
 
 st.title("Consent")
 if "pre_consent" not in st.session_state:
