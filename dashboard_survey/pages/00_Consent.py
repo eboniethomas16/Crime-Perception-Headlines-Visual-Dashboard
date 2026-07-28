@@ -1,7 +1,7 @@
 # pages/00_Consent.py
 import streamlit as st
 import sys
-from utils.navigation import safe_navigate
+from dashboard_survey.utils.navigation import safe_navigate
 
 
 st.title("Consent")
