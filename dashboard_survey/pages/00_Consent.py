@@ -1,6 +1,7 @@
 # pages/00_Consent.py
 import streamlit as st
 import sys
+from pathlib import Path
 from dashboard_survey.utils.navigation import safe_navigate
 
 
