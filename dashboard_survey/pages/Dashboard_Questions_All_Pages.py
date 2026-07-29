@@ -21,6 +21,11 @@ def init_state():
     if "user_id" not in st.session_state:
         st.session_state.user_id = "user_" + str(st.session_state.get("seed", 1234))
 
+    # Guard to avoid repeated experimental_rerun loops
+    if "_nav_rerun_once" not in st.session_state:
+        st.session_state["_nav_rerun_once"] = False
+
+
 
 # ---------------------------------------------------------
 # PAGE FUNCTIONS
@@ -45,7 +50,7 @@ def page_consent():
             st.session_state["pre_consent"] = True
             st.success("Consent recorded.")
             st.session_state.page = "preliminary"
-            return   # do not call st.experimental_rerun()
+            return  
 
         elif choice == "No, I do not consent":
             st.session_state["pre_consent"] = False
