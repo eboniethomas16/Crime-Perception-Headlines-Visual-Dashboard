@@ -999,28 +999,6 @@ def page_post_questions():
     st.markdown("---")
     st.write("When you're done, click Finish to complete the survey.")
 
-    if st.button("Finish Survey"):
-        required_post = [
-            "post_police_reliability", "post_police_fairness", "post_police_job",
-            "post_news_frequency", "post_headline_accuracy",
-            "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-            "post_crime_most", "post_crime_least", "post_media_least", "post_media_most"
-        ]
-
-        # Check for missing answers
-        missing_post = [
-            k for k in required_post
-            if st.session_state.get(k) in (None, PLACEHOLDER, [], "")
-        ]
-
-        if missing_post:
-            st.error("Please answer all required post‑dashboard questions before finishing.")
-            st.info("Scroll up to complete the unanswered items.")
-        else:
-            st.success("Thank you! Your post‑dashboard responses have been recorded.")
-            st.session_state.page = "thank_you"
-            return
-
 
     # Validate multiselect counts (post)
     def is_exactly_three(selection):
@@ -1144,6 +1122,8 @@ if st.button("Finish and go to Thank You"):
     st.info("You will now be taken to the Thank You page.")
     st.session_state.page = "thank_you"
     st.experimental_rerun()
+
+
 
 
 
