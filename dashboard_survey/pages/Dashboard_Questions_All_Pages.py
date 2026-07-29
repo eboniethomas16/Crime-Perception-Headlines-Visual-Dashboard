@@ -1049,79 +1049,79 @@ def page_post_questions():
         st.warning("Please select exactly 3 boroughs for the HIGHEST crime question (post).")
 
     # ---------------- FINISH / SUBMIT VALIDATION (unified) ----------------
-st.markdown("---")
-st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
+    st.markdown("---")
+    st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
 
-# Helper validators
-def is_missing(val, placeholder=PLACEHOLDER):
-    return val in (None, placeholder, [], "")
+    # Helper validators
+    def is_missing(val, placeholder=PLACEHOLDER):
+        return val in (None, placeholder, [], "")
 
-def is_exactly_three(selection):
-    return isinstance(selection, list) and len(selection) == 3
+    def is_exactly_three(selection):
+        return isinstance(selection, list) and len(selection) == 3
 
-# Keys required for post questions (all keys used above)
-required_post_selects = [
-    "post_police_reliability", "post_police_fairness", "post_police_job",
-    "post_news_frequency", "post_headline_accuracy",
-    "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-    "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    "post_lowest_boroughs", "post_highest_boroughs"
-]
+    # Keys required for post questions (all keys used above)
+    required_post_selects = [
+        "post_police_reliability", "post_police_fairness", "post_police_job",
+        "post_news_frequency", "post_headline_accuracy",
+        "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+        "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+        "post_lowest_boroughs", "post_highest_boroughs"
+    ]
 
-# Keys required from the pre (only enforced here, same names used in page_preliminary)
-required_pre_keys = [
-    "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-    "pre_news_frequency", "pre_headline_accuracy",
-    "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
-    "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
-    "pre_lowest_boroughs", "pre_highest_boroughs"
-]
+    # Keys required from the pre (only enforced here, same names used in page_preliminary)
+    required_pre_keys = [
+        "pre_police_reliability", "pre_police_fairness", "pre_police_job",
+        "pre_news_frequency", "pre_headline_accuracy",
+        "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
+        "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
+        "pre_lowest_boroughs", "pre_highest_boroughs"
+    ]
 
-if st.button("Finish and go to Thank You"):
-    # Check post required fields
-    missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-    if missing_post:
-        st.error("Please answer all required post‑dashboard questions before finishing.")
-        st.info("Missing items:")
-        for k in missing_post:
-            label = k.replace("post_", "").replace("_", " ").capitalize()
-            st.write(f"- {label}: {repr(st.session_state.get(k))}")
-        st.stop()
+    if st.button("Finish and go to Thank You"):
+        # Check post required fields
+        missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
+        if missing_post:
+            st.error("Please answer all required post‑dashboard questions before finishing.")
+            st.info("Missing items:")
+            for k in missing_post:
+                label = k.replace("post_", "").replace("_", " ").capitalize()
+                st.write(f"- {label}: {repr(st.session_state.get(k))}")
+            st.stop()
 
-    # Validate exact-3 multiselects (post)
-    if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-            is_exactly_three(st.session_state.get("post_crime_least")) and
-            is_exactly_three(st.session_state.get("post_media_least")) and
-            is_exactly_three(st.session_state.get("post_media_most"))):
-        st.error("Please ensure all 'select three' post questions have exactly three selections.")
-        st.stop()
+        # Validate exact-3 multiselects (post)
+        if not (is_exactly_three(st.session_state.get("post_crime_most")) and
+                is_exactly_three(st.session_state.get("post_crime_least")) and
+                is_exactly_three(st.session_state.get("post_media_least")) and
+                is_exactly_three(st.session_state.get("post_media_most"))):
+            st.error("Please ensure all 'select three' post questions have exactly three selections.")
+            st.stop()
 
-    # Validate borough multiselects (post)
-    if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-            len(st.session_state.get("post_highest_boroughs", [])) == 3):
-        st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-        st.stop()
+        # Validate borough multiselects (post)
+        if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
+                len(st.session_state.get("post_highest_boroughs", [])) == 3):
+            st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
+            st.stop()
 
-    # Ensure pre-questions exist (so we can compute gain)
-    missing_pre = [k for k in required_pre_keys if k not in st.session_state or is_missing(st.session_state.get(k))]
-    if missing_pre:
-        st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-        st.info("Missing preliminary items:")
-        for k in missing_pre:
-            label = k.replace("pre_", "").replace("_", " ").capitalize()
-            st.write(f"- {label}: {repr(st.session_state.get(k))}")
-        if st.button("Go to Pre‑questions"):
-            st.session_state.page = "preliminary"
-            st.experimental_rerun()
-        st.stop()
+        # Ensure pre-questions exist (so we can compute gain)
+        missing_pre = [k for k in required_pre_keys if k not in st.session_state or is_missing(st.session_state.get(k))]
+        if missing_pre:
+            st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+            st.info("Missing preliminary items:")
+            for k in missing_pre:
+                label = k.replace("pre_", "").replace("_", " ").capitalize()
+                st.write(f"- {label}: {repr(st.session_state.get(k))}")
+            if st.button("Go to Pre‑questions"):
+                st.session_state.page = "preliminary"
+                st.experimental_rerun()
+            st.stop()
 
-    # All checks passed — compute summary and navigate
-    st.success("Post‑survey complete. Calculating summary of changes...")
-    # (existing gain summary code can remain here; you already have it below)
-    # After computing and showing the summary, navigate to Thank You
-    st.info("You will now be taken to the Thank You page.")
-    st.session_state.page = "thank_you"
-    st.experimental_rerun()
+        # All checks passed — compute summary and navigate
+        st.success("Post‑survey complete. Calculating summary of changes...")
+        # (existing gain summary code can remain here; you already have it below)
+        # After computing and showing the summary, navigate to Thank You
+        st.info("You will now be taken to the Thank You page.")
+        st.session_state.page = "thank_you"
+        st.experimental_rerun()
 
 
 
