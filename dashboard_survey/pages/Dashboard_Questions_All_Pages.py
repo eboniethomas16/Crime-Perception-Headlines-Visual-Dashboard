@@ -81,7 +81,7 @@ def page_consent():
     )
 
     boroughs = [
-        "City of London", "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
+        "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
         "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
         "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
         "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
@@ -126,7 +126,7 @@ st.selectbox(
 )
 
 boroughs = [
-    "City of London", "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
+    "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
     "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
     "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
     "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
@@ -1300,7 +1300,7 @@ if not valid_post_media_most:
 st.header("Your Perception of Borough Crime Levels (after viewing dashboards)")
 
 boroughs = [
-    "City of London", "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
+    "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
     "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
     "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
     "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
