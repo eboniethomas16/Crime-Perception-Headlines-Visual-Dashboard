@@ -145,8 +145,14 @@ st.selectbox(
 
 st.header("Your Views on Policing in Your Borough")
 
-policing_scale = [PLACEHOLDER, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
-
+policing_scale = [
+    PLACEHOLDER,
+    "Strongly Agree",
+    "Agree",
+    "Neutral",
+    "Disagree",
+    "Strongly Disagree"
+]
 st.selectbox(
     "The police can be relied upon to be there when needed in your area.",
     policing_scale,
@@ -185,7 +191,14 @@ st.selectbox(
 
 st.header("Your Perception of Crime Headlines")
 
-likert = [PLACEHOLDER, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+likert = [
+    PLACEHOLDER,
+    "Strongly Agree",
+    "Agree",
+    "Neutral",
+    "Disagree",
+    "Strongly Disagree"
+]
 
 st.selectbox(
     "Online news headlines make me believe crime in my borough is higher than actual crime counts.",
@@ -342,7 +355,7 @@ st.selectbox(
 )
 
 boroughs = [
-    "City of London", "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
+    "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
     "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
     "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
     "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
@@ -361,8 +374,14 @@ st.selectbox(
 
 st.header("Your Views on Policing in Your Borough")
 
-policing_scale = [PLACEHOLDER, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
-
+policing_scale = [
+    PLACEHOLDER,
+    "Strongly Agree",
+    "Agree",
+    "Neutral",
+    "Disagree",
+    "Strongly Disagree"
+]
 st.selectbox(
     "The police can be relied upon to be there when needed in your area.",
     policing_scale,
@@ -401,7 +420,14 @@ st.selectbox(
 
 st.header("Your Perception of Crime Headlines")
 
-likert = [PLACEHOLDER, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+likert = [
+    PLACEHOLDER,
+    "Strongly Agree",
+    "Agree",
+    "Neutral",
+    "Disagree",
+    "Strongly Disagree"
+]
 
 st.selectbox(
     "Online news headlines make me believe crime in my borough is higher than actual crime counts.",
@@ -424,6 +450,31 @@ st.selectbox(
 # ---------------- CRIME CATEGORY QUESTIONS ----------------
 
 st.header("Crime Categories – Your Perception")
+
+st.subheader("Definitions of Crime Categories")
+
+crime_definitions = {
+    "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
+    "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
+    "Drug Offences": "Crimes involving possession, supply, trafficking, or production of illegal drugs.",
+    "Gun Crime": "Offences involving the use, threat, or possession of a firearm.",
+    "Knife Crime": "Offences involving the use, threat, or possession of a knife or sharp instrument.",
+    "Lethal Barrel Discharge": "Incidents where a firearm is discharged, regardless of injury outcome.",
+    "Sexual Offences": "Crimes of a sexual nature including rape, assault, exploitation, or indecent acts.",
+    "Robbery": "Taking property using force or threat of force, including personal and business robberies.",
+    "Violence Against the Person": "Offences involving physical harm, threats, harassment, or dangerous behaviour.",
+    "Hate Crime": "Crimes motivated by hostility toward race, religion, disability, sexual orientation, or gender identity.",
+    "Arson and Criminal Damage": "Deliberate fire‑setting or intentional destruction/damage of property.",
+    "Burglary": "Entering a building illegally to steal property, including residential and commercial burglary.",
+    "Public Order Offences": "Crimes involving disorderly behaviour, intimidation, harassment, or causing public alarm.",
+    "Domestic Abuse": "Violence, coercion, or controlling behaviour within intimate or family relationships.",
+    "Theft": "Taking property without consent, including shoplifting, bicycle theft, and theft from the person.",
+    "Vehicle Offences": "Crimes involving theft of or from vehicles, interference with vehicles, or aggravated vehicle taking."
+}
+
+for cat, desc in crime_definitions.items():
+    st.markdown(f"**{cat}** — {desc}")
+
 
 crime_categories = [
     "Fraud and Forgery", "Possession of Weapons", "Drug Offences", "Gun Crime",
@@ -499,7 +550,7 @@ if len(pre_highest_boroughs) != 3:
     st.warning("Please select exactly 3 boroughs for the HIGHEST crime question.")
 
 # Final continue button with validation
-if st.button("Continue to Dashboard 2"):
+if st.button("Continue to Dashboard 1"):
     # Validate required selectboxes are not left on placeholder
     required_selects = [
         "pre_age_band", "pre_education", "pre_borough",
@@ -514,9 +565,9 @@ if st.button("Continue to Dashboard 2"):
         st.error("Please ensure all 'select three' questions have exactly three selections.")
     else:
         st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
-        # Navigate to Dashboard 2 page
-        st.experimental_set_query_params(page="1_Dashboard_1_Perception_vs_Crime")
+        st.session_state.page = "dashboard1"
         st.experimental_rerun()
+
 
 
 
@@ -763,7 +814,7 @@ if st.button("Continue to Dashboard 2"):
     else:
         st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
         # Navigate to Dashboard 2 page (adjust page name if your file is named differently)
-        st.experimental_set_query_params(page="2_Dashboard_2_Perception_vs_Crime_vs_Headlines")
+        st.session_state.page = "dashboard2"
         st.experimental_rerun()
 
 
@@ -1046,8 +1097,7 @@ if st.button("Finish and go to Thank You"):
             st.info("Scroll up to complete the unanswered questions.")
         else:
             st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
-            # Navigate to Thank You page
-            st.experimental_set_query_params(page="3_Post_Questions")
+            st.session_state.page = "post_questions"
             st.experimental_rerun()
 
 
@@ -1069,8 +1119,14 @@ PLACEHOLDER = "Select an option"
 # ---------------- POLICING QUESTIONS (post) ----------------
 st.header("Your Views on Policing in Your Borough (after viewing dashboards)")
 
-policing_scale = [PLACEHOLDER, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
-
+policing_scale = [
+    PLACEHOLDER,
+    "Strongly Agree",
+    "Agree",
+    "Neutral",
+    "Disagree",
+    "Strongly Disagree"
+]
 st.selectbox(
     "After viewing the dashboards, to what extent do you agree: The police can be relied upon to be there when needed in your area?",
     policing_scale,
@@ -1107,7 +1163,14 @@ st.selectbox(
 # ---------------- PERCEPTION OF HEADLINES (post) ----------------
 st.header("Your Perception of Crime Headlines (after viewing dashboards)")
 
-likert = [PLACEHOLDER, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+likert = [
+    PLACEHOLDER,
+    "Strongly Agree",
+    "Agree",
+    "Neutral",
+    "Disagree",
+    "Strongly Disagree"
+]
 
 st.selectbox(
     "After viewing the dashboards, do online news headlines make you believe crime in your borough is higher than actual crime counts?",
@@ -1129,6 +1192,31 @@ st.selectbox(
 
 # ---------------- CRIME CATEGORY QUESTIONS (post) ----------------
 st.header("Crime Categories – Your Perception (after viewing dashboards)")
+
+st.subheader("Definitions of Crime Categories")
+
+crime_definitions = {
+    "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
+    "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
+    "Drug Offences": "Crimes involving possession, supply, trafficking, or production of illegal drugs.",
+    "Gun Crime": "Offences involving the use, threat, or possession of a firearm.",
+    "Knife Crime": "Offences involving the use, threat, or possession of a knife or sharp instrument.",
+    "Lethal Barrel Discharge": "Incidents where a firearm is discharged, regardless of injury outcome.",
+    "Sexual Offences": "Crimes of a sexual nature including rape, assault, exploitation, or indecent acts.",
+    "Robbery": "Taking property using force or threat of force, including personal and business robberies.",
+    "Violence Against the Person": "Offences involving physical harm, threats, harassment, or dangerous behaviour.",
+    "Hate Crime": "Crimes motivated by hostility toward race, religion, disability, sexual orientation, or gender identity.",
+    "Arson and Criminal Damage": "Deliberate fire‑setting or intentional destruction/damage of property.",
+    "Burglary": "Entering a building illegally to steal property, including residential and commercial burglary.",
+    "Public Order Offences": "Crimes involving disorderly behaviour, intimidation, harassment, or causing public alarm.",
+    "Domestic Abuse": "Violence, coercion, or controlling behaviour within intimate or family relationships.",
+    "Theft": "Taking property without consent, including shoplifting, bicycle theft, and theft from the person.",
+    "Vehicle Offences": "Crimes involving theft of or from vehicles, interference with vehicles, or aggravated vehicle taking."
+}
+
+for cat, desc in crime_definitions.items():
+    st.markdown(f"**{cat}** — {desc}")
+
 
 crime_categories = [
     "Fraud and Forgery", "Possession of Weapons", "Drug Offences", "Gun Crime",
@@ -1163,6 +1251,32 @@ post_media_most = st.multiselect(
     crime_categories,
     key="post_media_most"
 )
+# ---------------- FINISH BUTTON + VALIDATION ----------------
+st.markdown("---")
+st.write("When you're done, click Finish to complete the survey.")
+
+if st.button("Finish Survey"):
+    required_post = [
+        "post_police_reliability", "post_police_fairness", "post_police_job",
+        "post_news_frequency", "post_headline_accuracy",
+        "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+        "post_crime_most", "post_crime_least", "post_media_least", "post_media_most"
+    ]
+
+    # Check for missing answers
+    missing_post = [
+        k for k in required_post
+        if st.session_state.get(k) in (None, PLACEHOLDER, [], "")
+    ]
+
+    if missing_post:
+        st.error("Please answer all required post‑dashboard questions before finishing.")
+        st.info("Scroll up to complete the unanswered items.")
+    else:
+        st.success("Thank you! Your post‑dashboard responses have been recorded.")
+        st.session_state.page = "thank_you"
+        st.experimental_rerun()
+
 
 # Validate multiselect counts (post)
 def is_exactly_three(selection):
