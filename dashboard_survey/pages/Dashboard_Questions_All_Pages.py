@@ -43,7 +43,7 @@ def page_consent():
         key="pre_consent_select"
     )
 
-    if st.button("Continue"):
+    if st.button("Double Click To Continue"):
         # --- YES: route to preliminary page ---
         # inside page_consent(), replace the rerun block with this
         if choice == "Yes, I consent":
