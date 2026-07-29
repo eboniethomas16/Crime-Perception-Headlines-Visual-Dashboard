@@ -40,18 +40,18 @@ def page_consent():
 
     if st.button("Continue"):
         # --- YES: route to preliminary page ---
+        # inside page_consent(), replace the rerun block with this
         if choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Consent recorded.")
             st.session_state.page = "preliminary"
-            st.experimental_rerun()
+            return   # do not call st.experimental_rerun()
 
-        # --- NO: route to thank-you page ---
         elif choice == "No, I do not consent":
             st.session_state["pre_consent"] = False
             st.error("Survey closed for you.")
             st.session_state.page = "thank_you"
-            st.experimental_rerun()
+            return
 
         # --- Missing selection ---
         else:
@@ -296,7 +296,7 @@ def page_preliminary():
         else:
             st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
             st.session_state.page = "dashboard1"
-            st.experimental_rerun()
+            return
 
 
 
@@ -546,7 +546,7 @@ def page_dashboard1():
             st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
             # Navigate to Dashboard 2 page (adjust page name if your file is named differently)
             st.session_state.page = "dashboard2"
-            st.experimental_rerun()
+            return
 
 
 
@@ -562,7 +562,7 @@ def page_dashboard2():
         st.warning("You must give consent before continuing. Please go to the Consent page and select 'Yes, I consent'.")
         if st.button("Go to Consent page"):
             st.experimental_set_query_params(page="Consent")
-            st.experimental_rerun()
+            return
         st.stop()
 
     # ---------------- CHORD CHART ----------------
@@ -802,7 +802,7 @@ def page_dashboard2():
             st.error("It looks like some preliminary questions are incomplete. Please complete the pre‑survey questions first.")
             if st.button("Go to Pre‑questions"):
                 st.experimental_set_query_params(page="2_Pre_Dashboard_2_Questions")
-                st.experimental_rerun()
+                return
         else:
             # Validate required d2_ keys
             required_d2 = [
@@ -829,7 +829,7 @@ def page_dashboard2():
             else:
                 st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
                 st.session_state.page = "post_questions"
-                st.experimental_rerun()
+                return
 
 
 def page_post_questions():
@@ -842,7 +842,7 @@ def page_post_questions():
         st.warning("You must give consent before continuing. Please go to the Consent page and select 'Yes, I consent'.")
         if st.button("Go to Consent page"):
             st.experimental_set_query_params(page="Consent")
-            st.experimental_rerun()
+            return
         st.stop()
 
     PLACEHOLDER = "Select an option"
@@ -1006,7 +1006,7 @@ def page_post_questions():
         else:
             st.success("Thank you! Your post‑dashboard responses have been recorded.")
             st.session_state.page = "thank_you"
-            st.experimental_rerun()
+            return
 
 
     # Validate multiselect counts (post)
@@ -1099,7 +1099,7 @@ def page_post_questions():
             st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
             if st.button("Go to Pre‑questions"):
                 st.experimental_set_query_params(page="2_Pre_Dashboard_2_Questions")
-                st.experimental_rerun()
+                return
             st.stop()
 
         # Compute a simple gain summary: count how many key perception items changed
@@ -1159,7 +1159,7 @@ def page_post_questions():
 
         # Navigate to Thank You page
         st.info("You will now be taken to the Thank You page.")
-        st.experimental_set_query_params(page="4_Thank_You")
+        st.session_state.page = "thank_you"
         st.experimental_rerun()
 
 
