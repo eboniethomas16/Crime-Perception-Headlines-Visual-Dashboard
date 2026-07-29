@@ -48,7 +48,7 @@ def page_consent():
         # inside page_consent(), replace the rerun block with this
         if choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
-            st.success("Consent recorded.")
+            # st.success("Consent recorded.")
             st.session_state.page = "preliminary"
             return  
 
