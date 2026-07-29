@@ -39,26 +39,41 @@ def page_consent():
     )
 
     if st.button("Continue"):
+        # --- YES: route to preliminary page ---
         if choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
             st.success("Consent recorded.")
-            st.session_state.page = "preliminary"   # go to next page
+            st.session_state.page = "preliminary"
             st.experimental_rerun()
 
+        # --- NO: route to thank-you page ---
         elif choice == "No, I do not consent":
             st.session_state["pre_consent"] = False
             st.error("Survey closed for you.")
             st.session_state.page = "thank_you"
             st.experimental_rerun()
 
+        # --- Missing selection ---
         else:
             st.warning("Please select an option before continuing.")
             return
+def page_preliminary():
+    st.set_page_config(page_title="Pre‑Dashboard 2 Survey", layout="wide")
+
+    st.title("Section 2 – Baseline Understanding")
+    st.markdown("Before navigating Dashboard 2, please answer the following questions about crime in London, policing, and media headlines.")
+
+    # --- Require consent before showing anything ---
+    if not st.session_state.get("pre_consent", False):
+        st.warning("You must give consent before continuing. Please go to the Consent page and select 'Yes, I consent'.")
+        st.stop()
+
+    PLACEHOLDER = "Select an option"
 
     st.markdown("---")
     st.header("About You")
 
-    # --- About You questions ---
+    # ---------------- ABOUT YOU ----------------
     st.selectbox(
         "What is your age band?",
         [PLACEHOLDER, "18–24", "25–34", "35–44", "45–54", "55–64", "65+", "Prefer not to say"],
@@ -91,482 +106,198 @@ def page_consent():
     ]
 
     st.selectbox(
-        "In which London Borough do you live (or work/attend school)?",
+        "In which London Borough do you live? If you don’t live in London, in what London Borough do you work or attend school?",
         [PLACEHOLDER] + boroughs,
         key="pre_borough"
     )
 
-    st.markdown("---")
-    st.write("Click **Continue** above once you have selected your consent choice.")
+    # ---------------- POLICING QUESTIONS ----------------
+    st.header("Your Views on Policing in Your Borough")
 
-
-# ---------------- ABOUT YOU ----------------
-
-st.header("About You")
-
-st.selectbox(
-    "What is your age band?",
-    [PLACEHOLDER, "18–24", "25–34", "35–44", "45–54", "55–64", "65+", "Prefer not to say"],
-    key="pre_age_band"
-)
-
-st.selectbox(
-    "What is your highest level of education (current or completed)?",
-    [
+    policing_scale = [
         PLACEHOLDER,
-        "GCSE or equivalent",
-        "A‑Levels or equivalent",
-        "Undergraduate degree",
-        "Postgraduate degree",
-        "Doctorate",
-        "Vocational / Professional qualification",
-        "Prefer not to say"
-    ],
-    key="pre_education"
-)
-
-boroughs = [
-    "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
-    "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
-    "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
-    "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
-    "Lambeth", "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames",
-    "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth",
-    "Westminster", "I don’t live in London"
-]
-
-st.selectbox(
-    "In which London Borough do you live? If you don’t live in London, in what London Borough do you work or attend school?",
-    [PLACEHOLDER] + boroughs,
-    key="pre_borough"
-)
-
-# ---------------- POLICING QUESTIONS ----------------
-
-st.header("Your Views on Policing in Your Borough")
-
-policing_scale = [
-    PLACEHOLDER,
-    "Strongly Agree",
-    "Agree",
-    "Neutral",
-    "Disagree",
-    "Strongly Disagree"
-]
-st.selectbox(
-    "The police can be relied upon to be there when needed in your area.",
-    policing_scale,
-    key="pre_police_reliability"
-)
-
-st.selectbox(
-    "The police treat everyone fairly regardless of who they are in your area.",
-    policing_scale,
-    key="pre_police_fairness"
-)
-
-st.selectbox(
-    "The police do a good job in your area.",
-    policing_scale,
-    key="pre_police_job"
-)
-
-# ---------------- NEWS CONSUMPTION ----------------
-
-st.header("Your Exposure to Crime Headlines")
-
-st.selectbox(
-    "How often do you read online news about crime in London?",
-    [PLACEHOLDER, "Daily", "Several times a week", "Weekly", "Monthly", "Yearly", "Never"],
-    key="pre_news_frequency"
-)
-
-st.selectbox(
-    "How accurate do you think online headlines about crime in London are overall?",
-    [PLACEHOLDER, "Very inaccurate", "Somewhat inaccurate", "Neither accurate nor inaccurate", "Somewhat accurate", "Very accurate", "Don’t know"],
-    key="pre_headline_accuracy"
-)
-
-# ---------------- PERCEPTION OF HEADLINES ----------------
-
-st.header("Your Perception of Crime Headlines")
-
-likert = [
-    PLACEHOLDER,
-    "Strongly Agree",
-    "Agree",
-    "Neutral",
-    "Disagree",
-    "Strongly Disagree"
-]
-
-st.selectbox(
-    "Online news headlines make me believe crime in my borough is higher than actual crime counts.",
-    likert,
-    key="pre_headline_inflation"
-)
-
-st.selectbox(
-    "Headlines about crime in London are generally accurate to actual crime counts in my Borough.",
-    likert,
-    key="pre_headline_truth"
-)
-
-st.selectbox(
-    "In the past 12 months, crime in my Borough has increased.",
-    likert,
-    key="pre_crime_increase"
-)
-
-# ---------------- CRIME CATEGORY QUESTIONS ----------------
-
-st.header("Crime Categories – Your Perception")
-
-crime_categories = [
-    "Fraud and Forgery", "Possession of Weapons", "Drug Offences", "Gun Crime",
-    "Knife Crime", "Lethal Barrel Discharge", "Sexual Offences", "Robbery",
-    "Violence Against the Person", "Hate Crime", "Arson and Criminal Damage",
-    "Burglary", "Public Order Offences", "Domestic Abuse", "Theft",
-    "Vehicle Offences"
-]
-
-st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
-
-pre_crime_most = st.multiselect(
-    "Select **three** crime categories you believe have the **MOST offences** in your Borough.",
-    crime_categories,
-    key="pre_crime_most"
-)
-
-pre_crime_least = st.multiselect(
-    "Select **three** crime categories you believe have the **LEAST offences** in your Borough.",
-    crime_categories,
-    key="pre_crime_least"
-)
-
-pre_media_least = st.multiselect(
-    "Select **three** crime categories you believe the media covers **THE LEAST** in London headlines.",
-    crime_categories,
-    key="pre_media_least"
-)
-
-pre_media_most = st.multiselect(
-    "Select **three** crime categories you believe the media covers **MOST PROMINENTLY** in London headlines.",
-    crime_categories,
-    key="pre_media_most"
-)
-
-# Validate multiselect counts
-def is_exactly_three(selection):
-    return isinstance(selection, list) and len(selection) == 3
-
-valid_most = is_exactly_three(pre_crime_most)
-valid_least = is_exactly_three(pre_crime_least)
-valid_media_least = is_exactly_three(pre_media_least)
-valid_media_most = is_exactly_three(pre_media_most)
-
-if not valid_most:
-    st.warning("Please select exactly 3 categories for 'MOST offences in your Borough'.")
-if not valid_least:
-    st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough'.")
-if not valid_media_least:
-    st.warning("Please select exactly 3 categories for 'THE LEAST covered in headlines'.")
-if not valid_media_most:
-    st.warning("Please select exactly 3 categories for 'MOST PROMINENTLY covered in headlines'.")
-
-# ---------------- BOROUGH CRIME PERCEPTION ----------------
-
-st.header("Your Perception of Borough Crime Levels")
-
-pre_lowest_boroughs = st.multiselect(
-    "Select **three** boroughs you believe have the **LOWEST** crime offences in London.",
-    boroughs[:-1],
-    key="pre_lowest_boroughs"
-)
-
-pre_highest_boroughs = st.multiselect(
-    "Select **three** boroughs you believe have the **HIGHEST** crime offences in London.",
-    boroughs[:-1],
-    key="pre_highest_boroughs"
-)
-
-if len(pre_lowest_boroughs) != 3:
-    st.warning("Please select exactly 3 boroughs for the LOWEST crime question.")
-if len(pre_highest_boroughs) != 3:
-    st.warning("Please select exactly 3 boroughs for the HIGHEST crime question.")
-
-# Final continue button with validation
-if st.button("Continue to Dashboard 2"):
-    # Validate required selectboxes are not left on placeholder
-    required_selects = [
-        "pre_age_band", "pre_education", "pre_borough",
-        "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-        "pre_news_frequency", "pre_headline_accuracy",
-        "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase"
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree"
     ]
-    missing = [k for k in required_selects if st.session_state.get(k) in (None, PLACEHOLDER)]
-    if missing:
-        st.error("Please answer all required questions before continuing.")
-    elif not (valid_most and valid_least and valid_media_least and valid_media_most and len(pre_lowest_boroughs) == 3 and len(pre_highest_boroughs) == 3):
-        st.error("Please ensure all 'select three' questions have exactly three selections.")
-    else:
-        st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
-        # Navigate to Dashboard 2 page
-        st.experimental_set_query_params(page="1_Dashboard_1_Perception_vs_Crime")
-        st.experimental_rerun()
 
+    st.selectbox(
+        "The police can be relied upon to be there when needed in your area.",
+        policing_scale,
+        key="pre_police_reliability"
+    )
 
-def page_preliminary():
-   st.set_page_config(page_title="Pre‑Dashboard 2 Survey", layout="wide")
-st.title("Section 2 – Baseline Understanding")
-st.markdown("Before navigating Dashboard 2, please answer the following questions about crime in London, policing, and media headlines.")
+    st.selectbox(
+        "The police treat everyone fairly regardless of who they are in your area.",
+        policing_scale,
+        key="pre_police_fairness"
+    )
 
-# --- Require consent before showing anything ---
-if not st.session_state.get("pre_consent", False):
-    st.warning("You must give consent before continuing. Please go to the Consent page and select 'Yes, I consent'.")
-    st.stop()
+    st.selectbox(
+        "The police do a good job in your area.",
+        policing_scale,
+        key="pre_police_job"
+    )
 
-# Helper: placeholder option for selectboxes
-PLACEHOLDER = "Select an option"
+    # ---------------- NEWS CONSUMPTION ----------------
+    st.header("Your Exposure to Crime Headlines")
 
-# ---------------- ABOUT YOU ----------------
+    st.selectbox(
+        "How often do you read online news about crime in London?",
+        [PLACEHOLDER, "Daily", "Several times a week", "Weekly", "Monthly", "Yearly", "Never"],
+        key="pre_news_frequency"
+    )
 
-st.header("About You")
+    st.selectbox(
+        "How accurate do you think online headlines about crime in London are overall?",
+        [PLACEHOLDER, "Very inaccurate", "Somewhat inaccurate", "Neither accurate nor inaccurate", "Somewhat accurate", "Very accurate", "Don’t know"],
+        key="pre_headline_accuracy"
+    )
 
-st.selectbox(
-    "What is your age band?",
-    [PLACEHOLDER, "18–24", "25–34", "35–44", "45–54", "55–64", "65+", "Prefer not to say"],
-    key="pre_age_band"
-)
+    # ---------------- PERCEPTION OF HEADLINES ----------------
+    st.header("Your Perception of Crime Headlines")
 
-st.selectbox(
-    "What is your highest level of education (current or completed)?",
-    [
+    likert = [
         PLACEHOLDER,
-        "GCSE or equivalent",
-        "A‑Levels or equivalent",
-        "Undergraduate degree",
-        "Postgraduate degree",
-        "Doctorate",
-        "Vocational / Professional qualification",
-        "Prefer not to say"
-    ],
-    key="pre_education"
-)
-
-boroughs = [
-    "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
-    "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
-    "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
-    "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
-    "Lambeth", "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames",
-    "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth",
-    "Westminster", "I don’t live in London"
-]
-
-st.selectbox(
-    "In which London Borough do you live? If you don’t live in London, in what London Borough do you work or attend school?",
-    [PLACEHOLDER] + boroughs,
-    key="pre_borough"
-)
-
-# ---------------- POLICING QUESTIONS ----------------
-
-st.header("Your Views on Policing in Your Borough")
-
-policing_scale = [
-    PLACEHOLDER,
-    "Strongly Agree",
-    "Agree",
-    "Neutral",
-    "Disagree",
-    "Strongly Disagree"
-]
-st.selectbox(
-    "The police can be relied upon to be there when needed in your area.",
-    policing_scale,
-    key="pre_police_reliability"
-)
-
-st.selectbox(
-    "The police treat everyone fairly regardless of who they are in your area.",
-    policing_scale,
-    key="pre_police_fairness"
-)
-
-st.selectbox(
-    "The police do a good job in your area.",
-    policing_scale,
-    key="pre_police_job"
-)
-
-# ---------------- NEWS CONSUMPTION ----------------
-
-st.header("Your Exposure to Crime Headlines")
-
-st.selectbox(
-    "How often do you read online news about crime in London?",
-    [PLACEHOLDER, "Daily", "Several times a week", "Weekly", "Monthly", "Yearly", "Never"],
-    key="pre_news_frequency"
-)
-
-st.selectbox(
-    "How accurate do you think online headlines about crime in London are overall?",
-    [PLACEHOLDER, "Very inaccurate", "Somewhat inaccurate", "Neither accurate nor inaccurate", "Somewhat accurate", "Very accurate", "Don’t know"],
-    key="pre_headline_accuracy"
-)
-
-# ---------------- PERCEPTION OF HEADLINES ----------------
-
-st.header("Your Perception of Crime Headlines")
-
-likert = [
-    PLACEHOLDER,
-    "Strongly Agree",
-    "Agree",
-    "Neutral",
-    "Disagree",
-    "Strongly Disagree"
-]
-
-st.selectbox(
-    "Online news headlines make me believe crime in my borough is higher than actual crime counts.",
-    likert,
-    key="pre_headline_inflation"
-)
-
-st.selectbox(
-    "Headlines about crime in London are generally accurate to actual crime counts in my Borough.",
-    likert,
-    key="pre_headline_truth"
-)
-
-st.selectbox(
-    "In the past 12 months, crime in my Borough has increased.",
-    likert,
-    key="pre_crime_increase"
-)
-
-# ---------------- CRIME CATEGORY QUESTIONS ----------------
-
-st.header("Crime Categories – Your Perception")
-
-st.subheader("Definitions of Crime Categories")
-
-crime_definitions = {
-    "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
-    "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
-    "Drug Offences": "Crimes involving possession, supply, trafficking, or production of illegal drugs.",
-    "Gun Crime": "Offences involving the use, threat, or possession of a firearm.",
-    "Knife Crime": "Offences involving the use, threat, or possession of a knife or sharp instrument.",
-    "Lethal Barrel Discharge": "Incidents where a firearm is discharged, regardless of injury outcome.",
-    "Sexual Offences": "Crimes of a sexual nature including rape, assault, exploitation, or indecent acts.",
-    "Robbery": "Taking property using force or threat of force, including personal and business robberies.",
-    "Violence Against the Person": "Offences involving physical harm, threats, harassment, or dangerous behaviour.",
-    "Hate Crime": "Crimes motivated by hostility toward race, religion, disability, sexual orientation, or gender identity.",
-    "Arson and Criminal Damage": "Deliberate fire‑setting or intentional destruction/damage of property.",
-    "Burglary": "Entering a building illegally to steal property, including residential and commercial burglary.",
-    "Public Order Offences": "Crimes involving disorderly behaviour, intimidation, harassment, or causing public alarm.",
-    "Domestic Abuse": "Violence, coercion, or controlling behaviour within intimate or family relationships.",
-    "Theft": "Taking property without consent, including shoplifting, bicycle theft, and theft from the person.",
-    "Vehicle Offences": "Crimes involving theft of or from vehicles, interference with vehicles, or aggravated vehicle taking."
-}
-
-for cat, desc in crime_definitions.items():
-    st.markdown(f"**{cat}** — {desc}")
-
-
-crime_categories = [
-    "Fraud and Forgery", "Possession of Weapons", "Drug Offences", "Gun Crime",
-    "Knife Crime", "Lethal Barrel Discharge", "Sexual Offences", "Robbery",
-    "Violence Against the Person", "Hate Crime", "Arson and Criminal Damage",
-    "Burglary", "Public Order Offences", "Domestic Abuse", "Theft",
-    "Vehicle Offences"
-]
-
-st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
-
-pre_crime_most = st.multiselect(
-    "Select **three** crime categories you believe have the **MOST offences** in your Borough.",
-    crime_categories,
-    key="pre_crime_most"
-)
-
-pre_crime_least = st.multiselect(
-    "Select **three** crime categories you believe have the **LEAST offences** in your Borough.",
-    crime_categories,
-    key="pre_crime_least"
-)
-
-pre_media_least = st.multiselect(
-    "Select **three** crime categories you believe the media covers **THE LEAST** in London headlines.",
-    crime_categories,
-    key="pre_media_least"
-)
-
-pre_media_most = st.multiselect(
-    "Select **three** crime categories you believe the media covers **MOST PROMINENTLY** in London headlines.",
-    crime_categories,
-    key="pre_media_most"
-)
-
-# Validate multiselect counts
-def is_exactly_three(selection):
-    return isinstance(selection, list) and len(selection) == 3
-
-valid_most = is_exactly_three(pre_crime_most)
-valid_least = is_exactly_three(pre_crime_least)
-valid_media_least = is_exactly_three(pre_media_least)
-valid_media_most = is_exactly_three(pre_media_most)
-
-if not valid_most:
-    st.warning("Please select exactly 3 categories for 'MOST offences in your Borough'.")
-if not valid_least:
-    st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough'.")
-if not valid_media_least:
-    st.warning("Please select exactly 3 categories for 'THE LEAST covered in headlines'.")
-if not valid_media_most:
-    st.warning("Please select exactly 3 categories for 'MOST PROMINENTLY covered in headlines'.")
-
-# ---------------- BOROUGH CRIME PERCEPTION ----------------
-
-st.header("Your Perception of Borough Crime Levels")
-
-pre_lowest_boroughs = st.multiselect(
-    "Select **three** boroughs you believe have the **LOWEST** crime offences in London.",
-    boroughs[:-1],
-    key="pre_lowest_boroughs"
-)
-
-pre_highest_boroughs = st.multiselect(
-    "Select **three** boroughs you believe have the **HIGHEST** crime offences in London.",
-    boroughs[:-1],
-    key="pre_highest_boroughs"
-)
-
-if len(pre_lowest_boroughs) != 3:
-    st.warning("Please select exactly 3 boroughs for the LOWEST crime question.")
-if len(pre_highest_boroughs) != 3:
-    st.warning("Please select exactly 3 boroughs for the HIGHEST crime question.")
-
-# Final continue button with validation
-if st.button("Continue to Dashboard 1"):
-    # Validate required selectboxes are not left on placeholder
-    required_selects = [
-        "pre_age_band", "pre_education", "pre_borough",
-        "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-        "pre_news_frequency", "pre_headline_accuracy",
-        "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase"
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree"
     ]
-    missing = [k for k in required_selects if st.session_state.get(k) in (None, PLACEHOLDER)]
-    if missing:
-        st.error("Please answer all required questions before continuing.")
-    elif not (valid_most and valid_least and valid_media_least and valid_media_most and len(pre_lowest_boroughs) == 3 and len(pre_highest_boroughs) == 3):
-        st.error("Please ensure all 'select three' questions have exactly three selections.")
-    else:
-        st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
-        st.session_state.page = "dashboard1"
-        st.experimental_rerun()
+
+    st.selectbox(
+        "Online news headlines make me believe crime in my borough is higher than actual crime counts.",
+        likert,
+        key="pre_headline_inflation"
+    )
+
+    st.selectbox(
+        "Headlines about crime in London are generally accurate to actual crime counts in my Borough.",
+        likert,
+        key="pre_headline_truth"
+    )
+
+    st.selectbox(
+        "In the past 12 months, crime in my Borough has increased.",
+        likert,
+        key="pre_crime_increase"
+    )
+
+    # ---------------- CRIME CATEGORY QUESTIONS ----------------
+    st.header("Crime Categories – Your Perception")
+    st.subheader("Definitions of Crime Categories")
+
+    crime_definitions = {
+        "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
+        "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
+        "Drug Offences": "Crimes involving possession, supply, trafficking, or production of illegal drugs.",
+        "Gun Crime": "Offences involving the use, threat, or possession of a firearm.",
+        "Knife Crime": "Offences involving the use, threat, or possession of a knife or sharp instrument.",
+        "Lethal Barrel Discharge": "Incidents where a firearm is discharged, regardless of injury outcome.",
+        "Sexual Offences": "Crimes of a sexual nature including rape, assault, exploitation, or indecent acts.",
+        "Robbery": "Taking property using force or threat of force, including personal and business robberies.",
+        "Violence Against the Person": "Offences involving physical harm, threats, harassment, or dangerous behaviour.",
+        "Hate Crime": "Crimes motivated by hostility toward race, religion, disability, sexual orientation, or gender identity.",
+        "Arson and Criminal Damage": "Deliberate fire‑setting or intentional destruction/damage of property.",
+        "Burglary": "Entering a building illegally to steal property, including residential and commercial burglary.",
+        "Public Order Offences": "Crimes involving disorderly behaviour, intimidation, harassment, or causing public alarm.",
+        "Domestic Abuse": "Violence, coercion, or controlling behaviour within intimate or family relationships.",
+        "Theft": "Taking property without consent, including shoplifting, bicycle theft, and theft from the person.",
+        "Vehicle Offences": "Crimes involving theft of or from vehicles, interference with vehicles, or aggravated vehicle taking."
+    }
+
+    for cat, desc in crime_definitions.items():
+        st.markdown(f"**{cat}** — {desc}")
+
+    crime_categories = list(crime_definitions.keys())
+
+    st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
+
+    pre_crime_most = st.multiselect(
+        "Select **three** crime categories you believe have the **MOST offences** in your Borough.",
+        crime_categories,
+        key="pre_crime_most"
+    )
+
+    pre_crime_least = st.multiselect(
+        "Select **three** crime categories you believe have the **LEAST offences** in your Borough.",
+        crime_categories,
+        key="pre_crime_least"
+    )
+
+    pre_media_least = st.multiselect(
+        "Select **three** crime categories you believe the media covers **THE LEAST** in London headlines.",
+        crime_categories,
+        key="pre_media_least"
+    )
+
+    pre_media_most = st.multiselect(
+        "Select **three** crime categories you believe the media covers **MOST PROMINENTLY** in London headlines.",
+        crime_categories,
+        key="pre_media_most"
+    )
+
+    # Validation helper
+    def is_exactly_three(selection):
+        return isinstance(selection, list) and len(selection) == 3
+
+    valid_most = is_exactly_three(pre_crime_most)
+    valid_least = is_exactly_three(pre_crime_least)
+    valid_media_least = is_exactly_three(pre_media_least)
+    valid_media_most = is_exactly_three(pre_media_most)
+
+    if not valid_most:
+        st.warning("Please select exactly 3 categories for 'MOST offences in your Borough'.")
+    if not valid_least:
+        st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough'.")
+    if not valid_media_least:
+        st.warning("Please select exactly 3 categories for 'THE LEAST covered in headlines'.")
+    if not valid_media_most:
+        st.warning("Please select exactly 3 categories for 'MOST PROMINENTLY covered in headlines'.")
+
+    # ---------------- BOROUGH CRIME PERCEPTION ----------------
+    st.header("Your Perception of Borough Crime Levels")
+
+    pre_lowest_boroughs = st.multiselect(
+        "Select **three** boroughs you believe have the **LOWEST** crime offences in London.",
+        boroughs[:-1],
+        key="pre_lowest_boroughs"
+    )
+
+    pre_highest_boroughs = st.multiselect(
+        "Select **three** boroughs you believe have the **HIGHEST** crime offences in London.",
+        boroughs[:-1],
+        key="pre_highest_boroughs"
+    )
+
+    if len(pre_lowest_boroughs) != 3:
+        st.warning("Please select exactly 3 boroughs for the LOWEST crime question.")
+    if len(pre_highest_boroughs) != 3:
+        st.warning("Please select exactly 3 boroughs for the HIGHEST crime question.")
+
+    # ---------------- CONTINUE BUTTON ----------------
+    if st.button("Continue to Dashboard 1"):
+        required_selects = [
+            "pre_age_band", "pre_education", "pre_borough",
+            "pre_police_reliability", "pre_police_fairness", "pre_police_job",
+            "pre_news_frequency", "pre_headline_accuracy",
+            "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase"
+        ]
+
+        missing = [k for k in required_selects if st.session_state.get(k) in (None, PLACEHOLDER)]
+
+        if missing:
+            st.error("Please answer all required questions before continuing.")
+        elif not (valid_most and valid_least and valid_media_least and valid_media_most and len(pre_lowest_boroughs) == 3 and len(pre_highest_boroughs) == 3):
+            st.error("Please ensure all 'select three' questions have exactly three selections.")
+        else:
+            st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
+            st.session_state.page = "dashboard1"
+            st.experimental_rerun()
+
 
 
 
