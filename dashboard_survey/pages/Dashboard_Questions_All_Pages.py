@@ -10,24 +10,76 @@ from oauth2client.service_account import ServiceAccountCredentials
 import json
 import math
 
+# these are the keys for the Google Sheet columns, in order. 
+# They are used to ensure the sheet has the correct headers and to map session state to sheet columns.
 headers = [
-        "User ID",
-        "ID",
-        "Data Provider",
-        "Project Name",
-        "Consumer Team",
-        "Consumer Name",
-        "Consumer Description",
-        "Variation Type",
-        "Variation Value",
-        "Purpose",
-        "AI Final Decision",
-        "Human Expert: Seniority",
-        "Human Expert: Hastiness (1: Very Hasty | 7: Very Formal)",
-        "Human Expert: Meaning Preservation (1: Very Different | 7: Very Similar)",
-        "Time on Question (seconds)",
-        "Total Elapsed Time (seconds)",
-    ]
+     # metadata (must match the two metadata values you append in row_values)
+    "user_id",
+    "submission_timestamp_utc",
+    # --- Pre survey (baseline) ---
+    "pre_consent_select",
+    "pre_age_band",
+    "pre_education",
+    "pre_borough",
+    "pre_police_reliability",
+    "pre_police_fairness",
+    "pre_police_job",
+    "pre_news_frequency",
+    "pre_headline_accuracy",
+    "pre_headline_inflation",
+    "pre_headline_truth",
+    "pre_crime_increase",
+    "pre_crime_most",
+    "pre_crime_least",
+    "pre_media_most",
+    "pre_media_least",
+    "pre_lowest_boroughs",
+    "pre_highest_boroughs",
+    # --- Dashboard 1 evaluations (d1_) ---
+    "d1_ui_overall",
+    "d1_situational_awareness",
+    "d1_satisfaction_overall",
+    "d1_task_suitability",
+    "d1_system_capabilities",
+    "d1_open_chord_feedback",
+    "d1_open_heatmap_feedback",
+    "d1_open_hoverlist_feedback",
+    "d1_open_linecharts_feedback",
+    "d1_open_summary_pills_feedback",
+    # --- Dashboard 2 evaluations (d2_) ---
+    "d2_ui_overall",
+    "d2_situational_awareness",
+    "d2_satisfaction_overall",
+    "d2_task_suitability",
+    "d2_system_capabilities",
+    "d2_open_chord_feedback",
+    "d2_open_heatmap_feedback",
+    "d2_open_hoverlist_feedback",
+    "d2_open_linecharts_feedback",
+    "d2_open_summary_pills_feedback",
+    "d2_open_summary_dashboard_feedback",
+    # --- Post survey (after dashboards) ---
+    "post_police_reliability",
+    "post_police_fairness",
+    "post_police_job",
+    "post_news_frequency",
+    "post_headline_accuracy",
+    "post_headline_inflation",
+    "post_headline_truth",
+    "post_crime_increase",
+    "post_crime_most",
+    "post_crime_least",
+    "post_media_most",
+    "post_media_least",
+    "post_lowest_boroughs",
+    "post_highest_boroughs",
+    # --- Hidden / analytic fields (not shown to users) ---
+    "net_change_crime",
+    "net_change_media",
+    "net_change_boroughs",
+    # --- Admin / routing fields ---
+]
+
 LIKERT_7 = [
     "Select an option",
     "Very poor",
@@ -315,34 +367,28 @@ def init_state():
 def page_consent():
     st.title("Consent for Research")
 
-     
-
-    # --- Consent question ---
-    choice = st.selectbox(
+    # --- Consent question (widget created without assigning to a local variable) ---
+    st.selectbox(
         "I consent to my anonymised responses being used for this research.",
         [PLACEHOLDER, "Yes, I consent", "No, I do not consent"],
         key="pre_consent_select"
     )
 
     if st.button("Double Click To Continue"):
-        # --- YES: route to preliminary page ---
-        # inside page_consent(), replace the rerun block with this
+        choice = st.session_state.get("pre_consent_select")
         if choice == "Yes, I consent":
-            st.session_state["pre_consent"] = True
-            # st.success("Consent recorded.")
+            st.session_state["pre_consent_select"] = True
             st.session_state.page = "preliminary"
-            return  
-
+            return
         elif choice == "No, I do not consent":
-            st.session_state["pre_consent"] = False
+            st.session_state["pre_consent_select"] = False
             st.error("Survey closed for you.")
             st.session_state.page = "thank_you"
             return
-
-        # --- Missing selection ---
         else:
             st.warning("Please select an option before continuing.")
             return
+
         
 # --------------------------------------
 # --- GLOBAL VALIDATION HELPERS ---
@@ -1338,8 +1384,6 @@ def page_post_questions():
             return
         st.stop()
 
-     
-
     # ---------------- POLICING QUESTIONS (post) ----------------
     st.header("Your Views on Policing in Your Borough (after viewing dashboards)")
 
@@ -1565,38 +1609,33 @@ def page_post_questions():
     pre_lowest_boroughs = pre_answers.get("pre_lowest_boroughs", []) or []
     pre_highest_boroughs = pre_answers.get("pre_highest_boroughs", []) or []
 
-    # --- post widgets (assumes these local variables already exist in the page) ---
-    # post_crime_most, post_crime_least, post_media_most, post_media_least,
-    # post_lowest_boroughs, post_highest_boroughs
+    # # --- compute net-change (ensure compute_net_change is defined at module scope) ---
+    # net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
+    # net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
+    # net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
 
-    # Compute net changes (integers; positive means net shift toward "most" selections)
-    net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
-    net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
-    # For boroughs use the boroughs list used on the page
-    net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
-
-    # Save numeric results into session_state for later use (not shown to users)
-    st.session_state["net_change_crime"] = net_change_crime
-    st.session_state["net_change_media"] = net_change_media
-    st.session_state["net_change_boroughs"] = net_change_boroughs
+    # # Save numeric results into session_state for later use (optional)
+    # st.session_state["net_change_crime"] = net_change_crime
+    # st.session_state["net_change_media"] = net_change_media
+    # st.session_state["net_change_boroughs"] = net_change_boroughs
 
     # Build a hidden row (order and fields are up to you)
-    hidden_headers = ["user_id", "timestamp_utc", "net_change_crime", "net_change_media", "net_change_boroughs"]
-    hidden_row = [
-        st.session_state.get("user_id", ""),
-        datetime.utcnow().isoformat(),
-        net_change_crime,
-        net_change_media,
-        net_change_boroughs,
-    ]
+    # hidden_headers = ["user_id", "timestamp_utc", "net_change_crime", "net_change_media", "net_change_boroughs"]
+    # hidden_row = [
+    #     st.session_state.get("user_id", "submission_timestamp_utc",),
+    #     datetime.utcnow().isoformat(),
+    #     net_change_crime,
+    #     net_change_media,
+    #     net_change_boroughs,
+    # ]
 
     # Persist the hidden row (try Sheets, fallback to CSV)
-    try:
-        # save_rows_to_sheet expects list-of-rows; pass headers so sheet header check can run
-        save_rows_to_sheet([hidden_row], headers=hidden_headers)
-    except Exception:
-        # fallback: local CSV (append_row_to_csv expects a dict)
-        append_row_to_csv(dict(zip(hidden_headers, hidden_row)))                      
+    # try:
+    #     # save_rows_to_sheet expects list-of-rows; pass headers so sheet header check can run
+    #     save_rows_to_sheet([hidden_row], headers=hidden_headers)
+    # except Exception:
+    #     # fallback: local CSV (append_row_to_csv expects a dict)
+    #     append_row_to_csv(dict(zip(hidden_headers, hidden_row)))                      
 
 
 
@@ -1681,60 +1720,108 @@ def page_post_questions():
                 return
             st.stop()
 
-        # 5) build ordered row values (choose the column order you want in the sheet)
-        # Example explicit column order: metadata, pre keys, post keys, open feedback
-        pre_keys_order = [
-            "pre_age_band", "pre_education", "pre_borough",
-            "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-            "pre_news_frequency", "pre_headline_accuracy",
-            "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
-            "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
-            "pre_lowest_boroughs", "pre_highest_boroughs"
-        ]
-        post_keys_order = [
-            "post_police_reliability", "post_police_fairness", "post_police_job",
-            "post_news_frequency", "post_headline_accuracy",
-            "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-            "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-            "post_lowest_boroughs", "post_highest_boroughs"
-        ]
-        open_feedback_keys = [
-            "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-            "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
-            "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-            "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-        ]
+    # --- compute net-change (ensure compute_net_change is defined at module scope) ---
+    net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
+    net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
+    net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
 
-        # Build the row in the chosen order
-        row_values = []
-        # metadata
-        row_values.append(st.session_state.get("user_id", ""))
-        row_values.append(datetime.utcnow().isoformat())
+    # Save numeric results into session_state for later use (optional)
+    st.session_state["net_change_crime"] = net_change_crime
+    st.session_state["net_change_media"] = net_change_media
+    st.session_state["net_change_boroughs"] = net_change_boroughs
 
-        # pre answers (use cached pre_answers)
-        for k in pre_keys_order:
-            row_values.append(_norm_value(pre_answers.get(k)))
+    # --- Build the main row_values in the exact order of your headers ---
+    row_values = []
 
-        # post answers
-        for k in post_keys_order:
-            row_values.append(_norm_value(st.session_state.get(k)))
+    # 1) metadata: user_id and single submission timestamp
+    row_values.append(st.session_state.get("user_id", ""))
+    row_values.append(datetime.utcnow().isoformat())  # submission_timestamp_utc
 
-        # open feedbacks
-        for k in open_feedback_keys:
-            row_values.append(_norm_value(st.session_state.get(k)))
+    # 2) pre answers (use cached pre_answers)
+    pre_keys_order = [
+    "pre_consent_select",
+    "pre_age_band",
+    "pre_education",
+    "pre_borough",
+    "pre_police_reliability",
+    "pre_police_fairness",
+    "pre_police_job",
+    "pre_news_frequency",
+    "pre_headline_accuracy",
+    "pre_headline_inflation",
+    "pre_headline_truth",
+    "pre_crime_increase",
+    "pre_crime_most",
+    "pre_crime_least",
+    "pre_media_most",
+    "pre_media_least",
+    "pre_lowest_boroughs",
+    "pre_highest_boroughs"
+]
 
-        # Use the gspread helper defined above
-        try:
-            save_rows_to_sheet([row_values])
-            # save_to_google_sheets_rows([row_values])
-            st.success("Responses saved to Google Sheets.")
-        except Exception as e:
-            st.error(f"Failed to save responses to Google Sheets: {e}")
-            st.stop()
+    pre_answers = st.session_state.get("pre_answers", {}) or {}
+    for k in pre_keys_order:
+        row_values.append(_norm_value(pre_answers.get(k)))
 
-        # navigate to thank you
-        st.session_state.page = "thank_you"
-        return
+    # 3) dashboard evaluations (d1_ then d2_) — ensure these keys match your headers
+    d1_keys = [
+        "d1_ui_overall", "d1_situational_awareness", "d1_satisfaction_overall",
+        "d1_task_suitability", "d1_system_capabilities",
+        "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
+        "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback"
+    ]
+    d2_keys = [
+        "d2_ui_overall", "d2_situational_awareness", "d2_satisfaction_overall",
+        "d2_task_suitability", "d2_system_capabilities",
+        "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
+        "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
+    ]
+    for k in d1_keys + d2_keys:
+        row_values.append(_norm_value(st.session_state.get(k)))
+
+    # 4) post answers (must match post_keys_order)
+    post_keys_order = [
+        "post_police_reliability", "post_police_fairness", "post_police_job",
+        "post_news_frequency", "post_headline_accuracy",
+        "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+        "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+        "post_lowest_boroughs", "post_highest_boroughs"
+    ]
+    for k in post_keys_order:
+        row_values.append(_norm_value(st.session_state.get(k)))
+
+    # 5) open feedbacks (append these BEFORE saving)
+    open_feedback_keys = [
+        "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
+        "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
+        "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
+        "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
+    ]
+    for k in open_feedback_keys:
+        row_values.append(_norm_value(st.session_state.get(k)))
+
+    # 6) analytic fields (include them in the same row so they are visible for analysis)
+    row_values.append(net_change_crime)
+    row_values.append(net_change_media)
+    row_values.append(net_change_boroughs)
+
+    # 7) optional final admin fields if you want (app_version, notes) — append empty strings if not used
+    row_values.append(st.session_state.get("app_version", ""))
+    row_values.append(st.session_state.get("notes", ""))
+
+    # --- Save the single main row to Google Sheets (headers must match the order above) ---
+    try:
+        save_rows_to_sheet([row_values], headers=headers)
+        st.success("Responses saved to Google Sheets.")
+    except Exception as e:
+        st.error(f"Failed to save responses to Google Sheets: {e}")
+        # fallback already handled inside save_rows_to_sheet; stop to avoid double-saving
+        st.stop()
+
+    # navigate to thank you
+    st.session_state.page = "thank_you"
+    return
+
 
 
 
