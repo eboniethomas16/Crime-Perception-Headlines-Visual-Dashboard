@@ -18,11 +18,9 @@ def _norm_value(v):
 
 def _build_gspread_client_from_secrets():
     """
-    Expects the service account JSON to be stored in Streamlit secrets.
-    Recommended secret keys:
-      - GCP_SERVICE_ACCOUNT_JSON  (the full JSON as a string or nested dict)
-      - SPREADSHEET_ID            (the target spreadsheet id)
-      - SHEET_NAME                (optional, default 'Sheet1')
+    Build and return an authorized gspread client.
+    Expects the service account JSON to be in st.secrets["GCP_SERVICE_ACCOUNT_JSON"]
+    (or st.secrets["gcp_service_account"]).
     """
     creds_info = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
     if creds_info is None:
@@ -38,44 +36,32 @@ def _build_gspread_client_from_secrets():
     client = gspread.authorize(creds)
     return client
 
-def save_to_google_sheets(results_data):
-    """Save survey results to Google Sheets automatically."""
-    try:
-        # Load credentials from the JSON file
-        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-        creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
-        client = gspread.authorize(creds)
-        
-        # Open your Google Sheet (replace with your sheet name)
-        sheet = client.open("Dissertation-Dashboard-Survey-Output").sheet1
-        
-        # Append each row
-        for row in results_data:
-            sheet.append_row(row)
-    except Exception as e:
-        st.error(f"Error saving data: {e}")
+def save_to_google_sheets_rows(rows):
+    """
+    Append rows (list of lists) to the target Google Sheet.
+    Requires st.secrets["SPREADSHEET_ID"] and optional st.secrets["SHEET_NAME"].
+    """
+    spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
+    if not spreadsheet_id:
+        raise RuntimeError("SPREADSHEET_ID missing from Streamlit secrets.")
+    sheet_name = st.secrets.get("SHEET_NAME", "Sheet1")
 
-def append_row_to_sheet(spreadsheet_id: str, sheet_range: str, row_values: list, creds_json_str: str):
-    """
-    spreadsheet_id: the ID from the sheet URL
-    sheet_range: e.g. "Sheet1!A1" or "Sheet1!A:A" (append ignores exact row)
-    row_values: list of values for the row (strings)
-    creds_json_str: JSON string of service account key (from secret)
-    """
-    service = build_sheets_service_from_json_str(creds_json_str)
-    body = {"values": [row_values]}
-    result = service.spreadsheets().values().append(
-        spreadsheetId=spreadsheet_id,
-        range=sheet_range,
-        valueInputOption="USER_ENTERED",
-        insertDataOption="INSERT_ROWS",
-        body=body
-    ).execute()
-    return result
+    client = _build_gspread_client_from_secrets()
+    sh = client.open_by_key(spreadsheet_id)
+
+    try:
+        worksheet = sh.worksheet(sheet_name)
+    except gspread.WorksheetNotFound:
+        worksheet = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
+
+    # append rows one by one (gspread handles insertion)
+    for row in rows:
+        worksheet.append_row(row, value_input_option="USER_ENTERED")
+
 
 
 # FUNCTIONS FOR APPENDING TO .CSV FILE
-def _normalize_value(v):
+def normalize_value(v):
     if isinstance(v, list):
         return ";".join(map(str, v))
     if v is None:
@@ -85,7 +71,7 @@ def _normalize_value(v):
 def append_row_to_csv(row: dict, out_path: str = "responses.csv"):
     out = Path(out_path)
     # normalize lists and None
-    row_norm = {k: _normalize_value(v) for k, v in row.items()}
+    row_norm = {k: normalize_value(v) for k, v in row.items()}
     df_row = pd.DataFrame([row_norm])
 
     # If file doesn't exist, write header
@@ -407,7 +393,7 @@ def page_preliminary():
         st.warning("Please select exactly 3 boroughs for the HIGHEST crime question.")
 
     # ---------------- CONTINUE BUTTON ----------------
-    if st.button("Continue to Dashboard 1"):
+    if st.button("Double Click To Continue to Dashboard 1"):
         # All required keys for the preliminary page (only enforced here)
         required_selects = [
             "pre_age_band", "pre_education", "pre_borough",
@@ -687,7 +673,7 @@ def page_dashboard1():
     st.markdown("---")
     st.write("When you're done, click Continue to proceed to Dashboard 2.")
 
-    if st.button("Continue to Dashboard 2"):
+    if st.button("Double Click To Continue to Dashboard 2"):
         # list all required d1_ keys (add or remove keys if you change questions)
         required_keys = [
             "d1_bivmap_content", "d1_bivmap_learnability", "d1_bivmap_easeofuse",
@@ -1235,7 +1221,7 @@ def page_post_questions():
     st.markdown("---")
     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
 
-    if st.button("Finish and go to Thank You"):
+    if st.button("Double Click to Finish"):
         # 1) basic post required fields
         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
         if missing_post:
@@ -1310,324 +1296,17 @@ def page_post_questions():
         for k in open_feedback_keys:
             row_values.append(_norm_value(st.session_state.get(k)))
 
-        # 6) save to Google Sheets (using gspread + service account from secrets)
-        try:
-            save_to_google_sheets_rows = None  # placeholder to avoid name clash if you had CSV helper
-            # call helper that uses gspread and secrets
-            save_to_google_sheets_rows = lambda rows: save_to_google_sheets_rows  # no-op placeholder
-        except Exception:
-            pass
-
         # Use the gspread helper defined above
         try:
-            # call the helper that writes rows to the sheet
-            save_to_google_sheets_rows = save_to_google_sheets_rows  # keep for clarity
-            # Actually call the function that writes to the sheet
-            # We use the save_to_google_sheets_rows wrapper defined earlier in this file:
-            save_to_google_sheets_rows = globals().get("save_to_google_sheets_rows") or globals().get("save_to_google_sheets")
-            if save_to_google_sheets_rows is None:
-                # fallback: use the inline save function defined earlier in this file
-                save_to_google_sheets_rows = save_to_google_sheets
             save_to_google_sheets_rows([row_values])
             st.success("Responses saved to Google Sheets.")
         except Exception as e:
             st.error(f"Failed to save responses to Google Sheets: {e}")
             st.stop()
 
-        # 7) navigate to thank you
+        # navigate to thank you
         st.session_state.page = "thank_you"
         return
-
-
-
-
-    # ---------------- FINISH / SUBMIT VALIDATION (single handler) ----------------
-st.markdown("---")
-st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
-
-def is_missing(val, placeholder=PLACEHOLDER):
-    if val is None:
-        return True
-    if isinstance(val, str) and val.strip() == "":
-        return True
-    if isinstance(val, list) and len(val) == 0:
-        return True
-    if val == placeholder:
-        return True
-    return False
-
-def is_exactly_three(selection):
-    return isinstance(selection, list) and len(selection) == 3
-
-required_post_selects = [
-    "post_police_reliability", "post_police_fairness", "post_police_job",
-    "post_news_frequency", "post_headline_accuracy",
-    "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-    "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    "post_lowest_boroughs", "post_highest_boroughs"
-]
-
-if st.button("Finish and go to Thank You"):
-    # 1) basic post required fields
-    missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-    if missing_post:
-        st.error("Please answer all required post‑dashboard questions before finishing.")
-        for k in missing_post:
-            label = k.replace("post_", "").replace("_", " ").capitalize()
-            st.write(f"- {label}: {repr(st.session_state.get(k))}")
-        st.stop()
-
-    # 2) exact-3 checks
-    if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-            is_exactly_three(st.session_state.get("post_crime_least")) and
-            is_exactly_three(st.session_state.get("post_media_least")) and
-            is_exactly_three(st.session_state.get("post_media_most"))):
-        st.error("Please ensure all 'select three' post questions have exactly three selections.")
-        st.stop()
-
-    # 3) borough checks
-    if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-            len(st.session_state.get("post_highest_boroughs", [])) == 3):
-        st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-        st.stop()
-
-    # 4) ensure pre answers cached
-    pre_answers = st.session_state.get("pre_answers")
-    if not pre_answers:
-        st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-        if st.button("Go to Pre‑questions"):
-            st.session_state.page = "preliminary"
-            st.experimental_rerun()
-        st.stop()
-
-    # 5) build row (normalize lists to strings)
-    def norm(v):
-        if isinstance(v, list):
-            return ";".join(map(str, v))
-        if v is None:
-            return ""
-        return v
-
-    # post keys to include
-    post_keys = [
-        "post_police_reliability", "post_police_fairness", "post_police_job",
-        "post_news_frequency", "post_headline_accuracy",
-        "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-        "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-        "post_lowest_boroughs", "post_highest_boroughs"
-    ]
-    post_answers = {k: norm(st.session_state.get(k)) for k in post_keys}
-
-    # merge pre + post (pre_answers already contains pre_ keys)
-    row = {}
-    # normalize pre answers too
-    for k, v in (pre_answers or {}).items():
-        row[k] = norm(v)
-    row.update(post_answers)
-
-    # add metadata
-    row["user_id"] = st.session_state.get("user_id", "")
-    row["saved_at"] = datetime.utcnow().isoformat()
-
-    # include open feedback if present
-    open_feedback_keys = [
-        "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-        "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
-        "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-        "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-    ]
-    for k in open_feedback_keys:
-        if k in st.session_state:
-            row[k] = norm(st.session_state.get(k))
-
-    # 6) write to Google Sheets
-    try:
-        creds_json = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON")  # set this in Streamlit secrets
-        SPREADSHEET_ID = st.secrets.get("SPREADSHEET_ID")       # set this in secrets
-        SHEET_RANGE = st.secrets.get("SHEET_RANGE", "Responses!A1")
-        # build a list of values in the order you want columns to appear
-        # Example: choose an explicit column order
-        columns = [
-            "user_id", "saved_at",
-            # pre keys (explicit order)
-            "pre_age_band", "pre_education", "pre_borough",
-            # ... add all pre keys in the order you want ...
-            # post keys
-            "post_police_reliability", "post_police_fairness", "post_police_job",
-            # ... add remaining post keys ...
-        ]
-        # ensure columns exist in row; fill missing with ""
-        values = [row.get(c, "") for c in columns]
-
-        append_result = append_row_to_sheet(SPREADSHEET_ID, SHEET_RANGE, values, creds_json)
-        st.success("Responses saved to Google Sheets.")
-    except Exception as e:
-        st.error(f"Failed to save responses: {e}")
-        st.stop()
-
-    # 7) navigate to thank you
-    st.session_state.page = "thank_you"
-    # safer: return and let Streamlit rerun naturally
-    return
-
-
-
-    st.markdown("---")
-    st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
-
-    # Helper validators
-    def is_missing(val, placeholder=PLACEHOLDER):
-        return val in (None, placeholder, [], "")
-
-    def is_exactly_three(selection):
-        return isinstance(selection, list) and len(selection) == 3
-
-    # Keys required for post questions (all keys used above)
-    required_post_selects = [
-        "post_police_reliability", "post_police_fairness", "post_police_job",
-        "post_news_frequency", "post_headline_accuracy",
-        "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-        "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-        "post_lowest_boroughs", "post_highest_boroughs"
-    ]
-
-    # Keys required from the pre (only enforced here, same names used in page_preliminary)
-    required_pre_keys = [
-        "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-        "pre_news_frequency", "pre_headline_accuracy",
-        "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
-        "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
-        "pre_lowest_boroughs", "pre_highest_boroughs"
-    ]
-
-        # assume validation passed earlier and pre_answers cached
-    pre_answers = st.session_state.get("pre_answers") or {}
-    if not pre_answers:
-        st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-        if st.button("Go to Pre‑questions"):
-            st.session_state.page = "preliminary"
-            st.experimental_rerun()
-        st.stop()
-
-    # Build post answers dict
-    post_keys = [
-        "post_police_reliability", "post_police_fairness", "post_police_job",
-        "post_news_frequency", "post_headline_accuracy",
-        "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-        "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-        "post_lowest_boroughs", "post_highest_boroughs"
-    ]
-    post_answers = {k: st.session_state.get(k) for k in post_keys}
-
-    # Merge and add metadata
-    row = {}
-    row.update(pre_answers)
-    row.update(post_answers)
-    row["user_id"] = st.session_state.get("user_id")
-    row["saved_at"] = datetime.utcnow().isoformat()
-
-    # include any open feedback keys if present
-    open_feedback_keys = [
-        "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-        "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
-        "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-        "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-    ]
-    for k in open_feedback_keys:
-        if k in st.session_state:
-            row[k] = st.session_state.get(k)
-
-    # Append to CSV
-    append_row_to_csv(row, out_path="responses.csv")
-
-    st.success("Responses saved.")
-    st.session_state.page = "thank_you"
-    # safer: return and let Streamlit rerun naturally
-
-    if st.button("Finish and go to Thank You"):
-        # Check post required fields
-        missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-        if missing_post:
-            st.error("Please answer all required post‑dashboard questions before finishing.")
-            st.info("Missing items:")
-            for k in missing_post:
-                label = k.replace("post_", "").replace("_", " ").capitalize()
-                st.write(f"- {label}: {repr(st.session_state.get(k))}")
-            st.stop()
-
-        # Validate exact-3 multiselects (post)
-        if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-                is_exactly_three(st.session_state.get("post_crime_least")) and
-                is_exactly_three(st.session_state.get("post_media_least")) and
-                is_exactly_three(st.session_state.get("post_media_most"))):
-            st.error("Please ensure all 'select three' post questions have exactly three selections.")
-            st.stop()
-
-        # Validate borough multiselects (post)
-        if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-                len(st.session_state.get("post_highest_boroughs", [])) == 3):
-            st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-            st.stop()
-
-        # Ensure pre-questions exist (so we can compute gain)
-        
-
-        # Later, when validating before computing gain:
-        pre_cache = st.session_state.get("pre_answers")
-
-        if not pre_cache:
-            st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-            if st.button("Go to Pre‑questions"):
-                st.session_state.page = "preliminary"
-                st.experimental_rerun()
-            st.stop()
-
-        # Optional: check specific keys inside the cached dict
-        required_pre_keys = [
-            "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-            "pre_news_frequency", "pre_headline_accuracy",
-            "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
-            "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
-            "pre_lowest_boroughs", "pre_highest_boroughs"
-        ]
-
-        def is_missing(val, placeholder=PLACEHOLDER):
-            return val in (None, placeholder, [], "")
-
-        missing_pre = [k for k in required_pre_keys if is_missing(pre_cache.get(k))]
-        if missing_pre:
-            st.error("Preliminary responses are incomplete. Please complete the pre‑survey questions first.")
-            for k in missing_pre:
-                label = k.replace("pre_", "").replace("_", " ").capitalize()
-                st.write(f"- {label}: {repr(pre_cache.get(k))}")
-            if st.button("Go to Pre‑questions"):
-                st.session_state.page = "preliminary"
-                st.experimental_rerun()
-            st.stop()   
-
-        # missing_pre = [k for k in required_pre_keys if k not in st.session_state or is_missing(st.session_state.get(k))]
-        # if missing_pre:
-        #     st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-        #     st.info("Missing preliminary items:")
-        #     for k in missing_pre:
-        #         label = k.replace("pre_", "").replace("_", " ").capitalize()
-        #         st.write(f"- {label}: {repr(st.session_state.get(k))}")
-        #     if st.button("Go to Pre‑questions"):
-        #         st.session_state.page = "preliminary"
-        #         # st.experimental_rerun()
-        #     st.stop()
-
-        # All checks passed — compute summary and navigate
-        st.success("Post‑survey complete. Calculating summary of changes...")
-        # (existing gain summary code can remain here; you already have it below)
-        # After computing and showing the summary, navigate to Thank You
-        st.info("You will now be taken to the Thank You page.")
-        st.session_state.page = "thank_you"
-        st.experimental_rerun()
-
-        st.success("Responses saved.")
-        return
-
 
 
 
@@ -1687,3 +1366,294 @@ def router():
 
 init_state()
 router()
+
+
+def leftover_code():
+
+    dfsdf
+    #     # ---------------- FINISH / SUBMIT VALIDATION (single handler) ----------------
+    # st.markdown("---")
+    # st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
+
+    # def is_missing(val, placeholder=PLACEHOLDER):
+    #     if val is None:
+    #         return True
+    #     if isinstance(val, str) and val.strip() == "":
+    #         return True
+    #     if isinstance(val, list) and len(val) == 0:
+    #         return True
+    #     if val == placeholder:
+    #         return True
+    #     return False
+
+    # def is_exactly_three(selection):
+    #     return isinstance(selection, list) and len(selection) == 3
+
+    # required_post_selects = [
+    #     "post_police_reliability", "post_police_fairness", "post_police_job",
+    #     "post_news_frequency", "post_headline_accuracy",
+    #     "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+    #     "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+    #     "post_lowest_boroughs", "post_highest_boroughs"
+    # ]
+
+    # if st.button("Finish and go to Thank You"):
+    #     # 1) basic post required fields
+    #     missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
+    #     if missing_post:
+    #         st.error("Please answer all required post‑dashboard questions before finishing.")
+    #         for k in missing_post:
+    #             label = k.replace("post_", "").replace("_", " ").capitalize()
+    #             st.write(f"- {label}: {repr(st.session_state.get(k))}")
+    #         st.stop()
+
+    #     # 2) exact-3 checks
+    #     if not (is_exactly_three(st.session_state.get("post_crime_most")) and
+    #             is_exactly_three(st.session_state.get("post_crime_least")) and
+    #             is_exactly_three(st.session_state.get("post_media_least")) and
+    #             is_exactly_three(st.session_state.get("post_media_most"))):
+    #         st.error("Please ensure all 'select three' post questions have exactly three selections.")
+    #         st.stop()
+
+    #     # 3) borough checks
+    #     if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
+    #             len(st.session_state.get("post_highest_boroughs", [])) == 3):
+    #         st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
+    #         st.stop()
+
+    #     # 4) ensure pre answers cached
+    #     pre_answers = st.session_state.get("pre_answers")
+    #     if not pre_answers:
+    #         st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+    #         if st.button("Go to Pre‑questions"):
+    #             st.session_state.page = "preliminary"
+    #             st.experimental_rerun()
+    #         st.stop()
+
+    #     # 5) build row (normalize lists to strings)
+    #     def norm(v):
+    #         if isinstance(v, list):
+    #             return ";".join(map(str, v))
+    #         if v is None:
+    #             return ""
+    #         return v
+
+    #     # post keys to include
+    #     post_keys = [
+    #         "post_police_reliability", "post_police_fairness", "post_police_job",
+    #         "post_news_frequency", "post_headline_accuracy",
+    #         "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+    #         "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+    #         "post_lowest_boroughs", "post_highest_boroughs"
+    #     ]
+    #     post_answers = {k: norm(st.session_state.get(k)) for k in post_keys}
+
+    #     # merge pre + post (pre_answers already contains pre_ keys)
+    #     row = {}
+    #     # normalize pre answers too
+    #     for k, v in (pre_answers or {}).items():
+    #         row[k] = norm(v)
+    #     row.update(post_answers)
+
+    #     # add metadata
+    #     row["user_id"] = st.session_state.get("user_id", "")
+    #     row["saved_at"] = datetime.utcnow().isoformat()
+
+    #     # include open feedback if present
+    #     open_feedback_keys = [
+    #         "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
+    #         "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
+    #         "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
+    #         "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
+    #     ]
+    #     for k in open_feedback_keys:
+    #         if k in st.session_state:
+    #             row[k] = norm(st.session_state.get(k))
+
+    #     # 6) write to Google Sheets
+    #     try:
+    #         creds_json = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON")  # set this in Streamlit secrets
+    #         SPREADSHEET_ID = st.secrets.get("SPREADSHEET_ID")       # set this in secrets
+    #         SHEET_RANGE = st.secrets.get("SHEET_RANGE", "Responses!A1")
+    #         # build a list of values in the order you want columns to appear
+    #         # Example: choose an explicit column order
+    #         columns = [
+    #             "user_id", "saved_at",
+    #             # pre keys (explicit order)
+    #             "pre_age_band", "pre_education", "pre_borough",
+    #             # ... add all pre keys in the order you want ...
+    #             # post keys
+    #             "post_police_reliability", "post_police_fairness", "post_police_job",
+    #             # ... add remaining post keys ...
+    #         ]
+    #         # ensure columns exist in row; fill missing with ""
+    #         values = [row.get(c, "") for c in columns]
+
+    #         append_result = append_row_to_sheet(SPREADSHEET_ID, SHEET_RANGE, values, creds_json)
+    #         st.success("Responses saved to Google Sheets.")
+    #     except Exception as e:
+    #         st.error(f"Failed to save responses: {e}")
+    #         st.stop()
+
+    #     # 7) navigate to thank you
+    #     st.session_state.page = "thank_you"
+    #     # safer: return and let Streamlit rerun naturally
+    #     return
+
+
+
+    #     st.markdown("---")
+    #     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
+
+    #     # Helper validators
+    #     def is_missing(val, placeholder=PLACEHOLDER):
+    #         return val in (None, placeholder, [], "")
+
+    #     def is_exactly_three(selection):
+    #         return isinstance(selection, list) and len(selection) == 3
+
+    #     # Keys required for post questions (all keys used above)
+    #     required_post_selects = [
+    #         "post_police_reliability", "post_police_fairness", "post_police_job",
+    #         "post_news_frequency", "post_headline_accuracy",
+    #         "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+    #         "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+    #         "post_lowest_boroughs", "post_highest_boroughs"
+    #     ]
+
+    #     # Keys required from the pre (only enforced here, same names used in page_preliminary)
+    #     required_pre_keys = [
+    #         "pre_police_reliability", "pre_police_fairness", "pre_police_job",
+    #         "pre_news_frequency", "pre_headline_accuracy",
+    #         "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
+    #         "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
+    #         "pre_lowest_boroughs", "pre_highest_boroughs"
+    #     ]
+
+    #         # assume validation passed earlier and pre_answers cached
+    #     pre_answers = st.session_state.get("pre_answers") or {}
+    #     if not pre_answers:
+    #         st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+    #         if st.button("Go to Pre‑questions"):
+    #             st.session_state.page = "preliminary"
+    #             st.experimental_rerun()
+    #         st.stop()
+
+    #     # Build post answers dict
+    #     post_keys = [
+    #         "post_police_reliability", "post_police_fairness", "post_police_job",
+    #         "post_news_frequency", "post_headline_accuracy",
+    #         "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+    #         "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+    #         "post_lowest_boroughs", "post_highest_boroughs"
+    #     ]
+    #     post_answers = {k: st.session_state.get(k) for k in post_keys}
+
+    #     # Merge and add metadata
+    #     row = {}
+    #     row.update(pre_answers)
+    #     row.update(post_answers)
+    #     row["user_id"] = st.session_state.get("user_id")
+    #     row["saved_at"] = datetime.utcnow().isoformat()
+
+    #     # include any open feedback keys if present
+    #     open_feedback_keys = [
+    #         "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
+    #         "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
+    #         "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
+    #         "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
+    #     ]
+    #     for k in open_feedback_keys:
+    #         if k in st.session_state:
+    #             row[k] = st.session_state.get(k)
+
+    #     # Append to CSV
+    #     append_row_to_csv(row, out_path="responses.csv")
+
+    #     st.success("Responses saved.")
+    #     st.session_state.page = "thank_you"
+    #     # safer: return and let Streamlit rerun naturally
+
+    #     if st.button("Finish and go to Thank You"):
+    #         # Check post required fields
+    #         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
+    #         if missing_post:
+    #             st.error("Please answer all required post‑dashboard questions before finishing.")
+    #             st.info("Missing items:")
+    #             for k in missing_post:
+    #                 label = k.replace("post_", "").replace("_", " ").capitalize()
+    #                 st.write(f"- {label}: {repr(st.session_state.get(k))}")
+    #             st.stop()
+
+    #         # Validate exact-3 multiselects (post)
+    #         if not (is_exactly_three(st.session_state.get("post_crime_most")) and
+    #                 is_exactly_three(st.session_state.get("post_crime_least")) and
+    #                 is_exactly_three(st.session_state.get("post_media_least")) and
+    #                 is_exactly_three(st.session_state.get("post_media_most"))):
+    #             st.error("Please ensure all 'select three' post questions have exactly three selections.")
+    #             st.stop()
+
+    #         # Validate borough multiselects (post)
+    #         if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
+    #                 len(st.session_state.get("post_highest_boroughs", [])) == 3):
+    #             st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
+    #             st.stop()
+
+    #         # Ensure pre-questions exist (so we can compute gain)
+            
+
+    #         # Later, when validating before computing gain:
+    #         pre_cache = st.session_state.get("pre_answers")
+
+    #         if not pre_cache:
+    #             st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+    #             if st.button("Go to Pre‑questions"):
+    #                 st.session_state.page = "preliminary"
+    #                 st.experimental_rerun()
+    #             st.stop()
+
+    #         # Optional: check specific keys inside the cached dict
+    #         required_pre_keys = [
+    #             "pre_police_reliability", "pre_police_fairness", "pre_police_job",
+    #             "pre_news_frequency", "pre_headline_accuracy",
+    #             "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
+    #             "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
+    #             "pre_lowest_boroughs", "pre_highest_boroughs"
+    #         ]
+
+    #         def is_missing(val, placeholder=PLACEHOLDER):
+    #             return val in (None, placeholder, [], "")
+
+    #         missing_pre = [k for k in required_pre_keys if is_missing(pre_cache.get(k))]
+    #         if missing_pre:
+    #             st.error("Preliminary responses are incomplete. Please complete the pre‑survey questions first.")
+    #             for k in missing_pre:
+    #                 label = k.replace("pre_", "").replace("_", " ").capitalize()
+    #                 st.write(f"- {label}: {repr(pre_cache.get(k))}")
+    #             if st.button("Go to Pre‑questions"):
+    #                 st.session_state.page = "preliminary"
+    #                 st.experimental_rerun()
+    #             st.stop()   
+
+    #         # missing_pre = [k for k in required_pre_keys if k not in st.session_state or is_missing(st.session_state.get(k))]
+    #         # if missing_pre:
+    #         #     st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+    #         #     st.info("Missing preliminary items:")
+    #         #     for k in missing_pre:
+    #         #         label = k.replace("pre_", "").replace("_", " ").capitalize()
+    #         #         st.write(f"- {label}: {repr(st.session_state.get(k))}")
+    #         #     if st.button("Go to Pre‑questions"):
+    #         #         st.session_state.page = "preliminary"
+    #         #         # st.experimental_rerun()
+    #         #     st.stop()
+
+    #         # All checks passed — compute summary and navigate
+    #         st.success("Post‑survey complete. Calculating summary of changes...")
+    #         # (existing gain summary code can remain here; you already have it below)
+    #         # After computing and showing the summary, navigate to Thank You
+    #         st.info("You will now be taken to the Thank You page.")
+    #         st.session_state.page = "thank_you"
+    #         st.experimental_rerun()
+
+    #         st.success("Responses saved.")
+    #         return
