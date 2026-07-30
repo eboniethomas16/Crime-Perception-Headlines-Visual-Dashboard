@@ -8,7 +8,220 @@ import tempfile
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
+import math
 
+headers = [
+        "User ID",
+        "ID",
+        "Data Provider",
+        "Project Name",
+        "Consumer Team",
+        "Consumer Name",
+        "Consumer Description",
+        "Variation Type",
+        "Variation Value",
+        "Purpose",
+        "AI Final Decision",
+        "Human Expert: Seniority",
+        "Human Expert: Hastiness (1: Very Hasty | 7: Very Formal)",
+        "Human Expert: Meaning Preservation (1: Very Different | 7: Very Similar)",
+        "Time on Question (seconds)",
+        "Total Elapsed Time (seconds)",
+    ]
+
+def _normalize_header_cell(s):
+    if s is None:
+        return ""
+    return str(s).strip().lower()
+
+def ensure_sheet_headers(worksheet, expected_headers):
+    """
+    Ensure the worksheet has the expected header row.
+    - worksheet: gspread Worksheet object
+    - expected_headers: list of header strings in the order you want columns
+    Behavior:
+      - If the sheet is empty, writes expected_headers as the first row.
+      - If a header row exists but does not match expected_headers (case-insensitive),
+        overwrites the first row with expected_headers.
+    Returns True on success, False on failure.
+    """
+    try:
+        # Get all values; if empty, get_all_values() returns []
+        all_values = worksheet.get_all_values()
+        if not all_values:
+            # Sheet empty — write headers
+            worksheet.append_row(expected_headers, value_input_option="USER_ENTERED")
+            return True
+
+        # There is at least one row; treat the first row as header row
+        existing_header = all_values[0]
+        # Normalize both lists for comparison
+        norm_existing = [_normalize_header_cell(c) for c in existing_header]
+        norm_expected = [_normalize_header_cell(c) for c in expected_headers]
+
+        # If lengths differ or any cell differs, overwrite the first row
+        if len(norm_existing) != len(norm_expected) or any(e != x for e, x in zip(norm_existing, norm_expected)):
+            # Overwrite first row with expected headers
+            # Use A1 update to replace the first row exactly
+            worksheet.update("A1", [expected_headers], value_input_option="USER_ENTERED")
+        return True
+    except Exception as e:
+        # Surface helpful error in Streamlit UI or logs
+        st.error(f"Failed to ensure headers on sheet '{worksheet.title}': {e}")
+        return False
+# centralised, secure way to build an authorised gspread client from st.secrets.
+def _build_gspread_client_from_secrets():
+    """
+    Build and return an authorized gspread client.
+    Accepts either:
+      - st.secrets["gcp_service_account"] (nested TOML table -> dict)
+      - st.secrets["GCP_SERVICE_ACCOUNT_JSON"] (JSON string)
+    """
+    creds_info = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
+    if creds_info is None:
+        raise RuntimeError("Google service account JSON not found in Streamlit secrets (GCP_SERVICE_ACCOUNT_JSON or gcp_service_account).")
+
+    # Parse secret into a dict
+    if isinstance(creds_info, str):
+        creds_dict = json.loads(creds_info)
+    else:
+        creds_dict = dict(creds_info)
+
+    # Fix escaped newlines if present (safe guard)
+    if "private_key" in creds_dict and isinstance(creds_dict["private_key"], str):
+        creds_dict["private_key"] = creds_dict["private_key"].replace("\\n", "\n")
+
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+    client = gspread.authorize(creds)
+    return client
+
+# Save responses to Google Sheets
+def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME", spreadsheet_title_secret="SPREADSHEET_TITLE"):
+    """
+    Append rows (list of lists) to Google Sheet.
+    - rows: list of lists (each inner list is a row)
+    - headers: optional list of header strings to write if sheet is empty
+    - secrets used: SPREADSHEET_ID (preferred) or SPREADSHEET_TITLE (fallback), and SHEET_NAME (worksheet title)
+    """
+    try:
+        client = _build_gspread_client_from_secrets()
+        spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
+        if not spreadsheet_id:
+            st.error("SPREADSHEET_ID missing from st.secrets; responses will be saved locally.")
+            # fallback: write to CSV and return
+            for r in rows:
+                append_row_to_csv(dict(zip(headers, r)))
+            return
+        
+        sheet_name = st.secrets.get("SHEET_NAME", "Responses")
+        sh = client.open_by_key(spreadsheet_id)
+        try:
+            ws = sh.worksheet(sheet_name)
+        except gspread.WorksheetNotFound:
+            ws = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
+
+        # Ensure headers if provided
+        if headers:
+            ok = ensure_sheet_headers(ws, headers)
+            if not ok:
+                st.error("Could not ensure headers in the Google Sheet. Aborting save.")
+                return
+
+        # Append rows (cleaning values as needed)
+        for row in rows:
+            cleaned = []
+            for v in row:
+                if v is None:
+                    cleaned.append("")   # or "none"
+                elif isinstance(v, float) and math.isnan(v):
+                    cleaned.append("")
+                elif isinstance(v, list):
+                    cleaned.append(";".join(map(str, v)))
+                else:
+                    cleaned.append(v)
+            ws.append_row(cleaned, value_input_option="USER_ENTERED")
+
+    except Exception as e:
+        st.error(f"Failed to save responses to Google Sheets: {e}")
+        # fallback: persist locally to CSV to avoid data loss
+        for r in rows:
+            append_row_to_csv(dict(zip(headers, r)))
+        return
+
+
+# def save_to_google_sheets(results_data):
+#     try:
+#         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+#         creds_dict = dict(st.secrets["gcp_service_account"])
+#         creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+#         client = gspread.authorize(creds)
+#         sheet = client.open("Survey Participants").sheet1
+        
+#         existing_records = sheet.get_all_records()
+        
+#         #there's no headers so we shall add them 
+#         if len(existing_records) == 0:
+#             headers = [
+#                 "User ID",
+#                 "ID",
+#                 "Data Provider",
+#                 "Project Name",
+#                 "Consumer Team",
+#                 "Consumer Name",
+#                 "Consumer Description",
+#                 "Variation Type",
+#                 "Variation Value",
+#                 "Purpose",
+#                 "AI Final Decision",
+#                 "Human Expert: Seniority",
+#                 "Human Expert: Hastiness (1: Very Hasty | 7: Very Formal)",
+#                 "Human Expert: Meaning Preservation (1: Very Different | 7: Very Similar)",
+#                 "Time on Question (seconds)",
+#                 "Total Elapsed Time (seconds)",
+#             ]
+#             sheet.append_row(headers)
+        
+#         # Cleaning the NaN values before saving
+#         for row in results_data:
+#             cleaned_row = []
+#             for value in row:
+#                 if value is None:
+#                     cleaned_row.append("none")
+#                 elif isinstance(value, float) and math.isnan(value):
+#                     cleaned_row.append("none")
+#                 else:
+#                     cleaned_row.append(value)
+#             sheet.append_row(cleaned_row)
+            
+#     except Exception as e:
+#         st.error(f"Error saving data: {e}")
+
+
+
+# def save_to_google_sheets_rows(rows):
+#     """
+#     Append rows (list of lists) to the target Google Sheet.
+#     Requires st.secrets["SPREADSHEET_ID"] and optional st.secrets["SHEET_NAME"].
+#     """
+#     spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
+#     if not spreadsheet_id:
+#         raise RuntimeError("SPREADSHEET_ID missing from Streamlit secrets.")
+#     sheet_name = st.secrets.get("SHEET_NAME", "responses")
+
+#     client = _build_gspread_client_from_secrets()
+#     sh = client.open_by_key(spreadsheet_id)
+
+#     try:
+#         worksheet = sh.worksheet(sheet_name)
+#     except gspread.WorksheetNotFound:
+#         worksheet = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
+
+#     # append rows one by one (gspread handles insertion)
+#     for row in rows:
+#         worksheet.append_row(row, value_input_option="USER_ENTERED")
+
+# FUNCTIONS FOR APPENDING TO .CSV FILE
 def _norm_value(v):
     if isinstance(v, list):
         return ";".join(map(str, v))
@@ -16,62 +229,12 @@ def _norm_value(v):
         return ""
     return str(v)
 
-def _build_gspread_client_from_secrets():
-    """
-    Build and return an authorized gspread client.
-    Expects the service account JSON to be in st.secrets["GCP_SERVICE_ACCOUNT_JSON"]
-    (or st.secrets["gcp_service_account"]).
-    """
-    creds_info = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
-    if creds_info is None:
-        raise RuntimeError("Google service account JSON not found in Streamlit secrets (GCP_SERVICE_ACCOUNT_JSON).")
-    # creds_info may be a dict (from toml) or a JSON string
-    if isinstance(creds_info, str):
-        creds_dict = json.loads(creds_info)
-    else:
-        creds_dict = creds_info
-
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-    client = gspread.authorize(creds)
-    return client
-
-def save_to_google_sheets_rows(rows):
-    """
-    Append rows (list of lists) to the target Google Sheet.
-    Requires st.secrets["SPREADSHEET_ID"] and optional st.secrets["SHEET_NAME"].
-    """
-    spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
-    if not spreadsheet_id:
-        raise RuntimeError("SPREADSHEET_ID missing from Streamlit secrets.")
-    sheet_name = st.secrets.get("SHEET_NAME", "Sheet1")
-
-    client = _build_gspread_client_from_secrets()
-    sh = client.open_by_key(spreadsheet_id)
-
-    try:
-        worksheet = sh.worksheet(sheet_name)
-    except gspread.WorksheetNotFound:
-        worksheet = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
-
-    # append rows one by one (gspread handles insertion)
-    for row in rows:
-        worksheet.append_row(row, value_input_option="USER_ENTERED")
-
-
-
-# FUNCTIONS FOR APPENDING TO .CSV FILE
-def normalize_value(v):
-    if isinstance(v, list):
-        return ";".join(map(str, v))
-    if v is None:
-        return ""
-    return v
 
 def append_row_to_csv(row: dict, out_path: str = "responses.csv"):
     out = Path(out_path)
+
     # normalize lists and None
-    row_norm = {k: normalize_value(v) for k, v in row.items()}
+    row_norm = {k: _norm_value(v) for k, v in row.items()}
     df_row = pd.DataFrame([row_norm])
 
     # If file doesn't exist, write header
@@ -99,6 +262,7 @@ def append_row_to_csv(row: dict, out_path: str = "responses.csv"):
                     tmp_path.unlink()
                 except Exception:
                     pass
+                
 
 PLACEHOLDER = "Select an option"
 
@@ -141,7 +305,7 @@ def init_state():
 def page_consent():
     st.title("Consent for Research")
 
-    PLACEHOLDER = "Select an option"
+     
 
     # --- Consent question ---
     choice = st.selectbox(
@@ -169,10 +333,29 @@ def page_consent():
         else:
             st.warning("Please select an option before continuing.")
             return
-
         
+# --------------------------------------
+# --- GLOBAL VALIDATION HELPERS ---
+# ------------------------------------------
+
+# --- Prevent contradictory top-3 selections (place after the multiselect widgets) ---
+def _overlap_warning(list_a, list_b):
+    """Return list of overlapping items between two lists (or empty list)."""
+    if not isinstance(list_a, list) or not isinstance(list_b, list):
+        return []
+    return list(set(list_a) & set(list_b)) 
+
+# Validation helper
+def is_exactly_three(selection):
+    return isinstance(selection, list) and len(selection) == 3  
+     
 def page_preliminary():
     st.set_page_config(page_title="Pre‑Dashboard 2 Survey", layout="wide")
+    # At top of each page function (immediately after st.set_page_config / title)
+    if st.session_state.get("_nav_rerun_once", False):
+        # reset the one-time rerun guard when the target page loads
+        st.session_state["_nav_rerun_once"] = False
+
 
     st.title("Section 2 – Baseline Understanding")
     st.markdown("Before navigating Dashboard 2, please answer the following questions about crime in London, policing, and media headlines.")
@@ -182,7 +365,7 @@ def page_preliminary():
         st.warning("You must give consent before continuing. Please go to the Consent page and select 'Yes, I consent'.")
         st.stop()
 
-    PLACEHOLDER = "Select an option"
+     
 
     st.markdown("---")
     st.header("About You")
@@ -329,7 +512,9 @@ def page_preliminary():
     crime_categories = list(crime_definitions.keys())
 
     st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
+    #st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
 
+    # ---------------- CRIME CATEGORY QUESTIONS (pre) ----------------
     pre_crime_most = st.multiselect(
         "Select **three** crime categories you believe have the **MOST offences** in your Borough.",
         crime_categories,
@@ -341,6 +526,23 @@ def page_preliminary():
         crime_categories,
         key="pre_crime_least"
     )
+
+    # validate exact-3 selections and check overlaps for crime category selections
+    valid_most = is_exactly_three(pre_crime_most)
+    valid_least = is_exactly_three(pre_crime_least)
+
+    if not valid_most:
+        st.warning("Please select exactly 3 categories for 'MOST offences in your Borough'.")
+    if not valid_least:
+        st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough'.")
+
+    crime_overlap_most_least = _overlap_warning(pre_crime_most, pre_crime_least)
+    if crime_overlap_most_least:
+        st.warning(
+            "You have selected the same crime categories in both the **MOST offences** and **LEAST offences** lists. "
+            "Please choose different categories so the 'most' and 'least' answers are distinct. "
+            f"Overlapping items: {', '.join(crime_overlap_most_least)}"
+        )
 
     pre_media_least = st.multiselect(
         "Select **three** crime categories you believe the media covers **THE LEAST** in London headlines.",
@@ -354,25 +556,25 @@ def page_preliminary():
         key="pre_media_most"
     )
 
-    # Validation helper
-    def is_exactly_three(selection):
-        return isinstance(selection, list) and len(selection) == 3
-
-    valid_most = is_exactly_three(pre_crime_most)
-    valid_least = is_exactly_three(pre_crime_least)
+    # validate exact-3 selections and check overlaps for media coverage selections
     valid_media_least = is_exactly_three(pre_media_least)
     valid_media_most = is_exactly_three(pre_media_most)
 
-    if not valid_most:
-        st.warning("Please select exactly 3 categories for 'MOST offences in your Borough'.")
-    if not valid_least:
-        st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough'.")
     if not valid_media_least:
         st.warning("Please select exactly 3 categories for 'THE LEAST covered in headlines'.")
     if not valid_media_most:
         st.warning("Please select exactly 3 categories for 'MOST PROMINENTLY covered in headlines'.")
 
-    # ---------------- BOROUGH CRIME PERCEPTION ----------------
+    crime_overlap_media = _overlap_warning(pre_media_most, pre_media_least)
+    if crime_overlap_media:
+        st.warning(
+            "You have selected the same crime categories in both the **MOST PROMINENTLY covered** and **THE LEAST covered** media lists. "
+            "Please choose different categories so media coverage answers are distinct. "
+            f"Overlapping items: {', '.join(crime_overlap_media)}"
+        )
+
+
+    # ---------------- BOROUGH CRIME PERCEPTION (pre) ----------------
     st.header("Your Perception of Borough Crime Levels")
 
     pre_lowest_boroughs = st.multiselect(
@@ -387,10 +589,22 @@ def page_preliminary():
         key="pre_highest_boroughs"
     )
 
-    if len(pre_lowest_boroughs) != 3:
+    # validate borough selections and check overlap
+    valid_lowest_boroughs = is_exactly_three(pre_lowest_boroughs)
+    valid_highest_boroughs = is_exactly_three(pre_highest_boroughs)
+
+    if not valid_lowest_boroughs:
         st.warning("Please select exactly 3 boroughs for the LOWEST crime question.")
-    if len(pre_highest_boroughs) != 3:
+    if not valid_highest_boroughs:
         st.warning("Please select exactly 3 boroughs for the HIGHEST crime question.")
+
+    boroughs_overlap = _overlap_warning(pre_lowest_boroughs, pre_highest_boroughs)
+    if boroughs_overlap:
+        st.warning(
+            "You have selected the same borough(s) for both the **LOWEST** and **HIGHEST** crime questions. "
+            "Please select different boroughs for each question. "
+            f"Overlapping items: {', '.join(boroughs_overlap)}"
+        )
 
     # ---------------- CONTINUE BUTTON ----------------
     if st.button("Double Click To Continue to Dashboard 1"):
@@ -409,6 +623,20 @@ def page_preliminary():
             k for k in required_selects
             if st.session_state.get(k) in (None, PLACEHOLDER, [], "", False)
         ]
+
+        
+        overlap_errors = []
+        if _overlap_warning(st.session_state.get("pre_crime_most", []), st.session_state.get("pre_crime_least", [])):
+            overlap_errors.append("Same categories selected for MOST and LEAST offences.")
+        if _overlap_warning(st.session_state.get("pre_media_most", []), st.session_state.get("pre_media_least", [])):
+            overlap_errors.append("Same categories selected for MOST and LEAST media coverage.")
+        if _overlap_warning(st.session_state.get("pre_lowest_boroughs", []), st.session_state.get("pre_highest_boroughs", [])):
+            overlap_errors.append("Same boroughs selected for LOWEST and HIGHEST crime.")
+        if overlap_errors:
+            st.error("Please resolve the following contradictions before continuing:")
+            for e in overlap_errors:
+                st.write(f"- {e}")
+            return
 
         if missing:
             st.error("Please answer all required questions before continuing. The following items are incomplete:")
@@ -461,11 +689,14 @@ def page_preliminary():
 
 def page_dashboard1():
     st.set_page_config(page_title="Dashboard 1 – Perception vs Crime", layout="wide")
+    if st.session_state.get("_nav_rerun_once", False):
+            # reset the one-time rerun guard when the target page loads
+            st.session_state["_nav_rerun_once"] = False
 
     st.title("Dashboard 1 – Perception vs Crime")
     st.markdown("Please answer the questions below about Dashboard 1. All single-choice items start unselected.")
 
-    PLACEHOLDER = "Select an option"
+     
 
     # ---------------- BIVARIATE CHOROPLETH MAP ----------------
     st.header("Bivariate Choropleth Map")
@@ -513,25 +744,25 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How clear was the heatmap at showing where perception over/under estimates actual crime?",
-        [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
+        "How easy was it to comprehend the information shown on the heatmap?",
+        [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_heatmap_learnability"
     )
 
     st.selectbox(
-        "How easy was it to interact with the heatmap (hover, select time, read tooltips)?",
+        "How easy was it to interact with the heatmap (hover time period, select/unselect borough)?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_heatmap_operability"
     )
 
     st.selectbox(
-        "How easy was it to locate a specific borough and month in the heatmap?",
+        "How easy was it to locate a specific crime and month in the heatmap?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_heatmap_easeofuse"
     )
 
     st.selectbox(
-        "How useful was the heatmap for spotting borough/time combinations with large perception differences?",
+        "How useful was the heatmap for spotting borough/time combinations with over/under estimates to actual crime?",
         [PLACEHOLDER, "Very useful", "Useful", "Neutral", "Not very useful", "Not useful at all"],
         key="d1_heatmap_usefulness"
     )
@@ -722,10 +953,13 @@ def page_dashboard1():
 
 def page_dashboard2():
     st.set_page_config(page_title="Dashboard 2 – Headlines vs Crime", layout="wide")
+    if st.session_state.get("_nav_rerun_once", False):
+            # reset the one-time rerun guard when the target page loads
+            st.session_state["_nav_rerun_once"] = False
     st.title("Dashboard 2 – Headlines vs Crime")
     st.markdown("Please answer the questions below about Dashboard 2. All single-choice items start unselected.")
 
-    PLACEHOLDER = "Select an option"
+     
 
     # --- Require consent before showing anything ---
     if not st.session_state.get("pre_consent", False):
@@ -736,6 +970,37 @@ def page_dashboard2():
         st.stop()
 
     # ---------------- CHORD CHART ----------------
+    # Chord chart evaluation (insert before the open feedback text_area)
+    st.selectbox(
+        "How accurate and informative were the chord chart values and tooltips?",
+        [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
+        key="d2_chord_content"
+    )
+
+    st.selectbox(
+        "How clear was the chord chart at showing where HEADLINE over/under-reports actual crime?",
+        [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
+        key="d2_chord_learnability"
+    )
+
+    st.selectbox(
+        "How easy was it to interact with the chord chart (hover, select time, read tooltips)?",
+        [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
+        key="d2_chord_operability"
+    )
+
+    st.selectbox(
+        "How easy was it to locate a specific crime category and month in the chord chart?",
+        [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
+        key="d2_chord_easeofuse"
+    )
+
+    st.selectbox(
+        "How useful was the chord chart for spotting crime category/time combinations with large crime differences?",
+        [PLACEHOLDER, "Very useful", "Useful", "Neutral", "Not very useful", "Not useful at all"],
+        key="d2_chord_usefulness"
+    )
+
     st.header("Chord Chart")
     st.text_area("Open feedback — CHORD CHART", key="d2_open_chord_feedback")
 
@@ -960,6 +1225,8 @@ def page_dashboard2():
     if st.button("Finish and go to Thank You"):
         # Validate required d2_ keys (including open feedback text areas)
         required_d2 = [
+            "d2_chord_content", "d2_chord_learnability", "d2_chord_operability", "d2_chord_easeofuse", 
+            "d2_chord_usefulness",
             "d2_heatmap_content", "d2_heatmap_learnability", "d2_heatmap_operability",
             "d2_heatmap_easeofuse", "d2_heatmap_usefulness",
             "d2_hoverlist_content", "d2_hoverlist_learnability", "d2_hoverlist_operability",
@@ -1005,8 +1272,11 @@ def page_dashboard2():
 
 
 def page_post_questions():
-    PLACEHOLDER = "Select an option"
+     
     st.set_page_config(page_title="Post‑Dashboard 2 Survey", layout="wide")
+    if st.session_state.get("_nav_rerun_once", False):
+            # reset the one-time rerun guard when the target page loads
+            st.session_state["_nav_rerun_once"] = False
     st.title("Section 3 – Post Dashboard Survey - Change in Understanding")
     st.markdown("After viewing the dashboards, please answer the following questions about policing, headlines, and your perceptions. These mirror the baseline questions so we can measure any change in understanding.")
 
@@ -1018,7 +1288,7 @@ def page_post_questions():
             return
         st.stop()
 
-    PLACEHOLDER = "Select an option"
+     
 
     # ---------------- POLICING QUESTIONS (post) ----------------
     st.header("Your Views on Policing in Your Borough (after viewing dashboards)")
@@ -1129,9 +1399,9 @@ def page_post_questions():
         "Burglary", "Public Order Offences", "Domestic Abuse", "Theft",
         "Vehicle Offences"
     ]
-
+    # ---------------- CRIME CATEGORY QUESTIONS (post) ----------------
     st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
-
+    
     post_crime_most = st.multiselect(
         "After viewing the dashboards, select **three** crime categories you believe have the **MOST offences** in your Borough.",
         crime_categories,
@@ -1144,6 +1414,23 @@ def page_post_questions():
         key="post_crime_least"
     )
 
+    # validate exact-3 selections and check overlaps for post crime category selections
+    post_valid_most = is_exactly_three(post_crime_most)
+    post_valid_least = is_exactly_three(post_crime_least)
+
+    if not post_valid_most:
+        st.warning("Please select exactly 3 categories for 'MOST offences in your Borough' (post).")
+    if not post_valid_least:
+        st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough' (post).")
+
+    post_crime_overlap_most_least = _overlap_warning(post_crime_most, post_crime_least)
+    if post_crime_overlap_most_least:
+        st.warning(
+            "You have selected the same crime categories in both the **MOST offences** and **LEAST offences** lists (post). "
+            "Please choose different categories so the 'most' and 'least' answers are distinct. "
+            f"Overlapping items: {', '.join(post_crime_overlap_most_least)}"
+        )
+
     post_media_least = st.multiselect(
         "After viewing the dashboards, select **three** crime categories you believe the media covers **THE LEAST** in London headlines.",
         crime_categories,
@@ -1155,6 +1442,23 @@ def page_post_questions():
         crime_categories,
         key="post_media_most"
     )
+
+    # validate exact-3 selections and check overlaps for post media coverage selections
+    post_valid_media_least = is_exactly_three(post_media_least)
+    post_valid_media_most = is_exactly_three(post_media_most)
+
+    if not post_valid_media_least:
+        st.warning("Please select exactly 3 categories for 'THE LEAST covered in headlines' (post).")
+    if not post_valid_media_most:
+        st.warning("Please select exactly 3 categories for 'MOST PROMINENTLY covered in headlines' (post).")
+
+    post_crime_overlap_media = _overlap_warning(post_media_most, post_media_least)
+    if post_crime_overlap_media:
+        st.warning(
+            "You have selected the same crime categories in both the **MOST PROMINENTLY covered** and **THE LEAST covered** media lists (post). "
+            "Please choose different categories so media coverage answers are distinct. "
+            f"Overlapping items: {', '.join(post_crime_overlap_media)}"
+        )
 
     
     # ---------------- BOROUGH CRIME PERCEPTION (post) ----------------
@@ -1182,19 +1486,50 @@ def page_post_questions():
         key="post_highest_boroughs"
     )
 
+    # Basic exact-3 validation
+    post_valid_lowest_boroughs = is_exactly_three(post_lowest_boroughs)
+    post_valid_highest_boroughs = is_exactly_three(post_highest_boroughs)
+
+    if not post_valid_lowest_boroughs:
+        st.warning("Please select exactly 3 boroughs for the LOWEST crime question (post).")
+    if not post_valid_highest_boroughs:
+        st.warning("Please select exactly 3 boroughs for the HIGHEST crime question (post).")
+
     if len(post_lowest_boroughs) != 3:
         st.warning("Please select exactly 3 boroughs for the LOWEST crime question (post).")
     if len(post_highest_boroughs) != 3:
         st.warning("Please select exactly 3 boroughs for the HIGHEST crime question (post).")
+
+    # Overlap between post lowest and post highest (contradiction)
+    post_boroughs_overlap = _overlap_warning(post_lowest_boroughs, post_highest_boroughs)
+    if post_boroughs_overlap:
+        st.warning(
+            "You have selected the same borough(s) for both the **LOWEST** and **HIGHEST** crime questions (post). "
+            "Please select different boroughs for each question. "
+            f"Overlapping items: {', '.join(post_boroughs_overlap)}"
+        )
 
     # ---------------- VALIDATION HELPERS ----------------
     # Validate multiselect counts (post)
     def is_exactly_three(selection):
         return isinstance(selection, list) and len(selection) == 3
 
-    if not (is_exactly_three(post_crime_most) and is_exactly_three(post_crime_least)
-            and is_exactly_three(post_media_least) and is_exactly_three(post_media_most)):
+    if not (is_exactly_three(post_crime_most) 
+            and is_exactly_three(post_crime_least)
+            and is_exactly_three(post_media_least) 
+            and is_exactly_three(post_media_most)):
         st.warning("Please select exactly 3 categories for each of the 'select three' questions (post).")
+
+    post_overlap_errors = []
+    if _overlap_warning(st.session_state.get("post_crime_most", []), st.session_state.get("post_crime_least", [])):
+        post_overlap_errors.append("Same categories selected for MOST and LEAST offences (post).")
+    if _overlap_warning(st.session_state.get("post_media_most", []), st.session_state.get("post_media_least", [])):
+        post_overlap_errors.append("Same categories selected for MOST and LEAST media coverage (post).")
+    if post_overlap_errors:
+        st.error("Please resolve the following contradictions before continuing:")
+        for e in post_overlap_errors:
+            st.write(f"- {e}")
+        return
 
 
     def is_missing(val, placeholder=PLACEHOLDER):
@@ -1298,7 +1633,8 @@ def page_post_questions():
 
         # Use the gspread helper defined above
         try:
-            save_to_google_sheets_rows([row_values])
+            save_rows_to_sheet([row_values])
+            # save_to_google_sheets_rows([row_values])
             st.success("Responses saved to Google Sheets.")
         except Exception as e:
             st.error(f"Failed to save responses to Google Sheets: {e}")
@@ -1314,6 +1650,9 @@ def page_post_questions():
 
 def page_thank_you():
     st.set_page_config(page_title="Thank You", layout="wide")
+    if st.session_state.get("_nav_rerun_once", False):
+            # reset the one-time rerun guard when the target page loads
+            st.session_state["_nav_rerun_once"] = False
     st.title("Thank you")
 
     st.markdown(
@@ -1367,293 +1706,3 @@ def router():
 init_state()
 router()
 
-
-def leftover_code():
-
-    dfsdf
-    #     # ---------------- FINISH / SUBMIT VALIDATION (single handler) ----------------
-    # st.markdown("---")
-    # st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
-
-    # def is_missing(val, placeholder=PLACEHOLDER):
-    #     if val is None:
-    #         return True
-    #     if isinstance(val, str) and val.strip() == "":
-    #         return True
-    #     if isinstance(val, list) and len(val) == 0:
-    #         return True
-    #     if val == placeholder:
-    #         return True
-    #     return False
-
-    # def is_exactly_three(selection):
-    #     return isinstance(selection, list) and len(selection) == 3
-
-    # required_post_selects = [
-    #     "post_police_reliability", "post_police_fairness", "post_police_job",
-    #     "post_news_frequency", "post_headline_accuracy",
-    #     "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-    #     "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    #     "post_lowest_boroughs", "post_highest_boroughs"
-    # ]
-
-    # if st.button("Finish and go to Thank You"):
-    #     # 1) basic post required fields
-    #     missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-    #     if missing_post:
-    #         st.error("Please answer all required post‑dashboard questions before finishing.")
-    #         for k in missing_post:
-    #             label = k.replace("post_", "").replace("_", " ").capitalize()
-    #             st.write(f"- {label}: {repr(st.session_state.get(k))}")
-    #         st.stop()
-
-    #     # 2) exact-3 checks
-    #     if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-    #             is_exactly_three(st.session_state.get("post_crime_least")) and
-    #             is_exactly_three(st.session_state.get("post_media_least")) and
-    #             is_exactly_three(st.session_state.get("post_media_most"))):
-    #         st.error("Please ensure all 'select three' post questions have exactly three selections.")
-    #         st.stop()
-
-    #     # 3) borough checks
-    #     if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-    #             len(st.session_state.get("post_highest_boroughs", [])) == 3):
-    #         st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-    #         st.stop()
-
-    #     # 4) ensure pre answers cached
-    #     pre_answers = st.session_state.get("pre_answers")
-    #     if not pre_answers:
-    #         st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-    #         if st.button("Go to Pre‑questions"):
-    #             st.session_state.page = "preliminary"
-    #             st.experimental_rerun()
-    #         st.stop()
-
-    #     # 5) build row (normalize lists to strings)
-    #     def norm(v):
-    #         if isinstance(v, list):
-    #             return ";".join(map(str, v))
-    #         if v is None:
-    #             return ""
-    #         return v
-
-    #     # post keys to include
-    #     post_keys = [
-    #         "post_police_reliability", "post_police_fairness", "post_police_job",
-    #         "post_news_frequency", "post_headline_accuracy",
-    #         "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-    #         "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    #         "post_lowest_boroughs", "post_highest_boroughs"
-    #     ]
-    #     post_answers = {k: norm(st.session_state.get(k)) for k in post_keys}
-
-    #     # merge pre + post (pre_answers already contains pre_ keys)
-    #     row = {}
-    #     # normalize pre answers too
-    #     for k, v in (pre_answers or {}).items():
-    #         row[k] = norm(v)
-    #     row.update(post_answers)
-
-    #     # add metadata
-    #     row["user_id"] = st.session_state.get("user_id", "")
-    #     row["saved_at"] = datetime.utcnow().isoformat()
-
-    #     # include open feedback if present
-    #     open_feedback_keys = [
-    #         "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-    #         "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
-    #         "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-    #         "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-    #     ]
-    #     for k in open_feedback_keys:
-    #         if k in st.session_state:
-    #             row[k] = norm(st.session_state.get(k))
-
-    #     # 6) write to Google Sheets
-    #     try:
-    #         creds_json = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON")  # set this in Streamlit secrets
-    #         SPREADSHEET_ID = st.secrets.get("SPREADSHEET_ID")       # set this in secrets
-    #         SHEET_RANGE = st.secrets.get("SHEET_RANGE", "Responses!A1")
-    #         # build a list of values in the order you want columns to appear
-    #         # Example: choose an explicit column order
-    #         columns = [
-    #             "user_id", "saved_at",
-    #             # pre keys (explicit order)
-    #             "pre_age_band", "pre_education", "pre_borough",
-    #             # ... add all pre keys in the order you want ...
-    #             # post keys
-    #             "post_police_reliability", "post_police_fairness", "post_police_job",
-    #             # ... add remaining post keys ...
-    #         ]
-    #         # ensure columns exist in row; fill missing with ""
-    #         values = [row.get(c, "") for c in columns]
-
-    #         append_result = append_row_to_sheet(SPREADSHEET_ID, SHEET_RANGE, values, creds_json)
-    #         st.success("Responses saved to Google Sheets.")
-    #     except Exception as e:
-    #         st.error(f"Failed to save responses: {e}")
-    #         st.stop()
-
-    #     # 7) navigate to thank you
-    #     st.session_state.page = "thank_you"
-    #     # safer: return and let Streamlit rerun naturally
-    #     return
-
-
-
-    #     st.markdown("---")
-    #     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
-
-    #     # Helper validators
-    #     def is_missing(val, placeholder=PLACEHOLDER):
-    #         return val in (None, placeholder, [], "")
-
-    #     def is_exactly_three(selection):
-    #         return isinstance(selection, list) and len(selection) == 3
-
-    #     # Keys required for post questions (all keys used above)
-    #     required_post_selects = [
-    #         "post_police_reliability", "post_police_fairness", "post_police_job",
-    #         "post_news_frequency", "post_headline_accuracy",
-    #         "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-    #         "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    #         "post_lowest_boroughs", "post_highest_boroughs"
-    #     ]
-
-    #     # Keys required from the pre (only enforced here, same names used in page_preliminary)
-    #     required_pre_keys = [
-    #         "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-    #         "pre_news_frequency", "pre_headline_accuracy",
-    #         "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
-    #         "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
-    #         "pre_lowest_boroughs", "pre_highest_boroughs"
-    #     ]
-
-    #         # assume validation passed earlier and pre_answers cached
-    #     pre_answers = st.session_state.get("pre_answers") or {}
-    #     if not pre_answers:
-    #         st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-    #         if st.button("Go to Pre‑questions"):
-    #             st.session_state.page = "preliminary"
-    #             st.experimental_rerun()
-    #         st.stop()
-
-    #     # Build post answers dict
-    #     post_keys = [
-    #         "post_police_reliability", "post_police_fairness", "post_police_job",
-    #         "post_news_frequency", "post_headline_accuracy",
-    #         "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-    #         "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    #         "post_lowest_boroughs", "post_highest_boroughs"
-    #     ]
-    #     post_answers = {k: st.session_state.get(k) for k in post_keys}
-
-    #     # Merge and add metadata
-    #     row = {}
-    #     row.update(pre_answers)
-    #     row.update(post_answers)
-    #     row["user_id"] = st.session_state.get("user_id")
-    #     row["saved_at"] = datetime.utcnow().isoformat()
-
-    #     # include any open feedback keys if present
-    #     open_feedback_keys = [
-    #         "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-    #         "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
-    #         "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-    #         "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-    #     ]
-    #     for k in open_feedback_keys:
-    #         if k in st.session_state:
-    #             row[k] = st.session_state.get(k)
-
-    #     # Append to CSV
-    #     append_row_to_csv(row, out_path="responses.csv")
-
-    #     st.success("Responses saved.")
-    #     st.session_state.page = "thank_you"
-    #     # safer: return and let Streamlit rerun naturally
-
-    #     if st.button("Finish and go to Thank You"):
-    #         # Check post required fields
-    #         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-    #         if missing_post:
-    #             st.error("Please answer all required post‑dashboard questions before finishing.")
-    #             st.info("Missing items:")
-    #             for k in missing_post:
-    #                 label = k.replace("post_", "").replace("_", " ").capitalize()
-    #                 st.write(f"- {label}: {repr(st.session_state.get(k))}")
-    #             st.stop()
-
-    #         # Validate exact-3 multiselects (post)
-    #         if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-    #                 is_exactly_three(st.session_state.get("post_crime_least")) and
-    #                 is_exactly_three(st.session_state.get("post_media_least")) and
-    #                 is_exactly_three(st.session_state.get("post_media_most"))):
-    #             st.error("Please ensure all 'select three' post questions have exactly three selections.")
-    #             st.stop()
-
-    #         # Validate borough multiselects (post)
-    #         if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-    #                 len(st.session_state.get("post_highest_boroughs", [])) == 3):
-    #             st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-    #             st.stop()
-
-    #         # Ensure pre-questions exist (so we can compute gain)
-            
-
-    #         # Later, when validating before computing gain:
-    #         pre_cache = st.session_state.get("pre_answers")
-
-    #         if not pre_cache:
-    #             st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-    #             if st.button("Go to Pre‑questions"):
-    #                 st.session_state.page = "preliminary"
-    #                 st.experimental_rerun()
-    #             st.stop()
-
-    #         # Optional: check specific keys inside the cached dict
-    #         required_pre_keys = [
-    #             "pre_police_reliability", "pre_police_fairness", "pre_police_job",
-    #             "pre_news_frequency", "pre_headline_accuracy",
-    #             "pre_headline_inflation", "pre_headline_truth", "pre_crime_increase",
-    #             "pre_crime_most", "pre_crime_least", "pre_media_least", "pre_media_most",
-    #             "pre_lowest_boroughs", "pre_highest_boroughs"
-    #         ]
-
-    #         def is_missing(val, placeholder=PLACEHOLDER):
-    #             return val in (None, placeholder, [], "")
-
-    #         missing_pre = [k for k in required_pre_keys if is_missing(pre_cache.get(k))]
-    #         if missing_pre:
-    #             st.error("Preliminary responses are incomplete. Please complete the pre‑survey questions first.")
-    #             for k in missing_pre:
-    #                 label = k.replace("pre_", "").replace("_", " ").capitalize()
-    #                 st.write(f"- {label}: {repr(pre_cache.get(k))}")
-    #             if st.button("Go to Pre‑questions"):
-    #                 st.session_state.page = "preliminary"
-    #                 st.experimental_rerun()
-    #             st.stop()   
-
-    #         # missing_pre = [k for k in required_pre_keys if k not in st.session_state or is_missing(st.session_state.get(k))]
-    #         # if missing_pre:
-    #         #     st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-    #         #     st.info("Missing preliminary items:")
-    #         #     for k in missing_pre:
-    #         #         label = k.replace("pre_", "").replace("_", " ").capitalize()
-    #         #         st.write(f"- {label}: {repr(st.session_state.get(k))}")
-    #         #     if st.button("Go to Pre‑questions"):
-    #         #         st.session_state.page = "preliminary"
-    #         #         # st.experimental_rerun()
-    #         #     st.stop()
-
-    #         # All checks passed — compute summary and navigate
-    #         st.success("Post‑survey complete. Calculating summary of changes...")
-    #         # (existing gain summary code can remain here; you already have it below)
-    #         # After computing and showing the summary, navigate to Thank You
-    #         st.info("You will now be taken to the Thank You page.")
-    #         st.session_state.page = "thank_you"
-    #         st.experimental_rerun()
-
-    #         st.success("Responses saved.")
-    #         return
