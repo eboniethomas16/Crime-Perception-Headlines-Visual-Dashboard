@@ -1269,8 +1269,24 @@ def page_dashboard2():
             st.session_state.page = "post_questions"
             return
 
+# USE TO COMPUTE NET CHANGE IN MOST/LEAST SELECTED CATEGORIES (POST vs PRE)
+def _score_selection(categories, most, least):
+    """Return dict mapping category -> score (+1 if in most, -1 if in least)."""
+    s = {c: 0 for c in categories}
+    for c in (most or []):
+        if c in s:
+            s[c] += 1
+    for c in (least or []):
+        if c in s:
+            s[c] -= 1
+    return s
 
-
+def compute_net_change(categories, pre_most, pre_least, post_most, post_least):
+    """Compute net change = sum(post_scores - pre_scores) across all categories (integer)."""
+    pre_scores = _score_selection(categories, pre_most, pre_least)
+    post_scores = _score_selection(categories, post_most, post_least)
+    net = sum(post_scores[c] - pre_scores.get(c, 0) for c in categories)
+    return int(net)
 def page_post_questions():
      
     st.set_page_config(page_title="Post‑Dashboard 2 Survey", layout="wide")
@@ -1403,9 +1419,9 @@ def page_post_questions():
     st.markdown("**Select exactly three options for each question.** If you select more or fewer than three, you will see a warning and cannot continue.")
     
     post_crime_most = st.multiselect(
-        "After viewing the dashboards, select **three** crime categories you believe have the **MOST offences** in your Borough.",
-        crime_categories,
-        key="post_crime_most"
+    "After viewing the dashboards, select **three** crime categories you believe have the **MOST offences** in your Borough.",
+    crime_categories,
+    key="post_crime_most"
     )
 
     post_crime_least = st.multiselect(
@@ -1414,7 +1430,7 @@ def page_post_questions():
         key="post_crime_least"
     )
 
-    # validate exact-3 selections and check overlaps for post crime category selections
+    # Validate exact-3 selections immediately after widget creation
     post_valid_most = is_exactly_three(post_crime_most)
     post_valid_least = is_exactly_three(post_crime_least)
 
@@ -1423,6 +1439,7 @@ def page_post_questions():
     if not post_valid_least:
         st.warning("Please select exactly 3 categories for 'LEAST offences in your Borough' (post).")
 
+    # Overlap check (most vs least)
     post_crime_overlap_most_least = _overlap_warning(post_crime_most, post_crime_least)
     if post_crime_overlap_most_least:
         st.warning(
@@ -1443,7 +1460,7 @@ def page_post_questions():
         key="post_media_most"
     )
 
-    # validate exact-3 selections and check overlaps for post media coverage selections
+    # Validate media exact-3 selections
     post_valid_media_least = is_exactly_three(post_media_least)
     post_valid_media_most = is_exactly_three(post_media_most)
 
@@ -1452,6 +1469,7 @@ def page_post_questions():
     if not post_valid_media_most:
         st.warning("Please select exactly 3 categories for 'MOST PROMINENTLY covered in headlines' (post).")
 
+    # Overlap check for media lists
     post_crime_overlap_media = _overlap_warning(post_media_most, post_media_least)
     if post_crime_overlap_media:
         st.warning(
@@ -1475,9 +1493,9 @@ def page_post_questions():
     ]
 
     post_lowest_boroughs = st.multiselect(
-        "After viewing the dashboards, select **three** boroughs you believe have the **LOWEST** crime offences in London.",
-        boroughs,
-        key="post_lowest_boroughs"
+    "After viewing the dashboards, select **three** boroughs you believe have the **LOWEST** crime offences in London.",
+    boroughs,
+    key="post_lowest_boroughs"
     )
 
     post_highest_boroughs = st.multiselect(
@@ -1486,18 +1504,13 @@ def page_post_questions():
         key="post_highest_boroughs"
     )
 
-    # Basic exact-3 validation
+    # Validate borough selections immediately
     post_valid_lowest_boroughs = is_exactly_three(post_lowest_boroughs)
     post_valid_highest_boroughs = is_exactly_three(post_highest_boroughs)
 
     if not post_valid_lowest_boroughs:
         st.warning("Please select exactly 3 boroughs for the LOWEST crime question (post).")
     if not post_valid_highest_boroughs:
-        st.warning("Please select exactly 3 boroughs for the HIGHEST crime question (post).")
-
-    if len(post_lowest_boroughs) != 3:
-        st.warning("Please select exactly 3 boroughs for the LOWEST crime question (post).")
-    if len(post_highest_boroughs) != 3:
         st.warning("Please select exactly 3 boroughs for the HIGHEST crime question (post).")
 
     # Overlap between post lowest and post highest (contradiction)
@@ -1508,6 +1521,50 @@ def page_post_questions():
             "Please select different boroughs for each question. "
             f"Overlapping items: {', '.join(post_boroughs_overlap)}"
         )
+
+    # --- read pre answers safely (may be None if missing) ---
+    pre_answers = st.session_state.get("pre_answers", {}) or {}
+    pre_crime_most = pre_answers.get("pre_crime_most", []) or []
+    pre_crime_least = pre_answers.get("pre_crime_least", []) or []
+    pre_media_most = pre_answers.get("pre_media_most", []) or []
+    pre_media_least = pre_answers.get("pre_media_least", []) or []
+    pre_lowest_boroughs = pre_answers.get("pre_lowest_boroughs", []) or []
+    pre_highest_boroughs = pre_answers.get("pre_highest_boroughs", []) or []
+
+    # --- post widgets (assumes these local variables already exist in the page) ---
+    # post_crime_most, post_crime_least, post_media_most, post_media_least,
+    # post_lowest_boroughs, post_highest_boroughs
+
+    # Compute net changes (integers; positive means net shift toward "most" selections)
+    net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
+    net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
+    # For boroughs use the boroughs list used on the page
+    net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
+
+    # Save numeric results into session_state for later use (not shown to users)
+    st.session_state["net_change_crime"] = net_change_crime
+    st.session_state["net_change_media"] = net_change_media
+    st.session_state["net_change_boroughs"] = net_change_boroughs
+
+    # Build a hidden row (order and fields are up to you)
+    hidden_headers = ["user_id", "timestamp_utc", "net_change_crime", "net_change_media", "net_change_boroughs"]
+    hidden_row = [
+        st.session_state.get("user_id", ""),
+        datetime.utcnow().isoformat(),
+        net_change_crime,
+        net_change_media,
+        net_change_boroughs,
+    ]
+
+    # Persist the hidden row (try Sheets, fallback to CSV)
+    try:
+        # save_rows_to_sheet expects list-of-rows; pass headers so sheet header check can run
+        save_rows_to_sheet([hidden_row], headers=hidden_headers)
+    except Exception:
+        # fallback: local CSV (append_row_to_csv expects a dict)
+        append_row_to_csv(dict(zip(hidden_headers, hidden_row)))                      
+
+
 
     # ---------------- VALIDATION HELPERS ----------------
     # Validate multiselect counts (post)
@@ -1525,12 +1582,13 @@ def page_post_questions():
         post_overlap_errors.append("Same categories selected for MOST and LEAST offences (post).")
     if _overlap_warning(st.session_state.get("post_media_most", []), st.session_state.get("post_media_least", [])):
         post_overlap_errors.append("Same categories selected for MOST and LEAST media coverage (post).")
+    if _overlap_warning(st.session_state.get("post_lowest_boroughs", []), st.session_state.get("post_highest_boroughs", [])):
+        post_overlap_errors.append("Same boroughs selected for LOWEST and HIGHEST crime (post).")
     if post_overlap_errors:
         st.error("Please resolve the following contradictions before continuing:")
         for e in post_overlap_errors:
             st.write(f"- {e}")
         return
-
 
     def is_missing(val, placeholder=PLACEHOLDER):
         if val is None:
