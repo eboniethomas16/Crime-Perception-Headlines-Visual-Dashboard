@@ -28,6 +28,16 @@ headers = [
         "Time on Question (seconds)",
         "Total Elapsed Time (seconds)",
     ]
+LIKERT_7 = [
+    "Select an option",
+    "Very poor",
+    "Poor",
+    "Somewhat poor",
+    "Neutral",
+    "Somewhat good",
+    "Good",
+    "Very good"
+]
 
 def _normalize_header_cell(s):
     if s is None:
@@ -708,7 +718,7 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How clear was the map at communicating the two variables (crime count and perception) at a glance?",
+        "How clear was the **legend** and **map** at communicating the two variables (crime count and perception) at a glance?",
         [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
         key="d1_bivmap_learnability"
     )
@@ -720,7 +730,7 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How easy was it to operate the map controls (zoom, pan, legend, hover) without confusion?",
+        "How easy was it to interact with the map without confusion(i.e. hover highlighting, click selection)?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_bivmap_operability"
     )
@@ -731,7 +741,7 @@ def page_dashboard1():
         key="d1_bivmap_usefulness"
     )
 
-    st.text_area("Open feedback — BIVARIATE CHOROPLETH MAP", key="d1_open_chord_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the bivariate choropleth map, please share them here:", key="d1_open_chord_feedback")
 
 
     # ---------------- HEATMAP ----------------
@@ -750,7 +760,7 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How easy was it to interact with the heatmap (hover time period, select/unselect borough)?",
+        "How easy was it to interact with the heatmap (hover time periods, select/unselect borough, scrollbar)?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_heatmap_operability"
     )
@@ -762,15 +772,15 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How useful was the heatmap for spotting borough/time combinations with over/under estimates to actual crime?",
+        "How useful was the heatmap for identifying where the chosen perception metric over‑ or under‑estimated crime by category and time compared with actual crime?",
         [PLACEHOLDER, "Very useful", "Useful", "Neutral", "Not very useful", "Not useful at all"],
         key="d1_heatmap_usefulness"
     )
 
-    st.text_area("Open feedback — HEATMAP", key="d1_open_heatmap_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the heatmap, please share them here:", key="d1_open_heatmap_feedback")
 
 
-    # ---------------- HOVERLIST ----------------
+    # ---------------- HOVER LIST ----------------
     st.header("Hoverlist (Perception vs Crime)")
 
     st.selectbox(
@@ -786,7 +796,7 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How easy was it to control hover interactions and avoid accidental selections?",
+        "How easy was it to control hover interactions on the line charts and heatmap to change hoverlist values and avoid accidental selections?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_hoverlist_operability"
     )
@@ -803,14 +813,14 @@ def page_dashboard1():
         key="d1_hoverlist_usefulness"
     )
 
-    st.text_area("Open feedback — HOVER LIST", key="d1_open_hoverlist_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the hoverlist, please share them here:", key="d1_open_hoverlist_feedback")
 
 
     # ---------------- LINE CHARTS ----------------
     st.header("Line Charts")
 
     st.selectbox(
-        "How accurate and clear were the values and scales on the line charts?",
+        "How accurate and clear were the values and scales on the crime, perception, and residuals line charts (e.g., axes, labels)?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
         key="d1_lines_content"
     )
@@ -828,7 +838,7 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How easy was it to use the hoverline and zoom controls on the line charts?",
+        "How easy was it to use the interactive features on the line charts(e.g., hoverline, zoom controls, Show/Hide residual button)?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_lines_operability"
     )
@@ -838,9 +848,6 @@ def page_dashboard1():
         [PLACEHOLDER, "Very useful", "Useful", "Neutral", "Not very useful", "Not useful at all"],
         key="d1_lines_usefulness"
     )
-
-    st.text_area("Open feedback — LINE CHARTS", key="d1_open_linecharts_feedback")
-
 
     # ---------------- RESIDUALS CHART ----------------
     st.header("Residuals Chart")
@@ -858,14 +865,17 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How easy was it to spot the largest residual spikes for a selected crime?",
+        "How easy was it to spot the largest residual spikes for a selected borough?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_residuals_easeofuse"
     )
 
+    st.text_area("REQUIRED: If you have any additional comments about any of the line charts, please share them here:", key="d1_open_linecharts_feedback")
+
+
 
     # ---------------- SUMMARY PILLS ----------------
-    st.header("Summary Pills")
+    st.header("Summary Pills and Selection Dropdown")
 
     st.selectbox(
         "How clear were the summary pills (total count; avg perception; 12‑month change) at a glance?",
@@ -886,18 +896,51 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How easy was it to select boroughs in the dropdown list at the top of the page?",
+        "How easy was it to select the perception metrics and boroughs in the dropdown list at the top of the page?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d1_pills_operability"
     )
 
     st.selectbox(
-        "How useful were the summary pills for forming an initial judgement about the selected crime category?",
+        "How useful were the summary pills for forming an initial judgement about the selected crime categories?",
         [PLACEHOLDER, "Yes — completely", "Mostly", "Somewhat", "Not really", "Not at all"],
         key="d1_pills_usefulness"
     )
 
-    st.text_area("Open feedback — SUMMARY PILLS", key="d1_open_summary_pills_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the summary pills, please share them here:", key="d1_open_summary_pills_feedback")
+
+    # ---------------- DASHBOARD LEVEL ----------------
+    st.header("Dashboard-Level Questions")
+
+    st.selectbox(
+    "How effective were the dashboard’s visualization tools (bivariate map, heatmap, line charts, hoverlist, summary pills) at helping you read and interpret the data?",
+        LIKERT_7,
+        key="d1_overall_ui"
+        )
+
+    st.selectbox(
+        "How well did the dashboard support situational awareness by representing instability, conveying complexity and variability, drawing attention to important changes in the data reducing mental effort, and enabling monitoring of multiple boroughs at once?",
+        LIKERT_7,
+        key="d1_overall_situational_awareness"
+    )
+
+    st.selectbox(
+        "Overall, how satisfied are you with this dashboard, including comfort using it, the user interface, and the available features and capabilities?",
+        LIKERT_7,
+        key="d1_overall_satisfaction"
+    )
+
+    st.selectbox(
+        "How well does the dashboard support your regular tasks by organising information to match your work, fitting screen content to task needs, and allowing you to set or customise output/report displays for your tasks?",
+        LIKERT_7,
+        key="d1_overall_task_suitability"
+    )
+
+    st.selectbox(
+        "How well does the system meet expectations (i.e. readable sizing of each chart component, responsiveness (speed), and integration of features so they work together smoothly?)",
+        LIKERT_7,
+        key="d1_overall_system_capabilities"
+    )
 
 
     # ---------------- CONTINUE BUTTON + VALIDATION ----------------
@@ -921,7 +964,10 @@ def page_dashboard1():
             # --- open feedback text areas (required) ---
             "d1_open_chord_feedback", "d1_open_heatmap_feedback",
             "d1_open_hoverlist_feedback", "d1_open_linecharts_feedback",
-            "d1_open_summary_pills_feedback"
+            "d1_open_summary_pills_feedback",
+            # --- dashboard-level questions ---
+            "d1_overall_ui", "d1_overall_situational_awareness", 
+            "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities"
         ]
 
         def is_missing_value(val, placeholder=PLACEHOLDER):
@@ -957,7 +1003,7 @@ def page_dashboard2():
             # reset the one-time rerun guard when the target page loads
             st.session_state["_nav_rerun_once"] = False
     st.title("Dashboard 2 – Headlines vs Crime")
-    st.markdown("Please answer the questions below about Dashboard 2. All single-choice items start unselected.")
+    st.markdown("Please answer the questions below about Dashboard 2. YOU MUST ANSWER ALL QUESTIONS BEFORE CONTINUING.")
 
      
 
@@ -970,7 +1016,9 @@ def page_dashboard2():
         st.stop()
 
     # ---------------- CHORD CHART ----------------
-    # Chord chart evaluation (insert before the open feedback text_area)
+    st.header("Chord Chart")
+    st.markdown("Please answer **ALL** questions below about the Chord Chart")
+
     st.selectbox(
         "How accurate and informative were the chord chart values and tooltips?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
@@ -978,34 +1026,35 @@ def page_dashboard2():
     )
 
     st.selectbox(
-        "How clear was the chord chart at showing where HEADLINE over/under-reports actual crime?",
+        "How clear was the chord chart at showing where crime category co-occurrences in crime news happen in headlines?",
         [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
         key="d2_chord_learnability"
     )
 
     st.selectbox(
-        "How easy was it to interact with the chord chart (hover, select time, read tooltips)?",
+        "How easy was it to interact with the chord chart (hover over internal ribbons, hover over outer arcs, read tooltips)?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_chord_operability"
     )
 
     st.selectbox(
-        "How easy was it to locate a specific crime category and month in the chord chart?",
+        "How easy was it to locate a specific crime category in the chord chart?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_chord_easeofuse"
     )
 
     st.selectbox(
-        "How useful was the chord chart for spotting crime category/time combinations with large crime differences?",
+        "How useful was the chord chart for spotting crime category co-occurrences in crime news headlines?",
         [PLACEHOLDER, "Very useful", "Useful", "Neutral", "Not very useful", "Not useful at all"],
         key="d2_chord_usefulness"
     )
 
-    st.header("Chord Chart")
-    st.text_area("Open feedback — CHORD CHART", key="d2_open_chord_feedback")
+    
+    st.text_area("REQUIRED: If you have any additional comments about the chord chart, please share them here:", key="d2_open_chord_feedback")
 
     # ---------------- HEATMAP ----------------
     st.header("Heatmap (Headlines vs Crime)")
+    st.markdown("Please answer **ALL** questions below about the Heatmap")
 
     st.selectbox(
         "How accurate and informative were the heatmap values and tooltips?",
@@ -1014,7 +1063,7 @@ def page_dashboard2():
     )
 
     st.selectbox(
-        "How clear was the heatmap at showing where HEADLINE over/under-reports actual crime?",
+        "How easy was it to interact with the heatmap (hover time periods, select/unselect crime categories, scrollbar)?",
         [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
         key="d2_heatmap_learnability"
     )
@@ -1032,15 +1081,15 @@ def page_dashboard2():
     )
 
     st.selectbox(
-        "How useful was the heatmap for spotting crime category/time combinations with large crime differences?",
+        "How useful was the heatmap for identifying where headlines over‑ or under‑estimate crime by category and time compared with actual crime?",
         [PLACEHOLDER, "Very useful", "Useful", "Neutral", "Not very useful", "Not useful at all"],
         key="d2_heatmap_usefulness"
     )
 
-    st.text_area("Open feedback — HEATMAP", key="d2_open_heatmap_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the heatmap, please share them here:", key="d2_open_heatmap_feedback")
 
     # ---------------- HOVER LIST ----------------
-    st.header("Hoverlist (Headlines vs Crime)")
+    st.header("Hoverlist (Headlines, Crime, Perception, Residuals)")
 
     st.selectbox(
         "How accurate and complete were the hoverlist values and labels?",
@@ -1055,7 +1104,7 @@ def page_dashboard2():
     )
 
     st.selectbox(
-        "How easy was it to control hover interactions and avoid accidental selections?",
+        "How easy was it to control hover interactions on the line charts and heatmap to change hoverlist values and avoid accidental selections?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_hoverlist_operability"
     )
@@ -1072,19 +1121,19 @@ def page_dashboard2():
         key="d2_hoverlist_usefulness"
     )
 
-    st.text_area("Open feedback — HOVER LIST", key="d2_open_hoverlist_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the hoverlist, please share them here:", key="d2_open_hoverlist_feedback")
 
     # ---------------- LINE CHARTS ----------------
-    st.header("Line Charts")
+    st.header("Line Charts (headlines, crime, perception, residuals)")
 
     st.selectbox(
-        "How accurate and clear were the values and scales on the line charts?",
+        "How accurate and clear were the values and scales on the crime, headlines, perception, and residuals line charts (e.g., axes, labels)?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
         key="d2_lines_content"
     )
 
     st.selectbox(
-        "How easy was it to compare multiple series (crime, perception, headlines) on the line charts?",
+        "How easy was it to compare multiple series (crime, perception, headlines, & residuals) on the line charts?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_lines_easeofuse"
     )
@@ -1096,7 +1145,7 @@ def page_dashboard2():
     )
 
     st.selectbox(
-        "How easy was it to use the hoverline and zoom controls on the line charts?",
+        "How easy was it to use the interactive features on the line charts(e.g., hoverline, zoom controls, perception metric list, Show/Hide residual button)?",
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_lines_operability"
     )
@@ -1107,7 +1156,6 @@ def page_dashboard2():
         key="d2_lines_usefulness"
     )
 
-    st.text_area("Open feedback — LINE CHARTS", key="d2_open_linecharts_feedback")
 
     # ---------------- RESIDUALS CHART ----------------
     st.header("Residuals Chart")
@@ -1129,6 +1177,9 @@ def page_dashboard2():
         [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_residuals_easeofuse"
     )
+
+    st.text_area("REQUIRED: If you have any additional comments about the any of the line charts, please share them here:", key="d2_open_linecharts_feedback")
+    
 
     # ---------------- SUMMARY PILLS ----------------
     st.header("Summary Pills")
@@ -1168,55 +1219,37 @@ def page_dashboard2():
     # ---------------- DASHBOARD LEVEL ----------------
     st.header("Dashboard-Level Questions")
 
+    # Dashboard 2 widgets (keys start with d2_) using the requested wording
     st.selectbox(
-        "How well did Dashboard 2 improve your situational awareness about headlines vs crime?",
-        [PLACEHOLDER, "Greatly improved", "Somewhat improved", "Neutral", "Slightly improved", "Not improved"],
-        key="d2_situational_awareness"
+        "How effective were the dashboard’s visualization tools (chord chart, heatmap, line charts, hoverlist, summary pills) at helping you read and interpret the data?",
+        LIKERT_7,
+        key="d2_overall_ui"
     )
 
     st.selectbox(
-        "How satisfied are you overall with Dashboard 2 for understanding headlines vs crime?",
-        [PLACEHOLDER, "Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"],
+        "How well did the dashboard support situational awareness by representing instability, conveying complexity and variability, drawing attention to important changes in the data, reducing mental effort, and enabling monitoring of multiple boroughs at once?",
+        LIKERT_7,
+        key="d2_overall_situational_awareness"
+    )
+
+    st.selectbox(
+        "Overall, how satisfied are you with this dashboard, including comfort using it, the user interface, and the available features and capabilities?",
+        LIKERT_7,
         key="d2_overall_satisfaction"
     )
 
-    st.text_area("Open feedback — CRIME VS. HEADLINES DASHBOARD", key="d2_open_summary_dashboard_feedback")
-
     st.selectbox(
-        "Does the dashboard include the functions and features you expect for this analysis (filters; tooltips; zoom; borough selection; summary pills)?",
-        [PLACEHOLDER, "All expected features present", "Most present", "Some present", "Few present", "None present"],
-        key="d2_features_coverage"
+        "How well does the dashboard support your regular tasks by organising information to match your work, fitting screen content to task needs, and allowing you to set or customise output/report displays for your tasks?",
+        LIKERT_7,
+        key="d2_overall_task_suitability"
     )
 
     st.selectbox(
-        "How well integrated are the dashboard features into a single coherent tool?",
-        [PLACEHOLDER, "Very well integrated", "Well integrated", "Neutral", "Poorly integrated", "Not integrated at all"],
-        key="d2_integration"
+        "How well does the system meet expectations (i.e. readable sizing of each chart component, responsiveness (speed), and integration of features so they work together smoothly?)",
+        LIKERT_7,
+        key="d2_overall_system_capabilities"
     )
 
-    st.selectbox(
-        "How would you rate the dashboard's performance (speed when filtering; hovering; zooming)?",
-        [PLACEHOLDER, "Very fast", "Fast", "Acceptable", "Slow", "Very slow"],
-        key="d2_performance"
-    )
-
-    st.selectbox(
-        "How well did Dashboard 2 support the task you came to do (compare headlines vs actual crime)?",
-        [PLACEHOLDER, "Yes — completely", "Mostly", "Somewhat", "Not really", "Not at all"],
-        key="d2_task_support"
-    )
-
-    st.selectbox(
-        "How clear is the dashboard's user interface (labels; legends; control placement) overall?",
-        [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
-        key="d2_userinterface"
-    )
-
-    st.selectbox(
-        "How would you rate the dashboard's overall visual design (colour choices; chart styles; layout)?",
-        [PLACEHOLDER, "Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"],
-        key="d2_visualdesign_satisfaction"
-    )
 
     st.markdown("---")
     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
@@ -1236,13 +1269,14 @@ def page_dashboard2():
             "d2_residuals_content", "d2_residuals_learnability", "d2_residuals_easeofuse",
             "d2_pills_learnability", "d2_pills_content", "d2_pills_easeofuse",
             "d2_pills_operability", "d2_pills_usefulness",
-            "d2_situational_awareness", "d2_overall_satisfaction",
-            "d2_features_coverage", "d2_integration", "d2_performance",
-            "d2_task_support", "d2_userinterface", "d2_visualdesign_satisfaction",
             # --- open feedback text areas (required) ---
             "d2_open_chord_feedback", "d2_open_heatmap_feedback",
             "d2_open_hoverlist_feedback", "d2_open_linecharts_feedback",
             "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
+            # --- dashboard-level questions ---
+            "d2_overall_ui", "d2_overall_situational_awareness", 
+            "d2_overall_satisfaction", "d2_overall_task_suitability",
+            "d2_overall_system_capabilities"
         ]
 
         def is_missing_value(val, placeholder=PLACEHOLDER):
