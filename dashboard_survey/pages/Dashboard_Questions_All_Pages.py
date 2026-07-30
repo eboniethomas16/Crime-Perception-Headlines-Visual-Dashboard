@@ -212,77 +212,6 @@ def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET
         return
 
 
-# def save_to_google_sheets(results_data):
-#     try:
-#         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-#         creds_dict = dict(st.secrets["gcp_service_account"])
-#         creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-#         client = gspread.authorize(creds)
-#         sheet = client.open("Survey Participants").sheet1
-        
-#         existing_records = sheet.get_all_records()
-        
-#         #there's no headers so we shall add them 
-#         if len(existing_records) == 0:
-#             headers = [
-#                 "User ID",
-#                 "ID",
-#                 "Data Provider",
-#                 "Project Name",
-#                 "Consumer Team",
-#                 "Consumer Name",
-#                 "Consumer Description",
-#                 "Variation Type",
-#                 "Variation Value",
-#                 "Purpose",
-#                 "AI Final Decision",
-#                 "Human Expert: Seniority",
-#                 "Human Expert: Hastiness (1: Very Hasty | 7: Very Formal)",
-#                 "Human Expert: Meaning Preservation (1: Very Different | 7: Very Similar)",
-#                 "Time on Question (seconds)",
-#                 "Total Elapsed Time (seconds)",
-#             ]
-#             sheet.append_row(headers)
-        
-#         # Cleaning the NaN values before saving
-#         for row in results_data:
-#             cleaned_row = []
-#             for value in row:
-#                 if value is None:
-#                     cleaned_row.append("none")
-#                 elif isinstance(value, float) and math.isnan(value):
-#                     cleaned_row.append("none")
-#                 else:
-#                     cleaned_row.append(value)
-#             sheet.append_row(cleaned_row)
-            
-#     except Exception as e:
-#         st.error(f"Error saving data: {e}")
-
-
-
-# def save_to_google_sheets_rows(rows):
-#     """
-#     Append rows (list of lists) to the target Google Sheet.
-#     Requires st.secrets["SPREADSHEET_ID"] and optional st.secrets["SHEET_NAME"].
-#     """
-#     spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
-#     if not spreadsheet_id:
-#         raise RuntimeError("SPREADSHEET_ID missing from Streamlit secrets.")
-#     sheet_name = st.secrets.get("SHEET_NAME", "responses")
-
-#     client = _build_gspread_client_from_secrets()
-#     sh = client.open_by_key(spreadsheet_id)
-
-#     try:
-#         worksheet = sh.worksheet(sheet_name)
-#     except gspread.WorksheetNotFound:
-#         worksheet = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
-
-#     # append rows one by one (gspread handles insertion)
-#     for row in rows:
-#         worksheet.append_row(row, value_input_option="USER_ENTERED")
-
 # FUNCTIONS FOR APPENDING TO .CSV FILE
 def _norm_value(v):
     if isinstance(v, list):
@@ -358,8 +287,6 @@ def init_state():
         st.session_state["_nav_rerun_once"] = False
 
 
-
-
 # ---------------------------------------------------------
 # PAGE FUNCTIONS
 # ---------------------------------------------------------
@@ -367,7 +294,7 @@ def init_state():
 def page_consent():
     st.title("Consent for Research")
 
-    # --- Consent question (widget created without assigning to a local variable) ---
+    # Consent question (widget created without assigning to a local variable)
     st.selectbox(
         "I consent to my anonymised responses being used for this research.",
         [PLACEHOLDER, "Yes, I consent", "No, I do not consent"],
@@ -376,18 +303,21 @@ def page_consent():
 
     if st.button("Double Click To Continue"):
         choice = st.session_state.get("pre_consent_select")
+
         if choice == "Yes, I consent":
-            st.session_state["pre_consent_select"] = True
+            st.session_state["pre_consent"] = True
             st.session_state.page = "preliminary"
             return
-        elif choice == "No, I do not consent":
-            st.session_state["pre_consent_select"] = False
-            st.error("Survey closed for you.")
-            st.session_state.page = "thank_you"
+
+        if choice == "No, I do not consent":
+            st.session_state["pre_consent"] = False
+            st.error("You cannot continue until you consent. Please select 'Yes, I consent' to proceed.")
             return
-        else:
-            st.warning("Please select an option before continuing.")
-            return
+
+        # Missing selection
+        st.warning("Please select an option before continuing.")
+        return
+
 
         
 # --------------------------------------
