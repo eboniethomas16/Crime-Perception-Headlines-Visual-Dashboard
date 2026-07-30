@@ -1602,8 +1602,8 @@ def page_post_questions():
 
     # ---------------- VALIDATION HELPERS ----------------
     # Validate multiselect counts (post)
-    def is_exactly_three(selection):
-        return isinstance(selection, list) and len(selection) == 3
+    # def is_exactly_three(selection):
+    #     return isinstance(selection, list) and len(selection) == 3
 
     if not (is_exactly_three(post_crime_most) 
             and is_exactly_three(post_crime_least)
