@@ -1858,24 +1858,8 @@ def router():
         page_post_questions()
     elif st.session_state.page == "thank_you":
         page_thank_you()
-# def router():
-#     """Route to the correct page based on session_state.page."""
-#     page = st.session_state.page
 
-#     if page == "consent":
-#         page_consent()
-#     elif page == "preliminary":
-#         page_preliminary()
-#     elif page == "dashboard1":
-#         page_dashboard1()
-#     elif page == "dashboard2":
-#         page_dashboard2()
-#     elif page == "post_questions":
-#         page_post_questions()
-#     elif page == "thank_you":
-#         page_thank_you()
-#     else:
-#         st.error(f"Unknown page: {page}")
+
 
 
 # ---------------------------------------------------------
