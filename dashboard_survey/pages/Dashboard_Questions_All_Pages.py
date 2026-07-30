@@ -659,7 +659,7 @@ def page_preliminary():
         st.session_state.page = "dashboard1"
         if not st.session_state.get("_nav_rerun_once", False):
             st.session_state["_nav_rerun_once"] = True
-            st.experimental_rerun()
+            # st.experimental_rerun()
         return
 
 
@@ -1727,6 +1727,7 @@ def page_post_questions():
         "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
         "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
     ]
+
     for k in open_feedback_keys:
         row_values.append(_norm_value(st.session_state.get(k)))
 
@@ -1751,10 +1752,6 @@ def page_post_questions():
     # navigate to thank you
     st.session_state.page = "thank_you"
     return
-
-
-
-
 
 
 def page_thank_you():
