@@ -12,11 +12,12 @@ import math
 
 # these are the keys for the Google Sheet columns, in order. 
 # They are used to ensure the sheet has the correct headers and to map session state to sheet columns.
+# Complete headers list (ordered) including all keys referenced across pages and widgets.
 headers = [
-     # metadata (must match the two metadata values you append in row_values)
     "user_id",
     "submission_timestamp_utc",
-    # --- Pre survey (baseline) ---
+
+    # Pre survey
     "pre_consent_select",
     "pre_age_band",
     "pre_education",
@@ -35,30 +36,93 @@ headers = [
     "pre_media_least",
     "pre_lowest_boroughs",
     "pre_highest_boroughs",
-    # --- Dashboard 1 evaluations (d1_) ---
-    "d1_ui_overall",
-    "d1_situational_awareness",
-    "d1_satisfaction_overall",
-    "d1_task_suitability",
-    "d1_system_capabilities",
+
+    # Dashboard 1: Bivariate / Heatmap / Hoverlist / Linecharts / Summary pills
+    "d1_bivmap_content",
+    "d1_bivmap_learnability",
+    "d1_bivmap_easeofuse",
+    "d1_bivmap_operability",
+    "d1_bivmap_usefulness",
     "d1_open_chord_feedback",
+
+    "d1_heatmap_content",
+    "d1_heatmap_learnability",
+    "d1_heatmap_easeofuse",
+    "d1_heatmap_operability",
+    "d1_heatmap_usefulness",
     "d1_open_heatmap_feedback",
+
+    "d1_hoverlist_content",
+    "d1_hoverlist_learnability",
+    "d1_hoverlist_easeofuse",
+    "d1_hoverlist_operability",
+    "d1_hoverlist_usefulness",
     "d1_open_hoverlist_feedback",
+
+    "d1_linecharts_content",
+    "d1_linecharts_learnability",
+    "d1_linecharts_easeofuse",
+    "d1_linecharts_operability",
+    "d1_linecharts_usefulness",
     "d1_open_linecharts_feedback",
+
+    "d1_summary_pills_content",
+    "d1_summary_pills_learnability",
+    "d1_summary_pills_easeofuse",
+    "d1_summary_pills_operability",
+    "d1_summary_pills_usefulness",
     "d1_open_summary_pills_feedback",
-    # --- Dashboard 2 evaluations (d2_) ---
-    "d2_ui_overall",
-    "d2_situational_awareness",
-    "d2_satisfaction_overall",
-    "d2_task_suitability",
-    "d2_system_capabilities",
+
+    "d1_overall_ui",
+    "d1_overall_situational_awareness",
+    "d1_overall_satisfaction",
+    "d1_overall_task_suitability",
+    "d1_overall_system_capabilities",
+
+    # Dashboard 2: Chord / Heatmap / Hoverlist / Linecharts / Summary pills
+    "d2_chord_content",
+    "d2_chord_learnability",
+    "d2_chord_operability",
+    "d2_chord_easeofuse",
+    "d2_chord_usefulness",
     "d2_open_chord_feedback",
+
+    "d2_heatmap_content",
+    "d2_heatmap_learnability",
+    "d2_heatmap_operability",
+    "d2_heatmap_easeofuse",
+    "d2_heatmap_usefulness",
     "d2_open_heatmap_feedback",
+
+    "d2_hoverlist_content",
+    "d2_hoverlist_learnability",
+    "d2_hoverlist_operability",
+    "d2_hoverlist_easeofuse",
+    "d2_hoverlist_usefulness",
     "d2_open_hoverlist_feedback",
+
+    "d2_lines_content",
+    "d2_lines_easeofuse",
+    "d2_lines_learnability",
+    "d2_lines_operability",
+    "d2_lines_usefulness",
     "d2_open_linecharts_feedback",
+
+    "d2_pills_learnability",
+    "d2_pills_content",
+    "d2_pills_easeofuse",
+    "d2_pills_operability",
+    "d2_pills_usefulness",
     "d2_open_summary_pills_feedback",
     "d2_open_summary_dashboard_feedback",
-    # --- Post survey (after dashboards) ---
+
+    "d2_overall_ui",
+    "d2_overall_situational_awareness",
+    "d2_overall_satisfaction",
+    "d2_overall_task_suitability",
+    "d2_overall_system_capabilities",
+
+    # Post survey
     "post_police_reliability",
     "post_police_fairness",
     "post_police_job",
@@ -73,12 +137,24 @@ headers = [
     "post_media_least",
     "post_lowest_boroughs",
     "post_highest_boroughs",
-    # --- Hidden / analytic fields (not shown to users) ---
+
+    # Analytic fields
     "net_change_crime",
     "net_change_media",
-    "net_change_boroughs",
-    # --- Admin / routing fields ---
+    "net_change_boroughs"
 ]
+
+
+# Remove duplicate header names while preserving order
+_seen = set()
+_deduped = []
+for h in headers:
+    if h not in _seen:
+        _deduped.append(h)
+        _seen.add(h)
+headers = _deduped
+
+
 
 LIKERT_7 = [
     "Select an option",
@@ -1231,28 +1307,25 @@ def page_dashboard2():
     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
 
     # ---------------- CONTINUE / FINISH BUTTON + VALIDATION ----------------
-    if st.button("Finish and go to Thank You"):
+    if st.button("Double Click To Go To Post Survey Questions"):
         # Validate required d2_ keys (including open feedback text areas)
         required_d2 = [
-            "d2_chord_content", "d2_chord_learnability", "d2_chord_operability", "d2_chord_easeofuse", 
-            "d2_chord_usefulness",
-            "d2_heatmap_content", "d2_heatmap_learnability", "d2_heatmap_operability",
-            "d2_heatmap_easeofuse", "d2_heatmap_usefulness",
-            "d2_hoverlist_content", "d2_hoverlist_learnability", "d2_hoverlist_operability",
-            "d2_hoverlist_easeofuse", "d2_hoverlist_usefulness",
-            "d2_lines_content", "d2_lines_easeofuse", "d2_lines_learnability",
-            "d2_lines_operability", "d2_lines_usefulness",
+            # chord chart (in order)
+            "d2_chord_content", "d2_chord_learnability", "d2_chord_operability", "d2_chord_easeofuse", "d2_chord_usefulness",
+            # heatmap (in order)
+            "d2_heatmap_content", "d2_heatmap_learnability", "d2_heatmap_operability", "d2_heatmap_easeofuse", "d2_heatmap_usefulness",
+            # hoverlist (in order)
+            "d2_hoverlist_content", "d2_hoverlist_learnability", "d2_hoverlist_operability", "d2_hoverlist_easeofuse", "d2_hoverlist_usefulness",
+            # line charts (in order)
+            "d2_lines_content", "d2_lines_easeofuse", "d2_lines_learnability", "d2_lines_operability", "d2_lines_usefulness",
+            # residuals (in order)
             "d2_residuals_content", "d2_residuals_learnability", "d2_residuals_easeofuse",
-            "d2_pills_learnability", "d2_pills_content", "d2_pills_easeofuse",
-            "d2_pills_operability", "d2_pills_usefulness",
-            # --- open feedback text areas (required) ---
-            "d2_open_chord_feedback", "d2_open_heatmap_feedback",
-            "d2_open_hoverlist_feedback", "d2_open_linecharts_feedback",
-            "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-            # --- dashboard-level questions ---
-            "d2_overall_ui", "d2_overall_situational_awareness", 
-            "d2_overall_satisfaction", "d2_overall_task_suitability",
-            "d2_overall_system_capabilities"
+            # summary pills (in order)
+            "d2_pills_learnability", "d2_pills_content", "d2_pills_easeofuse", "d2_pills_operability", "d2_pills_usefulness",
+            # open feedback text areas (required)
+            "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback", "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback",
+            # dashboard-level questions (in order)
+            "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities"
         ]
 
         def is_missing_value(val, placeholder=PLACEHOLDER):
@@ -1278,6 +1351,8 @@ def page_dashboard2():
             st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
             st.session_state.page = "post_questions"
             return
+
+
 
 # USE TO COMPUTE NET CHANGE IN MOST/LEAST SELECTED CATEGORIES (POST vs PRE)
 def _score_selection(categories, most, least):
@@ -1570,7 +1645,7 @@ def page_post_questions():
 
 
     # ---------------- VALIDATION HELPERS ----------------
-    # Validate multiselect counts (post)
+    #Validate multiselect counts (post)
     # def is_exactly_three(selection):
     #     return isinstance(selection, list) and len(selection) == 3
 
@@ -1620,6 +1695,9 @@ def page_post_questions():
     if st.button("Double Click to Finish"):
         # 1) basic post required fields
         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
+        # DEBUG: show exactly which keys are considered missing (remove after debugging)
+        st.write("DEBUG missing_post keys:", missing_post)
+
         if missing_post:
             st.error("Please answer all required post‑dashboard questions before finishing.")
             for k in missing_post:
