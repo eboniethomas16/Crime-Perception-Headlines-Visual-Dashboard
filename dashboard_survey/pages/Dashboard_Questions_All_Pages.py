@@ -13,6 +13,15 @@ import math
 # these are the keys for the Google Sheet columns, in order. 
 # They are used to ensure the sheet has the correct headers and to map session state to sheet columns.
 # Complete headers list (ordered) including all keys referenced across pages and widgets.
+creds = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
+if creds:
+    creds_dict = json.loads(creds) if isinstance(creds, str) else dict(creds)
+    st.write("DEBUG service account email:", creds_dict.get("client_email"))
+else:
+    st.write("DEBUG: no service account found in st.secrets")
+
+
+
 headers = [
     "user_id",
     "submission_timestamp_utc",
@@ -234,6 +243,25 @@ def _build_gspread_client_from_secrets():
     client = gspread.authorize(creds)
     return client
 
+# TEMPORARY DEBUG: Attempt to create gspread client and open the spreadsheet
+try:
+    client = _build_gspread_client_from_secrets()
+    st.write("DEBUG: gspread client created")
+    sid = st.secrets.get("SPREADSHEET_ID")
+    st.write("DEBUG: SPREADSHEET_ID present:", bool(sid))
+    sh = client.open_by_key(sid)
+    st.write("DEBUG: opened spreadsheet:", sh.title)
+    ws_name = st.secrets.get("SHEET_NAME", "responses")
+    try:
+        ws = sh.worksheet(ws_name)
+        st.write("DEBUG: opened worksheet:", ws.title)
+    except gspread.WorksheetNotFound:
+        st.write("DEBUG: worksheet not found, will create:", ws_name)
+        ws = sh.add_worksheet(title=ws_name, rows="1000", cols="50")
+        st.write("DEBUG: created worksheet:", ws.title)
+except Exception as e:
+    st.error("DEBUG gspread error: " + str(e))
+
 # Save responses to Google Sheets
 def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME", spreadsheet_title_secret="SPREADSHEET_TITLE"):
     """
@@ -297,7 +325,7 @@ def _norm_value(v):
     return str(v)
 
 
-def append_row_to_csv(row: dict, out_path: str = "responses.csv"):
+def append_row_to_csv(row: dict, out_path: str = "responses"):
     out = Path(out_path)
 
     # normalize lists and None
@@ -1819,6 +1847,7 @@ def page_post_questions():
         row_values.append(st.session_state.get("notes", ""))
 
         # --- Save the single main row to Google Sheets (headers must match the order above) ---
+        st.write("DEBUG row_values (about to save):", row_values)
         try:
             save_rows_to_sheet([row_values], headers=headers)
             st.success("Responses saved to Google Sheets.")
