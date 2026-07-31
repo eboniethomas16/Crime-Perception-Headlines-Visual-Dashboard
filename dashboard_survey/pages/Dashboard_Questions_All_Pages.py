@@ -26,7 +26,7 @@ headers = [
     "user_id",
     "submission_timestamp_utc",
 
-    # Pre survey
+# --- pre-dashboard questions ---
     "pre_consent_select",
     "pre_age_band",
     "pre_education",
@@ -41,111 +41,55 @@ headers = [
     "pre_crime_increase",
     "pre_crime_most",
     "pre_crime_least",
-    "pre_media_most",
     "pre_media_least",
+    "pre_media_most",
     "pre_lowest_boroughs",
     "pre_highest_boroughs",
 
-    # Dashboard 1: Bivariate / Heatmap / Hoverlist / Linecharts / Summary pills
-    "d1_bivmap_content",
-    "d1_bivmap_learnability",
-    "d1_bivmap_easeofuse",
-    "d1_bivmap_operability",
-    "d1_bivmap_usefulness",
-    "d1_open_chord_feedback",
-
-    "d1_heatmap_content",
-    "d1_heatmap_learnability",
-    "d1_heatmap_easeofuse",
-    "d1_heatmap_operability",
-    "d1_heatmap_usefulness",
-    "d1_open_heatmap_feedback",
-
-    "d1_hoverlist_content",
-    "d1_hoverlist_learnability",
-    "d1_hoverlist_easeofuse",
-    "d1_hoverlist_operability",
-    "d1_hoverlist_usefulness",
-    "d1_open_hoverlist_feedback",
-
-    "d1_linecharts_content",
-    "d1_linecharts_learnability",
-    "d1_linecharts_easeofuse",
-    "d1_linecharts_operability",
-    "d1_linecharts_usefulness",
-    "d1_open_linecharts_feedback",
-
-    "d1_summary_pills_content",
-    "d1_summary_pills_learnability",
-    "d1_summary_pills_easeofuse",
-    "d1_summary_pills_operability",
-    "d1_summary_pills_usefulness",
+    # --- dashboard 1 questions ---
+    "d1_bivmap_content", "d1_bivmap_learnability", "d1_bivmap_easeofuse",
+    "d1_bivmap_operability", "d1_bivmap_usefulness",
+    "d1_heatmap_content", "d1_heatmap_learnability", "d1_heatmap_operability",
+    "d1_heatmap_easeofuse", "d1_heatmap_usefulness",
+    "d1_hoverlist_content", "d1_hoverlist_learnability", "d1_hoverlist_operability",
+    "d1_hoverlist_easeofuse", "d1_hoverlist_usefulness",
+    "d1_lines_content", "d1_lines_easeofuse", "d1_lines_learnability",
+    "d1_lines_operability", "d1_lines_usefulness",
+    "d1_residuals_content", "d1_residuals_learnability", "d1_residuals_easeofuse",
+    "d1_pills_learnability", "d1_pills_content", "d1_pills_easeofuse",
+    "d1_pills_operability", "d1_pills_usefulness",
+    # --- open feedback text areas (required) ---
+    "d1_open_chord_feedback", "d1_open_heatmap_feedback",
+    "d1_open_hoverlist_feedback", "d1_open_linecharts_feedback",
     "d1_open_summary_pills_feedback",
+    # --- dashboard-level questions ---
+    "d1_overall_ui", "d1_overall_situational_awareness",
+    "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities",
 
-    "d1_overall_ui",
-    "d1_overall_situational_awareness",
-    "d1_overall_satisfaction",
-    "d1_overall_task_suitability",
-    "d1_overall_system_capabilities",
+    #dashboard 2 questions (in order)
+    # chord chart (in order)
+    "d2_chord_content", "d2_chord_learnability", "d2_chord_operability", "d2_chord_easeofuse", "d2_chord_usefulness",
+    # heatmap (in order)
+    "d2_heatmap_content", "d2_heatmap_learnability", "d2_heatmap_operability", "d2_heatmap_easeofuse", "d2_heatmap_usefulness",
+    # hoverlist (in order)
+    "d2_hoverlist_content", "d2_hoverlist_learnability", "d2_hoverlist_operability", "d2_hoverlist_easeofuse", "d2_hoverlist_usefulness",
+    # line charts (in order)
+    "d2_lines_content", "d2_lines_easeofuse", "d2_lines_learnability", "d2_lines_operability", "d2_lines_usefulness",
+    # residuals (in order)
+    "d2_residuals_content", "d2_residuals_learnability", "d2_residuals_easeofuse",
+    # summary pills (in order)
+    "d2_pills_learnability", "d2_pills_content", "d2_pills_easeofuse", "d2_pills_operability", "d2_pills_usefulness",
+    # open feedback text areas (required)
+    "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback", "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback",
+    # dashboard-level questions (in order)
+    "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities",
 
-    # Dashboard 2: Chord / Heatmap / Hoverlist / Linecharts / Summary pills
-    "d2_chord_content",
-    "d2_chord_learnability",
-    "d2_chord_operability",
-    "d2_chord_easeofuse",
-    "d2_chord_usefulness",
-    "d2_open_chord_feedback",
-
-    "d2_heatmap_content",
-    "d2_heatmap_learnability",
-    "d2_heatmap_operability",
-    "d2_heatmap_easeofuse",
-    "d2_heatmap_usefulness",
-    "d2_open_heatmap_feedback",
-
-    "d2_hoverlist_content",
-    "d2_hoverlist_learnability",
-    "d2_hoverlist_operability",
-    "d2_hoverlist_easeofuse",
-    "d2_hoverlist_usefulness",
-    "d2_open_hoverlist_feedback",
-
-    "d2_lines_content",
-    "d2_lines_easeofuse",
-    "d2_lines_learnability",
-    "d2_lines_operability",
-    "d2_lines_usefulness",
-    "d2_open_linecharts_feedback",
-
-    "d2_pills_learnability",
-    "d2_pills_content",
-    "d2_pills_easeofuse",
-    "d2_pills_operability",
-    "d2_pills_usefulness",
-    "d2_open_summary_pills_feedback",
-    "d2_open_summary_dashboard_feedback",
-
-    "d2_overall_ui",
-    "d2_overall_situational_awareness",
-    "d2_overall_satisfaction",
-    "d2_overall_task_suitability",
-    "d2_overall_system_capabilities",
-
-    # Post survey
-    "post_police_reliability",
-    "post_police_fairness",
-    "post_police_job",
-    "post_news_frequency",
-    "post_headline_accuracy",
-    "post_headline_inflation",
-    "post_headline_truth",
-    "post_crime_increase",
-    "post_crime_most",
-    "post_crime_least",
-    "post_media_most",
-    "post_media_least",
-    "post_lowest_boroughs",
-    "post_highest_boroughs",
+    # post-dashboard questions (in order)
+    "post_police_reliability", "post_police_fairness", "post_police_job",
+    "post_news_frequency", "post_headline_accuracy",
+    "post_headline_inflation", "post_headline_truth", "post_crime_increase",
+    "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
+    "post_lowest_boroughs", "post_highest_boroughs"
 
     # Analytic fields
     "net_change_crime",
@@ -176,10 +120,7 @@ LIKERT_7 = [
     "Very good"
 ]
 
-def _normalize_header_cell(s):
-    if s is None:
-        return ""
-    return str(s).strip().lower()
+
 
 def ensure_sheet_headers(worksheet, expected_headers):
     """
@@ -216,6 +157,8 @@ def ensure_sheet_headers(worksheet, expected_headers):
         # Surface helpful error in Streamlit UI or logs
         st.error(f"Failed to ensure headers on sheet '{worksheet.title}': {e}")
         return False
+
+    
 # centralised, secure way to build an authorised gspread client from st.secrets.
 def _build_gspread_client_from_secrets():
     """
@@ -244,119 +187,248 @@ def _build_gspread_client_from_secrets():
     return client
 
 # TEMPORARY DEBUG: Attempt to create gspread client and open the spreadsheet
-try:
-    client = _build_gspread_client_from_secrets()
-    st.write("DEBUG: gspread client created")
-    sid = st.secrets.get("SPREADSHEET_ID")
-    st.write("DEBUG: SPREADSHEET_ID present:", bool(sid))
-    sh = client.open_by_key(sid)
-    st.write("DEBUG: opened spreadsheet:", sh.title)
-    ws_name = st.secrets.get("SHEET_NAME", "responses")
-    try:
-        ws = sh.worksheet(ws_name)
-        st.write("DEBUG: opened worksheet:", ws.title)
-    except gspread.WorksheetNotFound:
-        st.write("DEBUG: worksheet not found, will create:", ws_name)
-        ws = sh.add_worksheet(title=ws_name, rows="1000", cols="50")
-        st.write("DEBUG: created worksheet:", ws.title)
-except Exception as e:
-    st.error("DEBUG gspread error: " + str(e))
+# try:
+#     client = _build_gspread_client_from_secrets()
+#     st.write("DEBUG: gspread client created")
+#     sid = st.secrets.get("SPREADSHEET_ID")
+#     st.write("DEBUG: SPREADSHEET_ID present:", bool(sid))
+#     sh = client.open_by_key(sid)
+#     st.write("DEBUG: opened spreadsheet:", sh.title)
+#     ws_name = st.secrets.get("SHEET_NAME", "responses")
+#     try:
+#         ws = sh.worksheet(ws_name)
+#         st.write("DEBUG: opened worksheet:", ws.title)
+#     except gspread.WorksheetNotFound:
+#         st.write("DEBUG: worksheet not found, will create:", ws_name)
+#         ws = sh.add_worksheet(title=ws_name, rows="1000", cols="50")
+#         st.write("DEBUG: created worksheet:", ws.title)
+# except Exception as e:
+#     st.error("DEBUG gspread error: " + str(e))
 
 # Save responses to Google Sheets
-def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME", spreadsheet_title_secret="SPREADSHEET_TITLE"):
-    """
-    Append rows (list of lists) to Google Sheet.
-    - rows: list of lists (each inner list is a row)
-    - headers: optional list of header strings to write if sheet is empty
-    - secrets used: SPREADSHEET_ID (preferred) or SPREADSHEET_TITLE (fallback), and SHEET_NAME (worksheet title)
-    """
-    try:
-        client = _build_gspread_client_from_secrets()
-        spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
-        if not spreadsheet_id:
-            st.error("SPREADSHEET_ID missing from st.secrets; responses will be saved locally.")
-            # fallback: write to CSV and return
-            for r in rows:
-                append_row_to_csv(dict(zip(headers, r)))
-            return
+# def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME", spreadsheet_title_secret="SPREADSHEET_TITLE"):
+#     """
+#     Append rows (list of lists) to Google Sheet.
+#     - rows: list of lists (each inner list is a row)
+#     - headers: optional list of header strings to write if sheet is empty
+#     - secrets used: SPREADSHEET_ID (preferred) or SPREADSHEET_TITLE (fallback), and SHEET_NAME (worksheet title)
+#     """
+#     try:
+#         client = _build_gspread_client_from_secrets()
+#         spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
+#         if not spreadsheet_id:
+#             st.error("SPREADSHEET_ID missing from st.secrets; responses will be saved locally.")
+#             # fallback: write to CSV and return
+#             for r in rows:
+#                 append_row_to_csv(dict(zip(headers, r)))
+#             return
         
-        sheet_name = st.secrets.get("SHEET_NAME", "Responses")
-        sh = client.open_by_key(spreadsheet_id)
-        try:
-            ws = sh.worksheet(sheet_name)
-        except gspread.WorksheetNotFound:
-            ws = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
+#         sheet_name = st.secrets.get("SHEET_NAME", "Responses")
+#         sh = client.open_by_key(spreadsheet_id)
+#         try:
+#             ws = sh.worksheet(sheet_name)
+#         except gspread.WorksheetNotFound:
+#             ws = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
 
-        # Ensure headers if provided
-        if headers:
-            ok = ensure_sheet_headers(ws, headers)
-            if not ok:
-                st.error("Could not ensure headers in the Google Sheet. Aborting save.")
-                return
+#         # Ensure headers if provided
+#         if headers:
+#             ok = ensure_sheet_headers(ws, headers)
+#             if not ok:
+#                 st.error("Could not ensure headers in the Google Sheet. Aborting save.")
+#                 return
 
-        # Append rows (cleaning values as needed)
-        for row in rows:
-            cleaned = []
-            for v in row:
-                if v is None:
-                    cleaned.append("")   # or "none"
-                elif isinstance(v, float) and math.isnan(v):
-                    cleaned.append("")
-                elif isinstance(v, list):
-                    cleaned.append(";".join(map(str, v)))
-                else:
-                    cleaned.append(v)
-            ws.append_row(cleaned, value_input_option="USER_ENTERED")
+#         # Append rows (cleaning values as needed)
+#         for row in rows:
+#             cleaned = []
+#             for v in row:
+#                 if v is None:
+#                     cleaned.append("")   # or "none"
+#                 elif isinstance(v, float) and math.isnan(v):
+#                     cleaned.append("")
+#                 elif isinstance(v, list):
+#                     cleaned.append(";".join(map(str, v)))
+#                 else:
+#                     cleaned.append(v)
+#             ws.append_row(cleaned, value_input_option="USER_ENTERED")
 
-    except Exception as e:
-        st.error(f"Failed to save responses to Google Sheets: {e}")
-        # fallback: persist locally to CSV to avoid data loss
-        for r in rows:
-            append_row_to_csv(dict(zip(headers, r)))
-        return
+#     except Exception as e:
+#         st.error(f"Failed to save responses to Google Sheets: {e}")
+#         # fallback: persist locally to CSV to avoid data loss
+#         for r in rows:
+#             append_row_to_csv(dict(zip(headers, r)))
+#         return
 
 
-# FUNCTIONS FOR APPENDING TO .CSV FILE
+# --- normalizer used for Sheets ---
 def _norm_value(v):
-    if isinstance(v, list):
-        return ";".join(map(str, v))
     if v is None:
         return ""
+    if isinstance(v, float) and math.isnan(v):
+        return ""
+    if isinstance(v, list):
+        return ";".join(map(str, v))
     return str(v)
 
+def _normalize_header_cell(s):
+    if s is None:
+        return ""
+    return str(s).strip().lower()
 
-def append_row_to_csv(row: dict, out_path: str = "responses"):
-    out = Path(out_path)
+# def ensure_sheet_headers(worksheet, expected_headers):
+#     """
+#     Ensure the worksheet has the expected header row.
+#     - If the sheet is empty, writes expected_headers as the first row.
+#     - If a header row exists but does not match expected_headers (case-insensitive),
+#       overwrites the first row with expected_headers.
+#     Returns True on success, False on failure.
+#     """
+#     try:
+#         all_values = worksheet.get_all_values()
+#         if not all_values:
+#             worksheet.append_row(expected_headers, value_input_option="USER_ENTERED")
+#             return True
 
-    # normalize lists and None
-    row_norm = {k: _norm_value(v) for k, v in row.items()}
-    df_row = pd.DataFrame([row_norm])
+#         existing_header = all_values[0]
+#         norm_existing = [_normalize_header_cell(c) for c in existing_header]
+#         norm_expected = [_normalize_header_cell(c) for c in expected_headers]
 
-    # If file doesn't exist, write header
-    if not out.exists():
-        df_row.to_csv(out, index=False)
-        return
+#         if len(norm_existing) != len(norm_expected) or any(e != x for e, x in zip(norm_existing, norm_expected)):
+#             worksheet.update("A1", [expected_headers], value_input_option="USER_ENTERED")
+#         return True
+#     except Exception as e:
+#         st.error(f"Failed to ensure headers on sheet '{getattr(worksheet, 'title', 'unknown')}': {e}")
+#         return False
 
-    # Try simple append (fast path)
+# Build a single row (list) in the exact order of headers list from session_state and grouped caches
+def build_row_from_headers(headers_list):
+    """
+    Build a list of values ordered to match headers_list.
+    Sources checked (in order):
+      - per-page caches: pre_answers, d1_answers, d2_answers, post_answers
+      - top-level st.session_state widget keys
+      - fallback: empty string
+    Special handling for user_id and submission_timestamp_utc.
+    """
+    grouped = {}
+    for k in ("pre_answers", "d1_answers","d2_answers", "post_answers"):
+        val = st.session_state.get(k)
+        if isinstance(val, dict):
+            grouped.update(val)
+
+    row = []
+    for h in headers_list:
+        if h == "user_id":
+            val = st.session_state.get("user_id") or ""
+        elif h == "submission_timestamp_utc":
+            val = datetime.utcnow().isoformat() + "Z"
+        else:
+            val = st.session_state.get(h, grouped.get(h, ""))
+        row.append(_norm_value(val))
+    return row
+
+# Save rows to Google Sheets (modified to accept rows as list-of-lists OR list-of-dicts)
+def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME"):
+    """
+    Append rows to Google Sheets.
+    - rows: list of dicts (header->value) OR list-of-lists (ordered to headers)
+    - headers: canonical header list used to ensure sheet columns and ordering
+    This function is Google-Sheets-only: it will raise/emit errors if Sheets are not configured.
+    """
+    # Build client
+    client = _build_gspread_client_from_secrets()
+
+    spreadsheet_id = st.secrets.get(spreadsheet_id_secret)
+    if not spreadsheet_id:
+        raise RuntimeError("SPREADSHEET_ID missing from st.secrets; cannot save to Google Sheets.")
+
+    sheet_name = st.secrets.get(sheet_name_secret, "Responses")
+    sh = client.open_by_key(spreadsheet_id)
     try:
-        df_row.to_csv(out, mode="a", header=False, index=False)
-        return
-    except Exception:
-        # Fallback: atomic replace using a temp file
-        tmp_fd, tmp_path = tempfile.mkstemp(suffix=".csv")
-        os.close(tmp_fd)
-        tmp_path = Path(tmp_path)
-        try:
-            df_existing = pd.read_csv(out)
-            df_combined = pd.concat([df_existing, df_row], ignore_index=True)
-            df_combined.to_csv(tmp_path, index=False)
-            os.replace(tmp_path, out)  # atomic on most OSes
-        finally:
-            if tmp_path.exists():
+        ws = sh.worksheet(sheet_name)
+    except gspread.WorksheetNotFound:
+        ws = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
+
+    # Ensure header row matches canonical headers
+    if headers:
+        ok = ensure_sheet_headers(ws, headers)
+        if not ok:
+            raise RuntimeError("Could not ensure headers in the Google Sheet.")
+
+    # Normalize and append rows
+    for r in rows:
+        if isinstance(r, dict):
+            ordered = [_norm_value(r.get(h, "")) for h in headers]
+        else:
+            # list-like: pad/truncate to headers length
+            ordered = []
+            for i, h in enumerate(headers):
                 try:
-                    tmp_path.unlink()
+                    v = r[i]
                 except Exception:
-                    pass
+                    v = ""
+                ordered.append(_norm_value(v))
+        ws.append_row(ordered, value_input_option="USER_ENTERED")
+
+  
+# Append a row to CSV (row passed as dict mapping header->value). Ensures header exists and matches.
+# def append_row_to_csv(row: dict, out_path: str = "responses"):
+#     """
+#     Append a single row (dict keyed by header names) to CSV.
+#     Ensures the CSV file exists and the first row matches the canonical headers list.
+#     """
+#     out = Path(out_path)
+#     # Ensure parent exists
+#     out.parent.mkdir(parents=True, exist_ok=True)
+
+#     # If file doesn't exist, write header then the row
+#     if not out.exists():
+#         # write header + row
+#         df_row = pd.DataFrame([row])
+#         df_row.to_csv(out, index=False)
+#         return
+
+#     # File exists: check header matches (case-insensitive)
+#     try:
+#         df_existing = pd.read_csv(out)
+#     except Exception:
+#         # If unreadable, overwrite with header + row
+#         df_row = pd.DataFrame([row])
+#         df_row.to_csv(out, index=False)
+#         return
+
+#     # Normalize existing header and expected header
+#     existing_cols = [str(c).strip().lower() for c in df_existing.columns.tolist()]
+#     expected_cols = [str(c).strip().lower() for c in headers]
+
+#     if existing_cols != expected_cols:
+#         # Replace header row with expected headers, preserve existing data (map columns where possible)
+#         # Build new DataFrame with expected columns
+#         mapped = {}
+#         for col in headers:
+#             # find matching existing column (case-insensitive)
+#             matches = [c for c in df_existing.columns if str(c).strip().lower() == col.strip().lower()]
+#             if matches:
+#                 mapped[col] = df_existing[matches[0]]
+#             else:
+#                 mapped[col] = [""] * len(df_existing)
+#         df_fixed = pd.DataFrame(mapped)
+#         # append new row to df_fixed
+#         df_new_row = pd.DataFrame([row])
+#         df_combined = pd.concat([df_fixed, df_new_row], ignore_index=True)
+#         # write back
+#         tmp_fd, tmp_path = tempfile.mkstemp(suffix=".csv")
+#         os.close(tmp_fd)
+#         tmp_path = Path(tmp_path)
+#         try:
+#             df_combined.to_csv(tmp_path, index=False)
+#             os.replace(tmp_path, out)
+#         finally:
+#             if tmp_path.exists():
+#                 try:
+#                     tmp_path.unlink()
+#                 except Exception:
+#                     pass
+#         return
                 
 
 PLACEHOLDER = "Select an option"
@@ -375,8 +447,11 @@ def init_state():
     if "pre_consent" not in st.session_state:
         st.session_state.pre_consent = None
 
-    if "answers" not in st.session_state:
-        st.session_state.answers = {}
+    if "d1_answers" not in st.session_state:
+        st.session_state.d1_answers = {}
+
+    if "d2_answers" not in st.session_state:
+        st.session_state.d2_answers = {}
 
     # unique id per session (useful to join rows)
     if "user_id" not in st.session_state:
@@ -398,7 +473,6 @@ def init_state():
 def page_consent():
     st.title("Consent for Research")
 
-    # Consent question (widget created without assigning to a local variable)
     st.selectbox(
         "I consent to my anonymised responses being used for this research.",
         [PLACEHOLDER, "Yes, I consent", "No, I do not consent"],
@@ -410,17 +484,27 @@ def page_consent():
 
         if choice == "Yes, I consent":
             st.session_state["pre_consent"] = True
+
+            # ensure pre_answers dict exists and store the consent selection
+            pre_answers = st.session_state.get("pre_answers") or {}
+            pre_answers["pre_consent_select"] = choice
+            st.session_state["pre_answers"] = pre_answers
+
             st.session_state.page = "preliminary"
             return
 
         if choice == "No, I do not consent":
             st.session_state["pre_consent"] = False
+            pre_answers = st.session_state.get("pre_answers") or {}
+            pre_answers["pre_consent_select"] = choice
+            st.session_state["pre_answers"] = pre_answers
+
             st.error("You cannot continue until you consent. Please select 'Yes, I consent' to proceed.")
             return
 
-        # Missing selection
         st.warning("Please select an option before continuing.")
         return
+
 
 
         
@@ -950,7 +1034,8 @@ def page_dashboard1():
         key="d1_residuals_easeofuse"
     )
 
-    st.text_area("REQUIRED: If you have any additional comments about any of the line charts, please share them here:", key="d1_open_linecharts_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about any of the line charts, please share them here:", 
+                 key="d1_open_linecharts_feedback")
 
 
 
@@ -1028,7 +1113,7 @@ def page_dashboard1():
     st.write("When you're done, click Continue to proceed to Dashboard 2.")
 
     if st.button("Double Click To Continue to Dashboard 2"):
-        # list all required d1_ keys (add or remove keys if you change questions)
+        # list all required d1_ keys (already defined above)
         required_keys = [
             "d1_bivmap_content", "d1_bivmap_learnability", "d1_bivmap_easeofuse",
             "d1_bivmap_operability", "d1_bivmap_usefulness",
@@ -1046,34 +1131,59 @@ def page_dashboard1():
             "d1_open_hoverlist_feedback", "d1_open_linecharts_feedback",
             "d1_open_summary_pills_feedback",
             # --- dashboard-level questions ---
-            "d1_overall_ui", "d1_overall_situational_awareness", 
+            "d1_overall_ui", "d1_overall_situational_awareness",
             "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities"
         ]
 
-        def is_missing_value(val, placeholder=PLACEHOLDER):
-            if val is None:
-                return True
-            if isinstance(val, str) and val.strip() == "":
-                return True
-            if isinstance(val, list) and len(val) == 0:
-                return True
-            if val == placeholder:
-                return True
-            return False
+    def is_missing_value(val, placeholder=PLACEHOLDER):
+        if val is None:
+            return True
+        if isinstance(val, str) and val.strip() == "":
+            return True
+        if isinstance(val, list) and len(val) == 0:
+            return True
+        if val == placeholder:
+            return True
+        return False
 
-        missing = [k for k in required_keys if is_missing_value(st.session_state.get(k, None))]
+    missing = [k for k in required_keys if is_missing_value(st.session_state.get(k, None))]
 
-        if missing:
-            st.error("Please answer all required questions before continuing. The following items are incomplete:")
-            for k in missing:
-                label = k.replace("d1_", "").replace("_", " ").capitalize()
-                st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
-            st.info("Scroll up to complete the unanswered questions.")
-            return
-        else:
-            st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
-            st.session_state.page = "dashboard2"
-            return
+    if missing:
+        st.error("Please answer all required questions before continuing. The following items are incomplete:")
+        for k in missing:
+            label = k.replace("d1_", "").replace("_", " ").capitalize()
+            st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
+        st.info("Scroll up to complete the unanswered questions.")
+        return
+
+    # -------------------------
+    # Build and cache Dashboard 1 answers
+    # -------------------------
+    d1_keys = [k for k in required_keys]  # reuse the validated list
+    d1_answers = {k: st.session_state.get(k) for k in d1_keys}
+
+    # Merge into a single answers cache in session_state (preserves other modules)
+    existing_answers = st.session_state.get("d1_answers", {})
+    if not isinstance(existing_answers, dict):
+        existing_answers = {}
+    # update existing_answers with d1 answers (overwrites any previous d1 keys)
+    existing_answers.update(d1_answers)
+    st.session_state["d1_answers"] = existing_answers
+    # This writes a full row built from the canonical headers list, so pre + d1 + other cached modules
+    row_list = build_row_from_headers(headers)        # list ordered to match headers
+    row_dict = dict(zip(headers, row_list))           # dict form (header -> value)
+
+    try:
+        save_rows_to_sheet([row_dict], headers=headers)
+        st.info("Checkpoint saved to Google Sheets.")
+    except Exception as e:
+        st.warning(f"Checkpoint to Google Sheets failed (will continue): {e}")
+
+    # Navigate to next page
+    st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
+    st.session_state.page = "dashboard2"
+    return
+
 
 
 
@@ -1356,31 +1466,58 @@ def page_dashboard2():
             "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities"
         ]
 
-        def is_missing_value(val, placeholder=PLACEHOLDER):
-            if val is None:
-                return True
-            if isinstance(val, str) and val.strip() == "":
-                return True
-            if isinstance(val, list) and len(val) == 0:
-                return True
-            if val == placeholder:
-                return True
-            return False
+        # same missing-value check used in Dashboard 1
+    def is_missing_value(val, placeholder=PLACEHOLDER):
+        if val is None:
+            return True
+        if isinstance(val, str) and val.strip() == "":
+            return True
+        if isinstance(val, list) and len(val) == 0:
+            return True
+        if val == placeholder:
+            return True
+        return False
 
-        missing_d2 = [k for k in required_d2 if is_missing_value(st.session_state.get(k, None))]
-        if missing_d2:
-            st.error("Please answer all required Dashboard 2 questions before finishing. The following items are incomplete:")
-            for k in missing_d2:
-                label = k.replace("d2_", "").replace("_", " ").capitalize()
-                st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
-            st.info("Scroll up to complete the unanswered questions.")
-            return
-        else:
-            st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
-            st.session_state.page = "post_questions"
-            return
+    # validate
+    missing_d2 = [k for k in required_d2 if is_missing_value(st.session_state.get(k, None))]
+    if missing_d2:
+        st.error("Please answer all required Dashboard 2 questions before finishing. The following items are incomplete:")
+        for k in missing_d2:
+            label = k.replace("d2_", "").replace("_", " ").capitalize()
+            st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
+        st.info("Scroll up to complete the unanswered questions.")
+        return
 
+    # -------------------------
+    # Build and cache Dashboard 2 answers (same pattern as Dashboard 1)
+    # -------------------------
+    d2_keys = required_d2  # reuse the validated list above
+    d2_answers = {k: st.session_state.get(k) for k in d2_keys}
 
+    # Keep a per-page cache too (optional, useful for debugging)
+    st.session_state["d2_answers"] = d2_answers
+
+    # Merge into the central answers cache (preserves pre/d1 caches)
+    existing_answers = st.session_state.get("d2_answers", {})
+    if not isinstance(existing_answers, dict):
+        existing_answers = {}
+    existing_answers.update(d2_answers)
+    st.session_state["d2_answers"] = existing_answers
+
+    # Optional checkpoint to Google Sheets (uncomment to enable)
+    # row_list = build_row_from_headers(headers)
+    # row_dict = dict(zip(headers, row_list))
+    # try:
+    #     save_rows_to_sheet([row_dict], headers=headers)
+    #     st.info("Checkpoint saved to Google Sheets.")
+    # except Exception as e:
+    #     st.warning(f"Checkpoint to Google Sheets failed (will continue): {e}")
+
+    # Navigate to post survey
+    st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
+    st.session_state.page = "post_questions"
+    return
+        
 
 # USE TO COMPUTE NET CHANGE IN MOST/LEAST SELECTED CATEGORIES (POST vs PRE)
 def _score_selection(categories, most, least):
@@ -1641,36 +1778,7 @@ def page_post_questions():
     pre_media_least = pre_answers.get("pre_media_least", []) or []
     pre_lowest_boroughs = pre_answers.get("pre_lowest_boroughs", []) or []
     pre_highest_boroughs = pre_answers.get("pre_highest_boroughs", []) or []
-
-    # # --- compute net-change (ensure compute_net_change is defined at module scope) ---
-    # net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
-    # net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
-    # net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
-
-    # # Save numeric results into session_state for later use (optional)
-    # st.session_state["net_change_crime"] = net_change_crime
-    # st.session_state["net_change_media"] = net_change_media
-    # st.session_state["net_change_boroughs"] = net_change_boroughs
-
-    # Build a hidden row (order and fields are up to you)
-    # hidden_headers = ["user_id", "timestamp_utc", "net_change_crime", "net_change_media", "net_change_boroughs"]
-    # hidden_row = [
-    #     st.session_state.get("user_id", "submission_timestamp_utc",),
-    #     datetime.utcnow().isoformat(),
-    #     net_change_crime,
-    #     net_change_media,
-    #     net_change_boroughs,
-    # ]
-
-    # Persist the hidden row (try Sheets, fallback to CSV)
-    # try:
-    #     # save_rows_to_sheet expects list-of-rows; pass headers so sheet header check can run
-    #     save_rows_to_sheet([hidden_row], headers=hidden_headers)
-    # except Exception:
-    #     # fallback: local CSV (append_row_to_csv expects a dict)
-    #     append_row_to_csv(dict(zip(hidden_headers, hidden_row)))                      
-
-
+                   
 
     # ---------------- VALIDATION HELPERS ----------------
     #Validate multiselect counts (post)
@@ -1723,142 +1831,62 @@ def page_post_questions():
     if st.button("Double Click to Finish"):
         # 1) basic post required fields
         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-        # DEBUG: show exactly which keys are considered missing (remove after debugging)
-        st.write("DEBUG missing_post keys:", missing_post)
+    if missing_post:
+        st.error("Please answer all required post‑dashboard questions before finishing.")
+        for k in missing_post:
+            label = k.replace("post_", "").replace("_", " ").capitalize()
+            st.write(f"- {label}: {repr(st.session_state.get(k))}")
+        st.stop()
 
-        if missing_post:
-            st.error("Please answer all required post‑dashboard questions before finishing.")
-            for k in missing_post:
-                label = k.replace("post_", "").replace("_", " ").capitalize()
-                st.write(f"- {label}: {repr(st.session_state.get(k))}")
-            st.stop()
+    # 2) exact-3 checks
+    if not (is_exactly_three(st.session_state.get("post_crime_most")) and
+            is_exactly_three(st.session_state.get("post_crime_least")) and
+            is_exactly_three(st.session_state.get("post_media_least")) and
+            is_exactly_three(st.session_state.get("post_media_most"))):
+        st.error("Please ensure all 'select three' post questions have exactly three selections.")
+        st.stop()
 
-        # 2) exact-3 checks
-        if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-                is_exactly_three(st.session_state.get("post_crime_least")) and
-                is_exactly_three(st.session_state.get("post_media_least")) and
-                is_exactly_three(st.session_state.get("post_media_most"))):
-            st.error("Please ensure all 'select three' post questions have exactly three selections.")
-            st.stop()
+    # 3) borough checks
+    if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
+            len(st.session_state.get("post_highest_boroughs", [])) == 3):
+        st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
+        st.stop()
 
-        # 3) borough checks
-        if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-                len(st.session_state.get("post_highest_boroughs", [])) == 3):
-            st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-            st.stop()
+    # 4) ensure pre answers cached
+    pre_answers = st.session_state.get("pre_answers")
+    if not pre_answers:
+        st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+        if st.button("Go to Pre‑questions"):
+            st.session_state.page = "preliminary"
+            return
+        st.stop()
 
-        # 4) ensure pre answers cached
-        pre_answers = st.session_state.get("pre_answers")
-        if not pre_answers:
-            st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-            if st.button("Go to Pre‑questions"):
-                st.session_state.page = "preliminary"
-                return
-            st.stop()
+    # --- compute net-change (ensure compute_net_change is defined at module scope) ---
+    net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
+    net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
+    net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
 
-        # --- compute net-change (ensure compute_net_change is defined at module scope) ---
-        net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
-        net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
-        net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
+    # Save numeric results into session_state so the row builder can pick them up
+    st.session_state["net_change_crime"] = net_change_crime
+    st.session_state["net_change_media"] = net_change_media
+    st.session_state["net_change_boroughs"] = net_change_boroughs
 
-        # Save numeric results into session_state for later use (optional)
-        st.session_state["net_change_crime"] = net_change_crime
-        st.session_state["net_change_media"] = net_change_media
-        st.session_state["net_change_boroughs"] = net_change_boroughs
+    # --- Build final ordered row from session state (single canonical source) ---
+    final_row_list = build_row_from_headers(headers)   # returns list ordered to match headers
+    final_row = dict(zip(headers, final_row_list))     # header -> value mapping
 
-        # --- Build the main row_values in the exact order of your headers ---
-        row_values = []
+    # --- Save the single main row to Google Sheets (one call only) ---
+    try:
+        save_rows_to_sheet([final_row], headers=headers)
+        st.success("Responses saved to Google Sheets.")
+    except Exception as e:
+        st.error(f"Failed to save responses to Google Sheets: {e}")
+        st.stop()
 
-        # 1) metadata: user_id and single submission timestamp
-        row_values.append(st.session_state.get("user_id", ""))
-        row_values.append(datetime.utcnow().isoformat())  # submission_timestamp_utc
+    # navigate to thank you
+    st.session_state.page = "thank_you"
+    return
 
-        # 2) pre answers (use cached pre_answers)
-        pre_keys_order = [
-        "pre_consent_select",
-        "pre_age_band",
-        "pre_education",
-        "pre_borough",
-        "pre_police_reliability",
-        "pre_police_fairness",
-        "pre_police_job",
-        "pre_news_frequency",
-        "pre_headline_accuracy",
-        "pre_headline_inflation",
-        "pre_headline_truth",
-        "pre_crime_increase",
-        "pre_crime_most",
-        "pre_crime_least",
-        "pre_media_most",
-        "pre_media_least",
-        "pre_lowest_boroughs",
-        "pre_highest_boroughs"
-        ]
-
-        pre_answers = st.session_state.get("pre_answers", {}) or {}
-        for k in pre_keys_order:
-            row_values.append(_norm_value(pre_answers.get(k)))
-
-        # 3) dashboard evaluations (d1_ then d2_) — ensure these keys match your headers
-        d1_keys = [
-            "d1_ui_overall", "d1_situational_awareness", "d1_satisfaction_overall",
-            "d1_task_suitability", "d1_system_capabilities",
-            "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-            "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback"
-        ]
-        d2_keys = [
-            "d2_ui_overall", "d2_situational_awareness", "d2_satisfaction_overall",
-            "d2_task_suitability", "d2_system_capabilities",
-            "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-            "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-        ]
-        for k in d1_keys + d2_keys:
-            row_values.append(_norm_value(st.session_state.get(k)))
-
-        # 4) post answers (must match post_keys_order)
-        post_keys_order = [
-            "post_police_reliability", "post_police_fairness", "post_police_job",
-            "post_news_frequency", "post_headline_accuracy",
-            "post_headline_inflation", "post_headline_truth", "post_crime_increase",
-            "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-            "post_lowest_boroughs", "post_highest_boroughs"
-        ]
-        for k in post_keys_order:
-            row_values.append(_norm_value(st.session_state.get(k)))
-
-        # 5) open feedbacks (append these BEFORE saving)
-        open_feedback_keys = [
-            "d1_open_chord_feedback", "d1_open_heatmap_feedback", "d1_open_hoverlist_feedback",
-            "d1_open_linecharts_feedback", "d1_open_summary_pills_feedback",
-            "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback",
-            "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback", "d2_open_summary_dashboard_feedback"
-        ]
-
-        for k in open_feedback_keys:
-            row_values.append(_norm_value(st.session_state.get(k)))
-
-        # 6) analytic fields (include them in the same row so they are visible for analysis)
-        row_values.append(net_change_crime)
-        row_values.append(net_change_media)
-        row_values.append(net_change_boroughs)
-
-        # 7) optional final admin fields if you want (app_version, notes) — append empty strings if not used
-        row_values.append(st.session_state.get("app_version", ""))
-        row_values.append(st.session_state.get("notes", ""))
-
-        # --- Save the single main row to Google Sheets (headers must match the order above) ---
-        st.write("DEBUG row_values (about to save):", row_values)
-        try:
-            save_rows_to_sheet([row_values], headers=headers)
-            st.success("Responses saved to Google Sheets.")
-        except Exception as e:
-            st.error(f"Failed to save responses to Google Sheets: {e}")
-            # fallback already handled inside save_rows_to_sheet; stop to avoid double-saving
-            st.stop()
-
-        # navigate to thank you
-        st.session_state.page = "thank_you"
-        return
 
 
 def page_thank_you():

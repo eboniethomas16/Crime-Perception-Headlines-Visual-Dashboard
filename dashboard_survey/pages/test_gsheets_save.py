@@ -1,37 +1,15 @@
-
-import streamlit as st
+import math
 import json
-import traceback
-from datetime import datetime
+import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-st.set_page_config(page_title="GSheets Test", layout="centered")
-st.title("Google Sheets Connection Test")
-
-# Show which secrets are present (no private key printed)
-has_nested = "gcp_service_account" in st.secrets
-has_json = "GCP_SERVICE_ACCOUNT_JSON" in st.secrets
-st.write("DEBUG: found nested gcp_service_account:", has_nested)
-st.write("DEBUG: found GCP_SERVICE_ACCOUNT_JSON:", has_json)
-st.write("DEBUG: SPREADSHEET_ID present:", bool(st.secrets.get("SPREADSHEET_ID")))
-st.write("DEBUG: SHEET_NAME present:", bool(st.secrets.get("SHEET_NAME")))
-
-def build_gspread_client():
-    """
-    Build gspread client from Streamlit secrets.
-    Accepts either st.secrets["gcp_service_account"] (nested table) or
-    st.secrets["GCP_SERVICE_ACCOUNT_JSON"] (JSON string).
-    """
+def _build_gspread_client_from_secrets():
     creds_info = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
     if creds_info is None:
         raise RuntimeError("No GCP credentials found in st.secrets (GCP_SERVICE_ACCOUNT_JSON or gcp_service_account).")
 
-    # Parse into dict
-    if isinstance(creds_info, str):
-        creds_dict = json.loads(creds_info)
-    else:
-        creds_dict = dict(creds_info)
+    creds_dict = json.loads(creds_info) if isinstance(creds_info, str) else dict(creds_info)
 
     # Normalize private_key newlines if escaped
     if "private_key" in creds_dict and isinstance(creds_dict["private_key"], str):
@@ -42,48 +20,60 @@ def build_gspread_client():
     client = gspread.authorize(creds)
     return client, creds_dict.get("client_email")
 
-def ensure_worksheet(sh, sheet_name):
+def save_to_google_sheets(results_data, sheet_title_or_id=None, worksheet_name="responses"):
+    """
+    Append rows (list of lists) to Google Sheets.
+    - results_data: iterable of rows (each row is a list)
+    - sheet_title_or_id: optional override (if None, uses st.secrets['SPREADSHEET_ID'])
+    - worksheet_name: worksheet/tab name
+    """
     try:
-        ws = sh.worksheet(sheet_name)
-    except gspread.WorksheetNotFound:
-        ws = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
-    return ws
-
-st.markdown("---")
-st.write("Click the button below to attempt opening the spreadsheet and appending a single test row.")
-if st.button("Run GSheets test"):
-    try:
-        client, client_email = build_gspread_client()
-        st.success("DEBUG: gspread client created")
-        st.write("DEBUG: service account email:", client_email)
-
-        spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
-        if not spreadsheet_id:
-            st.error("SPREADSHEET_ID missing from st.secrets")
-            st.stop()
-
-        sh = client.open_by_key(spreadsheet_id)
-        st.write("DEBUG: opened spreadsheet:", sh.title)
-
-        sheet_name = st.secrets.get("SHEET_NAME", "responses")
-        ws = ensure_worksheet(sh, sheet_name)
-        st.write("DEBUG: using worksheet:", ws.title)
-
-        # Ensure a simple header if sheet empty
-        values = ws.get_all_values()
-        if not values:
-            headers = ["test_timestamp", "client_email", "note"]
-            ws.append_row(headers, value_input_option="USER_ENTERED")
-            st.write("DEBUG: wrote header row")
-
-        # Append a test row
-        test_row = [datetime.utcnow().isoformat() + "Z", client_email or "unknown", "streamlit test append"]
-        ws.append_row(test_row, value_input_option="USER_ENTERED")
-        st.success("Append succeeded — check the sheet now.")
-        st.write("Appended row:", test_row)
-
+        client, client_email = _build_gspread_client_from_secrets()
     except Exception as e:
-        st.error("DEBUG gspread error: " + str(e))
-        st.text("Full traceback (for debugging):")
-        st.text(traceback.format_exc())
-        st.stop()
+        st.error(f"GSpread auth error: {e}")
+        return
+
+    # Prefer explicit argument, otherwise top-level secret
+    spreadsheet_id = sheet_title_or_id or st.secrets.get("SPREADSHEET_ID")
+    if not spreadsheet_id:
+        st.error("SPREADSHEET_ID missing from st.secrets; add it as a top-level key in secrets.toml")
+        return
+
+    try:
+        # open by key (recommended) — if you want to open by title use client.open("Title")
+        sh = client.open_by_key(spreadsheet_id)
+    except Exception as e:
+        st.error(f"Failed to open spreadsheet: {e}")
+        return
+
+    # get or create worksheet
+    try:
+        ws = sh.worksheet(worksheet_name)
+    except gspread.WorksheetNotFound:
+        ws = sh.add_worksheet(title=worksheet_name, rows="1000", cols="50")
+
+    # If sheet empty, optionally write a simple header (customise as needed)
+    try:
+        existing = ws.get_all_records()
+    except Exception:
+        existing = []
+
+    if len(existing) == 0:
+        headers = ["user_id", "submission_timestamp_utc", "note"]
+        ws.append_row(headers, value_input_option="USER_ENTERED")
+
+    # Append cleaned rows
+    for row in results_data:
+        cleaned = []
+        for v in row:
+            if v is None:
+                cleaned.append("")
+            elif isinstance(v, float) and math.isnan(v):
+                cleaned.append("")
+            elif isinstance(v, list):
+                cleaned.append(";".join(map(str, v)))
+            else:
+                cleaned.append(v)
+        ws.append_row(cleaned, value_input_option="USER_ENTERED")
+
+    st.success("Rows appended to Google Sheet (check the sheet).")
