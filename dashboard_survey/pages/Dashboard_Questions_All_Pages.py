@@ -1138,19 +1138,6 @@ def d2_page_preview():
 
 
 
-
-    st.markdown("**Important:** the link opens in a new tab. After the dashboard opens, return to this tab and confirm below.")
-
-    opened = st.checkbox("I have opened Dashboard 2 in a new tab", key="d2_preview_opened")
-
-    if opened:
-        if st.button("Continue to Dashboard 2 questions", key="d2_preview_continue"):
-            st.session_state.page = "dashboard2"
-            return
-    else:
-        st.info("Please open the dashboard in a new tab and check the box to continue.")
-
-
 def page_dashboard2():
     st.set_page_config(page_title="Dashboard 2 – Headlines vs Crime", layout="wide")
     if st.session_state.get("_nav_rerun_once", False):
