@@ -769,8 +769,8 @@ def d1_page_preview():
     #     st.write("")  # right spacer
 
     # --- Dashboard image (optional) ---
-    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/blob/main/dashboard_survey/photos/d1_dashboard.png"
-    image_url_2 = "https://raw.githubusercontent.com/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/blob/main/dashboard_survey/photos/d1_dashboard.png"
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_dashboard.png"
+    image_url_2 = "https://raw.githubusercontent.com/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/main/dashboard_survey/photos/d1_dashboard.png"
     try:
         st.image(image_url, caption="Dashboard 1 preview using jsdelivr", use_column_width=True)
         st.image(image_url_2, caption="Dashboard 1 preview #2 using githubhusercontent", use_column_width=True)
