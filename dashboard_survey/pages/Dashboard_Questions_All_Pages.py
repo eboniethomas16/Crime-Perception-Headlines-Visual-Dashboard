@@ -14,11 +14,7 @@ import math
 # They are used to ensure the sheet has the correct headers and to map session state to sheet columns.
 # Complete headers list (ordered) including all keys referenced across pages and widgets.
 creds = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
-if creds:
-    creds_dict = json.loads(creds) if isinstance(creds, str) else dict(creds)
-    st.write("DEBUG service account email:", creds_dict.get("client_email"))
-else:
-    st.write("DEBUG: no service account found in st.secrets")
+
 
 
 headers = [
@@ -203,7 +199,11 @@ def _build_gspread_client_from_secrets():
 #         st.write("DEBUG: created worksheet:", ws.title)
 # except Exception as e:
 #     st.error("DEBUG gspread error: " + str(e))
-
+# if creds:
+#     creds_dict = json.loads(creds) if isinstance(creds, str) else dict(creds)
+#     st.write("DEBUG service account email:", creds_dict.get("client_email"))
+# else:
+#     st.write("DEBUG: no service account found in st.secrets")
 # Save responses to Google Sheets
 # def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME", spreadsheet_title_secret="SPREADSHEET_TITLE"):
 #     """
@@ -1067,8 +1067,8 @@ def page_dashboard1():
     )
 
     st.selectbox(
-        "How useful were the summary pills for forming an initial judgement about the selected crime categories?",
-        [PLACEHOLDER, "Yes — completely", "Mostly", "Somewhat", "Not really", "Not at all"],
+        "How useful were the summary pills for forming an initial judgement about the selected boroughs?",
+        [PLACEHOLDER, "Very Useful", "Mostly Useful", "Somewhat Useful", "Not really Useful", "Not Useful at all"],
         key="d1_pills_usefulness"
     )
 
@@ -1381,7 +1381,7 @@ def page_dashboard2():
 
     st.selectbox(
         "How useful were the summary pills for forming an initial judgement about the selected crime category?",
-        [PLACEHOLDER, "Yes — completely", "Mostly", "Somewhat", "Not really", "Not at all"],
+        [PLACEHOLDER, "Very Useful", "Mostly Useful", "Somewhat Useful", "Not really Useful", "Not Useful at all"],
         key="d2_pills_usefulness"
     )
 
