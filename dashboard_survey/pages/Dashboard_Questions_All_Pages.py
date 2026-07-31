@@ -16,7 +16,6 @@ import math
 creds = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON") or st.secrets.get("gcp_service_account")
 
 
-
 headers = [
     "user_id",
     "submission_timestamp_utc",
@@ -92,7 +91,15 @@ headers = [
     "net_change_boroughs"
 ]
 
-
+boroughs = [
+        "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
+        "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
+        "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
+        "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
+        "Lambeth", "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames",
+        "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth",
+        "Westminster", "I don’t live in London"
+    ]
 # Remove duplicate header names while preserving order
 _seen = set()
 _deduped = []
@@ -467,9 +474,8 @@ def page_preliminary():
         ],
         key="pre_education"
     )
-
-    boroughs = [
-        "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
+    boroughs_WithCityofLondon = [
+        "Barking and Dagenham", "City of London", "Barnet", "Bexley", "Brent", "Bromley",
         "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney",
         "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
         "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames",
@@ -478,9 +484,16 @@ def page_preliminary():
         "Westminster", "I don’t live in London"
     ]
 
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/london_map.png"
+
+    try:
+        st.image(image_url, caption="Map of London Boroughs", use_column_width=True)
+    except Exception:
+        pass
+
     st.selectbox(
         "In which London Borough do you live? If you don’t live in London, in what London Borough do you work or attend school?",
-        [PLACEHOLDER] + boroughs,
+        [PLACEHOLDER] + boroughs_WithCityofLondon,
         key="pre_borough"
     )
 
@@ -621,13 +634,13 @@ def page_preliminary():
         )
 
     pre_media_least = st.multiselect(
-        "Select **three** crime categories you believe the media covers **THE LEAST** in London headlines.",
+        "Select **three** crime categories you believe the **media** covers **THE LEAST** in London headlines.",
         crime_categories,
         key="pre_media_least"
     )
 
     pre_media_most = st.multiselect(
-        "Select **three** crime categories you believe the media covers **MOST PROMINENTLY** in London headlines.",
+        "Select **three** crime categories you believe the **media** covers **MOST PROMINENTLY** in London headlines.",
         crime_categories,
         key="pre_media_most"
     )
@@ -652,6 +665,7 @@ def page_preliminary():
 
     # ---------------- BOROUGH CRIME PERCEPTION (pre) ----------------
     st.header("Your Perception of Borough Crime Levels")
+    st.subheader("NOTE: City of London Is not included in this list as it is not an area monitored by the Metropolitan Police")
 
     pre_lowest_boroughs = st.multiselect(
         "Select **three** boroughs you believe have the **LOWEST** crime offences in London.",
@@ -802,13 +816,18 @@ def page_dashboard1():
             st.session_state["_nav_rerun_once"] = False
 
     st.title("Dashboard 1 – Perception vs Crime")
-    st.markdown("Please answer the questions below about Dashboard 1. All single-choice items start unselected.")
+    st.markdown("Please answer the questions below about Dashboard 1. YOU MUST ANSWER ALL QUESTIONS BEFORE CONTINUING.")
 
-     
 
     # ---------------- BIVARIATE CHOROPLETH MAP ----------------
     st.header("Bivariate Choropleth Map")
 
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_choro_map.png"
+    try:
+        st.image(image_url, caption="Bivariate Choropleth Map", use_column_width=True)
+    except Exception:
+        pass
+    
     st.selectbox(
         "How accurate and trustworthy did the map's values and colour encoding appear?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
@@ -844,7 +863,12 @@ def page_dashboard1():
 
     # ---------------- HEATMAP ----------------
     st.header("Heatmap (Perception vs Crime)")
-
+  
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_heatmap.png"
+    try:
+        st.image(image_url, caption="Heatmap", use_column_width=True)
+    except Exception:
+        pass
     st.selectbox(
         "How accurate and informative were the heatmap values and tooltips?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
@@ -880,7 +904,11 @@ def page_dashboard1():
 
     # ---------------- HOVER LIST ----------------
     st.header("Hoverlist (Perception vs Crime)")
-
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_hoverlist.png"
+    try:
+        st.image(image_url, caption="Hoverlist", use_column_width=True)
+    except Exception:
+        pass
     st.selectbox(
         "How accurate and complete were the hoverlist values and labels?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
@@ -916,6 +944,11 @@ def page_dashboard1():
 
     # ---------------- LINE CHARTS ----------------
     st.header("Line Charts")
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_linecharts.png"
+    try:
+        st.image(image_url, caption="Line Charts", use_column_width=True)
+    except Exception:
+        pass
 
     st.selectbox(
         "How accurate and clear were the values and scales on the crime, perception, and residuals line charts (e.g., axes, labels)?",
@@ -949,6 +982,11 @@ def page_dashboard1():
 
     # ---------------- RESIDUALS CHART ----------------
     st.header("Residuals Chart")
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_residual.png"
+    try:
+        st.image(image_url, caption="Residuals Chart", use_column_width=True)
+    except Exception:
+        pass
 
     st.selectbox(
         "How accurate and interpretable were the residual values and labels?",
@@ -975,6 +1013,12 @@ def page_dashboard1():
 
     # ---------------- SUMMARY PILLS ----------------
     st.header("Summary Pills and Selection Dropdown")
+
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_summary_pills_dropdown_list.png"
+    try:
+        st.image(image_url, caption="Summary Pills and Selection Dropdown", use_column_width=True)
+    except Exception:
+        pass
 
     st.selectbox(
         "How clear were the summary pills (total count; avg perception; 12‑month change) at a glance?",
@@ -1150,10 +1194,8 @@ def page_dashboard2():
             # reset the one-time rerun guard when the target page loads
             st.session_state["_nav_rerun_once"] = False
     st.title("Dashboard 2 – Headlines vs Crime")
+
     st.markdown("Please answer the questions below about Dashboard 2. YOU MUST ANSWER ALL QUESTIONS BEFORE CONTINUING.")
-
-     
-
     # --- Require consent before showing anything ---
     if not st.session_state.get("pre_consent", False):
         st.warning("You must give consent before continuing. Please go to the Consent page and select 'Yes, I consent'.")
@@ -1164,6 +1206,12 @@ def page_dashboard2():
 
     # ---------------- CHORD CHART ----------------
     st.header("Chord Chart")
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_chord.png"
+    try:
+        st.image(image_url, caption="Chord Chart", use_column_width=True)
+    except Exception:
+        pass    
+
     st.markdown("Please answer **ALL** questions below about the Chord Chart")
 
     st.selectbox(
@@ -1201,6 +1249,11 @@ def page_dashboard2():
 
     # ---------------- HEATMAP ----------------
     st.header("Heatmap (Headlines vs Crime)")
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_heatmap.png"
+    try:
+        st.image(image_url, caption="Heatmap", use_column_width=True)
+    except Exception:
+        pass    
     st.markdown("Please answer **ALL** questions below about the Heatmap")
 
     st.selectbox(
@@ -1237,6 +1290,11 @@ def page_dashboard2():
 
     # ---------------- HOVER LIST ----------------
     st.header("Hoverlist (Headlines, Crime, Perception, Residuals)")
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_hoverlist.png"
+    try:
+        st.image(image_url, caption="Hoverlist", use_column_width=True)
+    except Exception:
+        pass    
 
     st.selectbox(
         "How accurate and complete were the hoverlist values and labels?",
@@ -1272,7 +1330,11 @@ def page_dashboard2():
 
     # ---------------- LINE CHARTS ----------------
     st.header("Line Charts (headlines, crime, perception, residuals)")
-
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_linecharts.png"
+    try:
+        st.image(image_url, caption="Line Charts", use_column_width=True)
+    except Exception:
+        pass
     st.selectbox(
         "How accurate and clear were the values and scales on the crime, headlines, perception, and residuals line charts (e.g., axes, labels)?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
@@ -1306,7 +1368,11 @@ def page_dashboard2():
 
     # ---------------- RESIDUALS CHART ----------------
     st.header("Residuals Chart")
-
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_residual.png"
+    try:        
+        st.image(image_url, caption="Residuals Chart", use_column_width=True)
+    except Exception:
+        pass
     st.selectbox(
         "How accurate and interpretable were the residual values and labels?",
         [PLACEHOLDER, "Very accurate", "Mostly accurate", "Neutral", "Somewhat inaccurate", "Very inaccurate"],
@@ -1329,7 +1395,12 @@ def page_dashboard2():
     
 
     # ---------------- SUMMARY PILLS ----------------
-    st.header("Summary Pills")
+    st.header("Summary Pills and Dropdown List")
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_summary_pills_dropdown_list.png"
+    try:
+        st.image(image_url, caption="Summary Pills and Dropdown List", use_column_width=True)
+    except Exception:
+        pass
 
     st.selectbox(
         "How clear were the summary pills (total Counts; 12‑month % changes) at a glance?",
@@ -1664,6 +1735,7 @@ def page_post_questions():
     
     # ---------------- BOROUGH CRIME PERCEPTION (post) ----------------
     st.header("Your Perception of Borough Crime Levels (after viewing dashboards)")
+    st.subheader("NOTE: City of London Is not included in this list as it is not an area monitored by the Metropolitan Police")
 
     boroughs = [
         "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
