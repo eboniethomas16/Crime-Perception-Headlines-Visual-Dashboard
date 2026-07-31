@@ -21,7 +21,6 @@ else:
     st.write("DEBUG: no service account found in st.secrets")
 
 
-
 headers = [
     "user_id",
     "submission_timestamp_utc",
@@ -89,7 +88,7 @@ headers = [
     "post_news_frequency", "post_headline_accuracy",
     "post_headline_inflation", "post_headline_truth", "post_crime_increase",
     "post_crime_most", "post_crime_least", "post_media_least", "post_media_most",
-    "post_lowest_boroughs", "post_highest_boroughs"
+    "post_lowest_boroughs", "post_highest_boroughs",
 
     # Analytic fields
     "net_change_crime",
@@ -301,27 +300,18 @@ def _normalize_header_cell(s):
 
 # Build a single row (list) in the exact order of headers list from session_state and grouped caches
 def build_row_from_headers(headers_list):
-    """
-    Build a list of values ordered to match headers_list.
-    Sources checked (in order):
-      - per-page caches: pre_answers, d1_answers, d2_answers, post_answers
-      - top-level st.session_state widget keys
-      - fallback: empty string
-    Special handling for user_id and submission_timestamp_utc.
-    """
     grouped = {}
 
     # Merge per-page caches (explicit order)
-    for k in ("pre_answers", "d1_answers", "d2_answers", "post_answers"):
+    for k in ("consent_answers", "pre_answers", "d1_answers", "d2_answers", "post_answers"):
         val = st.session_state.get(k)
         if isinstance(val, dict):
             grouped.update(val)
 
-    # Also include any top-level widget keys that weren't in per-page caches
+    # include top-level widget keys that aren't internal caches
     for k, v in st.session_state.items():
-        if k.startswith("_") or k in ("pre_answers", "d1_answers", "d2_answers", "post_answers"):
+        if k.startswith("_") or k in ("consent_answers", "pre_answers", "d1_answers", "d2_answers", "post_answers"):
             continue
-        # include simple widget keys (strings, lists, numbers)
         if not callable(v):
             grouped.setdefault(k, v)
 
@@ -330,12 +320,12 @@ def build_row_from_headers(headers_list):
         if h == "user_id":
             val = st.session_state.get("user_id") or ""
         elif h == "submission_timestamp_utc":
-            # single timestamp at save time
             val = datetime.utcnow().isoformat() + "Z"
         else:
             val = grouped.get(h, "")
         row.append(_norm_value(val))
     return row
+
 
 
 # Save rows to Google Sheets (modified to accept rows as list-of-lists OR list-of-dicts)
@@ -460,6 +450,8 @@ def init_state():
         st.session_state.pre_consent = None
 
     # per-page caches (always dicts)
+    if "consent_answers" not in st.session_state:
+        st.session_state.consent_answers = {}
     if "pre_answers" not in st.session_state:
         st.session_state.pre_answers = {}
 
@@ -496,27 +488,29 @@ def page_consent():
         choice = st.session_state.get("pre_consent_select")
 
         if choice == "Yes, I consent":
+            # boolean used by app logic
             st.session_state["pre_consent"] = True
 
-            # ensure pre_answers dict exists and store the consent selection
-            pre_answers = st.session_state.get("pre_answers", {})
-            pre_answers["pre_consent_select"] = choice
-            st.session_state["pre_answers"] = pre_answers
+            # store the widget value in a dedicated consent cache
+            consent_answers = st.session_state.get("consent_answers", {})
+            consent_answers["pre_consent_select"] = choice
+            st.session_state["consent_answers"] = consent_answers
 
             st.session_state.page = "preliminary"
             return
 
         if choice == "No, I do not consent":
             st.session_state["pre_consent"] = False
-            pre_answers = st.session_state.get("pre_answers", {})
-            pre_answers["pre_consent_select"] = choice
-            st.session_state["pre_answers"] = pre_answers
+            consent_answers = st.session_state.get("consent_answers", {})
+            consent_answers["pre_consent_select"] = choice
+            st.session_state["consent_answers"] = consent_answers
 
             st.error("You cannot continue until you consent. Please select 'Yes, I consent' to proceed.")
             return
 
         st.warning("Please select an option before continuing.")
         return
+
 
 
 
