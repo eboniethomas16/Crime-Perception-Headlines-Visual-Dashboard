@@ -776,7 +776,7 @@ def d1_page_preview():
         unsafe_allow_html=True
     )
 
-    st.markdown("**Important:** the link opens in a new tab. After the dashboard opens, return to this tab and confirm below.")
+    st.markdown("**Important:** the link opens in a new tab.fsddddddddddddddsdf After the dashboard opens, return to this tab and confirm below.")
 
     # --- Confirmation checkbox to ensure user opened the dashboard ---
     opened = st.checkbox("I have opened Dashboard 1 in a new tab", key="d1_preview_opened")
