@@ -375,41 +375,35 @@ def page_consent():
 
     # Desktop confirmation (required to continue; NOT saved to consent_answers or Sheets)
     st.markdown("**Device check (required):** Please confirm you are using a desktop or laptop, not a mobile device.")
-    desktop_confirm = st.checkbox("I confirm I am using a desktop or laptop (not a mobile device)", key="consent_desktop_confirm")
+    desktop_confirm = st.checkbox(
+        "I confirm I am using a desktop or laptop (not a mobile device)",
+        key="consent_desktop_confirm"
+    )
 
-    if st.button("Double Click To Continue"):
-        choice = st.session_state.get("pre_consent_select")
+    choice = st.session_state.get("pre_consent_select")
 
-        # If user consented, require desktop confirmation before proceeding
-        if choice == "Yes, I consent":
-            if not desktop_confirm:
-                st.error("This study requires a desktop or laptop. Please confirm you are using a desktop or laptop to continue.")
+    # Guidance messages (help the user understand why the Continue button may be hidden)
+    if choice == "No, I do not consent":
+        st.error("You cannot continue until you consent. Please select 'Yes, I consent' to proceed.")
+    elif choice == PLACEHOLDER:
+        st.info("Please select whether you consent to participate. The Continue button will appear after you consent and confirm you are on a desktop.")
+    else:  # choice == "Yes, I consent"
+        if not desktop_confirm:
+            st.info("Please confirm you are using a desktop or laptop by checking the box above. The Continue button will appear once you do.")
+        else:
+            # Both consent and desktop confirmation satisfied — show the Continue button
+            if st.button("Double Click To Continue"):
+                # mark consent for app logic
+                st.session_state["pre_consent"] = True
+
+                # store the widget value in a dedicated consent cache (do NOT include desktop_confirm)
+                consent_answers = st.session_state.get("consent_answers", {})
+                consent_answers["pre_consent_select"] = choice
+                st.session_state["consent_answers"] = consent_answers
+
+                st.session_state.page = "preliminary"
                 return
 
-            # boolean used by app logic
-            st.session_state["pre_consent"] = True
-
-            # store the widget value in a dedicated consent cache (do NOT include desktop_confirm)
-            consent_answers = st.session_state.get("consent_answers", {})
-            consent_answers["pre_consent_select"] = choice
-            st.session_state["consent_answers"] = consent_answers
-
-            st.session_state.page = "preliminary"
-            return
-
-        # If user explicitly declined consent
-        if choice == "No, I do not consent":
-            st.session_state["pre_consent"] = False
-            consent_answers = st.session_state.get("consent_answers", {})
-            consent_answers["pre_consent_select"] = choice
-            st.session_state["consent_answers"] = consent_answers
-
-            st.error("You cannot continue until you consent. Please select 'Yes, I consent' to proceed.")
-            return
-
-        # No selection made
-        st.warning("Please select an option before continuing.")
-        return
 
 
 
