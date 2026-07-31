@@ -763,7 +763,6 @@ def page_preliminary():
         st.session_state.page = "d1_preview"
         if not st.session_state.get("_nav_rerun_once", False):
             st.session_state["_nav_rerun_once"] = True
-            # st.experimental_rerun()
         return
 
 
@@ -1885,13 +1884,15 @@ def page_post_questions():
         # --- Save the single main row to Google Sheets (one call only) ---
         try:
             save_rows_to_sheet([final_row], headers=headers)
+            # navigate to thank you
             st.success("Responses saved to Google Sheets.")
+            st.session_state.page = "thank_you"
         except Exception as e:
             st.error(f"Failed to save responses to Google Sheets: {e}")
             st.stop()
 
-        # navigate to thank you
-        st.session_state.page = "thank_you"
+        
+        
         return
 
 
