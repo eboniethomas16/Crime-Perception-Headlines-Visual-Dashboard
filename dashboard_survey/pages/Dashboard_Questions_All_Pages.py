@@ -1146,43 +1146,37 @@ def page_dashboard1():
             return True
         return False
 
-    missing = [k for k in required_keys if is_missing_value(st.session_state.get(k, None))]
+    missing_d1 = [k for k in required_keys if is_missing_value(st.session_state.get(k, None))]
 
-    if missing:
+    if missing_d1:
         st.error("Please answer all required questions before continuing. The following items are incomplete:")
-        for k in missing:
+        for k in missing_d1:
             label = k.replace("d1_", "").replace("_", " ").capitalize()
             st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
         st.info("Scroll up to complete the unanswered questions.")
         return
 
     # -------------------------
-    # Build and cache Dashboard 1 answers
+    # Build and cache Dashboard 1 answers (per-page cache only)
     # -------------------------
-    d1_keys = [k for k in required_keys]  # reuse the validated list
+    d1_keys = required_keys
     d1_answers = {k: st.session_state.get(k) for k in d1_keys}
+    st.session_state["d1_answers"] = d1_answers
 
-    # Merge into a single answers cache in session_state (preserves other modules)
-    existing_answers = st.session_state.get("d1_answers", {})
-    if not isinstance(existing_answers, dict):
-        existing_answers = {}
-    # update existing_answers with d1 answers (overwrites any previous d1 keys)
-    existing_answers.update(d1_answers)
-    st.session_state["d1_answers"] = existing_answers
-    # This writes a full row built from the canonical headers list, so pre + d1 + other cached modules
-    row_list = build_row_from_headers(headers)        # list ordered to match headers
-    row_dict = dict(zip(headers, row_list))           # dict form (header -> value)
-
-    try:
-        save_rows_to_sheet([row_dict], headers=headers)
-        st.info("Checkpoint saved to Google Sheets.")
-    except Exception as e:
-        st.warning(f"Checkpoint to Google Sheets failed (will continue): {e}")
+    # Optional checkpoint to Google Sheets (uncomment to enable)
+    # row_list = build_row_from_headers(headers)
+    # row_dict = dict(zip(headers, row_list))
+    # try:
+    #     save_rows_to_sheet([row_dict], headers=headers)
+    #     st.info("Checkpoint saved to Google Sheets.")
+    # except Exception as e:
+    #     st.warning(f"Checkpoint to Google Sheets failed (will continue): {e}")
 
     # Navigate to next page
     st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
     st.session_state.page = "dashboard2"
     return
+
 
 
 
@@ -1467,18 +1461,17 @@ def page_dashboard2():
         ]
 
         # same missing-value check used in Dashboard 1
-    def is_missing_value(val, placeholder=PLACEHOLDER):
-        if val is None:
-            return True
-        if isinstance(val, str) and val.strip() == "":
-            return True
-        if isinstance(val, list) and len(val) == 0:
-            return True
-        if val == placeholder:
-            return True
-        return False
+        def is_missing_value(val, placeholder=PLACEHOLDER):
+            if val is None:
+                return True
+            if isinstance(val, str) and val.strip() == "":
+                return True
+            if isinstance(val, list) and len(val) == 0:
+                return True
+            if val == placeholder:
+                return True
+            return False
 
-    # validate
     missing_d2 = [k for k in required_d2 if is_missing_value(st.session_state.get(k, None))]
     if missing_d2:
         st.error("Please answer all required Dashboard 2 questions before finishing. The following items are incomplete:")
@@ -1489,20 +1482,11 @@ def page_dashboard2():
         return
 
     # -------------------------
-    # Build and cache Dashboard 2 answers (same pattern as Dashboard 1)
+    # Build and cache Dashboard 2 answers (per-page cache only)
     # -------------------------
-    d2_keys = required_d2  # reuse the validated list above
+    d2_keys = required_d2
     d2_answers = {k: st.session_state.get(k) for k in d2_keys}
-
-    # Keep a per-page cache too (optional, useful for debugging)
     st.session_state["d2_answers"] = d2_answers
-
-    # Merge into the central answers cache (preserves pre/d1 caches)
-    existing_answers = st.session_state.get("d2_answers", {})
-    if not isinstance(existing_answers, dict):
-        existing_answers = {}
-    existing_answers.update(d2_answers)
-    st.session_state["d2_answers"] = existing_answers
 
     # Optional checkpoint to Google Sheets (uncomment to enable)
     # row_list = build_row_from_headers(headers)
@@ -1831,61 +1815,62 @@ def page_post_questions():
     if st.button("Double Click to Finish"):
         # 1) basic post required fields
         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
-    if missing_post:
-        st.error("Please answer all required post‑dashboard questions before finishing.")
-        for k in missing_post:
-            label = k.replace("post_", "").replace("_", " ").capitalize()
-            st.write(f"- {label}: {repr(st.session_state.get(k))}")
-        st.stop()
+        if missing_post:
+            st.error("Please answer all required post‑dashboard questions before finishing.")
+            for k in missing_post:
+                label = k.replace("post_", "").replace("_", " ").capitalize()
+                st.write(f"- {label}: {repr(st.session_state.get(k))}")
+            st.stop()
 
-    # 2) exact-3 checks
-    if not (is_exactly_three(st.session_state.get("post_crime_most")) and
-            is_exactly_three(st.session_state.get("post_crime_least")) and
-            is_exactly_three(st.session_state.get("post_media_least")) and
-            is_exactly_three(st.session_state.get("post_media_most"))):
-        st.error("Please ensure all 'select three' post questions have exactly three selections.")
-        st.stop()
+        # 2) exact-3 checks
+        if not (is_exactly_three(st.session_state.get("post_crime_most")) and
+                is_exactly_three(st.session_state.get("post_crime_least")) and
+                is_exactly_three(st.session_state.get("post_media_least")) and
+                is_exactly_three(st.session_state.get("post_media_most"))):
+            st.error("Please ensure all 'select three' post questions have exactly three selections.")
+            st.stop()
 
-    # 3) borough checks
-    if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
-            len(st.session_state.get("post_highest_boroughs", [])) == 3):
-        st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
-        st.stop()
+        # 3) borough checks
+        if not (len(st.session_state.get("post_lowest_boroughs", [])) == 3 and
+                len(st.session_state.get("post_highest_boroughs", [])) == 3):
+            st.error("Please select exactly 3 boroughs for both the LOWEST and HIGHEST crime questions (post).")
+            st.stop()
 
-    # 4) ensure pre answers cached
-    pre_answers = st.session_state.get("pre_answers")
-    if not pre_answers:
-        st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
-        if st.button("Go to Pre‑questions"):
-            st.session_state.page = "preliminary"
-            return
-        st.stop()
+        # 4) ensure pre answers cached
+        pre_answers = st.session_state.get("pre_answers")
+        if not pre_answers:
+            st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
+            if st.button("Go to Pre‑questions"):
+                st.session_state.page = "preliminary"
+                return
+            st.stop()
 
-    # --- compute net-change (ensure compute_net_change is defined at module scope) ---
-    net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
-    net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
-    net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
+        # --- compute net-change (ensure compute_net_change is defined at module scope) ---
+        net_change_crime = compute_net_change(crime_categories, pre_crime_most, pre_crime_least, post_crime_most, post_crime_least)
+        net_change_media = compute_net_change(crime_categories, pre_media_most, pre_media_least, post_media_most, post_media_least)
+        net_change_boroughs = compute_net_change(boroughs, pre_lowest_boroughs, pre_highest_boroughs, post_lowest_boroughs, post_highest_boroughs)
 
-    # Save numeric results into session_state so the row builder can pick them up
-    st.session_state["net_change_crime"] = net_change_crime
-    st.session_state["net_change_media"] = net_change_media
-    st.session_state["net_change_boroughs"] = net_change_boroughs
+        # Save numeric results into session_state so the row builder can pick them up
+        st.session_state["net_change_crime"] = net_change_crime
+        st.session_state["net_change_media"] = net_change_media
+        st.session_state["net_change_boroughs"] = net_change_boroughs
 
-    # --- Build final ordered row from session state (single canonical source) ---
-    final_row_list = build_row_from_headers(headers)   # returns list ordered to match headers
-    final_row = dict(zip(headers, final_row_list))     # header -> value mapping
+        # --- Build final ordered row from session state (single canonical source) ---
+        final_row_list = build_row_from_headers(headers)   # returns list ordered to match headers
+        final_row = dict(zip(headers, final_row_list))     # header -> value mapping
 
-    # --- Save the single main row to Google Sheets (one call only) ---
-    try:
-        save_rows_to_sheet([final_row], headers=headers)
-        st.success("Responses saved to Google Sheets.")
-    except Exception as e:
-        st.error(f"Failed to save responses to Google Sheets: {e}")
-        st.stop()
+        # --- Save the single main row to Google Sheets (one call only) ---
+        try:
+            save_rows_to_sheet([final_row], headers=headers)
+            st.success("Responses saved to Google Sheets.")
+        except Exception as e:
+            st.error(f"Failed to save responses to Google Sheets: {e}")
+            st.stop()
 
-    # navigate to thank you
-    st.session_state.page = "thank_you"
-    return
+        # navigate to thank you
+        st.session_state.page = "thank_you"
+        return
+
 
 
 
