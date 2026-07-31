@@ -756,12 +756,12 @@ def d1_page_preview():
     if st.session_state.get("_nav_rerun_once", False):
         st.session_state["_nav_rerun_once"] = False
 
-    st.title("Open Dashboard 1 (Preview)")
-    st.markdown("Please scroll to the bottom of the page to open the Dashboard 1 interface in a new tab")
+    st.title("Open Crime vs Perception Dashboard")
+    st.markdown("Please scroll to the bottom of the page to open the 'Crime vs Perception' interface in a new tab")
     # --- Dashboard image (optional) ---
     image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_dashboard.png"
     try:
-        st.image(image_url, caption="Dashboard 1 preview using jsdelivr", use_column_width=True)
+        st.image(image_url, caption="Crime vs Perception preview", use_column_width=True)
     except Exception:
         pass
 
@@ -1098,36 +1098,44 @@ def page_dashboard1():
 def d2_page_preview():
     """
     Preview page for Dashboard 2.
-    Same behaviour as d1_page_preview but routes to dashboard2.
+    Shows an image/link and a checkbox that enables the Continue button.
     """
+    # keep page config at app top-level; don't call set_page_config here
     if st.session_state.get("_nav_rerun_once", False):
         st.session_state["_nav_rerun_once"] = False
 
-    st.title("Open 'Crime and Headlines vs. Perception' Dashboard")
-    st.markdown("Please open the 'Crime and Headlines vs. Perception' interface in a new tab, inspect it, then return here and click Continue to answer questions about it.")
+    st.title("Open Crime and Headlines vs Perception Dashboard")
+    st.markdown("Please scroll to the bottom of the page to open the 'Crime and Headlines vs Perception' interface in a new tab")
 
     # --- Dashboard image (optional) ---
     image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_dashboard.png"
     try:
-        st.image(image_url, caption="Dashboard 2 preview", use_column_width=True)
+        st.image(image_url, caption="Crime and Headlines vs Perception preview", use_column_width=True)
     except Exception:
         pass
 
     st.markdown("---")
 
-    # --- Link to open the live dashboard in a new tab ---
-    dashboard_url = "https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html"
+    st.markdown("After you have opened the dashboard, inspect it, then return here and click Continue to answer questions about it.")
     st.markdown(
-        f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
-        f'Open Dashboard 2 in a new tab</a>',
+        '<a href="https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_headline_perception_crime.html" '
+        'target="_blank" rel="noopener noreferrer"><button style="padding:8px 16px;">Click to Open Dashboard 2 In a New Tab</button></a>',
         unsafe_allow_html=True
     )
 
-    st.markdown(
-    '<a href="https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html" '
-    'target="_blank" rel="noopener noreferrer"><button style="padding:8px 16px;">Open Dashboard 1</button></a>',
-    unsafe_allow_html=True
-)
+    st.markdown("**Important:** the link opens in a new tab. After the dashboard opens, return to this tab and confirm below.")
+
+    # --- Confirmation checkbox to ensure user opened the dashboard ---
+    opened = st.checkbox("I have opened Dashboard 2 in a new tab", key="d2_preview_opened")
+
+    # --- Continue button enabled only after checkbox is checked ---
+    if opened:
+        if st.button("Continue to Dashboard 2 questions", key="d2_preview_continue"):
+            st.session_state.page = "dashboard2"
+            return
+    else:
+        st.info("Please open the dashboard in a new tab and check the box to continue.")
+
 
 
 
