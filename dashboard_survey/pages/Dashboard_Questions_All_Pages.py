@@ -372,66 +372,6 @@ def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET
         ws.append_row(ordered, value_input_option="USER_ENTERED")
 
   
-# Append a row to CSV (row passed as dict mapping header->value). Ensures header exists and matches.
-# def append_row_to_csv(row: dict, out_path: str = "responses"):
-#     """
-#     Append a single row (dict keyed by header names) to CSV.
-#     Ensures the CSV file exists and the first row matches the canonical headers list.
-#     """
-#     out = Path(out_path)
-#     # Ensure parent exists
-#     out.parent.mkdir(parents=True, exist_ok=True)
-
-#     # If file doesn't exist, write header then the row
-#     if not out.exists():
-#         # write header + row
-#         df_row = pd.DataFrame([row])
-#         df_row.to_csv(out, index=False)
-#         return
-
-#     # File exists: check header matches (case-insensitive)
-#     try:
-#         df_existing = pd.read_csv(out)
-#     except Exception:
-#         # If unreadable, overwrite with header + row
-#         df_row = pd.DataFrame([row])
-#         df_row.to_csv(out, index=False)
-#         return
-
-#     # Normalize existing header and expected header
-#     existing_cols = [str(c).strip().lower() for c in df_existing.columns.tolist()]
-#     expected_cols = [str(c).strip().lower() for c in headers]
-
-#     if existing_cols != expected_cols:
-#         # Replace header row with expected headers, preserve existing data (map columns where possible)
-#         # Build new DataFrame with expected columns
-#         mapped = {}
-#         for col in headers:
-#             # find matching existing column (case-insensitive)
-#             matches = [c for c in df_existing.columns if str(c).strip().lower() == col.strip().lower()]
-#             if matches:
-#                 mapped[col] = df_existing[matches[0]]
-#             else:
-#                 mapped[col] = [""] * len(df_existing)
-#         df_fixed = pd.DataFrame(mapped)
-#         # append new row to df_fixed
-#         df_new_row = pd.DataFrame([row])
-#         df_combined = pd.concat([df_fixed, df_new_row], ignore_index=True)
-#         # write back
-#         tmp_fd, tmp_path = tempfile.mkstemp(suffix=".csv")
-#         os.close(tmp_fd)
-#         tmp_path = Path(tmp_path)
-#         try:
-#             df_combined.to_csv(tmp_path, index=False)
-#             os.replace(tmp_path, out)
-#         finally:
-#             if tmp_path.exists():
-#                 try:
-#                     tmp_path.unlink()
-#                 except Exception:
-#                     pass
-#         return
-                
 
 PLACEHOLDER = "Select an option"
 
@@ -548,7 +488,6 @@ def page_preliminary():
         st.stop()
 
      
-
     st.markdown("---")
     st.header("About You")
 
@@ -852,12 +791,54 @@ def page_preliminary():
 
 
         # Navigate to next page
-        st.session_state.page = "dashboard1"
+        st.session_state.page = "d1_preview"
         if not st.session_state.get("_nav_rerun_once", False):
             st.session_state["_nav_rerun_once"] = True
             # st.experimental_rerun()
         return
 
+
+def d1_page_preview():
+    """
+    Preview page for Dashboard 1.
+    Shows an image/link and a checkbox that enables the Continue button.
+    """
+    # keep page config at app top-level; don't call set_page_config here
+    if st.session_state.get("_nav_rerun_once", False):
+        st.session_state["_nav_rerun_once"] = False
+
+    st.title("Open Dashboard 1 (Preview)")
+    st.markdown("Please open the Dashboard 1 interface in a new tab, inspect it, then return here and click Continue to answer questions about it.")
+
+    # --- Dashboard image (optional) ---
+    image_url = "https://raw.githubusercontent.com/yourusername/yourrepo/main/path/to/d1_preview.png"
+    try:
+        st.image(image_url, caption="Dashboard 1 preview", use_column_width=True)
+    except Exception:
+        pass
+
+    st.markdown("---")
+
+    # --- Link to open the live dashboard in a new tab ---
+    dashboard_url = "https://your-dashboard-hosting.example.com/dashboard1"
+    st.markdown(
+        f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
+        f'Open Dashboard 1 in a new tab</a>',
+        unsafe_allow_html=True
+    )
+
+    st.markdown("**Important:** the link opens in a new tab. After the dashboard opens, return to this tab and confirm below.")
+
+    # --- Confirmation checkbox to ensure user opened the dashboard ---
+    opened = st.checkbox("I have opened Dashboard 1 in a new tab", key="d1_preview_opened")
+
+    # --- Continue button enabled only after checkbox is checked ---
+    if opened:
+        if st.button("Continue to Dashboard 1 questions", key="d1_preview_continue"):
+            st.session_state.page = "dashboard1"
+            return
+    else:
+        st.info("Please open the dashboard in a new tab and check the box to continue.")
 
 
 
@@ -1888,7 +1869,9 @@ def router():
     routes = {
         "consent": page_consent,
         "preliminary": page_preliminary,
+        "d1_preview": d1_page_preview,
         "dashboard1": page_dashboard1,
+        # "d2_preview": d2_page_preview,
         "dashboard2": page_dashboard2,
         "post_questions": page_post_questions,
         "thank_you": page_thank_you,
