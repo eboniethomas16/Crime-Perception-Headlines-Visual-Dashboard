@@ -768,13 +768,25 @@ def d1_page_preview():
 
     st.markdown("---")
 
-    # --- Link to open the live dashboard in a new tab ---
-    dashboard_url = "https://your-dashboard-hosting.example.com/dashboard1"
+    dashboard_url = "https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html"
     st.markdown(
-        f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
-        f'Open Dashboard 1 in a new tab</a>',
+            f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
+            f'Open Dashboard 2 in a new tab</a>',
+            unsafe_allow_html=True
+        )
+    
+    st.markdown(
+        '<a href="https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html" '
+        'target="_blank" rel="noopener noreferrer"><button style="padding:8px 16px;">Open Dashboard 1</button></a>',
         unsafe_allow_html=True
     )
+    # --- Link to open the live dashboard in a new tab ---
+    # dashboard_url = "https://your-dashboard-hosting.example.com/dashboard1"
+    # st.markdown(
+    #     f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
+    #     f'Open Dashboard 1 in a new tab</a>',
+    #     unsafe_allow_html=True
+    # )
 
     st.markdown("**Important:** the link opens in a new tab.fsddddddddddddddsdf After the dashboard opens, return to this tab and confirm below.")
 
