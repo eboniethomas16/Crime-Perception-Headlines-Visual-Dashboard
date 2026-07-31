@@ -310,21 +310,33 @@ def build_row_from_headers(headers_list):
     Special handling for user_id and submission_timestamp_utc.
     """
     grouped = {}
-    for k in ("pre_answers", "d1_answers","d2_answers", "post_answers"):
+
+    # Merge per-page caches (explicit order)
+    for k in ("pre_answers", "d1_answers", "d2_answers", "post_answers"):
         val = st.session_state.get(k)
         if isinstance(val, dict):
             grouped.update(val)
+
+    # Also include any top-level widget keys that weren't in per-page caches
+    for k, v in st.session_state.items():
+        if k.startswith("_") or k in ("pre_answers", "d1_answers", "d2_answers", "post_answers"):
+            continue
+        # include simple widget keys (strings, lists, numbers)
+        if not callable(v):
+            grouped.setdefault(k, v)
 
     row = []
     for h in headers_list:
         if h == "user_id":
             val = st.session_state.get("user_id") or ""
         elif h == "submission_timestamp_utc":
+            # single timestamp at save time
             val = datetime.utcnow().isoformat() + "Z"
         else:
-            val = st.session_state.get(h, grouped.get(h, ""))
+            val = grouped.get(h, "")
         row.append(_norm_value(val))
     return row
+
 
 # Save rows to Google Sheets (modified to accept rows as list-of-lists OR list-of-dicts)
 def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME"):
@@ -447,6 +459,10 @@ def init_state():
     if "pre_consent" not in st.session_state:
         st.session_state.pre_consent = None
 
+    # per-page caches (always dicts)
+    if "pre_answers" not in st.session_state:
+        st.session_state.pre_answers = {}
+
     if "d1_answers" not in st.session_state:
         st.session_state.d1_answers = {}
 
@@ -457,13 +473,10 @@ def init_state():
     if "user_id" not in st.session_state:
         st.session_state.user_id = f"user_{uuid.uuid4().hex[:8]}"
 
-    # cache for pre answers (populated when user completes pre page)
-    if "pre_answers" not in st.session_state:
-        st.session_state.pre_answers = None
-
     # optional guard for one-time rerun
     if "_nav_rerun_once" not in st.session_state:
         st.session_state["_nav_rerun_once"] = False
+
 
 
 # ---------------------------------------------------------
@@ -486,7 +499,7 @@ def page_consent():
             st.session_state["pre_consent"] = True
 
             # ensure pre_answers dict exists and store the consent selection
-            pre_answers = st.session_state.get("pre_answers") or {}
+            pre_answers = st.session_state.get("pre_answers", {})
             pre_answers["pre_consent_select"] = choice
             st.session_state["pre_answers"] = pre_answers
 
@@ -495,7 +508,7 @@ def page_consent():
 
         if choice == "No, I do not consent":
             st.session_state["pre_consent"] = False
-            pre_answers = st.session_state.get("pre_answers") or {}
+            pre_answers = st.session_state.get("pre_answers", {})
             pre_answers["pre_consent_select"] = choice
             st.session_state["pre_answers"] = pre_answers
 
@@ -504,6 +517,7 @@ def page_consent():
 
         st.warning("Please select an option before continuing.")
         return
+
 
 
 
@@ -851,14 +865,6 @@ def page_preliminary():
         return
 
 
-        # All checks passed — navigate to Dashboard 1 (guarded rerun for single-click navigation)
-        # st.success("Pre‑survey complete. You will now be taken to view the Headlines vs. Crime Dashboard")
-        # st.session_state.page = "dashboard1"
-        # if not st.session_state.get("_nav_rerun_once", False):
-        #     st.session_state["_nav_rerun_once"] = True
-        #     # st.experimental_rerun()
-        # return
-
 
 
 def page_dashboard1():
@@ -1107,14 +1113,14 @@ def page_dashboard1():
         key="d1_overall_system_capabilities"
     )
 
-
+    required_d1 = []
     # ---------------- CONTINUE BUTTON + VALIDATION ----------------
     st.markdown("---")
     st.write("When you're done, click Continue to proceed to Dashboard 2.")
 
     if st.button("Double Click To Continue to Dashboard 2"):
         # list all required d1_ keys (already defined above)
-        required_keys = [
+        required_d1 = [
             "d1_bivmap_content", "d1_bivmap_learnability", "d1_bivmap_easeofuse",
             "d1_bivmap_operability", "d1_bivmap_usefulness",
             "d1_heatmap_content", "d1_heatmap_learnability", "d1_heatmap_operability",
@@ -1135,47 +1141,34 @@ def page_dashboard1():
             "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities"
         ]
 
-    def is_missing_value(val, placeholder=PLACEHOLDER):
-        if val is None:
-            return True
-        if isinstance(val, str) and val.strip() == "":
-            return True
-        if isinstance(val, list) and len(val) == 0:
-            return True
-        if val == placeholder:
-            return True
-        return False
+        def is_missing_value(val, placeholder=PLACEHOLDER):
+            if val is None:
+                return True
+            if isinstance(val, str) and val.strip() == "":
+                return True
+            if isinstance(val, list) and len(val) == 0:
+                return True
+            if val == placeholder:
+                return True
+            return False
 
-    missing_d1 = [k for k in required_keys if is_missing_value(st.session_state.get(k, None))]
+        missing = [k for k in required_d1 if is_missing_value(st.session_state.get(k, None))]
+        if missing:
+            st.error("Please answer all required questions before continuing. The following items are incomplete:")
+            for k in missing:
+                label = k.replace("d1_", "").replace("_", " ").capitalize()
+                st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
+            st.info("Scroll up to complete the unanswered questions.")
+            return
 
-    if missing_d1:
-        st.error("Please answer all required questions before continuing. The following items are incomplete:")
-        for k in missing_d1:
-            label = k.replace("d1_", "").replace("_", " ").capitalize()
-            st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
-        st.info("Scroll up to complete the unanswered questions.")
+        # Build and cache Dashboard 1 answers (per-page only)
+        d1_answers = {k: st.session_state.get(k) for k in required_d1}
+        st.session_state["d1_answers"] = d1_answers
+
+        # Navigate to next page (no save)
+        st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
+        st.session_state.page = "dashboard2"
         return
-
-    # -------------------------
-    # Build and cache Dashboard 1 answers (per-page cache only)
-    # -------------------------
-    d1_keys = required_keys
-    d1_answers = {k: st.session_state.get(k) for k in d1_keys}
-    st.session_state["d1_answers"] = d1_answers
-
-    # Optional checkpoint to Google Sheets (uncomment to enable)
-    # row_list = build_row_from_headers(headers)
-    # row_dict = dict(zip(headers, row_list))
-    # try:
-    #     save_rows_to_sheet([row_dict], headers=headers)
-    #     st.info("Checkpoint saved to Google Sheets.")
-    # except Exception as e:
-    #     st.warning(f"Checkpoint to Google Sheets failed (will continue): {e}")
-
-    # Navigate to next page
-    st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
-    st.session_state.page = "dashboard2"
-    return
 
 
 
@@ -1472,13 +1465,22 @@ def page_dashboard2():
                 return True
             return False
 
-    missing_d2 = [k for k in required_d2 if is_missing_value(st.session_state.get(k, None))]
-    if missing_d2:
-        st.error("Please answer all required Dashboard 2 questions before finishing. The following items are incomplete:")
-        for k in missing_d2:
-            label = k.replace("d2_", "").replace("_", " ").capitalize()
-            st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
-        st.info("Scroll up to complete the unanswered questions.")
+        missing_d2 = [k for k in required_d2 if is_missing_value(st.session_state.get(k, None))]
+        if missing_d2:
+            st.error("Please answer all required Dashboard 2 questions before finishing. The following items are incomplete:")
+            for k in missing_d2:
+                label = k.replace("d2_", "").replace("_", " ").capitalize()
+                st.write(f"- {label}: {repr(st.session_state.get(k, ''))}")
+            st.info("Scroll up to complete the unanswered questions.")
+            return
+
+        # Build and cache Dashboard 2 answers (per-page only)
+        d2_answers = {k: st.session_state.get(k) for k in required_d2}
+        st.session_state["d2_answers"] = d2_answers
+
+        # Navigate to post survey (no save)
+        st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
+        st.session_state.page = "post_questions"
         return
 
     # -------------------------
@@ -1488,14 +1490,6 @@ def page_dashboard2():
     d2_answers = {k: st.session_state.get(k) for k in d2_keys}
     st.session_state["d2_answers"] = d2_answers
 
-    # Optional checkpoint to Google Sheets (uncomment to enable)
-    # row_list = build_row_from_headers(headers)
-    # row_dict = dict(zip(headers, row_list))
-    # try:
-    #     save_rows_to_sheet([row_dict], headers=headers)
-    #     st.info("Checkpoint saved to Google Sheets.")
-    # except Exception as e:
-    #     st.warning(f"Checkpoint to Google Sheets failed (will continue): {e}")
 
     # Navigate to post survey
     st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
@@ -1812,8 +1806,8 @@ def page_post_questions():
     st.markdown("---")
     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
 
-    if st.button("Double Click to Finish"):
-        # 1) basic post required fields
+    if st.button("Double Click to Finish Survey"):
+    # 1) basic post required fields
         missing_post = [k for k in required_post_selects if is_missing(st.session_state.get(k))]
         if missing_post:
             st.error("Please answer all required post‑dashboard questions before finishing.")
@@ -1837,7 +1831,7 @@ def page_post_questions():
             st.stop()
 
         # 4) ensure pre answers cached
-        pre_answers = st.session_state.get("pre_answers")
+        pre_answers = st.session_state.get("pre_answers", {})
         if not pre_answers:
             st.error("Preliminary responses are missing. Please complete the pre‑survey questions first.")
             if st.button("Go to Pre‑questions"):
@@ -1893,18 +1887,37 @@ def page_thank_you():
 # ---------------------------------------------------------
 
 def router():
-    if st.session_state.page == "consent":
-        page_consent()
-    elif st.session_state.page == "preliminary":
-        page_preliminary()
-    elif st.session_state.page == "dashboard1":
-        page_dashboard1()
-    elif st.session_state.page == "dashboard2":
-        page_dashboard2()
-    elif st.session_state.page == "post_questions":
-        page_post_questions()
-    elif st.session_state.page == "thank_you":
-        page_thank_you()
+    # Ensure page key exists and is valid
+    page = st.session_state.get("page", "consent")
+
+    # mapping of page name -> handler function
+    routes = {
+        "consent": page_consent,
+        "preliminary": page_preliminary,
+        "dashboard1": page_dashboard1,
+        "dashboard2": page_dashboard2,
+        "post_questions": page_post_questions,
+        "thank_you": page_thank_you,
+    }
+
+    handler = routes.get(page)
+
+    if handler is None:
+        # Unknown page value: show a helpful message and reset to a safe page
+        st.error(f"Unknown page '{page}'. Redirecting to the consent page.")
+        st.session_state["page"] = "consent"
+        routes["consent"]()
+        return
+
+    # Call the page handler inside try/except so a page error doesn't break the whole app
+    try:
+        handler()
+    except Exception as e:
+        # Surface a friendly error and reset to a safe page
+        st.error(f"An unexpected error occurred while rendering page '{page}': {e}")
+        st.session_state["page"] = "consent"
+        routes["consent"]()
+
 
 
 
@@ -1912,7 +1925,8 @@ def router():
 # ---------------------------------------------------------
 # MAIN ENTRY POINT
 # ---------------------------------------------------------
-
+# initialize session state once
 init_state()
+# then route to the current page
 router()
 
