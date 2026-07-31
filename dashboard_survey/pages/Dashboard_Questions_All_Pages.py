@@ -1040,7 +1040,7 @@ def page_dashboard1():
     st.markdown("---")
     st.write("When you're done, click Continue to proceed to Dashboard 2.")
 
-    if st.button("Double Click To Continue to Dashboard 2"):
+    if st.button("Double Click To Continue to Dashboard 2 Preview"):
         # list all required d1_ keys (already defined above)
         required_d1 = [
             "d1_bivmap_content", "d1_bivmap_learnability", "d1_bivmap_easeofuse",
@@ -1089,7 +1089,7 @@ def page_dashboard1():
 
         # Navigate to next page (no save)
         st.success("All Dashboard 1 questions complete. Redirecting to Dashboard 2...")
-        st.session_state.page = "dashboard2"
+        st.session_state.page = "d2_preview"
         return
 
 
@@ -1860,7 +1860,7 @@ def router():
         "preliminary": page_preliminary,
         "d1_preview": d1_page_preview,
         "dashboard1": page_dashboard1,
-        # "d2_preview": d2_page_preview,
+        "d2_preview": d2_page_preview,
         "dashboard2": page_dashboard2,
         "post_questions": page_post_questions,
         "thank_you": page_thank_you,
