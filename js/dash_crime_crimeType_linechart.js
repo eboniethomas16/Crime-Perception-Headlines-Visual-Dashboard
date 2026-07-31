@@ -42,10 +42,24 @@ export function drawCrimeChart({
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
 
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y).ticks(6).tickFormat(d3.format(",")));
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("# of Crimes Commited");
 
     const lineGen = d3.line()
         .defined(d => d && d.date && !isNaN(d.crime_count))
@@ -61,6 +75,7 @@ export function drawCrimeChart({
     chartGroup.append("g")
         .attr("class", "zoom")
         .call(brush);
+    positionAxisLabels()
 
     // ============================================================
     // INITIALIZE
@@ -94,6 +109,7 @@ export function drawCrimeChart({
                     .attr("d", d => lineGen(d[1])),
                 exit => exit.remove()
             );
+        positionAxisLabels()
     }
 
     // ============================================================
@@ -267,6 +283,7 @@ export function drawCrimeChart({
             lines.filter(d => activeCrimeTypesSet.has(d[0])).raise();
             lines.filter(d => !activeCrimeTypesSet.has(d[0])).lower();
         });
+        positionAxisLabels()
     }
 
 
@@ -305,12 +322,34 @@ export function drawCrimeChart({
     function redrawXAxis() {
         chartGroup.select(".x-axis")
             .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+        xLabel
+            .attr("x", innerWidth / 2)
+            .attr("y", innerHeight + 40);
     }
 
     function redrawYAxis() {
         chartGroup.select(".y-axis")
             .transition().duration(600)
             .call(d3.axisLeft(y).ticks(6).tickFormat(d3.format(",")));
+        yLabel
+            .attr("x", -innerHeight / 2)
+            .attr("y", -margin.left + 14) // tweak 14 to nudge horizontally from left edge
+            .attr("transform", `rotate(-90)`);
+    }
+    function positionAxisLabels() {
+        xLabel
+            .attr("x", innerWidth / 2)
+            .attr("y", innerHeight + (margin.bottom ? Math.max(28, margin.bottom) : 40))
+            .attr("text-anchor", "middle");
+
+        // Y label: translate to the left of the plot area and vertically center, then rotate
+        const yTranslateX = -margin.left + 14; // tweak this to move label closer/further from ticks
+        const yTranslateY = innerHeight / 2;
+
+        yLabel
+            .attr("transform", `translate(${yTranslateX}, ${yTranslateY}) rotate(-90)`)
+            .attr("text-anchor", "middle")
+            .style("dominant-baseline", "middle");
     }
 
     function dim(isDimmed) {

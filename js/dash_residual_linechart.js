@@ -63,10 +63,24 @@ export function drawResidualChart({
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
 
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y));
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Standard Deviation");
 
     // -----------------------------
     // LINE GENERATORS
@@ -117,6 +131,7 @@ export function drawResidualChart({
         boroughLines = plotGroup.selectAll(".residual-line")
             .data([])
             .join(); // do not create empty paths
+        positionAxisLabels()
     }
 
     // -----------------------------
@@ -358,6 +373,10 @@ export function drawResidualChart({
             .attr("y2", y(0));
 
         redrawLines();
+    }
+    function positionAxisLabels() {
+        xLabel.attr("x", innerWidth / 2).attr("y", innerHeight + 40);
+        yLabel.attr("x", -innerHeight / 2).attr("y", -margin.left + 14).attr("transform", `rotate(-90)`);
     }
 
     function dim(isDimmed) {

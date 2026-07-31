@@ -258,7 +258,7 @@ export function drawDashboard() {
         // then use palette (array of hex strings)
         // const colorScale = d3.scaleOrdinal().domain(boroughNames).range(palette);
 
-        const crimeColor = d3.scaleOrdinal(palette);
+        const boroughColor = d3.scaleOrdinal(palette);
         const perceptionColor = d3.scaleOrdinal(palette);
         // const residualColor = d3.scaleOrdinal(d3.schemeTableau10);
 
@@ -414,7 +414,7 @@ export function drawDashboard() {
             width,
             height,
             margin,
-            color: crimeColor,
+            color: boroughColor,
             activeBoroughs,
             setHoverBorough,
             onLineClick: toggleActiveBorough,
@@ -430,7 +430,7 @@ export function drawDashboard() {
             width,
             height,
             margin,
-            color: crimeColor,
+            color: boroughColor,
             activeBoroughs,
             setHoverBorough,
             onLineClick: toggleActiveBorough,
@@ -1175,7 +1175,7 @@ export function drawDashboard() {
             // Render rows
             renderHoverList(mergedRows, {
                 containerSelector: options.containerSelector,
-                colorScale: typeof crimeColor !== "undefined" ? crimeColor : null,
+                colorScale: typeof boroughColor !== "undefined" ? boroughColor : null,
                 maxCrime: options.maxCrime,
                 residualExtent: options.residualExtent,
                 width: options.width
@@ -1418,18 +1418,17 @@ export function drawDashboard() {
 
                     // interactions
                     row.addEventListener("mouseenter", () => {
-                        if (typeof setHoverCrimeType === "function") setHoverCrimeType(dataKey);
                         if (typeof setHoverBorough === "function") setHoverBorough(dataKey);
                         if (typeof highlightLine === "function") highlightLine(dataKey);
                     });
                     row.addEventListener("mouseleave", () => {
-                        if (typeof setHoverCrimeType === "function") setHoverCrimeType(null);
+
                         if (typeof setHoverBorough === "function") setHoverBorough(null);
                         if (typeof clearHoverHighlight === "function") clearHoverHighlight();
                     });
                     row.addEventListener("click", () => {
-                        if (typeof toggleActiveCrimeTypes === "function") toggleActiveCrimeTypes(dataKey);
-                        if (typeof toggleActiveBorough === "function") toggleActiveBorough(dataKey);
+                        // if (typeof toggleActiveCrimeTypes === "function") toggleActiveCrimeTypes(dataKey);
+                        // if (typeof toggleActiveBorough === "function") toggleActiveBorough(dataKey);
                         // visually pin selection handled by updateHoverList caller via selectedHoverRow
                     });
                 }
@@ -1486,63 +1485,61 @@ export function drawDashboard() {
             const residualChart = document.getElementById("chart-residual");
             const residualTitle = document.getElementById("residual-title");
 
-            // Defensive checks
             if (!btn) return;
 
-            // Initial state: crime & perception visible; residual hidden
-            const ensureVisible = (el) => {
+            // helpers
+            const show = el => {
                 if (!el) return;
                 el.classList.remove("hidden-chart");
                 el.classList.add("visible-chart");
+                el.setAttribute("aria-hidden", "false");
             };
-            const ensureHidden = (el) => {
+            const hide = el => {
                 if (!el) return;
                 el.classList.remove("visible-chart");
                 el.classList.add("hidden-chart");
+                el.setAttribute("aria-hidden", "true");
             };
+            const isVisible = el => el && !el.classList.contains("hidden-chart");
 
-            ensureVisible(crimeChart);
-            ensureVisible(perceptionChart);
-            ensureVisible(crimeTitle);
-            ensureVisible(perceptionTitle);
+            // Ensure primary charts visible (unchanged)
+            show(crimeChart);
+            show(perceptionChart);
+            show(crimeTitle);
+            show(perceptionTitle);
 
-            ensureHidden(residualChart);
-            ensureHidden(residualTitle);
+            // Initial state: residual chart VISIBLE
+            show(residualChart);
+            show(residualTitle);
 
-            // Button initial label
-            btn.textContent = "Show Residual Chart";
+            // Button initial label reflects visible state
+            let residualVisible = true;
+            btn.textContent = residualVisible ? "Hide Residual Chart" : "Show Residual Chart";
 
-            // Track residual visibility
-            let residualVisible = false;
-
+            // Toggle handler
             btn.addEventListener("click", () => {
                 residualVisible = !residualVisible;
 
                 if (residualVisible) {
-                    // Show residual chart + title
+                    show(residualChart);
+                    show(residualTitle);
                     btn.textContent = "Hide Residual Chart";
-                    if (residualChart) {
-                        residualChart.classList.remove("hidden-chart");
-                        residualChart.classList.add("visible-chart");
-                    }
-                    if (residualTitle) {
-                        residualTitle.classList.remove("hidden-chart");
-                        residualTitle.classList.add("visible-chart");
-                    }
                 } else {
-                    // Hide residual chart + title
+                    hide(residualChart);
+                    hide(residualTitle);
                     btn.textContent = "Show Residual Chart";
-                    if (residualChart) {
-                        residualChart.classList.remove("visible-chart");
-                        residualChart.classList.add("hidden-chart");
-                    }
-                    if (residualTitle) {
-                        residualTitle.classList.remove("visible-chart");
-                        residualTitle.classList.add("hidden-chart");
-                    }
+                }
+
+                // Emit an event so other modules can respond if needed
+                try {
+                    const ev = new CustomEvent("residualToggle", { detail: { visible: residualVisible } });
+                    document.dispatchEvent(ev);
+                } catch (e) {
+                    // ignore if CustomEvent not supported
                 }
             });
         }
+
         setupTrendToggle();
 
 
@@ -1575,7 +1572,12 @@ export function drawDashboard() {
             // --------------------------------------------------
             if (hoverBorough && activeBoroughs.size > 0) {
                 hoverListSel.selectAll(".hover-row")
-                    .classed("selected-hover-row", r => r.borough === hoverBorough);
+                    .classed("selected-hover-row", r => r.borough === hoverBorough)
+                    .classed("hover-highlight-row", r =>
+                        hoverBorough &&
+                        r.crime_type === hoverBorough &&
+                        r.crime_type !== selectedHoverRow
+                    );
             } else {
                 hoverListSel.selectAll(".hover-row")
                     .classed("selected-hover-row", false);
@@ -1617,13 +1619,27 @@ export function drawDashboard() {
             // 4. Choromap title (always depends ONLY on displayDate)
             // --------------------------------------------------
             // need this title shifted down a bit
-            d3.select("#choro-map-title")
-                .html(`
-            Showing Crime Count and Perception % count divergence in London for
-            <div style="text-align:center; font-size:1.3em; font-weight:700; margin-top:4px;">
-                ${monthYear}
-            </div>
-        `);
+            d3.select("#choro-map-title").html(`
+              <div class="choro-title">
+                <div class="choro-title-main">
+                  Select boroughs in the map below to see how perception and crime count diverge
+                </div>
+                <div class="choro-title-sub">
+                  Showing Crime Count and Perception % count divergence in London for
+                </div>
+                <div class="choro-title-month" aria-hidden="true">
+                  ${monthYear}
+                </div>
+              </div>
+            `);
+        //     d3.select("#choro-map-title")
+        //         .html(`
+        //     Select boroughs in the map below to see how perception and crime count diverge
+        //     Showing Crime Count and Perception % count divergence in London for
+        //     <div style="text-align:center; font-size:1.3em; font-weight:700; margin-top:4px;">
+        //         ${monthYear}
+        //     </div>
+        // `);
             console.log(hoverQuarter);
             // --------------------------------------------------
             // 5. Hoverlist title (depends on active boroughs AND hoverQuarter)

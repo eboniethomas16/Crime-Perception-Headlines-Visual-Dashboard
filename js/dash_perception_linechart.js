@@ -47,10 +47,24 @@ export function drawPerceptionChart({
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
 
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y).tickFormat(d => d + "%"));
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("% of Residents who Agree");
 
     const lineGen = d3.line()
         .defined(d => d && d.date && (d.metric_value_pct != null) && !isNaN(d.metric_value_pct))
@@ -113,6 +127,7 @@ export function drawPerceptionChart({
 
                 exit => exit.remove()
             );
+        positionAxisLabels()
     }
 
     // ============================================================
@@ -349,6 +364,14 @@ export function drawPerceptionChart({
     function redrawYAxis() {
         yAxis.transition().duration(600)
             .call(d3.axisLeft(y).tickFormat(d => d + "%"));
+        yLabel
+            .attr("x", -innerHeight / 2)
+            .attr("y", -margin.left + 14) // tweak 14 to nudge horizontally from left edge
+            .attr("transform", `rotate(-90)`);
+    }
+    function positionAxisLabels() {
+        xLabel.attr("x", innerWidth / 2).attr("y", innerHeight + 40);
+        yLabel.attr("y", -innerHeight / 2).attr("y", -margin.left + 14).attr("transform", `rotate(-90)`);
     }
 
     function dim(isDimmed) {

@@ -63,10 +63,24 @@ export function drawResidualChart({
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
 
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y));
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Standard Deviations");
 
     // -----------------------------
     // LINE GENERATORS
@@ -88,7 +102,7 @@ export function drawResidualChart({
     chartGroup.append("g")
         .attr("class", "zoom")
         .call(brush);
-
+    positionAxisLabels()
     // -----------------------------
     // INITIAL DRAW (AGGREGATED ONLY)
     // -----------------------------
@@ -116,7 +130,7 @@ export function drawResidualChart({
         crimeTypeLines = plotGroup.selectAll(".residual-line")
             .data([])
             .join();   // ⭐ do NOT create empty paths
-
+        positionAxisLabels()
     }
 
     // -----------------------------
@@ -147,6 +161,23 @@ export function drawResidualChart({
     function redrawXAxis() {
         xAxis.call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
     }
+    function positionAxisLabels() {
+        // X label: centered under the x axis
+        xLabel
+            .attr("x", innerWidth / 2)
+            .attr("y", innerHeight + (margin.bottom ? Math.max(28, margin.bottom) : 40))
+            .attr("text-anchor", "middle");
+
+        // Y label: translate to the left of the plot area and vertically center, then rotate
+        const yTranslateX = -margin.left + 14; // tweak this to move label closer/further from ticks
+        const yTranslateY = innerHeight / 2;
+
+        yLabel
+            .attr("transform", `translate(${yTranslateX}, ${yTranslateY}) rotate(-90)`)
+            .attr("text-anchor", "middle")
+            .style("dominant-baseline", "middle");
+    }
+
 
     // -----------------------------
     // REDRAW LINES (agg + crime types)
@@ -286,6 +317,7 @@ export function drawResidualChart({
 
         // Ensure aggregated line finishes with final path (in case)
         aggregatedLine.transition(t).attr("d", lineGen(aggregatedResiduals));
+        positionAxisLabels()
     }
 
 

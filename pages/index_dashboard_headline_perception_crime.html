@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Crime and Headlines vs Perception Dashboard</title>
 
     <!-- Chart-specific styles -->
     <link rel="stylesheet" href="../css/style_dashboard_headline_perception_crime.css">
@@ -18,7 +18,7 @@
 <div id="dashboard-container">
 
     <!-- ========================= -->
-    <!-- ROW 1 — CONTROLS            -->
+    <!-- ROW 1 — CONTROLS (Sticky)           -->
     <!-- ========================= -->
     <!-- Dropdowns span columns 1–2 -->
     <div id="row1" class = "pinned-row glass panel">
@@ -33,8 +33,9 @@
                 <!-- items will be injected by D3 -->
             </div>
         </div>
-<!--        <select id="crime-type-select"></select> &lt;!&ndash; optional &ndash;&gt;-->
     </div>
+    <div class="dashboard-title glass panel">Crime and Headlines vs Perception</div>
+
     <!-- ⭐ NEW ROW: SUMMARY STATS -->
     <div id="row2" >
         <div id="summary-stats-wrapper">
@@ -90,9 +91,12 @@
         <!-- HEATMAP spans columns 2–3 -->
 
         <div id="heatmap" class="glass-panel">
-            <div id="heatMap-title" style="
-            text-align:center;">
-                <p>What Crime Categories Do Online News Media Outlets Overreport?</p>
+            <div id="heatMap-title" class="heatmap-title"
+                 data-align="center" data-compact="false" role="region" aria-label="Heatmap title">
+                <div class="heatmap-title-inner">
+                    <h1 class="heatmap-title-main">What Crime Categories Do Online News Media Over-report and Under-report?</h1>
+                    <p class="heatmap-title-sub">Click rows to add boroughs and hover over columns to change the date in the Hover List below</p>
+                </div>
             </div>
 
             <img id="heatmap-legend" src="../pngs/heatmap-legend-headlines.png" alt="Heatmap Legend">

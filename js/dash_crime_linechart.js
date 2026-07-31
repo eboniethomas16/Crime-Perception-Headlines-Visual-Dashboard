@@ -45,9 +45,24 @@ export function drawCrimeChart({
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
 
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
+
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y).ticks(6).tickFormat(d3.format(",")));
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("# of Crimes Commited");
 
     const lineGen = d3.line()
         .defined(d => d && d.date && !isNaN(d.crime_count))
@@ -86,6 +101,7 @@ export function drawCrimeChart({
         // Start with no lines drawn
         plotGroup.selectAll(".crime-line").remove();
         boroughLines = plotGroup.selectAll(".crime-line").data([]);
+        positionAxisLabels()
     }
 
     // ============================================================
@@ -303,12 +319,23 @@ export function drawCrimeChart({
     function redrawXAxis() {
         chartGroup.select(".x-axis")
             .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+        xLabel
+            .attr("x", innerWidth / 2)
+            .attr("y", innerHeight + 40); // tweak 40 to move label closer/further from ticks
     }
 
     function redrawYAxis() {
         chartGroup.select(".y-axis")
             .transition().duration(600)
             .call(d3.axisLeft(y).ticks(6).tickFormat(d3.format(",")));
+        yLabel
+            .attr("x", -innerHeight / 2)
+            .attr("y", -margin.left + 14) // tweak 14 to nudge horizontally from left edge
+            .attr("transform", `rotate(-90)`);
+    }
+    function positionAxisLabels() {
+        xLabel.attr("x", innerWidth / 2).attr("y", innerHeight + 40);
+        yLabel.attr("x", -innerHeight / 2).attr("y", -margin.left + 14).attr("transform", `rotate(-90)`);
     }
 
     function dim(isDimmed) {

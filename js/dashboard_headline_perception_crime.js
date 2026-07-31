@@ -325,8 +325,6 @@ function drawDashboard() {
         // const palette = d3.quantize(d3.interpolateSpectral, Math.max(17, crimeTypes.length));
         // // FIND NEW COLOR CODING THAT INCLUDES AT LEAST 32 DISTINCT SHADES
         // const crimeColor = d3.scaleOrdinal(palette);
-        // const perceptionColor = d3.scaleOrdinal(palette);
-        // const headlineColor = d3.scaleOrdinal(palette);
         // FIND NEW COLOR CODING THAT INCLUDES AT LEAST 32 DISTINCT SHADES
         // Usage: const palette = generateBoroughPalette(32);
         function generateBoroughPalette(n, opts = {}) {
@@ -361,9 +359,6 @@ function drawDashboard() {
 
         const crimeColor = d3.scaleOrdinal(palette);
         const perceptionColor = d3.scaleOrdinal(palette);
-        const headlineColor = d3.scaleOrdinal(palette);
-        const residualColor = d3.scaleOrdinal(palette);
-
 
         //////////////////////////////
         // USE THIS FOR TOOLTIP MAPPING //
@@ -680,7 +675,7 @@ function drawDashboard() {
             width: width,
             height: height,
             margin: margin,
-            color: headlineColor,
+            color: crimeColor,
             useDuplicates: useDuplicates,
             onLineClick: (crimeType) => {
                 // optional: handle clicks on a crime-type line
@@ -1962,7 +1957,7 @@ function drawDashboard() {
                         if (typeof clearHoverHighlight === "function") clearHoverHighlight();
                     });
                     row.addEventListener("click", () => {
-                        if (typeof toggleActiveCrimeTypes === "function") toggleActiveCrimeTypes(key);
+                        // if (typeof toggleActiveCrimeTypes === "function") toggleActiveCrimeTypes(key);
                     });
                 }
                 d3.select(row).datum(item);
@@ -1998,8 +1993,6 @@ function drawDashboard() {
         }
 
 
-
-        // what is this??
         function setupTrendToggle() {
             const btn = document.getElementById("toggleTrendBtn");
             const headlineChart = document.getElementById("headlines-title");
@@ -2011,39 +2004,60 @@ function drawDashboard() {
             const residualChart = document.getElementById("chart-residual");
             const residualTitle = document.getElementById("residual-title");
 
-            let visible = false;
-            residualChart.classList.remove("visible-chart");
-            residualChart.classList.add("hidden-chart");
-            residualTitle.classList.remove("visible-chart");
-            residualTitle.classList.add("hidden-chart");
+            if (!btn) return;
+
+            const show = el => {
+                if (!el) return;
+                el.classList.remove("hidden-chart");
+                el.classList.add("visible-chart");
+                el.setAttribute("aria-hidden", "false");
+            };
+            const hide = el => {
+                if (!el) return;
+                el.classList.remove("visible-chart");
+                el.classList.add("hidden-chart");
+                el.setAttribute("aria-hidden", "true");
+            };
+
+            // Ensure primary elements are visible
+            show(headlineChart);
+            show(headlineTitle);
+            show(crimeChart);
+            show(perceptionChart);
+            show(crimeTitle);
+            show(perceptionTitle);
+
+            // Initial state: residual chart VISIBLE
+            let residualVisible = true;
+            show(residualChart);
+            show(residualTitle);
+
+            // Button initial label
+            btn.textContent = residualVisible ? "Hide Residual Chart" : "Show Residual Chart";
+
             btn.addEventListener("click", () => {
-                visible = !visible;
+                residualVisible = !residualVisible;
 
-                if (visible) {
+                if (residualVisible) {
                     btn.textContent = "Hide Residual Chart";
-
-                    if (residualChart) {
-                        residualChart.classList.remove("hidden-chart");
-                        residualChart.classList.add("visible-chart");
-                    }
-                    if (residualTitle) {
-                        residualTitle.classList.remove("hidden-chart");
-                        residualTitle.classList.add("visible-chart");
-                    }
+                    show(residualChart);
+                    show(residualTitle);
                 } else {
-                    // Hide residual chart + title
                     btn.textContent = "Show Residual Chart";
-                    if (residualChart) {
-                        residualChart.classList.remove("visible-chart");
-                        residualChart.classList.add("hidden-chart");
-                    }
-                    if (residualTitle) {
-                        residualTitle.classList.remove("visible-chart");
-                        residualTitle.classList.add("hidden-chart");
-                    }
+                    hide(residualChart);
+                    hide(residualTitle);
+                }
+
+                // Emit event for other modules to react (optional)
+                try {
+                    const ev = new CustomEvent("residualToggle", { detail: { visible: residualVisible } });
+                    document.dispatchEvent(ev);
+                } catch (e) {
+                    // ignore if CustomEvent not supported
                 }
             });
         }
+
         setupTrendToggle();
 
 
@@ -2256,19 +2270,6 @@ function drawDashboard() {
             }
         }
 
-
-        // 1. Are hit paths present?
-        console.log("hit paths:", document.querySelectorAll("#chart-headlines .headline-line-hit").length);
-
-// 2. What elements are under the pointer (move mouse over a line then run)
-        console.log(document.elementsFromPoint(window.event?.clientX || 0, window.event?.clientY || 0)
-            .map(n => `${n.tagName}${n.id ? '#'+n.id : ''}${n.className ? '.'+n.className : ''}`));
-
-// 3. Is the chart container receiving pointer events?
-        console.log("chart container pointer-events:", getComputedStyle(document.querySelector("#chart-headlines")).pointerEvents);
-
-// 4. Is the tooltip element present?
-        console.log("tooltip node:", document.querySelector("#chart-headlines-tooltip"));
 
 
     }).catch(err => {

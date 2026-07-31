@@ -36,16 +36,32 @@ export function drawPerceptionChart({
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
 
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y).tickFormat(d => d + "%"));
+
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("% of Residents That Agree");
 
     const lineGen = d3.line()
         .x(d => x(d.date))
         .y(d => y(d.avg));
 
     let perceptionLine = null;
+    positionAxisLabels()
 
     // ============================================================
     // 1. INITIALIZE
@@ -74,6 +90,7 @@ export function drawPerceptionChart({
         } else {
             perceptionLine.datum(data).attr("d", lineGen);
         }
+        positionAxisLabels()
     }
 
 
@@ -148,6 +165,21 @@ export function drawPerceptionChart({
             d3.axisBottom(x)
                 .tickFormat(d3.timeFormat("%b %Y"))
         );
+    }
+    function positionAxisLabels() {
+        xLabel
+            .attr("x", innerWidth / 2)
+            .attr("y", innerHeight + (margin.bottom ? Math.max(28, margin.bottom) : 40))
+            .attr("text-anchor", "middle");
+
+        // Y label: translate to the left of the plot area and vertically center, then rotate
+        const yTranslateX = -margin.left + 14; // tweak this to move label closer/further from ticks
+        const yTranslateY = innerHeight / 2;
+
+        yLabel
+            .attr("transform", `translate(${yTranslateX}, ${yTranslateY}) rotate(-90)`)
+            .attr("text-anchor", "middle")
+            .style("dominant-baseline", "middle");
     }
 
     // ============================================================

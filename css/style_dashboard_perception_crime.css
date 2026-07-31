@@ -37,7 +37,7 @@ html, body {
     /*grid-template-columns: 1fr 1fr 1fr;*/
     /*vh == % of the specified row*/
     /*fr == fraction == fraction of the specified row*/
-    grid-template-rows: 6vh minmax(1vh,50vh) 5fr;
+    grid-template-rows: 6vh 6vh minmax(1vh,50vh) 5fr;
     gap: 10px;
     width: calc(100% - 2.5px);
     height: 150vh;
@@ -55,6 +55,29 @@ html, body {
     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
     background: rgba(255,255,255,0.02); /* subtle inner background (optional) */
     overflow: visible;
+}
+
+.dashboard-title {
+    grid-row: 1;                     /* place between row1 and row2 */
+    width: 100%;
+    /*height: 50%;*/
+    text-align: center;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 4.5rem;                 /* larger title */
+    font-weight: 600;
+    color: #0b2f24;                  /* same dark teal as glass-panel text */
+
+    padding: 2px 0;                 /* breathing room above/below */
+    /*margin: 10px 0 20px 0;           !* spacing between row1 and row2 *!*/
+
+    border-radius: 40px;             /* match glass-panel curvature */
+    box-sizing: border-box;
+
+    /* ensure it behaves like a block inside the grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Helpful: ensure SVGs behave like blocks (prevents baseline gaps) */
@@ -507,12 +530,55 @@ svg { display: block; }
     /*justify-content: center;  !* ⭐ push SVG to the right *!*/
 
 }
+
+/* container keeps everything centered */
+#choro-map-title .choro-title {
+    text-align: center;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+/* first line: prominent, single line */
+#choro-map-title .choro-title-main {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;       /* adjust size */
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 auto 6px auto;  /* small gap below */
+    max-width: 90ch;          /* prevent extremely long single-line wrap */
+    white-space: normal;      /* allow wrapping if viewport is narrow */
+}
+
+/* subtitle lines below the main line */
+#choro-map-title .choro-title-sub {
+    display: block;
+    font-size: 1rem;
+    color: rgba(0,0,0,0.75);
+    margin: 0;
+}
+
+/* month line: visually stronger and separated slightly */
+#choro-map-title .choro-title-month {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+/* compact / responsive tweaks */
+@media (max-width: 720px) {
+    #choro-map-title .choro-title-main { font-size: 0.98rem; }
+    #choro-map-title .choro-title-month { font-size: 1rem; }
+}
+
 #choro-map-legend {
     /*flex: 0 0 auto;             !* fixed width *!*/
     width: 150px;
     height: auto;
     margin-right: 20px;         /* spacing between choromap*/
-    padding-left: 50px;         /* spacing between choromap*/
+    padding-left: 20px;         /* spacing between choromap*/
     pointer-events: none;
 }
 
@@ -535,16 +601,59 @@ svg { display: block; }
     font-weight: 300;
 }
 
-#heatMap-title {
+.heatmap-title {
+    grid-column: 1 / -1;
     grid-row: 1;
-    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 1100px;    /* optional cap so it doesn't get too wide on large screens */
+    margin: 0 auto;
 
-    text-align: center;
-    /*padding: 10px 0;*/
-    margin: 0;
-    z-index: 5;
-
+    padding: 6px 8px;     /* small vertical breathing room */
+    min-height: 36px;
 }
+
+/* inner wrapper keeps text layout predictable */
+.heatmap-title-inner {
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* main heading */
+.heatmap-title-main {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;          /* desktop default */
+    font-weight: 600;
+    color: #0b2f24;
+    line-height: 1.1;
+    text-align: inherit;
+}
+
+/* subtitle */
+.heatmap-title-sub {
+    margin: 4px 0 0 0;
+    font-size: 0.85rem;
+    color: rgba(11,47,36,0.85);
+    line-height: 1.1;
+    text-align: inherit;
+}
+
+/* alignment variants via data-attribute */
+.heatmap-title[data-align="left"] .heatmap-title-inner { text-align: left; }
+.heatmap-title[data-align="center"] .heatmap-title-inner { text-align: center; }
+.heatmap-title[data-align="right"] .heatmap-title-inner { text-align: right; }
+
+/* compact mode reduces padding and font sizes */
+.heatmap-title[data-compact="true"] {
+    padding: 4px 8px;
+    min-height: 28px;
+}
+.heatmap-title[data-compact="true"] .heatmap-title-main { font-size: 0.95rem; }
+.heatmap-title[data-compact="true"] .heatmap-title-sub  { font-size: 0.78rem; }
 /* HEATMAP spans columns 2–3 */
 #heatmap.glass-panel {
     grid-column: 2;
@@ -803,6 +912,15 @@ svg { display: block; }
     grid-row: 1;
     padding-bottom: 20px;
 }
+
+#line-charts-title .chart-subtitle {
+    font-size: 0.85rem;        /* smaller than the main title */
+    line-height: 1.1;          /* tighter spacing */
+    color: rgba(0, 0, 0, 0.65);/* slightly muted */
+    margin-top: 4px;           /* small gap from the main title */
+    font-weight: 400;          /* normal weight */
+}
+
 
 #crime-title {
     grid-row: 2;

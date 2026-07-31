@@ -60,6 +60,13 @@ export function drawHeadlineChart({
         .attr("class", "x-axis")
         .attr("transform", `translate(0, ${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y")));
+    const xLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-x")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("Date");
 
     const yAxis = chartGroup.append("g")
         .attr("class", "y-axis")
@@ -68,6 +75,13 @@ export function drawHeadlineChart({
                 .ticks(6)
                 .tickFormat(d3.format(","))
         );
+    const yLabel = chartGroup.append("text")
+        .attr("class", "axis-label axis-label-y")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#222")
+        .style("font-family", "Poppins, sans-serif")
+        .style("font-size", "12px")
+        .text("# of Headlines");
 
     // Line generator uses dynamic count field
     const lineGen = d3.line()
@@ -84,6 +98,8 @@ export function drawHeadlineChart({
     chartGroup.append("g")
         .attr("class", "zoom")
         .call(brush);
+
+    positionAxisLabels()
 
     // ============================================================
     // INITIALIZE
@@ -142,7 +158,7 @@ export function drawHeadlineChart({
 
         overlay.on("mouseleave", hideHoverTooltip);
 
-
+        positionAxisLabels()
     }
 
 
@@ -264,6 +280,21 @@ export function drawHeadlineChart({
                     .ticks(6)
                     .tickFormat(d3.format(","))
             );
+    }
+    function positionAxisLabels() {
+        xLabel
+            .attr("x", innerWidth / 2)
+            .attr("y", innerHeight + (margin.bottom ? Math.max(28, margin.bottom) : 40))
+            .attr("text-anchor", "middle");
+
+        // Y label: translate to the left of the plot area and vertically center, then rotate
+        const yTranslateX = -margin.left + 14; // tweak this to move label closer/further from ticks
+        const yTranslateY = innerHeight / 2;
+
+        yLabel
+            .attr("transform", `translate(${yTranslateX}, ${yTranslateY}) rotate(-90)`)
+            .attr("text-anchor", "middle")
+            .style("dominant-baseline", "middle");
     }
 
     // compute y domain from counts (respects useDuplicatesState)
@@ -400,6 +431,7 @@ export function drawHeadlineChart({
         });
 
         plotGroup.selectAll(".headline-line-group").raise();
+        positionAxisLabels()
     }
 
 

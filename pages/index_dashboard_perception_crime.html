@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Comparing Crime with Perception</title>
+    <title>Crime vs. Perception Dashboard</title>
 
     <!-- Chart-specific styles -->
     <link rel="stylesheet" href="../css/style_dashboard_perception_crime.css">
@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>
+<div class="dashboard-title glass panel">Crime vs Perception</div>
 
     <!-- ⭐ NEW ROW: SUMMARY STATS -->
     <div id="row2" >
@@ -94,9 +95,12 @@
 <!--        </div>-->
         <!-- HEATMAP spans columns 2–3 -->
         <div id="heatmap" class="glass-panel" >
-            <div id="heatMap-title" style="
-            text-align:center;">
-                <p>What Boroughs Does Perception of Policing Overestimate Actual Crime ?</p>
+            <div id="heatMap-title" class="heatmap-title"
+                 data-align="center" data-compact="false" role="region" aria-label="Heatmap title">
+                <div class="heatmap-title-inner">
+                    <h1 class="heatmap-title-main">What Boroughs Does Perception of Policing Overestimate Actual Crime ?</h1>
+                    <p class="heatmap-title-sub">Click rows to add boroughs and hover over columns to change the date in the Hover List below</p>
+                </div>
             </div>
             <img id="heatmap-legend" src="../pngs/heatmap-legend.png" alt="Heatmap Legend">
             <div id="heatmap-scroll-wrapper"></div>
@@ -116,12 +120,12 @@
                     (Click and drag to zoom into dates)
                 </div>
                 <button id="toggleTrendBtn" class="chart-glass-btn">
-                    Hide Crime and Perception Trend Lines
+                    Hide Residual Chart
                 </button>
             </div>
             <!-- Residual chart title -->
             <div id="residual-title" class="chart-title">
-                Residual Perception Over Time (Actual – Predicted Perception)
+                Residual - Gap Between Observed and Predicted Perception
             </div>
 
             <button id="resetZoomBtn" class="chart-glass-btn">

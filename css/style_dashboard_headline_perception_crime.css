@@ -161,13 +161,11 @@ html, body {
     /*grid-template-columns: 1fr 1fr 1fr;*/
     /*vh == % of the specified row*/
     /*fr == fraction == fraction of the specified row*/
-    grid-template-rows: 6vh minmax(1vh,50vh) 5fr;
+    grid-template-rows: 6vh 6vh minmax(50vh,50vh) minmax(60vh, 120vh);
     gap: 10px;
     width: calc(100% - 2.5px);
     height: 150vh;
     box-sizing: border-box;
-    /* optional: add a subtle inner background or border to show the padded area */
-    /* background: white; */
     border-radius: 6px;
     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
     max-width: 1800px;
@@ -175,11 +173,35 @@ html, body {
     margin-right: auto;
     margin-top: 80px;
     /*overflow-y: visible;*/
-    border-radius: 6px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
     background: rgba(255,255,255,0.02); /* subtle inner background (optional) */
     overflow: visible;
 }
+/* ========================================= */
+/* DASHBOARD TITLE                           */
+/* ========================================= */
+.dashboard-title {
+    grid-row: 1;                     /* place between row1 and row2 */
+    width: 100%;
+    /*height: 50%;*/
+    text-align: center;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 4.5rem;                 /* larger title */
+    font-weight: 600;
+    color: #0b2f24;                  /* same dark teal as glass-panel text */
+
+    padding: 2px 0;                 /* breathing room above/below */
+    /*margin: 10px 0 20px 0;           !* spacing between row1 and row2 *!*/
+
+    border-radius: 40px;             /* match glass-panel curvature */
+    box-sizing: border-box;
+
+    /* ensure it behaves like a block inside the grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* ========================= */
 /* ROW 1 — CONTROLS          */
@@ -394,7 +416,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 2px 2px;
 }
 
 #summary-stats-wrapper {
@@ -592,13 +614,62 @@ html, body {
     overflow: hidden;
 }
 
-/* Title spans both columns */
-#heatMap-title {
+/* Heatmap title component */
+.heatmap-title {
     grid-column: 1 / -1;
     grid-row: 1;
-    text-align: center;
-    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 1100px;    /* optional cap so it doesn't get too wide on large screens */
+    margin: 0 auto;
+
+    padding: 6px 8px;     /* small vertical breathing room */
+    min-height: 36px;
 }
+
+/* inner wrapper keeps text layout predictable */
+.heatmap-title-inner {
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* main heading */
+.heatmap-title-main {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;          /* desktop default */
+    font-weight: 600;
+    color: #0b2f24;
+    line-height: 1.1;
+    text-align: inherit;
+}
+
+/* subtitle */
+.heatmap-title-sub {
+    margin: 4px 0 0 0;
+    font-size: 0.85rem;
+    color: rgba(11,47,36,0.85);
+    line-height: 1.1;
+    text-align: inherit;
+}
+
+/* alignment variants via data-attribute */
+.heatmap-title[data-align="left"] .heatmap-title-inner { text-align: left; }
+.heatmap-title[data-align="center"] .heatmap-title-inner { text-align: center; }
+.heatmap-title[data-align="right"] .heatmap-title-inner { text-align: right; }
+
+/* compact mode reduces padding and font sizes */
+.heatmap-title[data-compact="true"] {
+    padding: 4px 8px;
+    min-height: 28px;
+}
+.heatmap-title[data-compact="true"] .heatmap-title-main { font-size: 0.95rem; }
+.heatmap-title[data-compact="true"] .heatmap-title-sub  { font-size: 0.78rem; }
+
+
 
 /* Legend sits in left column row 2 (optional vertical centering) */
 #heatmap-legend {
@@ -616,14 +687,7 @@ html, body {
     justify-content: center;
     pointer-events: none;
     z-index: 20;
-    /*grid-row: 2;*/
-    /*grid-column: 1;*/
-    /*align-self: center;*/
-    /*justify-self: center;*/
-    /*width: 100px;*/
-    /*height: auto;*/
-    /*pointer-events: none;*/
-    /*z-index: 20;*/
+
 }
 
 /* Scroll wrapper occupies right column row 2 */
@@ -744,14 +808,18 @@ html, body {
 /* Charts span columns 1–2 */
 
 #row4 {
-    /*grid-row: 3;*/
     display: grid;
-    grid-template-columns: 3fr 2fr; /* charts 2/3, hoverlist 1/3 */
+    grid-template-columns: 3fr 2fr;
     width: 100%;
+    /* allow row4 to expand to the height provided by the parent grid */
     height: 100%;
+    min-height: 0;            /* critical so children can shrink properly */
     position: relative;
     gap: 20px;
+    align-items: start;       /* let charts take their natural height */
+    overflow: hidden;         /* hide overflow at the row level; scroll inside children */
 }
+
 .shared-chart-tooltip {
     position: absolute;
     pointer-events: none;
@@ -788,21 +856,19 @@ html, body {
     position: relative;
     grid-column: 1;
     display: grid;
+    /* keep your existing rows but allow the container to grow */
     grid-template-rows: auto auto auto 1fr auto 1fr auto 1fr auto 1fr;
-    height: auto;
-    max-height: 1000px;
+    height: 100%;             /* fill the parent row4 height */
+    max-height: none;         /* let the parent control height */
     width: 100%;
-    /* CRITICAL: allow children to stretch */
-    align-items: center;
-    align-content: stretch;
-
-    /* CRITICAL: allow SVG to overflow naturally */
-    overflow-y: scroll;
-
-    /* CRITICAL: allow grid children to shrink/stretch */
-    min-height: 0;
-    /*background: rgba(255,0,0,0.2);*/
+    align-items: start;
+    align-content: start;
+    overflow-y: auto;         /* scroll through the line charts vertically */
+    min-height: 0;            /* allow children to size correctly */
+    padding-right: 8px;       /* small room for scrollbar */
+    box-sizing: border-box;
 }
+
 
 /* Base glass button */
 /* Shared glass style for chart buttons */
@@ -851,11 +917,27 @@ html, body {
     grid-row: 1;
     padding-bottom: 20px;
 }
+#line-charts-title .chart-subtitle {
+    font-size: 0.85rem;        /* smaller than the main title */
+    line-height: 1.1;          /* tighter spacing */
+    color: rgba(0, 0, 0, 0.65);/* slightly muted */
+    margin-top: 4px;           /* small gap from the main title */
+    font-weight: 400;          /* normal weight */
+}
 #headlines-title {
     grid-row: 2;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+}
+/* Positioning for each button */
+#toggleTrendBtn {
+    grid-row: 2;
+    gap: 12px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
 }
 
 #headlines-controls {
@@ -867,13 +949,7 @@ html, body {
     margin-bottom: 6px;
 }
 
-/* Positioning for each button */
-#toggleTrendBtn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-}
+
 #chart-controls.checkbox-inline {
     display: flex;
     align-items: center;
@@ -995,23 +1071,31 @@ html, body {
     height: 0 !important;
     opacity: 0;
     overflow: hidden;
-    transition: height 0.3s ease, opacity 0.3s ease;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
 .visible-chart {
     height: 100% !important;
     opacity: 1;
-    transition: height 0.3s ease, opacity 0.3s ease;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
-
+#chart-crime,
+#chart-perception,
+#chart-headlines,
+#chart-residual {
+    width: 100%;
+    min-height: 250px;        /* baseline height for each chart; increase if you want bigger charts */
+    height: auto;
+    box-sizing: border-box;
+}
 
 /* Hoverlist in column 3 */
 #hoverList {
     /*grid-column: 2;*/
     display: flex;
     flex-direction: column;
-    min-height: 0;
+    min-height: 200px;
     width: 100%;
     /*background: rgba(0, 182, 251, 0.38);*/
 }
