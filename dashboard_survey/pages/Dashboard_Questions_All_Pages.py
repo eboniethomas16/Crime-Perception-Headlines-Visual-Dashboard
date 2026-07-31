@@ -811,7 +811,7 @@ def d1_page_preview():
     st.markdown("Please open the Dashboard 1 interface in a new tab, inspect it, then return here and click Continue to answer questions about it.")
 
     # --- Dashboard image (optional) ---
-    image_url = "https://raw.githubusercontent.com/yourusername/yourrepo/main/path/to/d1_preview.png"
+    image_url = "https://github.com/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/blob/main/dashboard_survey/photos/d1_dashboard.png"
     try:
         st.image(image_url, caption="Dashboard 1 preview", use_column_width=True)
     except Exception:
