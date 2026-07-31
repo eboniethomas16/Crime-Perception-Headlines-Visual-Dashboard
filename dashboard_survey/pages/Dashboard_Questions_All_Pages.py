@@ -1483,18 +1483,18 @@ def page_dashboard2():
         st.session_state.page = "post_questions"
         return
 
-    # -------------------------
-    # Build and cache Dashboard 2 answers (per-page cache only)
-    # -------------------------
-    d2_keys = required_d2
-    d2_answers = {k: st.session_state.get(k) for k in d2_keys}
-    st.session_state["d2_answers"] = d2_answers
+    # # -------------------------
+    # # Build and cache Dashboard 2 answers (per-page cache only)
+    # # -------------------------
+    # d2_keys = required_d2
+    # d2_answers = {k: st.session_state.get(k) for k in d2_keys}
+    # st.session_state["d2_answers"] = d2_answers
 
 
-    # Navigate to post survey
-    st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
-    st.session_state.page = "post_questions"
-    return
+    # # Navigate to post survey
+    # st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
+    # st.session_state.page = "post_questions"
+    # return
         
 
 # USE TO COMPUTE NET CHANGE IN MOST/LEAST SELECTED CATEGORIES (POST vs PRE)
