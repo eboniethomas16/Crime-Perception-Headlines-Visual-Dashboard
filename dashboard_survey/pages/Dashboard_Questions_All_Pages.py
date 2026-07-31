@@ -205,57 +205,6 @@ def _build_gspread_client_from_secrets():
 # else:
 #     st.write("DEBUG: no service account found in st.secrets")
 # Save responses to Google Sheets
-# def save_rows_to_sheet(rows, headers=headers, spreadsheet_id_secret="SPREADSHEET_ID", sheet_name_secret="SHEET_NAME", spreadsheet_title_secret="SPREADSHEET_TITLE"):
-#     """
-#     Append rows (list of lists) to Google Sheet.
-#     - rows: list of lists (each inner list is a row)
-#     - headers: optional list of header strings to write if sheet is empty
-#     - secrets used: SPREADSHEET_ID (preferred) or SPREADSHEET_TITLE (fallback), and SHEET_NAME (worksheet title)
-#     """
-#     try:
-#         client = _build_gspread_client_from_secrets()
-#         spreadsheet_id = st.secrets.get("SPREADSHEET_ID")
-#         if not spreadsheet_id:
-#             st.error("SPREADSHEET_ID missing from st.secrets; responses will be saved locally.")
-#             # fallback: write to CSV and return
-#             for r in rows:
-#                 append_row_to_csv(dict(zip(headers, r)))
-#             return
-        
-#         sheet_name = st.secrets.get("SHEET_NAME", "Responses")
-#         sh = client.open_by_key(spreadsheet_id)
-#         try:
-#             ws = sh.worksheet(sheet_name)
-#         except gspread.WorksheetNotFound:
-#             ws = sh.add_worksheet(title=sheet_name, rows="1000", cols="50")
-
-#         # Ensure headers if provided
-#         if headers:
-#             ok = ensure_sheet_headers(ws, headers)
-#             if not ok:
-#                 st.error("Could not ensure headers in the Google Sheet. Aborting save.")
-#                 return
-
-#         # Append rows (cleaning values as needed)
-#         for row in rows:
-#             cleaned = []
-#             for v in row:
-#                 if v is None:
-#                     cleaned.append("")   # or "none"
-#                 elif isinstance(v, float) and math.isnan(v):
-#                     cleaned.append("")
-#                 elif isinstance(v, list):
-#                     cleaned.append(";".join(map(str, v)))
-#                 else:
-#                     cleaned.append(v)
-#             ws.append_row(cleaned, value_input_option="USER_ENTERED")
-
-#     except Exception as e:
-#         st.error(f"Failed to save responses to Google Sheets: {e}")
-#         # fallback: persist locally to CSV to avoid data loss
-#         for r in rows:
-#             append_row_to_csv(dict(zip(headers, r)))
-#         return
 
 
 # --- normalizer used for Sheets ---
@@ -810,10 +759,21 @@ def d1_page_preview():
     st.title("Open Dashboard 1 (Preview)")
     st.markdown("Please open the Dashboard 1 interface in a new tab, inspect it, then return here and click Continue to answer questions about it.")
 
+    # col1, col2, col3 = st.columns([1, 2, 1])
+    # with col1:
+    #     st.write("")  # left spacer
+    # with col2:
+    #     st.image("https://raw.githubusercontent.com/youruser/yourrepo/main/assets/d1_preview.png",
+    #             caption="Dashboard preview", use_column_width=True)
+    # with col3:
+    #     st.write("")  # right spacer
+
     # --- Dashboard image (optional) ---
-    image_url = "https://github.com/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/blob/main/dashboard_survey/photos/d1_dashboard.png"
+    image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/blob/main/dashboard_survey/photos/d1_dashboard.png"
+    image_url_2 = "https://raw.githubusercontent.com/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard/blob/main/dashboard_survey/photos/d1_dashboard.png"
     try:
-        st.image(image_url, caption="Dashboard 1 preview", use_column_width=True)
+        st.image(image_url, caption="Dashboard 1 preview using jsdelivr", use_column_width=True)
+        st.image(image_url_2, caption="Dashboard 1 preview #2 using githubhusercontent", use_column_width=True)
     except Exception:
         pass
 
@@ -1458,19 +1418,6 @@ def page_dashboard2():
         st.session_state.page = "post_questions"
         return
 
-    # # -------------------------
-    # # Build and cache Dashboard 2 answers (per-page cache only)
-    # # -------------------------
-    # d2_keys = required_d2
-    # d2_answers = {k: st.session_state.get(k) for k in d2_keys}
-    # st.session_state["d2_answers"] = d2_answers
-
-
-    # # Navigate to post survey
-    # st.success("All Dashboard 2 questions complete. Redirecting to Post Survey Questions...")
-    # st.session_state.page = "post_questions"
-    # return
-        
 
 # USE TO COMPUTE NET CHANGE IN MOST/LEAST SELECTED CATEGORIES (POST vs PRE)
 def _score_selection(categories, most, least):
