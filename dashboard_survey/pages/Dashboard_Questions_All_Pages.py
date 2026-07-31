@@ -757,8 +757,7 @@ def d1_page_preview():
         st.session_state["_nav_rerun_once"] = False
 
     st.title("Open Dashboard 1 (Preview)")
-    st.markdown("Please open the Dashboard 1 interface in a new tab, inspect it, then return here and click Continue to answer questions about it.")
-
+    st.markdown("Please scroll to the bottom of the page to open the Dashboard 1 interface in a new tab")
     # --- Dashboard image (optional) ---
     image_url = "https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_dashboard.png"
     try:
@@ -768,27 +767,14 @@ def d1_page_preview():
 
     st.markdown("---")
 
-    dashboard_url = "https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html"
-    st.markdown(
-            f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
-            f'Open Dashboard 2 in a new tab</a>',
-            unsafe_allow_html=True
-        )
-    
+    st.markdown("After you have opened the dashboard, inspect it, then return here and click Continue to answer questions about it.")
     st.markdown(
         '<a href="https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html" '
-        'target="_blank" rel="noopener noreferrer"><button style="padding:8px 16px;">Open Dashboard 1</button></a>',
+        'target="_blank" rel="noopener noreferrer"><button style="padding:8px 16px;">Click to Open Dashboard 1 In a New Tab</button></a>',
         unsafe_allow_html=True
     )
-    # --- Link to open the live dashboard in a new tab ---
-    # dashboard_url = "https://your-dashboard-hosting.example.com/dashboard1"
-    # st.markdown(
-    #     f'<a href="{dashboard_url}" target="_blank" rel="noopener noreferrer" style="font-size:16px;">'
-    #     f'Open Dashboard 1 in a new tab</a>',
-    #     unsafe_allow_html=True
-    # )
 
-    st.markdown("**Important:** the link opens in a new tab.fsddddddddddddddsdf After the dashboard opens, return to this tab and confirm below.")
+    st.markdown("**Important:** the link opens in a new tab. After the dashboard opens, return to this tab and confirm below.")
 
     # --- Confirmation checkbox to ensure user opened the dashboard ---
     opened = st.checkbox("I have opened Dashboard 1 in a new tab", key="d1_preview_opened")
