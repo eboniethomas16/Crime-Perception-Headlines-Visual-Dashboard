@@ -373,7 +373,25 @@ def init_state():
 # SAVE CONSENT AGREEMENT TO CACHE
 def page_consent():
     st.title("Consent for Research")
+    st.markdown(
+        """
+    **About this study and your consent**
 
+    Central to protecting participants is a transparent consent process.  
+    This study aims to help understand how people interpret crime data and headlines. 
+    Particularly the divergence between crime data and perception of policing in London AND separately,the divergence between crime data and crime headlines in London.
+    Participation involves viewing two interactive dashboards and answering short questionnaires; the total time commitment is approximately 15–25 minutes and the study is completed online.
+
+    **What you should know before consenting**
+    - **Purpose and what participation involves:** Why the research is being done, what you will be asked to do, and an estimate of how long it will take.
+    - **Data security And Anonymity:** Your data will be ANONYMISED and stored securely. Only the researcher and supervisor will have access to the data.
+    - **Use and audience:** This survey is intended to evaluate the dashboards and research for an examined dissertation.
+    - **Identification in reports:** Your responses will be anonymised and aggregated in any reports or publications. No personally identifying information will be published.
+    - **Contact information:** For any issues with links in this survey, please contact the researcher at: Elizabeth.1.Thomas@kcl.ac.uk
+
+    By selecting “Yes, I consent” you confirm you have read this information and agree to participate. If you have any questions before consenting, please contact the researcher or supervisor.
+    """
+    )
     st.selectbox(
         "I consent to my anonymised responses being used for this research.",
         [PLACEHOLDER, "Yes, I consent", "No, I do not consent"],
@@ -934,7 +952,7 @@ def page_dashboard1():
 
     st.selectbox(
         "How useful was the hoverlist for quickly identifying key values across charts?",
-        [PLACEHOLDER, "Yes — very much", "Mostly", "Somewhat", "Not really", "Not at all"],
+        [PLACEHOLDER, "Very useful", "Mostly useful", "Somewhat useful", "Not really useful", "Not useful at all"],
         key="d1_hoverlist_usefulness"
     )
 
@@ -1263,7 +1281,7 @@ def page_dashboard2():
 
     st.selectbox(
         "How easy was it to interact with the heatmap (hover time periods, select/unselect crime categories, scrollbar)?",
-        [PLACEHOLDER, "Very clear", "Clear", "Neutral", "Unclear", "Very unclear"],
+        [PLACEHOLDER, "Very easy", "Easy", "Neutral", "Difficult", "Very difficult"],
         key="d2_heatmap_learnability"
     )
 
@@ -1321,7 +1339,7 @@ def page_dashboard2():
 
     st.selectbox(
         "How useful was the hoverlist for quickly identifying key values across charts?",
-        [PLACEHOLDER, "Yes — very much", "Mostly", "Somewhat", "Not really", "Not at all"],
+        [PLACEHOLDER, "Very useful", "Mostly useful", "Somewhat useful", "Not really useful", "Not useful at all"],
         key="d2_hoverlist_usefulness"
     )
 
@@ -1431,7 +1449,7 @@ def page_dashboard2():
         key="d2_pills_usefulness"
     )
 
-    st.text_area("Open feedback — SUMMARY PILLS", key="d2_open_summary_pills_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the summary pills, please share them here:", key="d2_open_summary_pills_feedback")
 
     # ---------------- DASHBOARD LEVEL ----------------
     st.header("Dashboard-Level Questions")
@@ -1885,7 +1903,7 @@ def page_post_questions():
         try:
             save_rows_to_sheet([final_row], headers=headers)
             # navigate to thank you
-            st.success("Responses saved to Google Sheets.")
+            # st.success("Responses saved to Google Sheets.")
             st.session_state.page = "thank_you"
         except Exception as e:
             st.error(f"Failed to save responses to Google Sheets: {e}")
