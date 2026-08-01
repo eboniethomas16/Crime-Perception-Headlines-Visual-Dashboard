@@ -59,6 +59,7 @@ headers = [
     # --- dashboard-level questions ---
     "d1_overall_ui", "d1_overall_situational_awareness",
     "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities",
+    "d1_overall_feedback",
 
     #dashboard 2 questions (in order)
     # chord chart (in order)
@@ -76,7 +77,7 @@ headers = [
     # open feedback text areas (required)
     "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback", "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback",
     # dashboard-level questions (in order)
-    "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities",
+    "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities","d2_overall_feedback",
 
     # post-dashboard questions (in order)
     "post_police_reliability", "post_police_fairness", "post_police_job",
@@ -875,7 +876,8 @@ def page_dashboard1():
         key="d1_bivmap_usefulness"
     )
 
-    st.text_area("REQUIRED: If you have any additional comments about the bivariate choropleth map, please share them here:", key="d1_open_chord_feedback")
+    st.text_area("REQUIRED: If you have any additional comments about the bivariate choropleth map, please share them here:", 
+                 key="d1_open_chord_feedback")
 
 
     # ---------------- HEATMAP ----------------
@@ -1102,6 +1104,9 @@ def page_dashboard1():
         key="d1_overall_system_capabilities"
     )
 
+    st.text_area("REQUIRED: If you have any additional comments about the Crime vs Perception dashboard, please share them here:", 
+                     key="d1_overall_feedback")
+
     required_d1 = []
     # ---------------- CONTINUE BUTTON + VALIDATION ----------------
     st.markdown("---")
@@ -1124,10 +1129,11 @@ def page_dashboard1():
             # --- open feedback text areas (required) ---
             "d1_open_chord_feedback", "d1_open_heatmap_feedback",
             "d1_open_hoverlist_feedback", "d1_open_linecharts_feedback",
-            "d1_open_summary_pills_feedback",
+            "d1_open_summary_pills_feedback", 
             # --- dashboard-level questions ---
             "d1_overall_ui", "d1_overall_situational_awareness",
-            "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities"
+            "d1_overall_satisfaction", "d1_overall_task_suitability", "d1_overall_system_capabilities",
+            "d1_overall_feedback"
         ]
 
         def is_missing_value(val, placeholder=PLACEHOLDER):
@@ -1485,6 +1491,9 @@ def page_dashboard2():
         key="d2_overall_system_capabilities"
     )
 
+    st.text_area("REQUIRED: If you have any additional comments about the Crime and Headlines vs Perception dashboard, please share them here:", 
+                         key="d2_overall_feedback")
+
 
     st.markdown("---")
     st.write("When you're done, click Finish to complete the survey and go to the Thank You page.")
@@ -1508,7 +1517,8 @@ def page_dashboard2():
             # open feedback text areas (required)
             "d2_open_chord_feedback", "d2_open_heatmap_feedback", "d2_open_hoverlist_feedback", "d2_open_linecharts_feedback", "d2_open_summary_pills_feedback",
             # dashboard-level questions (in order)
-            "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities"
+            "d2_overall_ui", "d2_overall_situational_awareness", "d2_overall_satisfaction", "d2_overall_task_suitability", "d2_overall_system_capabilities",
+            "d2_overall_feedback"
         ]
 
         # same missing-value check used in Dashboard 1
