@@ -1362,6 +1362,127 @@ export function drawDashboard() {
 
         }
 
+        // Injects a metadata button to the right of .dashboard-title and creates a popup.
+        function createMetadataInfo(metadata = {}) {
+            const titleEl = document.querySelector('.dashboard-title');
+            if (!titleEl) return;
+            if (document.getElementById('metaInfoBtn')) return; // already injected
+
+            // Create button (visual styling should live in your CSS)
+            const btn = document.createElement('button');
+            btn.id = 'metaInfoBtn';
+            btn.className = 'meta-info-btn';
+            btn.type = 'button';
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-controls', 'metaInfoPopup');
+            btn.setAttribute('aria-label', 'Open dataset metadata');
+            btn.title = 'Dataset metadata';
+            btn.innerText = 'Dashboard Metadata';
+            titleEl.appendChild(btn);
+
+            // Small helper to avoid XSS when inserting strings
+            function escapeHtml(str) {
+                return String(str == null ? '' : str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            // Helper: build HTML for definitions object (each entry on its own line, name bolded)
+            function buildDefinitionsHtml(defs) {
+                return Object.entries(defs).map(([name, desc]) => {
+                    return `<div class="meta-def-row"><strong>${escapeHtml(name)}</strong>: ${escapeHtml(desc)}</div>`;
+                }).join('');
+            }
+
+            // Crime definitions (edit if you want different wording/order)
+            const crimeDefinitions = {
+                "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
+                "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
+                "Drug Offences": "Crimes involving possession, supply, trafficking, or production of illegal drugs.",
+                "Gun Crime": "Offences involving the use, threat, or possession of a firearm.",
+                "Knife Crime": "Offences involving the use, threat, or possession of a knife or sharp instrument.",
+                "Lethal Barrel Discharge": "Incidents where a firearm is discharged, regardless of injury outcome.",
+                "Sexual Offences": "Crimes of a sexual nature including rape, assault, exploitation, or indecent acts.",
+                "Robbery": "Taking property using force or threat of force, including personal and business robberies.",
+                "Violence Against the Person": "Offences involving physical harm, threats, harassment, or dangerous behaviour.",
+                "Hate Crime": "Crimes motivated by hostility toward race, religion, disability, sexual orientation, or gender identity.",
+                "Arson and Criminal Damage": "Deliberate fire‑setting or intentional destruction/damage of property.",
+                "Burglary": "Entering a building illegally to steal property, including residential and commercial burglary.",
+                "Public Order Offences": "Crimes involving disorderly behaviour, intimidation, harassment, or causing public alarm.",
+                "Domestic Abuse": "Violence, coercion, or controlling behaviour within intimate or family relationships.",
+                "Theft": "Taking property without consent, including shoplifting, bicycle theft, and theft from the person.",
+                "Vehicle Offences": "Crimes involving theft of or from vehicles, interference with vehicles, or aggravated vehicle taking."
+            };
+
+            const fieldsHtml = buildDefinitionsHtml(crimeDefinitions);
+
+            // Normalize metadata input
+            const md = {
+                title: metadata.title || 'Crime vs Perception',
+                sources: Array.isArray(metadata.sources) ? metadata.sources : (metadata.sources ? [metadata.sources] : []),
+                lastUpdated: metadata.lastUpdated || '—',
+                fields: Array.isArray(metadata.fields) ? metadata.fields : [],
+                notes: metadata.notes || 'No additional notes provided.'
+            };
+
+            // Create popup overlay (styling should be in CSS)
+            const popup = document.createElement('div');
+            popup.id = 'metaInfoPopup';
+            popup.className = 'meta-info-popup hidden';
+            popup.setAttribute('role', 'dialog');
+            popup.setAttribute('aria-modal', 'true');
+
+            popup.innerHTML = `
+            <div class="meta-info-content glass-panel" role="document">
+              <h3>Dataset metadata</h3>
+              <div class="meta-info-row"><div class="meta-info-key">Dataset</div><div class="meta-info-val">${escapeHtml(md.title)}</div></div>
+              <div class="meta-info-row"><div class="meta-info-key">Sources</div><div class="meta-info-val">${escapeHtml(md.sources.join(', ') || 'MOPAC Public Attitude Survey, MPS Crime Data from the London Datastore')}</div></div>
+              <div class="meta-info-row"><div class="meta-info-key">Last updated</div><div class="meta-info-val">${escapeHtml(md.lastUpdated)}</div></div>
+              <div class="meta-info-row"><div class="meta-info-key">Definitions</div><div class="meta-info-val">${fieldsHtml}</div></div>
+              <div class="meta-info-row"><div class="meta-info-key">Notes</div><div class="meta-info-val">${escapeHtml(md.notes)}</div></div>
+              <div class="meta-info-actions">
+                <button id="closeMetaInfoBtn" class="chart-glass-btn">Close</button>
+              </div>
+            </div>
+          `;
+
+            document.body.appendChild(popup);
+
+            // Wire up controls
+            const closeBtn = popup.querySelector('#closeMetaInfoBtn');
+
+            function openPopup() {
+                popup.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                if (closeBtn) closeBtn.focus();
+            }
+            function closePopup() {
+                popup.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.focus();
+            }
+
+            btn.addEventListener('click', openPopup);
+            if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
+            // Click outside to close
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) closePopup();
+            });
+
+            // Esc to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !popup.classList.contains('hidden')) closePopup();
+            });
+        }
+
+        createMetadataInfo({ lastUpdated: 'July 31, 2026' });
+
+
+
         // renderHoverList (HEADLINES REMOVED) — DOM-based renderer (no headlines column)
         function renderHoverList(mergedArray, options = {}) {
             const containerSelector = options.containerSelector || "#hover-list-rows";
@@ -1427,9 +1548,7 @@ export function drawDashboard() {
                         if (typeof clearHoverHighlight === "function") clearHoverHighlight();
                     });
                     row.addEventListener("click", () => {
-                        // if (typeof toggleActiveCrimeTypes === "function") toggleActiveCrimeTypes(dataKey);
-                        // if (typeof toggleActiveBorough === "function") toggleActiveBorough(dataKey);
-                        // visually pin selection handled by updateHoverList caller via selectedHoverRow
+
                     });
                 }
 
