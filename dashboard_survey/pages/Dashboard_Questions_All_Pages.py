@@ -1915,12 +1915,11 @@ def page_post_questions():
             # navigate to thank you
             # st.success("Responses saved to Google Sheets.")
             st.session_state.page = "thank_you"
+            st.experimental_rerun()
+            return
         except Exception as e:
             st.error(f"Failed to save responses to Google Sheets: {e}")
             st.stop()
-
-        
-        
         return
 
 
