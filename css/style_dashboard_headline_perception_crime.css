@@ -282,8 +282,8 @@ html, body {
 }
 
 #crime-type-label {
-    width: 100%;          /* ⭐ full width */
-    text-align: center;   /* ⭐ center text */
+    width: 100%;          /*  full width */
+    text-align: center;   /*  center text */
     pointer-events: none; /* prevents accidental clicks */
 }
 
@@ -580,9 +580,9 @@ html, body {
 
 
 .map-wrapper {
-    flex: 1 1 auto;          /* ⭐ take remaining width */
+    flex: 1 1 auto;          /*  take remaining width */
     height: 100%;
-    transform: scale(1.2);   /* if you want enlargement */
+    transform: scale(1.2);   /* for  enlargement */
     transform-origin: 600px 50px;
     align-items: center;
 }
@@ -857,7 +857,7 @@ html, body {
     position: relative;
     grid-column: 1;
     display: grid;
-    /* keep your existing rows but allow the container to grow */
+    /* keep existing rows but allow the container to grow */
     grid-template-rows: auto auto auto 1fr auto 1fr auto 1fr auto 1fr;
     height: 100%;             /* fill the parent row4 height */
     max-height: none;         /* let the parent control height */
@@ -991,7 +991,7 @@ html, body {
 #perception-title {
     grid-row: 7;
     position: relative;            /* establishes containing block for absolute children */
-    display: block;                /* or flex if you prefer */
+    display: block;
     text-align: center;            /* center the title text */
     width: 100%;
     box-sizing: border-box;
@@ -1086,7 +1086,7 @@ html, body {
 #chart-headlines,
 #chart-residual {
     width: 100%;
-    min-height: 250px;        /* baseline height for each chart; increase if you want bigger charts */
+    min-height: 250px;        /* baseline height for each chart; increase for bigger charts */
     height: auto;
     box-sizing: border-box;
 }
@@ -1381,7 +1381,7 @@ html, body {
     margin-top: 12px;
 }
 
-/* Make sure the close button uses your glass button style */
+/* Make sure the close button uses glass button style */
 .meta-info-actions .chart-glass-btn {
     min-width: 84px;
 }

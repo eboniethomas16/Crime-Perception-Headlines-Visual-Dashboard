@@ -80,7 +80,7 @@ export function drawResidualChart({
         .attr("fill", "#222")
         .style("font-family", "Poppins, sans-serif")
         .style("font-size", "12px")
-        .text("Standard Deviation");
+        .text("Residual (Obs. - Pred.)");
 
     // -----------------------------
     // LINE GENERATORS

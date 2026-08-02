@@ -225,7 +225,7 @@ function drawDashboard() {
         const innerWidth  = width  - margin.left - margin.right;
         const innerHeight = height - margin.top  - margin.bottom;
 
-        // ⭐ CUT OFF ALL DATA BEFORE APRIL 1st 2017
+        //  CUT OFF ALL DATA BEFORE APRIL 1st 2017
         const cutoff = new Date(2017, 3, 1);
 
         const startDate = cutoff;
@@ -1275,7 +1275,7 @@ function drawDashboard() {
             const merged = crimeArr.map(c => {
                 const type = c.crime_type;
 
-                // ⭐ crime lookup variable (c is the crime row)
+                //  crime lookup variable (c is the crime row)
                 const crimeRow = c;
 
                 // find matching residual row
@@ -1549,7 +1549,7 @@ function drawDashboard() {
             });
             // ---------------------------------------------
             // 2. Latest HEADLINE values (daily → aggregated monthly)
-            // (You will create headlineDataByCrimeType)
+            // (I will create headlineDataByCrimeType)
             // ---------------------------------------------
             const headlineField = useDuplicates ? "total_duplicate_headline_count" : "total_headline_count";
 
@@ -1663,7 +1663,7 @@ function drawDashboard() {
 
             // call the renderer
             renderHoverList(filteredRows, {
-                containerSelector: "#hover-list-rows",   // ensure you added <ul id="hover-list-rows"> under #hoverList
+                containerSelector: "#hover-list-rows",   //add  <ul id="hover-list-rows"> under #hoverList
                 colorScale: typeof crimeColor !== "undefined" ? crimeColor : null,
                 maxHeadlines: d3.max(filteredRows, d => d.headline) ?? 1,
                 maxCrime: d3.max(filteredRows, d => d.crime) ?? 1,
@@ -1715,7 +1715,7 @@ function drawDashboard() {
             hoverCrimeType = crimeType;
             hoverDate = date;
 
-            // If your dashboard expects setHoverCrimeType/setHoverDate callbacks, call them
+            // If  dashboard expects setHoverCrimeType/setHoverDate callbacks, call them
             if (typeof setHoverCrimeType === "function") setHoverCrimeType(crimeType);
             if (typeof setHoverDate === "function") setHoverDate(date);
             // If those callbacks do not call updateDashboardHoverState, call it here
@@ -1756,7 +1756,7 @@ function drawDashboard() {
             if (metricMap) {
                 percHoverValue = metricMap.get(snappedQuarterDate.getTime()) ?? null;
             } else {
-                // fallback: if you still have an aggregatedPerception object, try to find the row
+               // if  still have an aggregatedPerception object, try to find the row
                 const arr = aggregatedPerception[selectedMetric] || [];
                 const pRow = arr.find(p => p.date && p.date.getTime() === snappedQuarterDate.getTime());
                 percHoverValue = pRow ? pRow.avg : null;

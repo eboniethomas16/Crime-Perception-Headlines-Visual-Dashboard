@@ -291,8 +291,8 @@ svg { display: block; }
 }
 
 #borough-list-label {
-    width: 100%;          /* ⭐ full width */
-    text-align: center;   /* ⭐ center text */
+    width: 100%;          /*  full width */
+    text-align: center;   /*  center text */
     pointer-events: none; /* prevents accidental clicks */
 }
 
@@ -313,7 +313,7 @@ svg { display: block; }
     gap: 8px;
     padding: 6px 10px;
 }
-/* your imported styles already handle most of it */
+/*  imported styles already handle most of it */
 #borough-list-container.glass-dropdown,
 #perception-metric-container.glass-dropdown {
     width: 100%;
@@ -507,7 +507,7 @@ svg { display: block; }
 
 #choro-map-content {
     display: flex;
-    flex-direction: row;       /* ⭐ legend + SVG side-by-side */
+    flex-direction: row;       /*  legend + SVG side-by-side */
     align-items: center;
     justify-content: flex-start;
     width: 100%;
@@ -523,12 +523,12 @@ svg { display: block; }
     position: relative;
     overflow: hidden; /* prevent SVG overflow */
     display: flex;
-    flex-direction: column;   /* ⭐ stack title above content */
+    flex-direction: column;   /*  stack title above content */
     align-items: center;       /* center horizontally */
     justify-content: flex-start;
     /*flex-direction: row;*/
-    /*align-items: center;        !* ⭐ vertical centering *!*/
-    /*justify-content: center;  !* ⭐ push SVG to the right *!*/
+    /*align-items: center;        !*  vertical centering *!*/
+    /*justify-content: center;  !*  push SVG to the right *!*/
 
 }
 
@@ -584,9 +584,9 @@ svg { display: block; }
 }
 
 .map-wrapper {
-    flex: 1 1 auto;          /* ⭐ take remaining width */
+    flex: 1 1 auto;          /*  take remaining width */
     height: 100%;
-    transform: scale(1.2);   /* if you want enlargement */
+    transform: scale(1.2);   /* for want enlargement */
     transform-origin: 600px 50px;
     align-items: center;
 }
@@ -1227,7 +1227,7 @@ svg { display: block; }
     margin-top: 12px;
 }
 
-/* Make sure the close button uses your glass button style */
+/* Make sure the close button uses  glass button style */
 .meta-info-actions .chart-glass-btn {
     min-width: 84px;
 }
@@ -1241,3 +1241,9 @@ svg { display: block; }
     .meta-info-actions { justify-content: center; }
 }
 
+#residual-title h5,
+#residual-title h6 {
+    margin: 0;          /* removes the unwanted gap */
+    padding: 0;
+    line-height: 0.8;   /* optional: tighten spacing */
+}

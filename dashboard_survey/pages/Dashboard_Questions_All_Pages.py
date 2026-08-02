@@ -377,7 +377,7 @@ def page_consent():
     st.markdown(
         """
     **About this study and your consent**
-
+    **Crime, Headlines, and Perception of Policinging in London**
     Central to protecting participants is a transparent consent process.  
     This study aims to help understand how people interpret crime data and headlines. 
     Particularly the divergence between crime data and perception of policing in London AND separately,the divergence between crime data and crime headlines in London.
@@ -389,7 +389,7 @@ def page_consent():
     - **Use and audience:** This survey is intended to evaluate the dashboards and research for an examined dissertation.
     - **Identification in reports:** Your responses will be anonymised and aggregated in any reports or publications. No personally identifying information will be published.
     - **Contact information:** For any issues with links in this survey, please contact the researcher at: Elizabeth.1.Thomas@kcl.ac.uk
-
+    - **Voluntary Withdrawal:** You are free to withdraw at any point during completion of the survey, without having to give a reason.
     By selecting “Yes, I consent” you confirm you have read this information and agree to participate. If you have any questions before consenting, please contact the researcher or supervisor.
     """
     )
