@@ -1,9 +1,10 @@
 # Crime, Perception & Crime Media Visual Analytics Dashboard
 
 **Live demos (MUST BE OPENED ON DESKTOP)**  
-[![Open Crime vs. Perception Dashboard](https://img.shields.io/badge/Live%20Demo-Perception%20%26%20Crime-brightgreen?cacheSeconds=1)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html)
+[![Open Crime vs. Perception Dashboard](https://img.shields.io/badge/Open%20Crime%20vs.%20Perception-View%20Dashboard-brightgreen?cacheSeconds=1)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html)
 
-[![Open Crime and Headline vs. Perception Dashboard](https://img.shields.io/badge/Live%20Demo-Headline%20Perception-brightgreen?cacheSeconds=1)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_headline_perception_crime.html)
+[![Open Crime & Headline vs. Perception Dashboard](https://img.shields.io/badge/Open%20Crime%20%26%20Headline%20vs.%20Perception-View%20Dashboard-brightgreen?cacheSeconds=1)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_headline_perception_crime.html)
+
 
 
 ## Perception vs Crime Dashboard Preview
