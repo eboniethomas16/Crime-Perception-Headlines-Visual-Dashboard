@@ -5,10 +5,8 @@
 [![Open headline perception dashboard](https://img.shields.io/badge/Live%20Demo-Headline%20Perception-brightgreen)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_headline_perception_crime.html)
 
 
-![Perception vs Crime preview]
-(https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_dashboard_v2.png)  
-![Headline Perception preview]
-(https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_dashboard_v2.png)
+![Perception vs Crime preview](https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d1_dashboard_v2.png)  
+![Headline Perception preview](https://cdn.jsdelivr.net/gh/eboniethomas16/Crime-Perception-Headlines-Visual-Dashboard@main/dashboard_survey/photos/d2_dashboard_v2.png)
 
 
 **Short description:** Interactive D3.js dashboards exploring relationships between news headlines, Metropolitan Police crime counts and public perception (MOPAC). Click a badge or image to open the live demo.
