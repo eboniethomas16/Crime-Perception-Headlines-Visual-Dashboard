@@ -8,21 +8,6 @@
 }
 
 
-
-/*.perception-line.dimmed.hover-highlight {*/
-/*    stroke-width: 3px;*/
-/*    filter: drop-shadow(0px 0px 3px rgba(255,255,255,0.4));*/
-/*}*/
-
-/*by default When highlighted, lines do receive mouse events*/
-/*.perception-line.highlighted {*/
-/*    pointer-events: stroke;*/
-/*    opacity: 1 ;*/
-/*    stroke-width: 4px ;*/
-/*}*/
-
-
-
 /* Axis styling */
 .axis path,
 .axis line {

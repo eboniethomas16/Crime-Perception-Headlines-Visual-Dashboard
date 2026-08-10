@@ -9,25 +9,20 @@ export function buildCooccurrenceMatrix(rows) {
         // console.error("build CooccurrenceMatrix: rows is not an array", rows);
         return { names: [], matrix: [] };
     }
-
     // If no rows → no matrix
     if (rows.length === 0) {
         return { names: [], matrix: [] };
     }
-
     // Extract crime type lists
     const crimeLists = rows
         .filter(d => d.crime_types && d.crime_types.trim() !== "")
         .map(d => d.crime_types.split(",").map(x => x.trim()));
-
     // If no crime types found
     if (crimeLists.length === 0) {
         return { names: [], matrix: [] };
     }
-
     // Count co-occurrences
     const pairCounts = {};
-
     crimeLists.forEach(list => {
         const unique = [...new Set(list)].sort();
         for (let i = 0; i < unique.length; i++) {
@@ -37,7 +32,6 @@ export function buildCooccurrenceMatrix(rows) {
             }
         }
     });
-
     // Build names list
     const names = [...new Set(
         crimeLists.flatMap(list => list)
@@ -50,7 +44,6 @@ export function buildCooccurrenceMatrix(rows) {
             matrix: [[0]]
         };
     }
-
     // Build empty square matrix
     const n = names.length;
     const indexMap = Object.fromEntries(names.map((c, i) => [c, i]));

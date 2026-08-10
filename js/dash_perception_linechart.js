@@ -80,6 +80,9 @@ export function drawPerceptionChart({
     chartGroup.append("g")
         .attr("class", "zoom")
         .call(brush);
+    const linesGroup = chartGroup.append("g")
+        .attr("class", "lines-group")
+        .attr("clip-path", "url(#perception-clip)");
 
     dim(true);
 
@@ -101,7 +104,7 @@ export function drawPerceptionChart({
         }
 
         // Draw all borough lines initially (mirrors crime-type module)
-        boroughLines = plotGroup.selectAll(".perception-line")
+        boroughLines = linesGroup.selectAll(".perception-line")
             .data(boroughs, d => d[0])
             .join(
                 enter => enter.append("path")
@@ -173,7 +176,7 @@ export function drawPerceptionChart({
         }
 
         // Data join
-        boroughLines = plotGroup.selectAll(".perception-line")
+        boroughLines = linesGroup.selectAll(".perception-line")
             .data(boroughs, d => d[0])
             .join(
                 enter => enter.append("path")
@@ -238,7 +241,7 @@ export function drawPerceptionChart({
         t.tween("yDomain", () => {
             return function (tVal) {
                 y.domain([i0(tVal), i1(tVal)]);
-                plotGroup.selectAll(".perception-line").attr("d", d => lineGen(d[1]));
+                linesGroup.selectAll(".perception-line").attr("d", d => lineGen(d[1]));
                 redrawYAxis();
             };
         });
@@ -246,7 +249,7 @@ export function drawPerceptionChart({
         boroughLines.transition(t).attr("stroke-width", 2);
 
         t.on("end", () => {
-            const lines = plotGroup.selectAll(".perception-line");
+            const lines = linesGroup.selectAll(".perception-line");
 
             if (activeBoroughsSet.size === 0) {
                 lines
@@ -291,7 +294,7 @@ export function drawPerceptionChart({
         redrawLines();
 
         // Fresh selection AFTER redraw (critical!)
-        const lines = plotGroup.selectAll(".perception-line");
+        const lines = linesGroup.selectAll(".perception-line");
 
         // CASE: no active boroughs → clear highlight + dim chart
         if (!activeBoroughsSet || activeBoroughsSet.size === 0) {
@@ -324,20 +327,20 @@ export function drawPerceptionChart({
     // Highlight / Clear hover
     // ============================================================
     function highlightLine(boroughName) {
-        plotGroup.selectAll(".perception-line")
+        linesGroup.selectAll(".perception-line")
             .classed("hover-highlight", d => d[0] === boroughName)
             .filter(d => d[0] === boroughName)
             .raise();
     }
 
     function clearHoverHighlight() {
-        plotGroup.selectAll(".perception-line")
+        linesGroup.selectAll(".perception-line")
             .classed("hover-highlight", false)
             .classed("super-highlight", false);
     }
 
     // ============================================================
-    // Zoom / Axis helpers
+    // Zoom / Axis
     // ============================================================
     function zoomIn(event) {
         if (!event.sourceEvent) return;

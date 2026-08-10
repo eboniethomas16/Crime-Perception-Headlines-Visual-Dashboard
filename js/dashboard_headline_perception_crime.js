@@ -90,7 +90,7 @@ function drawDashboard() {
             // rename column for consistency
             d.crime_type = d.crime_type.trim();
 
-            // your CSV uses
+            //  CSV uses
             d.crime_count = +d["crime_count"];
         });
     }
@@ -144,7 +144,7 @@ function drawDashboard() {
     // Load BOTH datasets in parallel
     Promise.all([
         d3.csv("../data/crime_type_aggregated_residuals_monthly.csv"),      // 0
-        d3.csv("../data/crime_type_residuals_monthly.csv"),     // 1 CHANGE TO CRIME TYPE RESIDUALS
+        d3.csv("../data/crime_type_residuals_monthly.csv"),     // 1
         d3.csv("../data/crime_types_monthly.csv"),          // 2
         d3.csv("../data/MOPAC_FULL_LONG_Public_Perception.csv"), // 3
         d3.csv("../data/headline_daily_top3_multicrime.csv"), // 4
@@ -196,7 +196,7 @@ function drawDashboard() {
         }, {});
 
         // Build percDataByDate as a nested lookup: Map(metric -> Map(dateMs -> avg))
-// Use the same variable name `percDataByDate` throughout your codebase
+// Use the same variable name `percDataByDate` throughout  codebase
         let percDataByDate = new Map();
         for (const [metric, aggArray] of Object.entries(aggregatedPerception)) {
             percDataByDate.set(metric, new Map(aggArray.map(d => [d.date.getTime(), d.avg])));
@@ -277,15 +277,6 @@ function drawDashboard() {
                 metric: d.metric,
             }));
 
-        // const crimeTypeResidualData = crimeTypeResiduals
-        //     .filter(d => d.date >= cutoff)
-        //     .sort((a, b) => a.date - b.date)
-        //     .map(d => ({
-        //         crime_type: d.crime_type,
-        //         date: d.date,
-        //         residual: d.residual
-        //     }))
-        //     .filter(d => d.residual != null && !isNaN(d.residual));
 
 
         // for residual calculations
@@ -321,30 +312,24 @@ function drawDashboard() {
             updateSummaryPills();
         });
 
-        // const crimeTypes = Array.from(new Set(headlineData.map(d => d.crime_type)));
-        // const palette = d3.quantize(d3.interpolateSpectral, Math.max(17, crimeTypes.length));
-        // // FIND NEW COLOR CODING THAT INCLUDES AT LEAST 32 DISTINCT SHADES
-        // const crimeColor = d3.scaleOrdinal(palette);
-        // FIND NEW COLOR CODING THAT INCLUDES AT LEAST 32 DISTINCT SHADES
-        // Usage: const palette = generateBoroughPalette(32);
-        function generateBoroughPalette(n, opts = {}) {
+
+        // FIND COLOR CODING THAT INCLUDES AT LEAST 32 DISTINCT SHADES
+        // Usage: const palette = generateCrimeTypePalette(32);
+        function generateCrimeTypePalette(n, opts = {}) {
             const {
                 baseChroma = 48,      // saturation-like value (0..100)
-                altChroma = 30,       // alternate chroma for contrast
+                altChroma = 90,       // alternate chroma for contrast
                 baseLightness = 55,   // lightness (0..100)
                 altLightness = 40,    // alternate lightness
                 hueOffset = 0         // rotate starting hue if needed
             } = opts;
-
             const colors = [];
             for (let i = 0; i < n; i++) {
                 // evenly spaced hues
                 const hue = (hueOffset + (i * 360 / n)) % 360;
-
                 // alternate chroma and lightness to increase contrast
                 const chroma = (i % 2 === 0) ? baseChroma : altChroma;
                 const lightness = (i % 3 === 0) ? baseLightness : altLightness;
-
                 // d3.hcl expects (h, c, l)
                 colors.push(d3.hcl(hue, chroma, lightness).formatHex());
             }
@@ -353,7 +338,7 @@ function drawDashboard() {
         // from raw data array
         const boroughNames = Array.from(new Set(crimeData.map(d => d.borough))).sort();
 
-        const palette = generateBoroughPalette(18);
+        const palette = generateCrimeTypePalette(18);
         // then use palette (array of hex strings)
         // const colorScale = d3.scaleOrdinal().domain(boroughNames).range(palette);
 
@@ -411,7 +396,7 @@ function drawDashboard() {
                     .property("checked", activeCrimeTypes.has(type))
                     .on("change", function() {
                         const checked = this.checked;
-                        // Use your existing toggle function. Force add/remove to match checkbox.
+                        // Use  existing toggle function. Force add/remove to match checkbox.
                         toggleActiveCrimeTypes(type); // toggles
                         if (this.checked && !activeCrimeTypes.has(type)) toggleActiveCrimeTypes(type);
                         if (!this.checked && activeCrimeTypes.has(type)) toggleActiveCrimeTypes(type);
@@ -526,7 +511,7 @@ function drawDashboard() {
                         .sort((a, b) => a.date - b.date)
                         .map(d => ({ crime_type: d.crime_type, date: d.date, residual: +d.residual, metric: d.metric }));
 
-                    // assign into your existing top-level variables
+                    // assign into  existing top-level variables
                     aggregatedResidualData = newAggResiduals;
                     crimeTypeResidualData = newCrimeTypeResiduals;
 
@@ -670,8 +655,8 @@ function drawDashboard() {
         headlineChart = drawHeadlineChart({
             container: headlineContainer,            // e.g. "#headlineChart" or a DOM node
             data: headlineData,                      // [{ date, crime_type, avg_tone, total_headline_count, total_duplicate_headline_count }]
-            x: x,                                    // your time scale
-            y: yHeadline,                            // your y scale for avg_tone
+            x: x,                                    // time scale
+            y: yHeadline,                            // y scale for avg_tone
             width: width,
             height: height,
             margin: margin,
@@ -800,7 +785,7 @@ function drawDashboard() {
             onHeatmapHoverCell,
             updateDashboardHoverState,
             onClick: (crimeType) => {
-                // toggle via your existing function
+                // toggle via  existing function
                 toggleActiveCrimeTypes(crimeType);
 
                 // sync checklist DOM to reflect the new active set
@@ -910,13 +895,6 @@ function drawDashboard() {
             const latestQuarterDate = snapToQuarter(latestDate);
             const ts = latestQuarterDate.getTime();
 
-            // Lookup using nested Map (this is your primary source)
-            // const metricMap = percDataByDate.get(selectedMetric);
-            // if (metricMap) {
-            //     latestPerceptionHoverData = metricMap.get(ts) ?? null;
-            //     return latestPerceptionHoverData;
-            // }
-
             // Fallback: aggregatedPerception array (compare timestamps!)
             const arr = aggregatedPerception[selectedMetric] || [];
             const pRow = arr.find(p => p.date && p.date.getTime() === ts);
@@ -973,73 +951,12 @@ function drawDashboard() {
 
 
         // UPDATES THE HOVERLINE LISTENER
-        // helper: snap a Date down to the quarter start (Jan/Apr/Jul/Oct)
+        // snap a Date down to the quarter start (Jan/Apr/Jul/Oct)
         function snapToQuarter(date) {
             const month = date.getMonth();
             const quarterStartMonth = month < 3 ? 0 : month < 6 ? 3 : month < 9 ? 6 : 9;
             return new Date(date.getFullYear(), quarterStartMonth, 1);
         }
-        //
-        // // Returns "headline" | "crime" | "residual" | "perc" or null
-        // function chartNameUnderPointer(event) {
-        //     if (!event) return null;
-        //     const cx = event.clientX;
-        //     const cy = event.clientY;
-        //     if (cx == null || cy == null) return null;
-        //
-        //     // 1) Prefer elementsFromPoint so we can inspect the full stack under the pointer
-        //     let els = [];
-        //     try {
-        //         els = document.elementsFromPoint(cx, cy) || [];
-        //     } catch (e) {
-        //         // elementsFromPoint may throw in some older browsers; fall back to elementFromPoint
-        //         const el = document.elementFromPoint(cx, cy);
-        //         if (el) els = [el];
-        //     }
-        //
-        //     // helper to test an element or its ancestors for a selector
-        //     const closestMatch = (el, selector) => {
-        //         if (!el) return null;
-        //         if (el.closest) return el.closest(selector);
-        //         // fallback: walk up manually
-        //         let cur = el;
-        //         while (cur) {
-        //             if (cur.matches && cur.matches(selector)) return cur;
-        //             cur = cur.parentElement;
-        //         }
-        //         return null;
-        //     };
-        //
-        //     // check the stacked elements for a matching chart container
-        //     for (const el of els) {
-        //         if (!el) continue;
-        //         if (closestMatch(el, "#chart-headlines")) return "headline";
-        //         if (closestMatch(el, "#chart-crime"))     return "crime";
-        //         if (closestMatch(el, "#chart-residual"))  return "residual";
-        //         if (closestMatch(el, "#chart-perception"))return "perc";
-        //     }
-        //
-        //     // 2) Fallback: check container bounding rects (useful if an overlay intercepts pointer events)
-        //     const containers = [
-        //         { name: "headline", selector: "#chart-headlines" },
-        //         { name: "crime",    selector: "#chart-crime" },
-        //         { name: "residual", selector: "#chart-residual" },
-        //         { name: "perc",     selector: "#chart-perception" }
-        //     ];
-        //
-        //     for (const c of containers) {
-        //         const node = document.querySelector(c.selector);
-        //         if (!node) continue;
-        //         const r = node.getBoundingClientRect();
-        //         if (cx >= r.left && cx <= r.right && cy >= r.top && cy <= r.bottom) return c.name;
-        //     }
-        //
-        //     // 3) Nothing matched
-        //     return null;
-        // }
-
-
-
 
         // Central handler called by each chart module via onHoverCrimeType(chartName)
         function onChartReportedHover(chartName, crimeType, event) {
@@ -1049,25 +966,18 @@ function drawDashboard() {
             // update the global hover variable used by updateDashboardHoverState
             hoverCrimeType = crimeType;
 
-            // If you want hovering to clear a pinned selection, do it here:
+            // If  want hovering to clear a pinned selection, do it here:
             // selectedHoverRow = selectedHoverRow && crimeType === selectedHoverRow ? selectedHoverRow : selectedHoverRow;
 
             // Refresh dashboard highlights / hoverlist / hoverlines
             updateDashboardHoverState();
 
-            // Optionally show tiny local tooltips in all charts for the same crime type
-            // (each chart's showHoverTooltip should accept (crimeType, event) and position locally)
             if (crimeType) {
                 if (typeof headlineChart?.showHoverTooltip === "function") headlineChart.showHoverTooltip(crimeType, event);
-                // if (typeof crimeChart?.showHoverTooltip === "function")    crimeChart.showHoverTooltip(crimeType, event);
-                // if (typeof residualChart?.showHoverTooltip === "function") residualChart.showHoverTooltip(crimeType, event);
-                // if (typeof percChart?.showHoverTooltip === "function")     percChart.showHoverTooltip(crimeType, event);
+
             } else {
                 // hide all local tooltips when pointer leaves
                 headlineChart?.hideHoverTooltip?.();
-                // crimeChart?.hideHoverTooltip?.();
-                // residualChart?.hideHoverTooltip?.();
-                // percChart?.hideHoverTooltip?.();
             }
         }
 
@@ -1133,7 +1043,7 @@ function drawDashboard() {
             if (metricMap) {
                 percHoverValue = metricMap.get(snappedQuarterDate.getTime()) ?? null;
             } else {
-                // fallback: if you still have an aggregatedPerception object, try to find the row
+                //
                 const arr = aggregatedPerception[selectedMetric] || [];
                 const pRow = arr.find(p => p.date && p.date.getTime() === snappedQuarterDate.getTime());
                 percHoverValue = pRow ? pRow.avg : null;
@@ -1154,7 +1064,7 @@ function drawDashboard() {
                 return { crime_type: type, residual: row ? row.residual : null };
             });
 
-            // 8) Merge using your existing helper (crimeArr, residualArr, perceptionValue)
+            // 8) Merge using existing (crimeArr, residualArr, perceptionValue)
             const mergedHoverData = mergeCrimeHeadlineResidual(
                 headlineHoverData,
                 crimeHoverData,
@@ -1173,29 +1083,6 @@ function drawDashboard() {
             updateHoverList(snappedCrimeDate, mergedHoverData, true);
         }
 
-
-//
-//         let rafPending = false;
-//         let lastMouseEvent = null;
-//
-//         function scheduleLineChartsMouseMove(event) {
-//             lastMouseEvent = event;
-//             if (!rafPending) {
-//                 rafPending = true;
-//                 requestAnimationFrame(() => {
-//                     rafPending = false;
-//                     onLineChartsMouseMove(lastMouseEvent);
-//                 });
-//             }
-//         }
-//
-// // attach the throttled handler to the container that receives pointer events
-//
-//         lineChartsNode.addEventListener("mousemove", scheduleLineChartsMouseMove);
-//         lineChartsNode.addEventListener("pointermove", scheduleLineChartsMouseMove); // optional
-
-
-        // attach handlers (replace your existing addEventListener blocks)
         lineChartsNode.addEventListener("mousemove", onLineChartsMouseMove);
 
         lineChartsNode.addEventListener("mouseleave", () => {
@@ -1264,7 +1151,7 @@ function drawDashboard() {
         //inputs:
         // crimeArr → monthly crime counts by crime_type
         // headlineArr → headline counts by crime_type
-        // residualArr → your new residuals by crime_type
+        // residualArr → new residuals by crime_type
 
         function mergeCrimeHeadlineResidual(
             headlineArr = [],
@@ -1287,7 +1174,7 @@ function drawDashboard() {
                     ? (h.headline_count ?? h.crime ?? h.headline ?? null)
                     : null;
 
-                // round helpers that preserve null/undefined
+                // preserve null/undefined
                 const roundPerception = val =>
                     val === null || val === undefined ? null : +Number(val).toFixed(1);
 
@@ -1487,7 +1374,6 @@ function drawDashboard() {
                 : new Set(crimeData.map(d => d.crime_type));
 
             const dateDomain = currentXDomain || fullXDomain;
-
             const crimeTotal = computeCrimeTotal(crimeData, crimeTypes, dateDomain);
             const headlineTotal = computeHeadlineTotal(headlineData, crimeTypes, dateDomain, useDuplicates);
             const crimeChange = computeCrime12MonthChange(crimeData, crimeTypes);
@@ -1509,7 +1395,6 @@ function drawDashboard() {
                     .attr("class", `change-value ${colorClass}`)
                     .text(`${arrow} ${Math.abs(crimeChange).toFixed(1)}%`);
             }
-
             // HEADLINE CHANGE ARROW LOGIC (uses headlineChange)
             if (headlineChange != null) {
                 const arrow = headlineChange >= 0 ? "▲" : "▼";
@@ -1597,7 +1482,6 @@ function drawDashboard() {
 
             // ---------------------------------------------
             // 5. Merge crime + headline + residual into unified rows
-            //    Use the shared merge helper instead of inlining
             // ---------------------------------------------
             // mergeCrimeHeadlineResidual expects: (crimeArr, residualArr, perceptionValue)
             const mergedLatest = mergeCrimeHeadlineResidual(
@@ -1686,7 +1570,7 @@ function drawDashboard() {
 
 
         ///////////////////////////////////////////////////////////////////////
-        // INCLUDE HIGHLIGHT LOGIC
+        //HIGHLIGHT LOGIC
         ///////////////////////////////////////////////////////////////////////
 
         // ONLY PLACE WHERE HOVER STATE CHANGES
@@ -1704,7 +1588,7 @@ function drawDashboard() {
             // Guard: require a date
             if (!date) return;
 
-            // Helper: snap a Date down to the quarter start (Jan/Apr/Jul/Oct)
+            // snap a Date down to the quarter start (Jan/Apr/Jul/Oct)
             function snapToQuarter(d) {
                 const month = d.getMonth();
                 const quarterStartMonth = month < 3 ? 0 : month < 6 ? 3 : month < 9 ? 6 : 9;
@@ -1769,7 +1653,7 @@ function drawDashboard() {
                 return { crime_type: b, residual: row ? row.residual : null };
             });
 
-            // 6. Merge using your existing helper (crimeArr, residualArr, perceptionValue)
+            // 6. Merge using existing (crimeArr, residualArr, perceptionValue)
             const mergedHoverData = mergeCrimeHeadlineResidual(
                 headlineHoverData,
                 crimeHoverData,
@@ -1796,105 +1680,18 @@ function drawDashboard() {
             hoverLineCrime.raise();
             hoverLinePerc.raise();
         }
-        // ---------- Format helpers ----------
+        // ---------- FORMATTING ----------
         const fmtInt = v => v == null ? "–" : d3.format(",")(v);
         const fmtPct = v => v == null ? "–" : `${(+v).toFixed(1)}%`;
         const fmtResidual = v => v == null ? "–" : (+v).toFixed(2);
 
-// ---------- drawMicroBars (draws into a metric container node) ----------
-        function drawMicroBarsForRow(rowNode, item, scales, colorScale) {
-            // rowNode: DOM element for the row
-            // item: { crime_type, headline, crime, perception, residual }
-            // scales: { headline, crime, perception, residual, width }
-            const w = scales.width || 80;
-            // HEADLINE
-            const svgH = rowNode.querySelector(".metric.headline svg");
-            svgH && (svgH.innerHTML = "");
-            if (svgH) {
-                if (item.headline == null) {
-                    svgH.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
-                } else {
-                    const width = Math.max(1, scales.headline(Math.min(item.headline, scales.headlineCap)));
-                    svgH.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#888'}" rx="2"></rect>`);
-                }
-            }
-
-            // CRIME
-            const svgC = rowNode.querySelector(".metric.crime svg");
-            svgC && (svgC.innerHTML = "");
-            if (svgC) {
-                if (item.crime == null) {
-                    svgC.insertAdjacentHTML("beforeend",
-                        `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
-                } else {
-                    const width = Math.max(1, scales.crime(Math.min(item.crime, scales.crimeCap)));
-                    svgC.insertAdjacentHTML("beforeend",
-                        `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#666'}" rx="2"></rect>`);
-                }
-            }
-
-            // PERCEPTION
-            const svgP = rowNode.querySelector(".metric.perception svg");
-            svgP && (svgP.innerHTML = "");
-            if (svgP) {
-                if (item.perception == null) {
-                    svgP.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
-                } else {
-                    const width = scales.perception(Math.max(0, Math.min(100, item.perception)));
-                    svgP.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#4a90e2'}" rx="2"></rect>`);
-                }
-            }
-
-            // RESIDUAL (centered)
-            const svgR = rowNode.querySelector(".metric.residual svg");
-            if (svgR) {
-                svgR.innerHTML = "";
-
-                // fixed zero position in the center
-                const zeroX = w / 2;
-
-                // center tick
-                svgR.insertAdjacentHTML("beforeend",
-                    `<line x1="${zeroX}" x2="${zeroX}" y1="1" y2="11" stroke="rgba(0,0,0,0.12)" stroke-width="1"></line>`);
-
-                if (item.residual == null || isNaN(item.residual)) {
-                    svgR.insertAdjacentHTML("beforeend",
-                        `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
-                } else {
-                    // assume residuals are normalized to [-1, 1]; clamp to avoid overflow
-                    const r = Math.max(-1, Math.min(1, +item.residual));
-
-                    // compute pixel position for the value relative to center
-                    const valX = zeroX + r * (w / 2);
-
-                    if (r < 0) {
-                        // negative: draw from valX (left of center) to center, red
-                        const rectX = valX;
-                        const rectW = Math.max(0, zeroX - valX);
-                        svgR.insertAdjacentHTML("beforeend",
-                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#931010" rx="2"></rect>`);
-                    } else if (r > 0) {
-                        // positive: draw from center to valX, green
-                        const rectX = zeroX;
-                        const rectW = Math.max(0, valX - zeroX);
-                        svgR.insertAdjacentHTML("beforeend",
-                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#165007" rx="2"></rect>`);
-                    } else {
-                        // exactly zero: optionally draw a tiny marker so users see a value
-                        svgR.insertAdjacentHTML("beforeend",
-                            `<rect x="${zeroX - 1}" y="2" width="2" height="8" fill="rgba(0,0,0,0.12)" rx="1"></rect>`);
-                    }
-                }
-            }
-
-        }
 
         function createMetadataInfo(metadata = {}) {
             const titleEl = document.querySelector('.dashboard-title');
             if (!titleEl) return;
             if (document.getElementById('metaInfoBtn')) return; // already injected
 
-            // Create button (visual styling should live in your CSS)
+            // Create button (visual styling should live in  CSS)
             const btn = document.createElement('button');
             btn.id = 'metaInfoBtn';
             btn.className = 'meta-info-btn';
@@ -1906,7 +1703,7 @@ function drawDashboard() {
             btn.innerText = 'Dashboard Metadata';
             titleEl.appendChild(btn);
 
-            // Small helper to avoid XSS when inserting strings
+
             function escapeHtml(str) {
                 return String(str == null ? '' : str)
                     .replace(/&/g, '&amp;')
@@ -1916,14 +1713,14 @@ function drawDashboard() {
                     .replace(/'/g, '&#39;');
             }
 
-            // Helper: build HTML for definitions object (each entry on its own line, name bolded)
+            //build HTML for definitions object (each entry on its own line, name bolded)
             function buildDefinitionsHtml(defs) {
                 return Object.entries(defs).map(([name, desc]) => {
                     return `<div class="meta-def-row"><strong>${escapeHtml(name)}</strong>: ${escapeHtml(desc)}</div>`;
                 }).join('');
             }
 
-            // Crime definitions (edit if you want different wording/order)
+            // Crime definitions
             const crimeDefinitions = {
                 "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
                 "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
@@ -1965,7 +1762,7 @@ function drawDashboard() {
             <div class="meta-info-content glass-panel" role="document">
               <h3>Dataset metadata</h3>
               <div class="meta-info-row"><div class="meta-info-key">Dataset</div><div class="meta-info-val">${escapeHtml(md.title)}</div></div>
-              <div class="meta-info-row"><div class="meta-info-key">Sources</div><div class="meta-info-val">${escapeHtml(md.sources.join(', ') || 'Perception Data from the MOPAC Public Attitude Surveys, MPS Crime Data from the London Datastore, Headline data from the GDELT 2.0 API')}</div></div>
+              <div class="meta-info-row"><div class="meta-info-key">Sources</div><div class="meta-info-val">${escapeHtml(md.sources.join(', ') || 'Perception Data from the MOPAC Public Attitude Surveys, MPS Crime Data from the London Datastore, Headline data from the GDELT 2.0 API ,2021 Census Data from the Office Of National Statistics')}</div></div>
               <div class="meta-info-row"><div class="meta-info-key">Last updated</div><div class="meta-info-val">${escapeHtml(md.lastUpdated)}</div></div>
               <div class="meta-info-row"><div class="meta-info-key">Definitions</div><div class="meta-info-val">${fieldsHtml}</div></div>
               <div class="meta-info-row"><div class="meta-info-key">Notes</div><div class="meta-info-val">${escapeHtml(md.notes)}</div></div>
@@ -2007,7 +1804,91 @@ function drawDashboard() {
 
         createMetadataInfo({ lastUpdated: 'July 31, 2026' });
 
-// ---------- render Hover List (main renderer) ----------
+
+        // ---------- drawMicroBars (draws into a hoverlist metric container node) ----------
+        function drawMicroBarsForRow(rowNode, item, scales, colorScale) {
+            // rowNode: DOM element for the row
+            // item: { crime_type, headline, crime, perception, residual }
+            // scales: { headline, crime, perception, residual, width }
+            const w = scales.width || 80;
+            // HEADLINE
+            const svgH = rowNode.querySelector(".metric.headline svg");
+            svgH && (svgH.innerHTML = "");
+            if (svgH) {
+                if (item.headline == null) {
+                    svgH.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
+                } else {
+                    const width = Math.max(1, scales.headline(Math.min(item.headline, scales.headlineCap)));
+                    svgH.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#888'}" rx="2"></rect>`);
+                }
+            }
+            // CRIME microbar
+            const svgC = rowNode.querySelector(".metric.crime svg");
+            svgC && (svgC.innerHTML = "");
+            if (svgC) {
+                if (item.crime == null) {
+                    svgC.insertAdjacentHTML("beforeend",
+                        `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
+                } else {
+                    const width = Math.max(1, scales.crime(Math.min(item.crime, scales.crimeCap)));
+                    svgC.insertAdjacentHTML("beforeend",
+                        `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#666'}" rx="2"></rect>`);
+                }
+            }
+            // PERCEPTION microbar
+            const svgP = rowNode.querySelector(".metric.perception svg");
+            svgP && (svgP.innerHTML = "");
+            if (svgP) {
+                if (item.perception == null) {
+                    svgP.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
+                } else {
+                    const width = scales.perception(Math.max(0, Math.min(100, item.perception)));
+                    svgP.insertAdjacentHTML("beforeend", `<rect x="0" y="2" width="${width}" height="8" fill="${colorScale ? colorScale(item.crime_type) : '#4a90e2'}" rx="2"></rect>`);
+                }
+            }
+            // RESIDUAL (centered) microbar
+            const svgR = rowNode.querySelector(".metric.residual svg");
+            if (svgR) {
+                svgR.innerHTML = "";
+
+                // fixed zero position in the center
+                const zeroX = w / 2;
+
+                // center tick
+                svgR.insertAdjacentHTML("beforeend",
+                    `<line x1="${zeroX}" x2="${zeroX}" y1="1" y2="11" stroke="rgba(0,0,0,0.12)" stroke-width="1"></line>`);
+
+                if (item.residual == null || isNaN(item.residual)) {
+                    svgR.insertAdjacentHTML("beforeend",
+                        `<rect x="0" y="2" width="${w}" height="8" fill="rgba(255,255,255,0.06)" rx="2"></rect>`);
+                } else {
+                    // assume residuals are normalized to [-1, 1]; clamp to avoid overflow
+                    const r = Math.max(-1, Math.min(1, +item.residual));
+
+                    // compute pixel position for the value relative to center
+                    const valX = zeroX + r * (w / 2);
+
+                    if (r < 0) {
+                        // negative: draw from valX (left of center) to center, red
+                        const rectX = valX;
+                        const rectW = Math.max(0, zeroX - valX);
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#931010" rx="2"></rect>`);
+                    } else if (r > 0) {
+                        // positive: draw from center to valX, green
+                        const rectX = zeroX;
+                        const rectW = Math.max(0, valX - zeroX);
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${rectX}" y="2" width="${rectW}" height="8" fill="#165007" rx="2"></rect>`);
+                    } else {
+                        // exactly zero: optionally draw a tiny marker so users see a value
+                        svgR.insertAdjacentHTML("beforeend",
+                            `<rect x="${zeroX - 1}" y="2" width="2" height="8" fill="rgba(0,0,0,0.12)" rx="1"></rect>`);
+                    }
+                }
+            }
+        }
+        // ---------- render Hover List (main renderer) ----------
         /*
           mergedArray: array of items { crime_type, crime, headline, residual, perception }
           options: { containerSelector, colorScale, maxHeadlines, maxCrime, residualExtent }
@@ -2016,7 +1897,7 @@ function drawDashboard() {
             const containerSelector = options.containerSelector || "#hover-list-rows";
             let container = document.querySelector(containerSelector);
             if (!container) {
-                // fallback: append a UL inside #hoverList if not present
+                // append a UL inside #hoverList if not present
                 const parent = document.getElementById("hoverList");
                 container = document.createElement("ul");
                 container.id = "hover-list-rows";
@@ -2032,17 +1913,14 @@ function drawDashboard() {
                 headline: d3.scaleLinear().domain([0, Math.max(1, options.maxHeadlines || 1)]).range([0, w]),
                 headlineCap: Math.max(1, options.maxHeadlines || 1),
                 crime: d3.scaleLinear().domain([0, Math.max(1, options.maxCrime || 1)]).range([0, w]),
-                crimeCap: Math.max(1, options.maxCrime || 1),
+                crimeCap: Math.max(1, options.maxCrime || w),
                 perception: d3.scaleLinear().domain([0, 100]).range([0, w]),
                 residual: d3.scaleLinear().domain(options.residualExtent || d3.extent(mergedArray, d => d.residual) || [-1,1]).range([0, w])
             };
-
             // reuse nodes
             const existing = new Map();
             container.querySelectorAll(".hover-row").forEach(n => existing.set(n.dataset.crime, n));
-
             const fragment = document.createDocumentFragment();
-
             mergedArray.forEach(item => {
                 const key = item.crime_type;
                 let row = existing.get(key);
@@ -2065,7 +1943,7 @@ function drawDashboard() {
               </div>
             `;
 
-                    // interactions: hover and click call your existing handlers
+                    // interactions: hover and click call  existing handlers
                     row.addEventListener("mouseenter", () => {
                         if (typeof setHoverCrimeType === "function") setHoverCrimeType(key);
                         if (typeof highlightLine === "function") highlightLine(key);
@@ -2103,13 +1981,10 @@ function drawDashboard() {
                 fragment.appendChild(row);
                 existing.delete(key);
             });
-
             // remove leftover nodes
             existing.forEach(n => n.remove());
-
             container.appendChild(fragment);
         }
-
 
         function setupTrendToggle() {
             const btn = document.getElementById("toggleTrendBtn");
@@ -2184,7 +2059,6 @@ function drawDashboard() {
             headlineChart.initializeHeadlineChart();
             perceptionChart.initializePerceptionChart(selectedMetric);
 
-            // After you create/initialize charts (immediately after headlineChart, crimeChart, residualChart are created)
             highlightLine = (crimeType) => {
                 // call whichever chart exposes the method; guard with typeof
                 if (headlineChart && typeof headlineChart.highlightLine === "function") headlineChart.highlightLine(crimeType);
@@ -2231,7 +2105,7 @@ function drawDashboard() {
             const hoverListSel = d3.select("#hoverList");
 
             // --------------------------------------------------
-            // Helper: apply and clear cross-chart highlights
+            // apply and clear cross-chart highlights
             // --------------------------------------------------
             function applyHoverHighlights(type) {
                 // HoverList highlight
@@ -2246,7 +2120,7 @@ function drawDashboard() {
                 crimeChart.highlightLine(type);
                 residualChart.highlightLine(type);
                 headlineChart.highlightLine(type);
-                // perceptionChart.highlightLine(type); // enable if you have perceptionChart
+
 
                 // Chord chart highlight
                 if (typeof chordChart !== "undefined" && chordChart.highlightGroup) {
@@ -2387,8 +2261,6 @@ function drawDashboard() {
                 hoverLineHeadline.style("opacity", 0);
             }
         }
-
-
 
     }).catch(err => {
         console.error("DATA LOAD ERROR:", err);

@@ -6,8 +6,6 @@
 
     <!-- Chart-specific styles -->
     <link rel="stylesheet" href="../css/style_dashboard_perception_crime.css">
-
-    <link rel="stylesheet" href="../css/style_dash_bivariate_map.css">
     <link rel="stylesheet" href="../css/style_dash_perception_linechart.css">
     <link rel="stylesheet" href="../css/style_dash_crime_linechart.css">
 
@@ -47,7 +45,7 @@
     </div>
 <div class="dashboard-title glass panel">Crime vs Perception</div>
 
-    <!-- ⭐ NEW ROW: SUMMARY STATS -->
+    <!--  NEW ROW: SUMMARY STATS -->
     <div id="row2" >
         <div id="summary-stats-wrapper">
             <!-- MAIN CRIME PILL -->
@@ -173,10 +171,13 @@
 </div> <!-- /.app-shell -->
 
 </div>
-<script type="module" src="../js/dashboard_perception_crime.js"></script>
+<!--<script type="module" src="../js/dashboard_perception_crime.js"></script>-->
 <script type="module">
     import { drawDashboard } from "../js/dashboard_perception_crime.js";
-    drawDashboard();
+    // drawDashboard();
+    document.addEventListener("DOMContentLoaded", () => {
+        drawDashboard();
+    });
 </script>
 
 </body>

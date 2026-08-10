@@ -96,6 +96,16 @@ export function drawHeadlineHeatmap({
 
     const heatmapG = svgG.append("g")
         .attr("class", "heatmap-g");
+
+
+
+
+
+
+
+
+
+
     // core update function
     function updateMetric() {
         // filter rows for the selected metric
@@ -255,14 +265,13 @@ export function drawHeadlineHeatmap({
         firstRender = false;
     }
 
-
-
-    // API helpers
+    // sends information to the hover line handler
+    // in the dashboard
     function updateDateDomain(domain) {
         currentDateDomain = domain;
         updateMetric();
     }
-
+    // update active borough when borough row is selected
     function updateActiveCrimeTypes(activeSet) {
         heatmapG.selectAll(".heatmap-row")
             .classed("active-row", d => activeSet.has(d))
@@ -272,7 +281,7 @@ export function drawHeadlineHeatmap({
             .classed("active-row", d => activeSet.has(d))
             .classed("dimmed-row", d => activeSet.size > 0 && !activeSet.has(d));
     }
-
+    // Highlight the cell on mouse enter
     function highlightCell(crimeType, date) {
         heatmapG.selectAll("rect")
             .classed("hover-cell", d => d.crime_type === crimeType && +d.date === +date);
@@ -283,28 +292,27 @@ export function drawHeadlineHeatmap({
         heatmapG.selectAll("rect")
             .classed("hover-column", d => +d.date === +date);
     }
-
+    // Clear the cell hover when mouse leaves
     function clearCellHover() {
         heatmapG.selectAll(".hover-cell").classed("hover-cell", false);
         heatmapG.selectAll(".hover-column").classed("hover-column", false);
         heatmapG.selectAll(".hover-highlight").classed("hover-highlight", false);
     }
-
+    // Highlight the crime row
     function highlightRow(crimeTypeName) {
         heatmapG.selectAll(".heatmap-row").classed("hover-highlight", d => d === crimeTypeName);
         yAxisGroupLeft.selectAll("text").classed("hover-highlight", d => d === crimeTypeName);
     }
-
+    // Clear Highlights across the dashboard
     function clearHoverHighlight() {
         heatmapG.selectAll(".hover-highlight").classed("hover-highlight", false);
         heatmapG.selectAll(".hover-cell").classed("hover-cell", false);
         heatmapG.selectAll(".hover-column").classed("hover-column", false);
         yAxisGroupLeft.selectAll("text").classed("hover-highlight", false);
     }
-
     // initial render
     updateMetric();
-
+    // Return API
     return {
         updateMetric,
         updateActiveCrimeTypes,

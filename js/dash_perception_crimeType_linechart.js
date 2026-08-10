@@ -100,7 +100,7 @@ export function drawPerceptionChart({
     function updateData(newData) {
         // newData must be an aggregated array: [{date, avg, metric}, ...]
         data = Array.isArray(newData) ? newData : [];
-        // update scales domain if you want to auto-fit y (optional)
+        // update scales domain to auto-fit y (optional)
         // const maxY = d3.max(data, d => d.avg) ?? 100;
         // y.domain([0, Math.max(100, maxY)]);
         redrawXAxis();

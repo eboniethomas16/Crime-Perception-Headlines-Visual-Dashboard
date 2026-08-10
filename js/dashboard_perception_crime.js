@@ -1,11 +1,10 @@
 // Perception/crime dashboard (no headline data)
-import { drawCrimeChart } from "./dash_crime_linechart.js";
+import { drawCrimeChart } from "./dash_crime_borough_linechart.js";
 import { drawPerceptionChart } from "./dash_perception_linechart.js";
 import { drawChoroMap} from "./dash_bivariate_map.js";
 import { drawHeatmap } from "./dash_heatmap_crime_perception.js";
-import {drawResidualChart} from "./dash_residual_linechart.js";
+import {drawResidualChart} from "./dash_residual_borough_linechart.js";
 
-// import { drawHeatmap } from "./heatmap_crime_perception.js";   // you will create this
 
 export function drawDashboard() {
 
@@ -231,7 +230,7 @@ export function drawDashboard() {
         function generateBoroughPalette(n, opts = {}) {
             const {
                 baseChroma = 48,      // saturation-like value (0..100)
-                altChroma = 30,       // alternate chroma for contrast
+                altChroma = 90,       // alternate chroma for contrast
                 baseLightness = 55,   // lightness (0..100)
                 altLightness = 40,    // alternate lightness
                 hueOffset = 0         // rotate starting hue if needed
@@ -435,6 +434,7 @@ export function drawDashboard() {
             setHoverBorough,
             onLineClick: toggleActiveBorough,
             onZoom: onZoom
+
             // applyXd
         });
 
@@ -464,7 +464,7 @@ export function drawDashboard() {
             updateDashboardHoverState,
             // onClick: toggleActiveBorough,
             onClick: (borough) => {
-                // toggle via your existing function
+
                 toggleActiveBorough(borough);
 
                 // sync checklist DOM to reflect the new active set
@@ -713,21 +713,6 @@ export function drawDashboard() {
                     perception: p ? Math.round(p.perception) : null
                 });
             }
-            // for (const c of crimeArr) {
-            //     const p = percArr.find(x => x.borough === c.borough);
-            //     const r = residArr.find(x => x.borough === c.borough);
-            //
-            //     const roundedPerc = p && p.perception != null
-            //         ? Math.round(p.perception)
-            //         : null;
-            //
-            //     out.push({
-            //         borough: c.borough,
-            //         residual: r ? Math.round(r.residual) : null,
-            //         crime: c ? c.crime : null,
-            //         perception: p ? Math.round(p.perception) : null,
-            //     });
-            // }
 
             return out;
         }
@@ -926,22 +911,6 @@ export function drawDashboard() {
         updatePerceptionMetric();
         updateSummaryPills();
 
-        //new
-        // function quarterToDate(q) {
-        //     if (!q || typeof q !== "string" || !q.includes("-")) {
-        //         console.log("date format passed is not right:",q);
-        //         return null;   //   gracefully handle non-quarter hovers
-        //     }
-        //     const [year, qStr] = q.split("-");
-        //     const quarter = +qStr.replace("Q", "");
-        //
-        //     const month = quarter === 1 ? 0 :
-        //         quarter === 2 ? 3 :
-        //             quarter === 3 ? 6 :
-        //                 9;
-        //
-        //     return new Date(+year, month, 1);
-        // }
 
 
         // SUMMARY PILL FUNCTIONS
@@ -1176,7 +1145,7 @@ export function drawDashboard() {
             renderHoverList(mergedRows, {
                 containerSelector: options.containerSelector,
                 colorScale: typeof boroughColor !== "undefined" ? boroughColor : null,
-                maxCrime: options.maxCrime,
+                maxCrime: d3.max(mergedRows, d => d.crime) ?? 1,
                 residualExtent: options.residualExtent,
                 width: options.width
             });
@@ -1246,7 +1215,7 @@ export function drawDashboard() {
                 };
             });
 
-            // 5. Merge using your existing function
+            // 5. Merge existing function
             const mergedHoverData = mergeCrimeAndPerception(
                 residualHoverData,
                 crimeHoverData,
@@ -1368,7 +1337,7 @@ export function drawDashboard() {
             if (!titleEl) return;
             if (document.getElementById('metaInfoBtn')) return; // already injected
 
-            // Create button (visual styling should live in your CSS)
+            // Create button
             const btn = document.createElement('button');
             btn.id = 'metaInfoBtn';
             btn.className = 'meta-info-btn';
@@ -1380,7 +1349,7 @@ export function drawDashboard() {
             btn.innerText = 'Dashboard Metadata';
             titleEl.appendChild(btn);
 
-            // Small helper to avoid XSS when inserting strings
+            // avoid XSS when inserting strings
             function escapeHtml(str) {
                 return String(str == null ? '' : str)
                     .replace(/&/g, '&amp;')
@@ -1390,14 +1359,14 @@ export function drawDashboard() {
                     .replace(/'/g, '&#39;');
             }
 
-            // Helper: build HTML for definitions object (each entry on its own line, name bolded)
+            // build HTML for definitions object (each entry on its own line, name bolded)
             function buildDefinitionsHtml(defs) {
                 return Object.entries(defs).map(([name, desc]) => {
                     return `<div class="meta-def-row"><strong>${escapeHtml(name)}</strong>: ${escapeHtml(desc)}</div>`;
                 }).join('');
             }
 
-            // Crime definitions (edit if you want different wording/order)
+            // Crime definitions
             const crimeDefinitions = {
                 "Fraud and Forgery": "Offences involving deception, false representation, or falsifying documents for personal gain.",
                 "Possession of Weapons": "Criminal possession of firearms, knives, or other prohibited weapons.",
@@ -1498,11 +1467,17 @@ export function drawDashboard() {
 
             const colorScale = options.colorScale || null;
             const w = options.width || 80;
+            const dataMaxCrime = d3.max(mergedArray, d => {
+                const n = Number(d && d.crime);
+                return isFinite(n) ? n : 0;
+            }) || 0;
+
+            const globalMaxCrime = Math.max(1, options.maxCrime || dataMaxCrime || 1);
 
             const scales = {
                 width: w,
                 crime: d3.scaleLinear().domain([0, Math.max(1, options.maxCrime || 1)]).range([0, w]),
-                crimeCap: Math.max(1, options.maxCrime || 1),
+                crimeCap: Math.max(1, options.maxCrime || dataMaxCrime || 1),
                 perception: d3.scaleLinear().domain([0, 100]).range([0, w]),
                 residual: d3.scaleLinear().domain(options.residualExtent || d3.extent(mergedArray, d => d.residual) || [-1, 1]).range([0, w])
             };
@@ -1606,7 +1581,6 @@ export function drawDashboard() {
 
             if (!btn) return;
 
-            // helpers
             const show = el => {
                 if (!el) return;
                 el.classList.remove("hidden-chart");
@@ -1751,14 +1725,7 @@ export function drawDashboard() {
                 </div>
               </div>
             `);
-        //     d3.select("#choro-map-title")
-        //         .html(`
-        //     Select boroughs in the map below to see how perception and crime count diverge
-        //     Showing Crime Count and Perception % count divergence in London for
-        //     <div style="text-align:center; font-size:1.3em; font-weight:700; margin-top:4px;">
-        //         ${monthYear}
-        //     </div>
-        // `);
+
             console.log(hoverQuarter);
             // --------------------------------------------------
             // 5. Hoverlist title (depends on active boroughs AND hoverQuarter)

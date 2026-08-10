@@ -16,8 +16,7 @@ export function drawHeadlineChart({
     let activeCrimeTypesSet = new Set();
     let cachedByType = null;
     const tooltip = d3.select("#chart-headlines-tooltip");
-    // helper to format month/quarter
-    // const formatMonthYear = d3.timeFormat("%b %Y");
+
 
     function countField() {
         return useDuplicatesState ? "total_duplicate_headline_count" : "total_headline_count";

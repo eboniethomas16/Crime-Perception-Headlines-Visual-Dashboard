@@ -305,7 +305,7 @@ html, body {
     cursor: pointer;
 }
 
-/* your imported styles already handle most of it */
+/* imported styles already handle most of it */
 .glass-dropdown {
     width: 100%;
     position: relative;

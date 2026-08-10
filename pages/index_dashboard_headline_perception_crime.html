@@ -36,7 +36,7 @@
     </div>
     <div class="dashboard-title glass panel">Crime and Headlines vs Perception</div>
 
-    <!-- ⭐ NEW ROW: SUMMARY STATS -->
+    <!-- NEW ROW: SUMMARY STATS -->
     <div id="row2" >
         <div id="summary-stats-wrapper">
             <!-- MAIN HEADLINE PILL -->
@@ -200,10 +200,15 @@
 
 
 </div>
-<script type="module" src="../js/dashboard_headline_perception_crime.js"></script>
+<!--<script type="module" src="../js/dashboard_headline_perception_crime.js"></script>-->
 <script type="module">
     import drawDashboard from "../js/dashboard_headline_perception_crime.js";
-    drawDashboard();
+    // drawDashboard();
+    document.addEventListener("DOMContentLoaded", () => {
+        drawDashboard();
+    });
+
+
 </script>
 
 </body>

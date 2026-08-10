@@ -12,7 +12,7 @@ export function drawHeatmap({
                                 updateDashboardHoverState
                             }) {
     // -------------------------
-    // Layout / sizing helpers
+    // Layout / sizing
     // -------------------------
     const containerNode = document.querySelector(container);
     if (!containerNode) throw new Error(`Container not found: ${container}`);
@@ -98,9 +98,8 @@ export function drawHeatmap({
         .attr("class", "heatmap-g");
 
 
-    // -------------------------
-    // Core update function
-    // -------------------------
+    // Core update function, when perception
+    // metric is changed, Controls row reordering
     function updateMetric(metric) {
         // filter rows for the selected metric
         const filtered = data.filter(d => d.metric === metric);
@@ -248,15 +247,13 @@ export function drawHeatmap({
 
         firstRender = false;
     }
-
-    // -------------------------
-    // Public helpers / API
-    // -------------------------
+    // sends information to the hover line
+    // handler in the dashboard
     function updateDateDomain(domain) {
         currentDateDomain = domain;
         updateMetric(selectedMetric);
     }
-
+    // update active borough when borough row is selected
     function updateActiveBoroughs(activeSet) {
         heatmapG.selectAll(".heatmap-row")
             .classed("active-row", d => activeSet.has(d))
@@ -266,7 +263,7 @@ export function drawHeatmap({
             .classed("active-row", d => activeSet.has(d))
             .classed("dimmed-row", d => activeSet.size > 0 && !activeSet.has(d));
     }
-
+    // Highlight the cell on mouse enter
     function highlightCell(borough, date) {
         heatmapG.selectAll("rect")
             .classed("hover-cell", d => d.borough === borough && +d.date === +date);
@@ -277,30 +274,28 @@ export function drawHeatmap({
         heatmapG.selectAll("rect")
             .classed("hover-column", d => +d.date === +date);
     }
-
+    // Clear the cell hover when mouse leaves
     function clearCellHover() {
         heatmapG.selectAll(".hover-cell").classed("hover-cell", false);
         heatmapG.selectAll(".hover-column").classed("hover-column", false);
         heatmapG.selectAll(".hover-highlight").classed("hover-highlight", false);
     }
-
+    // Highlight the borough row
     function highlightRow(boroughName) {
         heatmapG.selectAll(".heatmap-row")
             .classed("hover-highlight", d => d === boroughName);
         yAxisGroupLeft.selectAll("text")
             .classed("hover-highlight", d => d === boroughName);
     }
-
+    // Clear Highlights across the dashboard
     function clearHoverHighlight() {
         heatmapG.selectAll(".hover-highlight").classed("hover-highlight", false);
         heatmapG.selectAll(".hover-cell").classed("hover-cell", false);
         heatmapG.selectAll(".hover-column").classed("hover-column", false);
         yAxisGroupLeft.selectAll("text").classed("hover-highlight", false);
     }
-
     // initial render
     updateMetric(selectedMetric);
-
     // Return API
     return {
         updateMetric,

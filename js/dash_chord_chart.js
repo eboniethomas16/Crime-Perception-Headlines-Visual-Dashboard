@@ -1,7 +1,6 @@
 // dash_chord_chart.js
 // A standalone D3 chord diagram module for headline crime-type co-occurrence
-// dash_chord_chart.js
-// A standalone D3 chord diagram module for headline crime-type co-occurrence
+
 import { buildCooccurrenceMatrix } from "./chord_matrix_builder.js";
 
 export function drawChordChart({
@@ -13,14 +12,15 @@ export function drawChordChart({
                                    color
                                }) {
 
-    // ⭐ Store raw headline rows inside the module
+    //  Store raw headline rows inside the module
     let rawData = data;
     let crimeTypes = null;
     let matrixData = null;
     let groupSel = null;
     let ribbonsSel = null;
 
-    // ⭐ Internal render function (used for initial draw + updates)
+    //  Internal render function (used for initial draw + updates)
+    // Utilizes chord_matrix_builder module
     function updateChordChart(filteredData) {
 
         // Remove old SVG
@@ -76,7 +76,7 @@ export function drawChordChart({
         const ribbon = d3.ribbon()
             .radius(radius - 40);
 
-// helper to build tooltip HTML for a group index
+// build tooltip HTML for a group index
 
         // -----------------------------
         // 6. Draw groups (outer arcs)
@@ -127,21 +127,6 @@ export function drawChordChart({
 
         groupSel = group;
 
-        // -----------------------------
-        // 7. Labels
-        // -----------------------------
-        // group.append("text")
-        //     .each(d => d.angle = (d.startAngle + d.endAngle) / 2)
-        //     .attr("dy", "0.35em")
-        //     .attr("transform", d => `
-        //         rotate(${(d.angle * 180 / Math.PI - 90)})
-        //         translate(${radius + 10})
-        //         ${d.angle > Math.PI ? "rotate(180)" : ""}
-        //     `)
-        //     .style("text-anchor", d => d.angle > Math.PI ? "end" : "start")
-        //     .text(d => names[d.index])
-        //     .style("font-size", "12px")
-        //     .style("fill", "#333");
 
         // -----------------------------
         // 8. Draw ribbons (inner chords)
@@ -301,7 +286,7 @@ export function drawChordChart({
 
 
 
-        // helper to truncate text to fit path length
+        // truncate text to fit path length
         function truncateToFit(textNode, pathNode) {
             if (!textNode || !pathNode) return true;
             const pathLen = pathNode.getTotalLength();
@@ -427,16 +412,14 @@ export function drawChordChart({
             g.index === idx ? 1 : 0.2
         );
     }
-
-// Clear chord highlights (restore defaults)
+    // Clear chord highlights
     function clearHighlight() {
         if (!groupSel || !ribbonsSel) return;
         ribbonsSel.style("opacity", 0.8);
         groupSel.selectAll("path").style("opacity", 1);
         groupSel.selectAll("text").style("opacity", 1);
     }
-
-
+    // update diagram so active crime types visuals are seen
     function updateActiveCrimeTypes(activeSet) {
 
         // If no crime types selected → clear chart
@@ -464,8 +447,8 @@ export function drawChordChart({
         // Re-render chord chart
         updateChordChart(filtered);
     }
-
-
+    // clear the visual rendering when
+    // no crime categories are selected
     function clear() {
         // d3.select(container).select("svg").remove();
         // Keep or create the SVG once
@@ -484,19 +467,13 @@ export function drawChordChart({
             .attr("transform", `translate(${margin.left + innerWidth/2}, ${margin.top + innerHeight/2})`);
 
     }
-
-
-    // -----------------------------
-    // 10. Return API (consistent with your other modules)
-    // -----------------------------
+    // 10. Return API
     return {
         updateChordChart,
         updateActiveCrimeTypes,
-        // ⭐ Called by dashboard when activeCrimeTypes changes
         clear,
         highlightGroup,
         clearHighlight
-
     };
 }
 

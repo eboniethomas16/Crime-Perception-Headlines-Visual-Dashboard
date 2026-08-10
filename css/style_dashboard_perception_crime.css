@@ -81,7 +81,7 @@ html, body {
     position: relative;
 }
 
-/* Helpful: ensure SVGs behave like blocks (prevents baseline gaps) */
+
 svg { display: block; }
 
 
@@ -1247,3 +1247,15 @@ svg { display: block; }
     padding: 0;
     line-height: 0.8;   /* optional: tighten spacing */
 }
+/*.brush .overlay {*/
+/*    pointer-events: none;*/
+/*}*/
+.crime-line {
+    pointer-events: stroke; /* allow hover/click when overlay is disabled */
+}
+
+/* optional: style for highlighted line */
+/*.crime-line.hover-highlight {*/
+/*    stroke-width: 3px;*/
+/*    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));*/
+/*}*/

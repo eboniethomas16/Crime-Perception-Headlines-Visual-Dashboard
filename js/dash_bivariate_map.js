@@ -33,19 +33,11 @@ export function drawChoroMap({
         let width = cw;
         let height = width / ASPECT;
 
-        // let height = ch;
-        // let width = height * ASPECT;
-
         // If width exceeds container, shrink width instead
         if (height > ch) {
             height = ch;
             width = height * ASPECT;
         }
-
-        // if (width > cw) {
-        //     width = cw;
-        //     height = width / ASPECT;
-        // }
 
         return { width, height };
     }
@@ -68,63 +60,34 @@ export function drawChoroMap({
     let projection = d3.geoMercator().scale(1).translate([0, 0]);
     let path = d3.geoPath(projection);
 
-// Compute raw bounds
+    // Compute raw bounds
     const [[x0, y0], [x1, y1]] = path.bounds(geo);
 
-// Compute scale to fit container
+    // Compute scale to fit container
     let scale = Math.min(
         initWidth / (x1 - x0),
         initHeight / (y1 - y0)
     );
 
-// Update projection scale
+    // Update projection scale
     projection.scale(scale);
 
-// Recompute path with new scale
+    // Recompute path with new scale
     path = d3.geoPath(projection);
 
-// Compute translation
+    // Compute translation
     const translateX = -x0 * scale + (initWidth - (x1 - x0) * scale) / 2;
     const translateY = -y0 * scale + (initHeight - (y1 - y0) * scale) / 2;
 
-// Apply transform
+    // Apply transform
     mapGroup.attr("transform", `
     translate(${translateX+100}, ${translateY + -60})
-`);
-
-
-
-//     let projection = d3.geoMercator().fitSize([initWidth, initHeight], geo);
-//     let path = d3.geoPath(projection);
-//
-// // Compute bounding box of projected map
-//     const [[x0, y0], [x1, y1]] = path.bounds(geo);
-//     const mapW = x1 - x0;
-//     const mapH = y1 - y0;
-//
-//
-// // Compute scale so map height fills SVG height
-//     let scale = initHeight / mapH;
-//
-//     // check if width would clip
-//     if (mapW * scale > initWidth) {
-//         scale = initWidth / mapW;
-//     }
-//
-// // Compute translation to center map inside SVG
-// //     const translateX = -x0 * scale;
-//     const translateX = (initWidth  - mapW * scale) / 2 - x0 * scale;
-//     const translateY = (initHeight - mapH * scale) / 2 - y0 * scale;
-//
-// // Apply transform
-//     mapGroup
-//         .attr("transform", `translate(${translateX}, ${translateY}) scale(${scale})`);
+        `);
 
     // Build lookup table for mapData
     const dataByBorough = new Map(
         fullData.map(d => [d.borough, d])
     );
-
     // Draw map
     let boroughPaths = mapGroup.selectAll(".borough")
         .data(geo.features)
@@ -157,10 +120,8 @@ export function drawChoroMap({
         "Camden": [0, 10],
         "Westminster": [0, 10]
     };
-
-    // ⭐ Create label layer AFTER borough paths
+    //  Create label layer
     const labelLayer = mapGroup.append("g").attr("class", "label-layer");
-
     // add borough labels
     labelLayer.selectAll(".borough-label")
         .data(geo.features)
@@ -177,12 +138,12 @@ export function drawChoroMap({
         .style("pointer-events", "none");
 
 
-
+    // Updates Color map data when perception metric changes
     function updateMetric(newMetric) {
         currentMetric = newMetric;
     }
-
-
+    // When borough is selected, active boroughs signal are
+    // sent to the rest of the dashboard
     function updateActiveBoroughs(activeSet) {
 
         boroughPaths
@@ -197,13 +158,12 @@ export function drawChoroMap({
             .filter(d => activeSet.size > 0 && !activeSet.has(d.id))
             .lower();
 
-        // ⭐ Apply dimming to labels too
+        //  Apply dimming to labels too
         labelLayer.selectAll(".borough-label")
             .classed("active-highlight", d => activeSet.has(d.id))
             .classed("dimmed", d => activeSet.size > 0 && !activeSet.has(d.id));
     }
-
-
+    // hover highlights the area any hovered borough
     function highlightArea(boroughName) {
         boroughPaths
             .classed("hover-highlight", d => d.id === boroughName)
@@ -211,10 +171,11 @@ export function drawChoroMap({
             // .raise();   // hover ALWAYS raised last
 
     }
-
+    // clears the highlight when user stops hovering over borough
     function clearAreaHighlight() {
         boroughPaths.classed("hover-highlight", false);
     }
+    // as user moves through chart dates, the map coloring updates
     function updateMapForQuarter(quarterDate) {
         if (!quarterDate) return;
 
@@ -231,10 +192,7 @@ export function drawChoroMap({
             .duration(250)
             .attr("fill", d => lookup.get(d.id) || "#ccc");
     }
-
-
-
-    // Return API object
+    // Return API objects to the dashboard
     return {
         updateActiveBoroughs,
         highlightArea,
