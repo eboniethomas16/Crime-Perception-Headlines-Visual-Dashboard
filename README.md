@@ -1,6 +1,6 @@
 # Crime, Perception & Crime Media Visual Analytics Dashboard
 
-**Live demos**  
+**Live demos (MUST BE OPENED ON DESKTOP)**  
 [![Open perception vs crime dashboard](https://img.shields.io/badge/Live%20Demo-Perception%20%26%20Crime-brightgreen)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_perception_crime.html)  
 [![Open headline perception dashboard](https://img.shields.io/badge/Live%20Demo-Headline%20Perception-brightgreen)](https://eboniethomas16.github.io/Crime-Perception-Headlines-Visual-Dashboard/pages/index_dashboard_headline_perception_crime.html)
 
