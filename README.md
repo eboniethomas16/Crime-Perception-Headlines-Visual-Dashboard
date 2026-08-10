@@ -20,3 +20,4 @@
 - `/notebooks` — data cleaning and regression notebooks.  
 - `/scripts` — pipeline scripts (GDELT ingestion, NLP preprocessing).  
 - `/pages` — deployed dashboard pages (GitHub Pages).
+- `/Source Code` — Python code used for Data Mining and Regression Analysis for the Dashboards
